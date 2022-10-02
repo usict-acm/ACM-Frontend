@@ -1,7 +1,7 @@
 import './App.css';
 import BottomNav from './Components/BottomNav';
 import Sidebar from './Components/Sidebar';
-
+import Login from './Components/Login';
 function App() {
   return (
     <div className="App">
@@ -9,6 +9,7 @@ function App() {
       {/* console.log(window.innerWidth)
       <Sidebar />
       <BottomNav /> */}
+      <Login />
     </div>
   );
 }
