@@ -1,0 +1,104 @@
+table {
+  border-collapse: collapse;
+  margin: 25px auto;
+  margin-left: auto;
+  margin-top: 0;
+
+  width: 60%;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  font-size: 0.9rem;
+  font-family: sans-serif;
+
+  /* height: 100vh; */
+}
+
+.icons:hover {
+  color: #424141;
+  cursor: pointer;
+  box-shadow: 0 0 0 10px #c0c0c0;
+  background-color: #c0c0c0;
+}
+.icons {
+  color: #252525;
+  border: hidden;
+  border-radius: 100%;
+  transition: all 0.2s ease-in;
+}
+.icons-add {
+  color: #252525;
+  border: hidden;
+  border-radius: 100%;
+  transition: all 0.2s ease-in;
+  display: none;
+  /* visibility: hidden; */
+}
+.icons-add:hover {
+  color: #424141;
+  cursor: pointer;
+  box-shadow: 0 0 0 10px #c0c0c0;
+  background-color: #c0c0c0;
+}
+thead {
+  text-align: left;
+  color: #ffffff;
+  background-color: rgb(117, 201, 250);
+  font-weight: 900;
+  font-family: "Poppins";
+
+  border-bottom: 2px solid #59bddf;
+}
+tbody {
+  background-color: #ffffff;
+
+  font-family: "Poppins";
+}
+tbody td {
+  border-bottom: 1px solid #d8d8d8;
+  text-align: left;
+  color: rgb(105, 105, 105);
+  width: 9px;
+}
+tbody tr:last-of-type {
+  border-bottom: 2px solid #8bbccc;
+}
+tbody tr:nth-child(even) {
+  background-color: #ffffff;
+}
+tbody tr:hover {
+  background-color: #f8f7f7;
+}
+th,
+td {
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  table {
+    margin-left: 0;
+  }
+  table thead {
+    display: none;
+  }
+  table,
+  table tbody,
+  table tr,
+  table td {
+    display: block;
+    width: 100%;
+  }
+  table tr {
+    margin-bottom: 10px;
+  }
+
+  table tbody tr td::before {
+    content: attr(data-label);
+    display: block;
+    font-weight: 900;
+  }
+  .icons-add {
+    visibility: visible;
+    display: inline-block;
+  }
+}

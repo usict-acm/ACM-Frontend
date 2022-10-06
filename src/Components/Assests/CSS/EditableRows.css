@@ -1,0 +1,51 @@
+.inputField {
+  border: none;
+  border-bottom: 2px solid rgb(211, 211, 211);
+  color: rgb(105, 105, 105);
+  background-color: transparent;
+}
+input[type="text"] {
+  font-family: "Poppins";
+}
+::placeholder {
+  color: #4d4d4d;
+  padding-left: 1px;
+  font-family: "Poppins";
+  font-weight: 500;
+}
+.inputSubmit {
+  padding: 7px;
+  font-family: "Poppins";
+  font-weight: 800;
+  border-radius: 5px;
+  border: 2px solid grey;
+  background-color: rgb(117, 201, 250);
+  margin-right: 10px;
+}
+.inputSubmit:hover {
+  background-color: rgb(74, 189, 255);
+  cursor: pointer;
+}
+.inputCancel {
+  padding: 7px;
+  font-family: "Poppins";
+  font-weight: 800;
+  border-radius: 5px;
+  border: 2px solid grey;
+}
+.inputCancel:hover {
+  background-color: rgb(74, 189, 255);
+  cursor: pointer;
+  background-color: rgb(247, 113, 113);
+}
+
+@media (max-width: 768px) {
+  .inputField {
+    border: 2px solid;
+    padding: 5px;
+    margin: 5px;
+    background-color: white;
+    border-radius: 5px;
+    width: 60vw;
+  }
+}
