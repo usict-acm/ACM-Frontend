@@ -5,11 +5,12 @@ function Login() {
   return (
     <div className="login">
       <div className="innerBox">
-      <div className="logo">
-      <img src="https://usict.acm.org/assets/images/acm-logo.svg"/>
-      </div>
-      
+        <div className="logo">
+         <img className="ussAcm" src="https://usict.acm.org/assets/images/acm-logo.svg"/>
+        </div>
+        <div className="divider"></div>
         <form>
+          <h2>Login...</h2>
           <div className="inputs">
             <input
               className="inputField"
