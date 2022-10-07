@@ -50,28 +50,31 @@ const TableRows = function (props) {
             <td data-label="PHONE">{props.contact.phoneNumber}</td>
             <td data-label="ADDRESS">{props.contact.address}</td>
             <td data-label="EMAIL">{props.contact.email}</td>
-
-            <td data-label="">
-              <button className="icons" onClick={showModal}>
-                {" "}
-                <DeleteIcon />{" "}
-              </button>
-            </td>
-            <td data-label="">
-              <button
-                className="icons"
-                onClick={(event) => props.handleEditClick(event, props.contact)}
-              >
-                {" "}
-                <EditIcon />{" "}
-              </button>
-            </td>
-            <td data-label="">
-              <button className="icons">
-                {" "}
-                <VisibilityIcon />{" "}
-              </button>
-            </td>
+            <div className="icons-div">
+              <td data-label="">
+                <button className="icons" onClick={showModal}>
+                  {" "}
+                  <DeleteIcon />{" "}
+                </button>
+              </td>
+              <td data-label="">
+                <button
+                  className="icons"
+                  onClick={(event) =>
+                    props.handleEditClick(event, props.contact)
+                  }
+                >
+                  {" "}
+                  <EditIcon />{" "}
+                </button>
+              </td>
+              <td data-label="">
+                <button className="icons">
+                  {" "}
+                  <VisibilityIcon />{" "}
+                </button>
+              </td>
+            </div>
           </React.Fragment>
         )}
         <td data-label="">
