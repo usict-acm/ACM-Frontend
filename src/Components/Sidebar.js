@@ -78,9 +78,6 @@ const Sidebar = () => {
           Contact Us
         </a>
       </div>
-      <div className="table" style={mystyle}>
-        <TableDesktopMain />
-      </div>
     </div>
   );
   // </Link>

@@ -63,7 +63,8 @@ h2{
   }
   .inputField {
     width: 100%;
-    margin: 20px;
+    margin-bottom: 5px;
+    margin-top: 10px;
     font-size: medium;
     outline: none;
     border: none;

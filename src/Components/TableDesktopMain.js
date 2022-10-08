@@ -3,6 +3,8 @@ import "./Assests/CSS/Table.css";
 import data from "./mock-data.json";
 import TableDesktop from "./TableDesktop";
 import EditableRows from "./EditableRows";
+import Badge from 'react-bootstrap/Badge';
+import Title from "./Title";
 const TableDesktopMain = function () {
   const [contacts, setContact] = useState(data);
   const [editContactId, setEditContactId] = useState(null);
@@ -73,7 +75,8 @@ const TableDesktopMain = function () {
 
   return (
     <React.Fragment>
-      <form onSubmit={handleEditFormSubmit}>
+      <Title title = "Announcements"></Title>  
+      <form className = 'tab' onSubmit={handleEditFormSubmit}>
         <table>
           <thead>
             <tr>
@@ -83,7 +86,7 @@ const TableDesktopMain = function () {
               <th>ADDRESS</th>
               <th>EMAIL</th>
               <th></th>
-              <th></th>
+              <th>Action</th>
               <th></th>
             </tr>
           </thead>
@@ -108,6 +111,8 @@ const TableDesktopMain = function () {
           </tbody>
         </table>
       </form>
+
+    
     </React.Fragment>
   );
 };

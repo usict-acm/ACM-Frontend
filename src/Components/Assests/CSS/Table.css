@@ -1,12 +1,12 @@
 table {
   border-collapse: collapse;
   margin: 25px auto;
-  margin-left: 20rem;
-  margin-bottom: 100rem;
+  
   margin-right: 10px;
+  margin-top: 180px;
   /* right: 0; */
 
-  width: 60%;
+  width: 80%;
   border-radius: 2px;
   overflow: hidden;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
@@ -14,6 +14,14 @@ table {
   font-family: sans-serif;
 
   /* height: 100vh; */
+}
+form{
+  height: auto;
+ 
+}
+.tab{
+  position: absolute;
+  margin-left: 30rem;
 }
 
 .icons:hover {
@@ -43,13 +51,13 @@ table {
   background-color: #c0c0c0;
 }
 thead {
-  text-align: left;
+  text-align: center;
   color: #ffffff;
-  background-color: rgb(117, 201, 250);
+  background-color: rgb(7, 43, 63);
   font-weight: 900;
   font-family: "Poppins";
 
-  border-bottom: 2px solid #59bddf;
+  border-bottom: 2px solid #0f323d;
 }
 tbody {
   background-color: #ffffff;
@@ -58,12 +66,12 @@ tbody {
 }
 tbody td {
   border-bottom: 1px solid #d8d8d8;
-  text-align: left;
+  text-align: center;
   color: rgb(105, 105, 105);
-  width: 9px;
+  width: 30px;
 }
 tbody tr:last-of-type {
-  border-bottom: 2px solid #8bbccc;
+  border-bottom: 2px solid #0e2e39;
 }
 tbody tr:nth-child(even) {
   background-color: #ffffff;

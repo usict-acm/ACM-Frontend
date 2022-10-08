@@ -8,9 +8,7 @@ import {
 // import { Redirect } from 'react-router';
 import BottomNav from "./Components/BottomNav";
 import Sidebar from "./Components/Sidebar";
-import TableMobile from "./Components/TableMobile";
-import TableDesktopMain from "./Components/TableDesktopMain";
-import Header from "./Components/Header";
+import Home from "./Components/Home";
 import Login from './Components/Login';
 function App() {
   let isMobileView = window.innerWidth;
@@ -19,7 +17,7 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={window.innerWidth > 750 ? <Sidebar /> : <BottomNav />} />
+          <Route path="/" element={<Home/>} />
           {/* <Route path="/" element={<TableDesktopMain />} /> */}
           <Route path="/login" element={<Login />} />
         </Routes>
