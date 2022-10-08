@@ -1,0 +1,11 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+@media (max-width: 768px) {
+  .App {
+    display: block;
+  }
+}

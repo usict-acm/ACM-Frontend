@@ -13,7 +13,6 @@ function Login() {
           <h2>Login...</h2>
           <div className="inputs">
             <input
-              className="inputField"
               type="text"
               placeholder="Enter Username..."
             />
@@ -22,7 +21,6 @@ function Login() {
           
           <div className="inputs">
             <input
-              className="inputField"
               type="password"
               placeholder="Enter Password..."
             />
