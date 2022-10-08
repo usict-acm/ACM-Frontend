@@ -2,6 +2,7 @@ import React from "react";
 import BottomNav from "./BottomNav";
 import Sidebar from "./Sidebar";
 import TableDesktopMain from "./TableDesktopMain";
+import TableMobile from "./TableMobile";
 
 
 export default function Home(){
@@ -9,7 +10,7 @@ export default function Home(){
     return (
         <>
         {window.innerWidth > 750 ? <Sidebar /> : <BottomNav />}
-        <TableDesktopMain></TableDesktopMain>
+        {isMobileView > 768 ? <TableDesktopMain /> : <TableMobile />}
         </>
     )
 }
