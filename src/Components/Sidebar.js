@@ -7,7 +7,10 @@ import { FaAward } from "react-icons/fa";
 import { BsFillPeopleFill } from "react-icons/bs";
 import { FaHandshake } from "react-icons/fa";
 import { FaPhoneSquareAlt } from "react-icons/fa";
-import { FaSmileBeam } from "react-icons/fa";
+// import { BiLogOut } from "react-icons/bi";
+// import { FiLogout } from "react-icons/fi";
+import { HiLogout } from "react-icons/hi";
+import { FaArrowAltCircleUp } from "react-icons/fa";
 import "./Assests/CSS/sidebar.css";
 import { Link } from "react-router-dom";
 import TableDesktopMain from "./TableDesktopMain";
@@ -33,10 +36,6 @@ const Sidebar = () => {
           ACM ADMIN
         </h3>
         {/* <hr {width: 60%;margin-left: auto;margin-right: auto;}> */}
-        <a href="#" className="navLinkss">
-          &nbsp;&nbsp;&nbsp;
-          <FaSmileBeam className="iconsss" />{" "}
-        </a>
         <a href="#" className="navLinks">
           &nbsp;
           <BsFillMegaphoneFill className="icons" />
@@ -77,7 +76,15 @@ const Sidebar = () => {
           <FaPhoneSquareAlt className="icons" />
           Contact Us
         </a>
+        <a href="#" className="navLinkss">
+          &nbsp;<b>
+          <HiLogout className="icons" />{" "}</b>
+        </a>
       </div>
+      <a href="#" className="gotopbutton">
+          <FaArrowAltCircleUp className="gotopbutton" />
+          
+        </a>
     </div>
   );
   // </Link>
