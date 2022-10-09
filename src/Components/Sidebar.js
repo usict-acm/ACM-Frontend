@@ -78,12 +78,11 @@ const Sidebar = () => {
         </a>
         <a href="#" className="navLinkss">
           &nbsp;<b>
-          <HiLogout className="icons" />{" "}</b>
+          <HiLogout className="icons" /></b>Logout
         </a>
       </div>
       <a href="#" className="gotopbutton">
           <FaArrowAltCircleUp className="gotopbutton" />
-          
         </a>
     </div>
   );
