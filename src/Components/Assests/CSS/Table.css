@@ -118,26 +118,35 @@ td {
   }
 }
 .paginationBttns {
+  text-align: center;
   width: 100%;
   display: flex;
   justify-content: center;
   height: 20px;
   /* flex-direction: row; */
+
   list-style: none;
 }
 .paginationBttns a {
-  padding: 1rem;
+  padding: 5px 10px;
   margin: 0.5rem;
-  font-weight: 400;
-  background-color: #c0c0c0;
-
-  border-radius: 40px;
+  font-weight: 600;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 50px;
+  font-size: 19px;
 }
 .paginationBttns a:hover {
-  box-shadow: 0 0 0 5px #c0c0c0;
+  border-style: border-box;
+  box-shadow: 0 0 0 4px #c0c0c0;
+  transition: 0.3s ease-out;
 }
 .paginationBttns a:active {
   background-color: #4d4d4e;
+}
+.paginationBttns a:focus {
+  background-color: #00acc1;
+  transition: all 0.3s ease-out;
 }
 .nextBttn {
   text-decoration: none;
