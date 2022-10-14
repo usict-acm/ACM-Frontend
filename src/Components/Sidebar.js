@@ -15,6 +15,10 @@ import "./Assests/CSS/sidebar.css";
 import { Link } from "react-router-dom";
 import TableDesktopMain from "./TableDesktopMain";
 import TableMobile from "./TableMobile";
+// import Dropdown from 'react-bootstrap/Dropdown';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import SplitButton from 'react-bootstrap/SplitButton';
 
 const Sidebar = () => {
   const mystyle = {
@@ -77,13 +81,37 @@ const Sidebar = () => {
           Contact Us
         </a>
         <a href="#" className="navLinkss">
-          &nbsp;<b>
-          <HiLogout className="icons" /></b>Logout
+          &nbsp;
+          <b>
+            <HiLogout className="icons" />
+          </b>
+          Logout
         </a>
       </div>
       <a href="#" className="gotopbutton">
-          <FaArrowAltCircleUp className="gotopbutton" />
-        </a>
+        <FaArrowAltCircleUp className="gotopbutton" />
+      </a>
+      <div className="mb-2 Drop">
+        {['up'].map((direction) => (
+          <DropdownButton
+            // as={ButtonGroup}
+            key={direction}
+            id={`dropdown-button-drop-${direction}`}
+            drop={direction}
+            variant="primary"
+            title="Forms"
+          >
+            <Dropdown.Item eventKey="1">Announcement</Dropdown.Item>
+            <Dropdown.Item eventKey="2">Blogs</Dropdown.Item>
+            <Dropdown.Item eventKey="3">Links</Dropdown.Item>
+            {/* <Dropdown.Divider /> */}
+            <Dropdown.Item eventKey="4">Certificates</Dropdown.Item>
+            <Dropdown.Item eventKey="5">Team</Dropdown.Item>
+            <Dropdown.Item eventKey="6">Joins Us</Dropdown.Item>
+          </DropdownButton>
+        ))}
+      </div>
+      
     </div>
   );
   // </Link>
