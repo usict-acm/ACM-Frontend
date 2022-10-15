@@ -11,6 +11,7 @@ import Sidebar from "./Components/Sidebar";
 import Home from "./Components/Home";
 import Login from './Components/Login';
 import Navb from "./Components/FormNav";
+import Announcement from "./Components/Forms/Announcement";
 function App() {
   let isMobileView = window.innerWidth;
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/" element={<Home/>} />
           {/* <Route path="/" element={<TableDesktopMain />} /> */}
           <Route path="/login" element={<Login />} />
+          <Route path="/form/announcement" element={<Announcement />} />
           <Route path="/Nav" element={<Navb />} />
         </Routes>
       </Router>
