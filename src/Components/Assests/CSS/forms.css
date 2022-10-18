@@ -1,0 +1,12 @@
+.formContainer {
+    margin-left: 280px;
+    height: 100vh;
+    width: 85vw;
+}
+
+@media(max-width : 750px) {
+    .formContainer {
+        margin-left: 0px !important;
+        width: 100vw;
+    }
+}

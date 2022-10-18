@@ -3,13 +3,15 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate
+  Navigate,
 } from "react-router-dom";
-// import { Redirect } from 'react-router';
-import BottomNav from "./Components/BottomNav";
-import Sidebar from "./Components/Sidebar";
 import Home from "./Components/Home";
-import Login from './Components/Login';
+import Login from "./Components/Login";
+import Navb from "./Components/FormNav";
+import Announcement from "./Components/Forms/Announcement";
+import Team from "./Components/Forms/Team";
+import Certificate from "./Components/Forms/Certificate";
+
 function App() {
   let isMobileView = window.innerWidth;
 
@@ -17,9 +19,13 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<Home/>} />
+          <Route path="/" element={<Home />} />
           {/* <Route path="/" element={<TableDesktopMain />} /> */}
           <Route path="/login" element={<Login />} />
+          <Route path="/form/announcement" element={<Announcement />} />
+          <Route path="/Nav" element={<Navb />} />
+          <Route path="/form/team" element={<Team />} />
+          <Route path="/form/certificate" element={<Certificate />} />
         </Routes>
       </Router>
       {/* {window.innerWidth > 750 ? <Sidebar /> : <BottomNav />} */}
