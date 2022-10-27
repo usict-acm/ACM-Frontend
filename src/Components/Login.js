@@ -13,16 +13,18 @@ function Login() {
           <h2>Login...</h2>
           <div className="inputs">
             <input
+              className="inputField"
               type="text"
-              placeholder="Enter Username..."
+              placeholder="Username..."
             />
             <i className="fa-solid fa-user"></i>
           </div>
           
           <div className="inputs">
             <input
+              className="inputField"
               type="password"
-              placeholder="Enter Password..."
+              placeholder="Password..."
             />
             <i class="fa-solid fa-lock"></i>
           </div>
@@ -31,7 +33,7 @@ function Login() {
             <input type="checkbox" />
             <label>Remember me</label>
            </div>
-            <a href="#">Forgot Password?</a>
+            
           </div>
           <button className="loginBtn">Login</button>
 

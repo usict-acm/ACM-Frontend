@@ -1,6 +1,5 @@
 import './App.css';
 // import Login from './Components/Login';
-import "./App.css";
 import {
   BrowserRouter as Router,
   Routes,
@@ -15,6 +14,9 @@ import TableDesktopMain from "./Components/TableDesktopMain";
 import Header from "./Components/Header";
 
 import Login from './Components/Login';
+import Home from "./Components/Home";
+
+import Navb from "./Components/FormNav";
 function App() {
   let isMobileView = window.innerWidth;
 
@@ -22,9 +24,10 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={window.innerWidth > 750 ? <Sidebar /> : <BottomNav />} />
+          <Route path="/" element={<Home/>} />
           {/* <Route path="/" element={<TableDesktopMain />} /> */}
           <Route path="/login" element={<Login />} />
+          <Route path="/Nav" element={<Navb />} />
         </Routes>
       </Router>
       {/* {window.innerWidth > 750 ? <Sidebar /> : <BottomNav />} */}
