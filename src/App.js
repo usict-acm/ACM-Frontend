@@ -22,6 +22,11 @@ function App() {
           {/* <Route path="/" element={<TableDesktopMain />} /> */}
           <Route path="/login" element={<Login />} />
           <Route path="/Nav" element={<Navb />} />
+          <Route path="/form/Announcement" element={<Announcement />} />
+          <Route path="/form/teams" element={<Teams />} />
+          <Route path="/form/links" element={<Links />} />
+
+          <Route path="/form/Certificate" element={<Certificate />} />
         </Routes>
       </Router>
       {/* {window.innerWidth > 750 ? <Sidebar /> : <BottomNav />} */}
