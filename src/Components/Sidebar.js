@@ -1,5 +1,6 @@
 import React from "react";
 import { BsFillMegaphoneFill } from "react-icons/bs";
+// import { Link } from "react-router-dom";
 import { FaBlogger } from "react-icons/fa";
 import { FaWpforms } from "react-icons/fa";
 import { FaLink } from "react-icons/fa";
@@ -101,7 +102,7 @@ const Sidebar = () => {
             variant="primary"
             title="Forms"
           >
-            <Dropdown.Item eventKey="1">Announcement</Dropdown.Item>
+            <Dropdown.Item eventKey="1" tag={Link} href="Forms/Announcement">Announcement</Dropdown.Item>
             <Dropdown.Item eventKey="2">Blogs</Dropdown.Item>
             <Dropdown.Item eventKey="3">Links</Dropdown.Item>
             {/* <Dropdown.Divider /> */}
