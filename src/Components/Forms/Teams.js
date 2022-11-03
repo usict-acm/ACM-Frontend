@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./certificate.css";
+import "./Certificate.css";
 import BottomNav from "../BottomNav";
 import Sidebar from "../Sidebar";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";

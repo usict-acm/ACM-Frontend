@@ -1,12 +1,8 @@
 import React, { useState } from "react";
-<<<<<<< HEAD
-import "./certificate.css";
+import "./Certificate.css";
 import BottomNav from "../BottomNav";
 import Sidebar from "../Sidebar";
 import "../Assests/CSS/forms.css";
-=======
-import "./Certificate.css";
->>>>>>> a92a9e6d2af9825a0f739aa7fba31057c467efeb
 import CardMembershipIcon from "@mui/icons-material/CardMembership";
 const Certificate = function () {
   const [hName, setHname] = useState("");
@@ -60,11 +56,8 @@ const Certificate = function () {
         window.innerWidth > 750 ? "d-flex flex-row" : "d-flex flex-column"
       }
     >
-<<<<<<< HEAD
       <div>{window.innerWidth > 750 ? <Sidebar /> : <BottomNav />}</div>
 
-=======
->>>>>>> a92a9e6d2af9825a0f739aa7fba31057c467efeb
       <div
         className={
           window.innerWidth > 750
@@ -89,10 +82,7 @@ const Certificate = function () {
               aria-describedby="emailHelp"
               value={hName}
               onChange={changeHandlerHName}
-<<<<<<< HEAD
               required
-=======
->>>>>>> a92a9e6d2af9825a0f739aa7fba31057c467efeb
             />
           </div>
           <div class="mb-3">
@@ -107,10 +97,7 @@ const Certificate = function () {
               aria-describedby="emailHelp"
               value={iName}
               onChange={changeHandlerIName}
-<<<<<<< HEAD
               required
-=======
->>>>>>> a92a9e6d2af9825a0f739aa7fba31057c467efeb
             />
           </div>
           <div class="mb-3">
@@ -137,10 +124,7 @@ const Certificate = function () {
               aria-describedby="emailHelp"
               value={eName}
               onChange={changeHandlerEName}
-<<<<<<< HEAD
               required
-=======
->>>>>>> a92a9e6d2af9825a0f739aa7fba31057c467efeb
             />
           </div>
           <div class="mb-3">
@@ -152,10 +136,7 @@ const Certificate = function () {
               aria-describedby="emailHelp"
               value={mailName}
               onChange={changeHandlerMailName}
-<<<<<<< HEAD
               required
-=======
->>>>>>> a92a9e6d2af9825a0f739aa7fba31057c467efeb
             />
           </div>
           <div class="mb-3">
@@ -167,10 +148,7 @@ const Certificate = function () {
               aria-describedby="emailHelp"
               value={rName}
               onChange={changeHandlerRName}
-<<<<<<< HEAD
               required
-=======
->>>>>>> a92a9e6d2af9825a0f739aa7fba31057c467efeb
             />
           </div>
           <div class="mb-3">
@@ -185,10 +163,7 @@ const Certificate = function () {
               aria-describedby="emailHelp"
               value={enrollmentNum}
               onChange={changeHandlerEnrNum}
-<<<<<<< HEAD
               required
-=======
->>>>>>> a92a9e6d2af9825a0f739aa7fba31057c467efeb
             />
           </div>
           <div class="mb-3">
@@ -200,10 +175,7 @@ const Certificate = function () {
               aria-describedby="emailHelp"
               value={courseName}
               onChange={changeHandlerCourse}
-<<<<<<< HEAD
               required
-=======
->>>>>>> a92a9e6d2af9825a0f739aa7fba31057c467efeb
             />
           </div>
 

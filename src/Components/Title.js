@@ -14,7 +14,7 @@ export default function Title({title}){
       </h1>
     </div>
     <div className = 'button'>
-    <Button className='float-end innerbutton' variant="info">ADD NEW ANNOUNCEMENTS</Button>{' '}
+    <Button className='float-end innerbutton' variant="info" href="https://www.youtube.com/">ADD NEW ANNOUNCEMENTS</Button>
     </div>
     </>
     );
