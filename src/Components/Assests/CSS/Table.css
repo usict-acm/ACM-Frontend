@@ -1,7 +1,7 @@
 table {
   border-collapse: collapse;
   margin: 25px auto;
-  
+
   margin-right: 10px;
   margin-top: 180px;
   /* right: 0; */
@@ -15,14 +15,10 @@ table {
 
   /* height: 100vh; */
 }
-Title{
-  margin-top: 100px !important;
-}
-form{
+form {
   height: auto;
- 
 }
-.tab{
+.tab {
   position: absolute;
   margin-left: 24rem;
 }
@@ -120,4 +116,41 @@ td {
     flex-direction: row;
     justify-content: space-between;
   }
+}
+.paginationBttns {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 20px;
+  /* flex-direction: row; */
+
+  list-style: none;
+}
+.paginationBttns a {
+  padding: 5px 10px;
+  margin: 0.5rem;
+  font-weight: 600;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 50px;
+  font-size: 19px;
+}
+.paginationBttns a:hover {
+  border-style: border-box;
+  box-shadow: 0 0 0 4px #c0c0c0;
+  transition: 0.3s ease-out;
+}
+.paginationBttns a:active {
+  background-color: #4d4d4e;
+}
+.paginationBttns a:focus {
+  background-color: #00acc1;
+  transition: all 0.3s ease-out;
+}
+.nextBttn {
+  text-decoration: none;
+}
+.previousBttn {
+  text-decoration: none;
 }

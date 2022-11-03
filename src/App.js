@@ -3,13 +3,10 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate
+  Navigate,
 } from "react-router-dom";
-// import { Redirect } from 'react-router';
-import BottomNav from "./Components/BottomNav";
-import Sidebar from "./Components/Sidebar";
 import Home from "./Components/Home";
-import Login from './Components/Login';
+import Login from "./Components/Login";
 import Navb from "./Components/FormNav";
 import Certificate from "./Components/Forms/Certificate";
 // import Navb from "./Components/FormNav";
@@ -24,9 +21,10 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<Home/>} />
+          <Route path="/" element={<Home />} />
           {/* <Route path="/" element={<TableDesktopMain />} /> */}
           <Route path="/login" element={<Login />} />
+          <Route path="/form/announcement" element={<Announcement />} />
           <Route path="/Nav" element={<Navb />} />
           <Route path="/form/Announcement" element={<Announcement />} />
           <Route path="/form/teams" element={<Team />} />

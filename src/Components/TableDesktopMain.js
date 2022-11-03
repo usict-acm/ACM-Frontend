@@ -1,14 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Assests/CSS/Table.css";
 import data from "./mock-data.json";
 import TableDesktop from "./TableDesktop";
 import EditableRows from "./EditableRows";
-import Badge from 'react-bootstrap/Badge';
+import Badge from "react-bootstrap/Badge";
 import Title from "./Title";
+import ReactPaginate from "react-paginate";
+
 const TableDesktopMain = function () {
   const [contacts, setContact] = useState(data);
   const [editContactId, setEditContactId] = useState(null);
-  const [searchItem, setSearchItem] = useState("");
+  const itemsPerPage = 7;
+  const [currentItems, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(0);
+
+  const [itemOffset, setItemOffset] = useState(0);
+  const endOffset = itemOffset + itemsPerPage;
+
+  useEffect(() => {
+    const endOffset = itemOffset + itemsPerPage;
+    setCurrentItems(contacts.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(contacts.length / itemsPerPage));
+  }, []);
+
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % contacts.length;
+    setItemOffset(newOffset);
+  };
 
   const [editFormData, setEditFormData] = useState({
     fullName: "",
@@ -75,8 +93,8 @@ const TableDesktopMain = function () {
 
   return (
     <React.Fragment>
-      <Title title = "Announcements"></Title>  
-      <form className = 'tab' onSubmit={handleEditFormSubmit}>
+      <Title title="Announcements"></Title>
+      <form className="tab" onSubmit={handleEditFormSubmit}>
         <table>
           <thead>
             <tr>
@@ -91,7 +109,7 @@ const TableDesktopMain = function () {
             </tr>
           </thead>
           <tbody>
-            {contacts.map((contact) => (
+            {contacts.slice(itemOffset, endOffset).map((contact) => (
               <>
                 {editContactId === contact.id ? (
                   <EditableRows
@@ -110,9 +128,19 @@ const TableDesktopMain = function () {
             ))}
           </tbody>
         </table>
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel=">"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={5}
+          containerClassName={"paginationBttns"}
+          nextLinkClassName={"nextBttn"}
+          previousLinkClassName={"previousBttn"}
+          pageCount={pageCount}
+          previousLabel="<"
+          renderOnZeroPageCount={null}
+        />
       </form>
-
-    
     </React.Fragment>
   );
 };
