@@ -103,14 +103,13 @@ const Sidebar = () => {
             variant="primary"
             title="Forms"
           >
-            <Dropdown.Item eventKey="1" as={Link} to="https://www.youtube.com/">Announcement</Dropdown.Item>
+            <Dropdown.Item href="../Forms/Announcement">Announcement</Dropdown.Item>
             <Dropdown.Item href="../Forms/Announcement">Blogs</Dropdown.Item>
-            <Dropdown.Item eventKey="3">Links</Dropdown.Item>.
-            <Link to={'https://www.youtube.com/'}><DropdownItem>Edit</DropdownItem></Link>
+            <Dropdown.Item href="../Forms/Links">Links</Dropdown.Item>.
+            {/* <Link to={'https://www.youtube.com/'}><DropdownItem>Edit</DropdownItem></Link> */}
             {/* <Dropdown.Divider /> */}
-            <Dropdown.Item eventKey="4">Certificates</Dropdown.Item>
-            <Dropdown.Item eventKey="5">Team</Dropdown.Item>
-            <Dropdown.Item eventKey="6">Joins Us</Dropdown.Item>
+            <Dropdown.Item href="../Forms/Certificate">Certificates</Dropdown.Item>
+            <Dropdown.Item href="../Forms/Teams">Team</Dropdown.Item>
           </DropdownButton>
         ))}
       </div>
