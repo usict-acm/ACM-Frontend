@@ -105,7 +105,7 @@ const Sidebar = () => {
           >
             <Dropdown.Item href="/form/Announcement">Announcement</Dropdown.Item>
             <Dropdown.Item href="/form/Certificate">Blogs</Dropdown.Item>
-            <Dropdown.Item href="/form/links">Links</Dropdown.Item>.
+            <Dropdown.Item href="/form/links">Links</Dropdown.Item>
             {/* <Link to={'https://www.youtube.com/'}><DropdownItem>Edit</DropdownItem></Link> */}
             {/* <Dropdown.Divider /> */}
             <Dropdown.Item href="/form/Certificate">Certificates</Dropdown.Item>

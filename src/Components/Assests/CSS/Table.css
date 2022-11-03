@@ -15,13 +15,16 @@ table {
 
   /* height: 100vh; */
 }
+Title{
+  margin-top: 100px !important;
+}
 form{
   height: auto;
  
 }
 .tab{
   position: absolute;
-  margin-left: 30rem;
+  margin-left: 24rem;
 }
 
 .icons:hover {
