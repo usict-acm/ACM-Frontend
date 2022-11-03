@@ -20,6 +20,7 @@ import TableMobile from "./TableMobile";
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import SplitButton from 'react-bootstrap/SplitButton';
+import DropdownItem from "react-bootstrap/esm/DropdownItem";
 
 const Sidebar = () => {
   const mystyle = {
@@ -102,9 +103,10 @@ const Sidebar = () => {
             variant="primary"
             title="Forms"
           >
-            <Dropdown.Item eventKey="1" tag={Link} href="Forms/Announcement">Announcement</Dropdown.Item>
-            <Dropdown.Item eventKey="2">Blogs</Dropdown.Item>
-            <Dropdown.Item eventKey="3">Links</Dropdown.Item>
+            <Dropdown.Item eventKey="1" as={Link} to="https://www.youtube.com/">Announcement</Dropdown.Item>
+            <Dropdown.Item href="../Forms/Announcement">Blogs</Dropdown.Item>
+            <Dropdown.Item eventKey="3">Links</Dropdown.Item>.
+            <Link to={'https://www.youtube.com/'}><DropdownItem>Edit</DropdownItem></Link>
             {/* <Dropdown.Divider /> */}
             <Dropdown.Item eventKey="4">Certificates</Dropdown.Item>
             <Dropdown.Item eventKey="5">Team</Dropdown.Item>
