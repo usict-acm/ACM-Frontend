@@ -11,7 +11,7 @@ import Sidebar from "./Components/Sidebar";
 import Home from "./Components/Home";
 import Login from './Components/Login';
 import Navb from "./Components/FormNav";
-// import Certificate from "./Components/Forms/Certificate";
+import Certificate from "./Components/Forms/Certificate";
 // import Navb from "./Components/FormNav";
 // import Teams from "./Components/Forms/Teams";
 import Announcement from "./Components/Forms/Announcement";
