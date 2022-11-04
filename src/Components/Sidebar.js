@@ -93,26 +93,7 @@ const Sidebar = () => {
       <a href="#" className="gotopbutton">
         <FaArrowAltCircleUp className="gotopbutton" />
       </a>
-      <div className="mb-2 Drop">
-        {['up'].map((direction) => (
-          <DropdownButton
-            // as={ButtonGroup}
-            key={direction}
-            id={`dropdown-button-drop-${direction}`}
-            drop={direction}
-            variant="primary"
-            title="Forms"
-          >
-            <Dropdown.Item href="/form/Announcement">Announcement</Dropdown.Item>
-            <Dropdown.Item href="/form/Certificate">Blogs</Dropdown.Item>
-            <Dropdown.Item href="/form/links">Links</Dropdown.Item>
-            {/* <Link to={'https://www.youtube.com/'}><DropdownItem>Edit</DropdownItem></Link> */}
-            {/* <Dropdown.Divider /> */}
-            <Dropdown.Item href="/form/Certificate">Certificates</Dropdown.Item>
-            <Dropdown.Item href="/form/teams">Team</Dropdown.Item>
-          </DropdownButton>
-        ))}
-      </div>
+      
       
     </div>
   );
