@@ -19,110 +19,59 @@ const Announcement = () => {
         }
       >
         <form className={window.innerWidth > 750 ? "w-50" : "w-75"}>
-          <h1>
-            <em>Create Announcement</em>
-
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="35"
-              height="45"
-              fill="currentColor"
-              class="bi bi-megaphone"
-              viewBox="0 0 16 16"
-            >
-              <path d="M13 2.5a1.5 1.5 0 0 1 3 0v11a1.5 1.5 0 0 1-3 0v-.214c-2.162-1.241-4.49-1.843-6.912-2.083l.405 2.712A1 1 0 0 1 5.51 15.1h-.548a1 1 0 0 1-.916-.599l-1.85-3.49a68.14 68.14 0 0 0-.202-.003A2.014 2.014 0 0 1 0 9V7a2.02 2.02 0 0 1 1.992-2.013 74.663 74.663 0 0 0 2.483-.075c3.043-.154 6.148-.849 8.525-2.199V2.5zm1 0v11a.5.5 0 0 0 1 0v-11a.5.5 0 0 0-1 0zm-1 1.35c-2.344 1.205-5.209 1.842-8 2.033v4.233c.18.01.359.022.537.036 2.568.189 5.093.744 7.463 1.993V3.85zm-9 6.215v-4.13a95.09 95.09 0 0 1-1.992.052A1.02 1.02 0 0 0 1 7v2c0 .55.448 1.002 1.006 1.009A60.49 60.49 0 0 1 4 10.065zm-.657.975 1.609 3.037.01.024h.548l-.002-.014-.443-2.966a68.019 68.019 0 0 0-1.722-.082z" />
-            </svg>
-          </h1>
           <div class="mb-3">
-            <label for="title" class="form-label">
-              Title
+            <label for="exampleInputEmail1" class="form-label">
+              Email address
             </label>
             <input
-              type="text"
+              type="email"
               class="form-control"
-              placeholder="Title"
-              id="exampleTitle"
-              required
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
             />
           </div>
           <div class="mb-3">
-            <label for="description" class="form-label">
-              Description
+            <label for="exampleInputPassword1" class="form-label">
+              Password
+            </label>
+            <input
+              type="password"
+              class="form-control"
+              id="exampleInputPassword1"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">
+              Password
             </label>
             <textarea
-              class="form-control"
-              placeholder="Describe the event"
-              rows="8"
-              columns="5"
+              name=""
+              id=""
+              className="form-control"
+              rows="4"
             ></textarea>
           </div>
-          <div class="mb-3">
-            <label for="StartDate" class="form-label">
-              Date of Commencement
-            </label>
-            <input type="date" class="form-control" id="exampleDate" required />
-          </div>
-          <div class="mb-3">
-            <label for="EndDate" class="form-label">
-              Date of End
-            </label>
+          <div class="mb-3 form-check">
             <input
-              type="date"
-              class="form-control"
-              id="exampleDate1"
-              required
+              type="checkbox"
+              class="form-check-input"
+              id="exampleCheck1"
             />
-          </div>
-          <div class="mb-3">
-            <label for="Members" class="form-label">
-              Members
+            <label class="form-check-label" for="exampleCheck1">
+              Check me out
             </label>
-            <input
-              type="number"
-              placeholder="Participants"
-              class="form-control"
-              id="exampleMem"
-              required
-            />
-          </div>
-          <div class="mb-3">
-            <label for="Speakers" class="form-label">
-              Speakers
-            </label>
-            <input
-              type="text"
-              placeholder="Session Speaker"
-              class="form-control"
-              id="exampleSp"
-              required
-            />
-          </div>
-          <div class="sub-head">
-            <h5>
-              <em>Schedule</em>
-            </h5>
-          </div>
-          <div class="mb-3">
-            <label for="Year" class="form-label">
-              Year{" "}
-            </label>
-            <input type="month" class="form-control" id="exampleyr" required />
-          </div>
-          <div class="mb-3">
-            <label for="Time" class="form-label">
-              Time
-            </label>
-            <input type="time" class="form-control" id="exampleTime" required />
           </div>
 
           <div class="mb-3">
-            <input type="file" class="form-control" id="exampleFile" required />
+            <label for="exampleInputPassword1" class="form-label">
+              Date{" "}
+            </label>
+            <input type="date" name="" id="" class="form-control" />
           </div>
-          <div class="text-center">
-            <button type="submit" class="btn btn-primary">
-              Submit
-            </button>
-          </div>
+
+          <button type="submit" class="btn btn-primary">
+            Submit
+          </button>
         </form>
       </div>
     </div>

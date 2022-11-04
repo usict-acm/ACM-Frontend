@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "./Certificate.css";
+import BottomNav from "../BottomNav";
+import Sidebar from "../Sidebar";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import Title from "../Title";
 const Team = function () {
   const [fName, setFname] = useState("");
   const [lName, setLname] = useState("");
@@ -58,6 +59,7 @@ const Team = function () {
           window.innerWidth > 750 ? "d-flex flex-row" : "d-flex flex-column"
         }
       >
+        <div>{window.innerWidth > 750 ? <Sidebar /> : <BottomNav />}</div>
         <div
           className={
             window.innerWidth > 750
@@ -84,6 +86,7 @@ const Team = function () {
                 aria-describedby="emailHelp"
                 value={fName}
                 onChange={changeHandlerFName}
+                required
               />
             </div>
             <div class="mb-3">
@@ -98,6 +101,7 @@ const Team = function () {
                 aria-describedby="emailHelp"
                 value={lName}
                 onChange={changeHandlerLName}
+                required
               />
             </div>
 
@@ -113,6 +117,7 @@ const Team = function () {
                 aria-describedby="emailHelp"
                 value={designation}
                 onChange={changeHandlerDes}
+                required
               />
             </div>
             <label class="sr-only" for="inlineFormInputGroup">
@@ -131,6 +136,7 @@ const Team = function () {
                 placeholder="Username"
                 value={usernameLin}
                 onChange={changeHandlerUsernameLin}
+                required
               />
             </div>
             <label class="sr-only" for="inlineFormInputGroup">
@@ -149,6 +155,7 @@ const Team = function () {
                 placeholder="Username"
                 value={usernameGit}
                 onChange={changeHandlerGit}
+                required
               />
             </div>
             <label class="sr-only" for="inlineFormInputGroup">
@@ -165,6 +172,7 @@ const Team = function () {
                 placeholder="Username"
                 value={usernameIns}
                 onChange={changeHandlerIns}
+                required
               />
             </div>
 
@@ -180,6 +188,7 @@ const Team = function () {
                 aria-describedby="emailHelp"
                 value={year}
                 onChange={changeHandlerYear}
+                required
               />
             </div>
             <div class="col-auto mb-3">
@@ -189,7 +198,12 @@ const Team = function () {
               >
                 Category
               </label>
-              <select class="form-select" aria-label="Default select example">
+              <select
+                class="form-select"
+                aria-label="Default select example"
+                required
+                d
+              >
                 <option selected>Faculty</option>
                 <option value="1">Office Bearer</option>
                 <option value="2">Executive Member</option>
@@ -205,6 +219,7 @@ const Team = function () {
                 type="file"
                 class="form-control-file"
                 id="exampleFormControlFile1"
+                required
               />
             </div>
 
@@ -218,7 +233,6 @@ const Team = function () {
           </form>
         </div>
       </div>
-      <Title title="Teams" />
     </>
   );
 };

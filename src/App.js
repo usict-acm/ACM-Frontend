@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import Home from "./Components/Home";
 import Login from "./Components/Login";
-import Navb from "./Components/FormNav";
+// import Navb from "./Components/FormNav";
 import Certificate from "./Components/Forms/Certificate";
 // import Navb from "./Components/FormNav";
 // import Teams from "./Components/Forms/Teams";
@@ -25,9 +25,9 @@ function App() {
           {/* <Route path="/" element={<TableDesktopMain />} /> */}
           <Route path="/login" element={<Login />} />
           <Route path="/form/announcement" element={<Announcement />} />
-          <Route path="/Nav" element={<Navb />} />
-          <Route path="/form/Announcement" element={<Announcement />} />
-          <Route path="/form/teams" element={<Team />} />
+          {/* <Route path="/Nav" element={<Navb />} /> */}
+          <Route path="/form/Announcements" element={<Announcement />} />
+          <Route path="/form/Teams" element={<Team />} />
           <Route path="/form/links" element={<Links />} />
 
           <Route path="/form/Certificate" element={<Certificate />} />
