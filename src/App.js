@@ -8,10 +8,12 @@ import {
 import Home from "./Components/Home";
 import Login from "./Components/Login";
 import Navb from "./Components/FormNav";
-import Announcement from "./Components/Forms/Announcement";
-import Team from "./Components/Forms/Team";
 import Certificate from "./Components/Forms/Certificate";
-
+// import Navb from "./Components/FormNav";
+// import Teams from "./Components/Forms/Teams";
+import Announcement from "./Components/Forms/Announcement";
+import Links from "./Components/Forms/Links";
+import Team from "./Components/Forms/Teams";
 function App() {
   let isMobileView = window.innerWidth;
 
@@ -24,8 +26,11 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/form/announcement" element={<Announcement />} />
           <Route path="/Nav" element={<Navb />} />
-          <Route path="/form/team" element={<Team />} />
-          <Route path="/form/certificate" element={<Certificate />} />
+          <Route path="/form/Announcement" element={<Announcement />} />
+          <Route path="/form/teams" element={<Team />} />
+          <Route path="/form/links" element={<Links />} />
+
+          <Route path="/form/Certificate" element={<Certificate />} />
         </Routes>
       </Router>
       {/* {window.innerWidth > 750 ? <Sidebar /> : <BottomNav />} */}

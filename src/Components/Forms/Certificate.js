@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import "./Certificate.css";
+import "./certificate.css";
+import BottomNav from "../BottomNav";
+import Sidebar from "../Sidebar";
+import "../Assests/CSS/forms.css";
 import CardMembershipIcon from "@mui/icons-material/CardMembership";
 const Certificate = function () {
   const [hName, setHname] = useState("");
@@ -53,6 +56,8 @@ const Certificate = function () {
         window.innerWidth > 750 ? "d-flex flex-row" : "d-flex flex-column"
       }
     >
+      <div>{window.innerWidth > 750 ? <Sidebar /> : <BottomNav />}</div>
+
       <div
         className={
           window.innerWidth > 750
@@ -77,6 +82,7 @@ const Certificate = function () {
               aria-describedby="emailHelp"
               value={hName}
               onChange={changeHandlerHName}
+              required
             />
           </div>
           <div class="mb-3">
@@ -91,6 +97,7 @@ const Certificate = function () {
               aria-describedby="emailHelp"
               value={iName}
               onChange={changeHandlerIName}
+              required
             />
           </div>
           <div class="mb-3">
@@ -117,6 +124,7 @@ const Certificate = function () {
               aria-describedby="emailHelp"
               value={eName}
               onChange={changeHandlerEName}
+              required
             />
           </div>
           <div class="mb-3">
@@ -128,6 +136,7 @@ const Certificate = function () {
               aria-describedby="emailHelp"
               value={mailName}
               onChange={changeHandlerMailName}
+              required
             />
           </div>
           <div class="mb-3">
@@ -139,6 +148,7 @@ const Certificate = function () {
               aria-describedby="emailHelp"
               value={rName}
               onChange={changeHandlerRName}
+              required
             />
           </div>
           <div class="mb-3">
@@ -153,6 +163,7 @@ const Certificate = function () {
               aria-describedby="emailHelp"
               value={enrollmentNum}
               onChange={changeHandlerEnrNum}
+              required
             />
           </div>
           <div class="mb-3">
@@ -164,6 +175,7 @@ const Certificate = function () {
               aria-describedby="emailHelp"
               value={courseName}
               onChange={changeHandlerCourse}
+              required
             />
           </div>
 

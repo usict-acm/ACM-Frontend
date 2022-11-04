@@ -1,5 +1,6 @@
 import React from "react";
 import { BsFillMegaphoneFill } from "react-icons/bs";
+// import { Link } from "react-router-dom";
 import { FaBlogger } from "react-icons/fa";
 import { FaWpforms } from "react-icons/fa";
 import { FaLink } from "react-icons/fa";
@@ -19,6 +20,7 @@ import TableMobile from "./TableMobile";
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import SplitButton from 'react-bootstrap/SplitButton';
+import DropdownItem from "react-bootstrap/esm/DropdownItem";
 
 const Sidebar = () => {
   const mystyle = {
@@ -101,13 +103,13 @@ const Sidebar = () => {
             variant="primary"
             title="Forms"
           >
-            <Dropdown.Item eventKey="1">Announcement</Dropdown.Item>
-            <Dropdown.Item eventKey="2">Blogs</Dropdown.Item>
-            <Dropdown.Item eventKey="3">Links</Dropdown.Item>
+            <Dropdown.Item href="/form/Announcement">Announcement</Dropdown.Item>
+            <Dropdown.Item href="/form/Certificate">Blogs</Dropdown.Item>
+            <Dropdown.Item href="/form/links">Links</Dropdown.Item>
+            {/* <Link to={'https://www.youtube.com/'}><DropdownItem>Edit</DropdownItem></Link> */}
             {/* <Dropdown.Divider /> */}
-            <Dropdown.Item eventKey="4">Certificates</Dropdown.Item>
-            <Dropdown.Item eventKey="5">Team</Dropdown.Item>
-            <Dropdown.Item eventKey="6">Joins Us</Dropdown.Item>
+            <Dropdown.Item href="/form/Certificate">Certificates</Dropdown.Item>
+            <Dropdown.Item href="/form/teams">Team</Dropdown.Item>
           </DropdownButton>
         ))}
       </div>
