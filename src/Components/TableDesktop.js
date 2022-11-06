@@ -3,6 +3,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import SweetAlert from "react-bootstrap-sweetalert";
+import Title from "./Title";
 const TableDesktop = function (props) {
   const [isModal, setModal] = useState(false);
 

@@ -3,10 +3,10 @@ table {
   /* margin: 25px auto; */
 
   margin-right: 10px;
-  margin-top: 100px;
+  margin-top: 20px;
   /* right: 0; */
 
-  width: 80%;
+  width: 100%;
   border-radius: 2px;
   overflow: hidden;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
@@ -21,7 +21,9 @@ form {
 }
 .tab {
   position: absolute;
-  margin-left: 24rem;
+  margin-left: 21rem;
+  margin-top: 20px;
+  width: 50vw;
 }
 
 .icons:hover {
@@ -130,6 +132,7 @@ td {
 }
 .paginationBttns a {
   padding: 5px 10px;
+
   margin: 0.5rem;
   font-weight: 600;
   height: 40px;

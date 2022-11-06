@@ -21,6 +21,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import SplitButton from "react-bootstrap/SplitButton";
 import DropdownItem from "react-bootstrap/esm/DropdownItem";
+import Title from "./Title";
 
 const Sidebar = () => {
   const mystyle = {
@@ -52,7 +53,7 @@ const Sidebar = () => {
           <FaBlogger className="icons" />
           Blogs
         </a>
-        <a href="#" className="navLinks">
+        <a href="/" className="navLinks">
           &nbsp;
           <FaWpforms className="icons" />
           Forms
@@ -62,7 +63,7 @@ const Sidebar = () => {
           <FaLink className="icons" />
           Links
         </a>
-        <a href="/form/Certificate" className="navLinks">
+        <a href="/" className="navLinks">
           &nbsp;
           <FaAward className="icons" />
           Certificates
@@ -93,7 +94,7 @@ const Sidebar = () => {
       <a href="#" className="gotopbutton">
         <FaArrowAltCircleUp className="gotopbutton" />
       </a>
-      <div className="mb-2 Drop">
+      {/* <div className="mb-2 Drop">
         {["up"].map((direction) => (
           <DropdownButton
             // as={ButtonGroup}
@@ -108,13 +109,12 @@ const Sidebar = () => {
             </Dropdown.Item>
             <Dropdown.Item href="/form/Certificate">Blogs</Dropdown.Item>
             <Dropdown.Item href="/form/links">Links</Dropdown.Item>
-            {/* <Link to={'https://www.youtube.com/'}><DropdownItem>Edit</DropdownItem></Link> */}
-            {/* <Dropdown.Divider /> */}
+            
             <Dropdown.Item href="/form/Certificate">Certificates</Dropdown.Item>
             <Dropdown.Item href="/form/teams">Team</Dropdown.Item>
           </DropdownButton>
         ))}
-      </div>
+      </div> */}
     </div>
   );
   // </Link>

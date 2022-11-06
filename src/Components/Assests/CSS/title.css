@@ -1,11 +1,13 @@
 .head {
-  margin-left: 29rem;
-  margin-right: 10px;
+  margin-left: 1rem;
+  /* top: 10rem; */
+  /* margin-right: 10px; */
   margin-top: 100px;
 }
 
 .button {
   margin-left: 20rem;
+  /* position: absolute; */
   /* margin-right: 40px; */
   margin-top: 100px;
   padding: 5px;
@@ -13,10 +15,12 @@
 .innerbutton {
   padding: 10px;
   color: white;
-  background: rgb(34, 154, 195);
   background: linear-gradient(
     0deg,
     rgb(53, 151, 184) 0%,
     rgb(73, 128, 232) 100%
   );
+}
+.container {
+  display: flex;
 }
