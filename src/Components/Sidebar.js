@@ -43,7 +43,7 @@ const Sidebar = () => {
           ACM ADMIN
         </h3>
         {/* <hr {width: 60%;margin-left: auto;margin-right: auto;}> */}
-        <a href="/form/Announcement" className="navLinks">
+        <a href="/Announcement-Table" className="navLinks">
           &nbsp;
           <BsFillMegaphoneFill className="icons" />
           &nbsp; Announcements
@@ -58,17 +58,17 @@ const Sidebar = () => {
           <FaWpforms className="icons" />
           Forms
         </a>
-        <a href="/form/links" className="navLinks">
+        <a href="/Links-Table" className="navLinks">
           &nbsp;
           <FaLink className="icons" />
           Links
         </a>
-        <a href="/" className="navLinks">
+        <a href="/Certificate-Table" className="navLinks">
           &nbsp;
           <FaAward className="icons" />
           Certificates
         </a>
-        <a href="/form/Teams" className="navLinks">
+        <a href="/Teams-Table" className="navLinks">
           &nbsp;
           <BsFillPeopleFill className="icons" />
           Team

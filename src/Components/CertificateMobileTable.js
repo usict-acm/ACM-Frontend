@@ -5,7 +5,7 @@ import TableRows from "./TableRows";
 import EditableRows from "./EditableRows";
 import Title from "./Title";
 
-const TableMobile = function () {
+const CertificateMobileTable = function () {
   const [contacts, setContact] = useState(data);
   const [editContactId, setEditContactId] = useState(null);
   const [editFormData, setEditFormData] = useState({
@@ -73,7 +73,7 @@ const TableMobile = function () {
 
   return (
     <>
-      <Title title="Announcements" />
+      <Title title="Certificate" />
       <form onSubmit={handleEditFormSubmit}>
         <table>
           <thead>
@@ -113,4 +113,4 @@ const TableMobile = function () {
     </>
   );
 };
-export default TableMobile;
+export default CertificateMobileTable;

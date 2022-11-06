@@ -12,7 +12,7 @@ export default function Title({ title }) {
     <>
       <div className="container">
         <div className="head">
-          <h1>
+          <h1 className="head-2">
             <Badge bg="light" text="dark">
               {title}
             </Badge>{" "}
