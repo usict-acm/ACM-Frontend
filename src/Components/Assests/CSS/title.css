@@ -7,11 +7,12 @@
 }
 
 .button {
-  margin-left: 20rem;
+  margin-left: 30rem;
   /* position: absolute; */
   /* margin-right: 40px; */
   margin-top: 100px;
   padding: 5px;
+  position: sticky;
 }
 .innerbutton {
   padding: 10px;

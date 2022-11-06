@@ -6,8 +6,8 @@ table {
   margin-top: 20px;
   /* right: 0; */
 
-  width: 100%;
-  border-radius: 2px;
+  width: 50rem;
+  border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   font-size: 0.9rem;
@@ -16,7 +16,8 @@ table {
   /* height: 100vh; */
 }
 form {
-  height: auto;
+  height: 900px;
+  width: 850px !important;
   margin-bottom: 10px !important;
 }
 .tab {
@@ -25,7 +26,14 @@ form {
   margin-top: 20px;
   width: 50vw;
 }
-
+.title{
+  margin-right: 60rem !important;
+  /* position: absolute; */
+  /* margin-right: 40px; */
+  margin-top: 100px;
+  padding: 5px;
+  /* position: sticky; */
+}
 .icons:hover {
   color: #424141;
   cursor: pointer;
