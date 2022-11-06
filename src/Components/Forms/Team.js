@@ -3,6 +3,7 @@ import "./Certificate.css";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import Title from "../Title";
 const Team = function () {
   const [fName, setFname] = useState("");
   const [lName, setLname] = useState("");
@@ -217,6 +218,7 @@ const Team = function () {
           </form>
         </div>
       </div>
+      <Title title="Teams" />
     </>
   );
 };

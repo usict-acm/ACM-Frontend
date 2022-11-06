@@ -17,10 +17,11 @@ import { Link } from "react-router-dom";
 import TableDesktopMain from "./TableDesktopMain";
 import TableMobile from "./TableMobile";
 // import Dropdown from 'react-bootstrap/Dropdown';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import SplitButton from 'react-bootstrap/SplitButton';
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import SplitButton from "react-bootstrap/SplitButton";
 import DropdownItem from "react-bootstrap/esm/DropdownItem";
+import Title from "./Title";
 
 const Sidebar = () => {
   const mystyle = {
@@ -42,7 +43,7 @@ const Sidebar = () => {
           ACM ADMIN
         </h3>
         {/* <hr {width: 60%;margin-left: auto;margin-right: auto;}> */}
-        <a href="#" className="navLinks">
+        <a href="/form/Announcement" className="navLinks">
           &nbsp;
           <BsFillMegaphoneFill className="icons" />
           &nbsp; Announcements
@@ -52,22 +53,22 @@ const Sidebar = () => {
           <FaBlogger className="icons" />
           Blogs
         </a>
-        <a href="#" className="navLinks">
+        <a href="/" className="navLinks">
           &nbsp;
           <FaWpforms className="icons" />
           Forms
         </a>
-        <a href="#" className="navLinks">
+        <a href="/form/links" className="navLinks">
           &nbsp;
           <FaLink className="icons" />
           Links
         </a>
-        <a href="#" className="navLinks">
+        <a href="/" className="navLinks">
           &nbsp;
           <FaAward className="icons" />
           Certificates
         </a>
-        <a href="#" className="navLinks">
+        <a href="/form/Teams" className="navLinks">
           &nbsp;
           <BsFillPeopleFill className="icons" />
           Team
@@ -93,8 +94,27 @@ const Sidebar = () => {
       <a href="#" className="gotopbutton">
         <FaArrowAltCircleUp className="gotopbutton" />
       </a>
-      
-      
+      {/* <div className="mb-2 Drop">
+        {["up"].map((direction) => (
+          <DropdownButton
+            // as={ButtonGroup}
+            key={direction}
+            id={`dropdown-button-drop-${direction}`}
+            drop={direction}
+            variant="primary"
+            title="Forms"
+          >
+            <Dropdown.Item href="/form/Announcement">
+              Announcement
+            </Dropdown.Item>
+            <Dropdown.Item href="/form/Certificate">Blogs</Dropdown.Item>
+            <Dropdown.Item href="/form/links">Links</Dropdown.Item>
+            
+            <Dropdown.Item href="/form/Certificate">Certificates</Dropdown.Item>
+            <Dropdown.Item href="/form/teams">Team</Dropdown.Item>
+          </DropdownButton>
+        ))}
+      </div> */}
     </div>
   );
   // </Link>
