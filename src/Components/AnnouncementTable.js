@@ -1,13 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Assests/CSS/Table.css";
 import data from "./mock-data.json";
-import TableRows from "./TableRows";
+import TableDesktop from "./TableDesktop";
 import EditableRows from "./EditableRows";
+import Badge from "react-bootstrap/Badge";
 import Title from "./Title";
+import ReactPaginate from "react-paginate";
 
-const TableMobile = function () {
+const AnnouncementTable = function () {
   const [contacts, setContact] = useState(data);
   const [editContactId, setEditContactId] = useState(null);
+  const itemsPerPage = 7;
+  const [currentItems, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(0);
+
+  const [itemOffset, setItemOffset] = useState(0);
+  const endOffset = itemOffset + itemsPerPage;
+
+  useEffect(() => {
+    const endOffset = itemOffset + itemsPerPage;
+    setCurrentItems(contacts.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(contacts.length / itemsPerPage));
+  }, []);
+
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % contacts.length;
+    setItemOffset(newOffset);
+  };
+
   const [editFormData, setEditFormData] = useState({
     fullName: "",
     address: "",
@@ -72,9 +92,9 @@ const TableMobile = function () {
   };
 
   return (
-    <>
-      <Title title="Announcements" />
-      <form onSubmit={handleEditFormSubmit}>
+    <React.Fragment>
+      <Title title="Announcements"></Title>
+      <form className="tab" onSubmit={handleEditFormSubmit}>
         <table>
           <thead>
             <tr>
@@ -84,13 +104,12 @@ const TableMobile = function () {
               <th>ADDRESS</th>
               <th>EMAIL</th>
               <th></th>
-              <th></th>
-              <th></th>
+              <th>Action</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            {contacts.map((contact) => (
+            {contacts.slice(itemOffset, endOffset).map((contact) => (
               <>
                 {editContactId === contact.id ? (
                   <EditableRows
@@ -99,18 +118,30 @@ const TableMobile = function () {
                     handleCancelClicker={handleCancelClick}
                   />
                 ) : (
-                  <TableRows
+                  <TableDesktop
                     contact={contact}
-                    handleDeleteClick={handleDelete}
-                    handleEditClick={handleEditClick}
+                    handleDeleteClicker={handleDelete}
+                    handleEditClicker={handleEditClick}
                   />
                 )}
               </>
             ))}
           </tbody>
         </table>
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel=">"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={5}
+          containerClassName={"paginationBttns"}
+          nextLinkClassName={"nextBttn"}
+          previousLinkClassName={"previousBttn"}
+          pageCount={pageCount}
+          previousLabel="<"
+          renderOnZeroPageCount={null}
+        />
       </form>
-    </>
+    </React.Fragment>
   );
 };
-export default TableMobile;
+export default AnnouncementTable;
