@@ -1,5 +1,4 @@
 .card {
-<<<<<<< HEAD
   border: none;
   box-shadow: 0 2px 7px rgb(0, 0, 0, 0.2);
   padding: 25px;
@@ -20,25 +19,3 @@ h1 {
   margin-top: 10px;
   width: 100%;
 }
-=======
-    border: none;
-    box-shadow: 0 2px 7px rgb(0, 0, 0, 0.2);
-    padding: 25px;
-  }
-  .form-label {
-    font-weight: 600;
-  }
-  h1 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  .imageDisplay {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 10px;
-  }
-  .btn-primary {
-    margin-top: 10px;
-    width: 100%;
-  }
->>>>>>> 317b1c83eb43a905f5cc18c1ba90cbebdabc286f
