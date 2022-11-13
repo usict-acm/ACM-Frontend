@@ -3,6 +3,7 @@ import "./Assests/CSS/Table.css";
 import data from "./mock-data.json";
 import TableRows from "./TableRows";
 import EditableRows from "./EditableRows";
+import Title from "./Title";
 
 const TableMobile = function () {
   const [contacts, setContact] = useState(data);
@@ -71,42 +72,45 @@ const TableMobile = function () {
   };
 
   return (
-    <form onSubmit={handleEditFormSubmit}>
-      <table>
-        <thead>
-          <tr>
-            <th>S.No</th>
-            <th>NAME</th>
-            <th>PHONE</th>
-            <th>ADDRESS</th>
-            <th>EMAIL</th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {contacts.map((contact) => (
-            <>
-              {editContactId === contact.id ? (
-                <EditableRows
-                  editFormDatas={editFormData}
-                  handleEditFormChange={handleEditFormChange}
-                  handleCancelClicker={handleCancelClick}
-                />
-              ) : (
-                <TableRows
-                  contact={contact}
-                  handleDeleteClick={handleDelete}
-                  handleEditClick={handleEditClick}
-                />
-              )}
-            </>
-          ))}
-        </tbody>
-      </table>
-    </form>
+    <>
+      <Title title="Announcements" />
+      <form onSubmit={handleEditFormSubmit}>
+        <table>
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>NAME</th>
+              <th>PHONE</th>
+              <th>ADDRESS</th>
+              <th>EMAIL</th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {contacts.map((contact) => (
+              <>
+                {editContactId === contact.id ? (
+                  <EditableRows
+                    editFormDatas={editFormData}
+                    handleEditFormChange={handleEditFormChange}
+                    handleCancelClicker={handleCancelClick}
+                  />
+                ) : (
+                  <TableRows
+                    contact={contact}
+                    handleDeleteClick={handleDelete}
+                    handleEditClick={handleEditClick}
+                  />
+                )}
+              </>
+            ))}
+          </tbody>
+        </table>
+      </form>
+    </>
   );
 };
 export default TableMobile;

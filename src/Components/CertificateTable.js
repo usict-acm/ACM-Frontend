@@ -7,7 +7,7 @@ import Badge from "react-bootstrap/Badge";
 import Title from "./Title";
 import ReactPaginate from "react-paginate";
 
-const TableDesktopMain = function () {
+const CertificateTable = function () {
   const [contacts, setContact] = useState(data);
   const [editContactId, setEditContactId] = useState(null);
   const itemsPerPage = 7;
@@ -93,8 +93,8 @@ const TableDesktopMain = function () {
 
   return (
     <React.Fragment>
-      <Title title="Announcements"></Title>
-      <form className="table-form" onSubmit={handleEditFormSubmit}>
+      <Title title="Certificate"></Title>
+      <form onSubmit={handleEditFormSubmit}>
         <table>
           <thead>
             <tr>
@@ -144,4 +144,4 @@ const TableDesktopMain = function () {
     </React.Fragment>
   );
 };
-export default TableDesktopMain;
+export default CertificateTable;

@@ -28,7 +28,7 @@ const TableRows = function (props) {
           warning
           showCancel
           confirmBtnText="Yes, delete it!"
-          confirmBtnBsStyle="warning"
+          confirmBtnBsStyle="danger"
           title="Are you sure?"
           onConfirm={() => {
             props.handleDeleteClick(props.contact.id);
