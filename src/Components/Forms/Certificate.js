@@ -66,7 +66,7 @@ const Certificate = function () {
               : "container formContainer py-4 w-100 px-0 d-flex justify-content-center"
           }
         >
-          <form className={window.innerWidth > 750 ? "w-50 card" : "w-75"}>
+          <form className={window.innerWidth > 750 ? "w-75 card" : "w-75"}>
             <h1>
               {" "}
               <CardMembershipIcon /> Create Certificate

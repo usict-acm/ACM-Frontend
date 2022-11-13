@@ -18,7 +18,9 @@ const Announcement = () => {
             : "container formContainer py-4 w-100 px-0 d-flex justify-content-center"
         }
       >
-        <form className={window.innerWidth > 750 ? "w-50" : "w-75"}>
+        <form
+          className={window.innerWidth > 750 ? "w-100 notTable-form " : "w-100"}
+        >
           <h3>Create Announcements</h3>
           <hr></hr>
           <div class="mb-3">

@@ -94,7 +94,7 @@ const LinksTable = function () {
   return (
     <React.Fragment>
       <Title title="Links"></Title>
-      <form className="tab" onSubmit={handleEditFormSubmit}>
+      <form onSubmit={handleEditFormSubmit}>
         <table>
           <thead>
             <tr>

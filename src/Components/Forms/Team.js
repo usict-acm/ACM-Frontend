@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import "./Certificate.css";
+// import "./Certificate.css";
+import "../Assests/CSS/forms.css";
+
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -65,7 +67,7 @@ const Team = function () {
               : "container formContainer py-4 w-100 px-0 d-flex justify-content-center"
           }
         >
-          <form className={window.innerWidth > 750 ? "w-50 card " : "w-75"}>
+          <form className={window.innerWidth > 750 ? "w-75 card " : "w-75"}>
             {/* <form> */}
             <h1>
               {" "}

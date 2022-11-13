@@ -94,7 +94,7 @@ const AnnouncementTable = function () {
   return (
     <React.Fragment>
       <Title title="Announcements"></Title>
-      <form className="tab" onSubmit={handleEditFormSubmit}>
+      <form onSubmit={handleEditFormSubmit}>
         <table>
           <thead>
             <tr>

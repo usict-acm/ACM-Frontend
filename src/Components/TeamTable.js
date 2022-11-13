@@ -94,7 +94,7 @@ const TeamTable = function () {
   return (
     <React.Fragment>
       <Title title="Teams"></Title>
-      <form className="tab" onSubmit={handleEditFormSubmit}>
+      <form onSubmit={handleEditFormSubmit}>
         <table>
           <thead>
             <tr>

@@ -94,7 +94,7 @@ const TableDesktopMain = function () {
   return (
     <React.Fragment>
       <Title title="Announcements"></Title>
-      <form className="tab" onSubmit={handleEditFormSubmit}>
+      <form className="table-form" onSubmit={handleEditFormSubmit}>
         <table>
           <thead>
             <tr>

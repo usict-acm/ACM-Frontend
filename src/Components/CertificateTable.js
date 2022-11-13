@@ -94,7 +94,7 @@ const CertificateTable = function () {
   return (
     <React.Fragment>
       <Title title="Certificate"></Title>
-      <form className="tab" onSubmit={handleEditFormSubmit}>
+      <form onSubmit={handleEditFormSubmit}>
         <table>
           <thead>
             <tr>
