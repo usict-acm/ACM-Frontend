@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "../Assests/CSS/forms.css";
 import Sidebar from "../Sidebar";
 import BottomNav from "../BottomNav";
-import Title from "../Title";
 import CardMembershipIcon from "@mui/icons-material/CardMembership";
 const Certificate = function () {
   const [hName, setHname] = useState("");
@@ -191,7 +190,7 @@ const Certificate = function () {
           </form>
         </div>
       </div>
-      <Title title="Certificate" />
+      {/* <Title title="Certificate" /> */}
     </>
   );
 };

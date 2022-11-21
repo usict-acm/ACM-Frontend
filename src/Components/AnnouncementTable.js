@@ -114,8 +114,8 @@ const AnnouncementTable = function () {
                 {editContactId === contact.id ? (
                   <EditableRows
                     editFormDatas={editFormData}
-                    handleEditFormChange={handleEditFormChange}
                     handleCancelClicker={handleCancelClick}
+                    handleEditFormChange={handleEditFormChange}
                   />
                 ) : (
                   <TableDesktop

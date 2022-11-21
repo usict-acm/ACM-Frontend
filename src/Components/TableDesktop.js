@@ -45,12 +45,6 @@ const TableDesktop = function (props) {
         <td data-label="EMAIL">{props.contact.email}</td>
 
         <td data-label="">
-          <button className="icons" onClick={showModal}>
-            {" "}
-            <DeleteIcon />{" "}
-          </button>
-        </td>
-        <td data-label="">
           <button
             className="icons"
             onClick={(event) => props.handleEditClicker(event, props.contact)}
@@ -63,6 +57,12 @@ const TableDesktop = function (props) {
           <button className="icons">
             {" "}
             <VisibilityIcon />{" "}
+          </button>
+        </td>
+        <td data-label="">
+          <button className="icons" onClick={showModal}>
+            {" "}
+            <DeleteIcon />{" "}
           </button>
         </td>
       </tr>

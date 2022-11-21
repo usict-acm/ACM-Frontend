@@ -19,6 +19,8 @@
 }
 .container {
   display: flex;
+  /* justify-content: space-between; */
+  margin-left: 15rem;
 }
 .head-2 {
   /* padding: 20px; */
@@ -29,7 +31,7 @@
   .container {
     /* display: grid;
     grid-template-columns: 200px 200px; */
-    /* margin-left: -32px; */
+    margin-left: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;

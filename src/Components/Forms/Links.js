@@ -2,7 +2,6 @@ import React from "react";
 import BottomNav from "../BottomNav";
 import Sidebar from "../Sidebar";
 import "../Assests/CSS/forms.css";
-import Title from "../Title";
 
 const Links = () => {
   return (
@@ -20,7 +19,7 @@ const Links = () => {
               : "container formContainer py-4 w-100 px-0 d-flex justify-content-center"
           }
         >
-          <form className={window.innerWidth > 750 ? "w-75" : "w-75"}>
+          <form className={window.innerWidth > 750 ? "w-75 card" : "w-75 "}>
             <h1>
               <em>Create Link</em>
 
@@ -92,7 +91,7 @@ const Links = () => {
           </form>
         </div>
       </div>
-      <Title title="links" />
+      {/* <Title title="links" /> */}
     </>
   );
 };
