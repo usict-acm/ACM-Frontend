@@ -1,21 +1,23 @@
 table {
   border-collapse: collapse;
-  margin:25px auto ;
-  margin-left:28rem;
+  margin: 25px auto;
+  margin-left: 28rem;
   width: 60%;
   border-radius: 2px;
   overflow: hidden;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 5px rgba(65, 68, 232, 0.977);
   font-size: 0.9rem;
   font-family: sans-serif;
 
   /* height: 100vh; */
 }
+
 .table-form {
   height: auto;
   /* background-color: red; */
   margin-bottom: 10px !important;
 }
+
 .tab {
   position: absolute;
   margin-left: 21rem;
@@ -29,14 +31,17 @@ table {
   box-shadow: 0 0 0 10px #c0c0c0;
   background-color: #c0c0c0;
 }
+
 .icons {
   color: #252525;
   /* flex-direction: row; */
-    margin-right: 40px;
+  margin-right: 40px;
   border: hidden;
   border-radius: 100%;
   transition: all 0.2s ease-in;
+  width: 80px;
 }
+
 .icons-add {
   color: #252525;
   border: hidden;
@@ -45,12 +50,14 @@ table {
   display: none;
   /* visibility: hidden; */
 }
+
 .icons-add:hover {
   color: #424141;
   cursor: pointer;
   box-shadow: 0 0 0 10px #c0c0c0;
   background-color: #c0c0c0;
 }
+
 thead {
   text-align: center;
   color: #ffffff;
@@ -60,26 +67,32 @@ thead {
 
   border-bottom: 2px solid #0f323d;
 }
+
 tbody {
   background-color: #ffffff;
 
   font-family: "Poppins";
 }
+
 tbody td {
   border-bottom: 1px solid #d8d8d8;
   text-align: center;
   color: rgb(105, 105, 105);
   width: 30px;
 }
+
 tbody tr:last-of-type {
   border-bottom: 2px solid #0e2e39;
 }
+
 tbody tr:nth-child(even) {
   background-color: #ffffff;
 }
+
 tbody tr:hover {
   background-color: #f8f7f7;
 }
+
 th,
 td {
   padding: 10px;
@@ -90,9 +103,11 @@ td {
     margin-left: 0;
     width: 100%;
   }
+
   table thead {
     display: none;
   }
+
   table,
   table tbody,
   table tr,
@@ -100,6 +115,7 @@ td {
     display: block;
     width: 100%;
   }
+
   table tr {
     margin-bottom: 10px;
   }
@@ -109,16 +125,19 @@ td {
     display: block;
     font-weight: 900;
   }
+
   .icons-add {
     visibility: visible;
     display: inline-block;
   }
+
   .icons-div {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
 }
+
 .paginationBttns {
   text-align: center;
   width: 100%;
@@ -129,6 +148,7 @@ td {
 
   list-style: none;
 }
+
 .paginationBttns a {
   padding: 5px 10px;
 
@@ -139,21 +159,26 @@ td {
   border-radius: 50px;
   font-size: 19px;
 }
+
 .paginationBttns a:hover {
   border-style: border-box;
   box-shadow: 0 0 0 4px #c0c0c0;
   transition: 0.3s ease-out;
 }
+
 .paginationBttns a:active {
   background-color: #4d4d4e;
 }
+
 .paginationBttns a:focus {
   background-color: #00acc1;
   transition: all 0.3s ease-out;
 }
+
 .nextBttn {
   text-decoration: none;
 }
+
 .previousBttn {
   text-decoration: none;
 }

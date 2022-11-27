@@ -31,14 +31,15 @@ const Sidebar = () => {
   // <Link to="/">
   return (
     <div className="combo">
-      <div className="sidebar">
-        <h3 className="logoNav">
+      <div className="sidebar" href="/">
+        <h3 className="logoNav" >
           {" "}
           <img
             src="https://usict.acm.org/assets/images/acm-logo.svg"
             alt=""
             width={60}
             height={60}
+            
           />
           ACM ADMIN
         </h3>

@@ -50,13 +50,13 @@ const TableDesktop = function (props) {
             onClick={(event) => props.handleEditClicker(event, props.contact)}
           >
             {" "}
-            <EditIcon />{" "}
+            <EditIcon /><br></br>{" "}
           </button>
         </td>
         <td data-label="">
           <button className="icons">
             {" "}
-            <VisibilityIcon />{" "}
+            <VisibilityIcon className="icon"/>{" "}
           </button>
         </td>
         <td data-label="">

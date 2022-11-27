@@ -3,7 +3,9 @@
   height: 70%;
   width: 100vw;
 }
-
+z{
+  color: red;
+}
 .notTable-form {
   margin-top: auto;
   margin-left: auto;
