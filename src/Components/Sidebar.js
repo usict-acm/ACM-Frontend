@@ -45,47 +45,47 @@ const Sidebar = () => {
         </h3>
         {/* <hr {width: 60%;margin-left: auto;margin-right: auto;}> */}
         <a href="/Announcement-Table" className="navLinks">
-          &nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <BsFillMegaphoneFill className="icons" />
-          &nbsp; Announcements
+          Announcement
         </a>
         <a href="#" className="navLinks">
-          &nbsp;
+          
           <FaBlogger className="icons" />
           Blogs
         </a>
         <a href="/" className="navLinks">
-          &nbsp;
+          
           <FaWpforms className="icons" />
           Forms
         </a>
         <a href="/Links-Table" className="navLinks">
-          &nbsp;
+          
           <FaLink className="icons" />
           Links
         </a>
         <a href="/Certificate-Table" className="navLinks">
-          &nbsp;
+          
           <FaAward className="icons" />
           Certificates
         </a>
         <a href="/Teams-Table" className="navLinks">
-          &nbsp;
+          
           <BsFillPeopleFill className="icons" />
           Team
         </a>
         <a href="#" className="navLinks">
-          &nbsp;
+          
           <FaHandshake className="icons" />
           Join Us
         </a>
         <a href="#" className="navLinks">
-          &nbsp;
+          
           <FaPhoneSquareAlt className="icons" />
           Contact Us
         </a>
         <a href="#" className="navLinkss">
-          &nbsp;
+          
           <b>
             <HiLogout className="icons" />
           </b>

@@ -45,18 +45,18 @@ const TableDesktop = function (props) {
         <td data-label="EMAIL">{props.contact.email}</td>
 
         <td data-label="">
+          <button className="icons">
+            {" "}
+            <VisibilityIcon className="icon"/>{" "}
+          </button>
+        </td>
+        <td data-label="">
           <button
             className="icons"
             onClick={(event) => props.handleEditClicker(event, props.contact)}
           >
             {" "}
             <EditIcon /><br></br>{" "}
-          </button>
-        </td>
-        <td data-label="">
-          <button className="icons">
-            {" "}
-            <VisibilityIcon className="icon"/>{" "}
           </button>
         </td>
         <td data-label="">
