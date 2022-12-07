@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 
 import { getSubmissions } from "../db"
 
-import SubmissionCard from "../components/SubmissionCard"
+import SubmissionCard from "./SubmissionCard"
 
 function Submissions(){
     const [loading, setLoading] = useState(true)

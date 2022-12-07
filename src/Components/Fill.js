@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 
 import { getForm } from "../db"
 
-import RenderReactiveForm from '../components/RenderReactiveForm'
+import RenderReactiveForm from './RenderReactiveForm'
 
 import { expired } from '../utils'
 

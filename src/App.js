@@ -86,15 +86,15 @@ import LinksMobileTable from "./Components/LinksMobileTable";
 
 // Gforms files
 
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Navbar from "./Components/Navbar";
+import Footer from "./Components/Footer";
 
 //Importing pages
-import Create from "./components/Create";
-import Signup from "./components/Signup";
-import Forms from "./components/Forms";
-import Fill from "./components/Fill";
-import Submissions from "./components/Submissions";
+import Create from "./Components/Create";
+import Signup from "./Components/Signup";
+import Forms from "./Components/Forms";
+import Fill from "./Components/Fill";
+import Submissions from "./Components/Submissions";
 import GformsTable from "./Components/Gforms";
 
 function App() {

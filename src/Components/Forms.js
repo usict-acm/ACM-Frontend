@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
 import { getForms } from "../db"
-import FormCard from "../components/FormCard"
+import FormCard from "./FormCard"
 
 function Forms(){
     const [forms, setForms] = useState([])

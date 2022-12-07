@@ -1,12 +1,12 @@
 import { useEffect } from "react"
-import { Link, useLocation, useHistory } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 
 import { useAuthenticated, logout } from "../db"
 
 function Navbar(){
     const user = useAuthenticated()
     const location = useLocation()
-    const history = useHistory()
+    const history = useNavigate()
 
     useEffect(() => {
         if(user){

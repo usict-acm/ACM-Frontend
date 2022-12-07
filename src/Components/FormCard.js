@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { getDateFromMillis } from '../utils'
 import { deleteForm } from "../db"
 
-import RenderPlainForm from "../components/RenderPlainForm"
+import RenderPlainForm from "./RenderPlainForm"
 
 function FormCard({ form, onDelete }){
     const [preview, setPreview] = useState(false)

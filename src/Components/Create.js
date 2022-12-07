@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-import AddFieldModal from "../components/AddFieldModal";
-import RenderPlainForm from "../components/RenderPlainForm";
+import AddFieldModal from "./AddFieldModal";
+import RenderPlainForm from "./RenderPlainForm";
 
 import { updateObjState } from "../utils";
 
@@ -14,7 +14,7 @@ function Create() {
   const [err, setErr] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const history = useHistory();
+  const history = useNavigate();
 
   const openAddModal = (inputType) => {
     setShowAddModal(true);
