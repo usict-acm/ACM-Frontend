@@ -32,14 +32,13 @@ const Sidebar = () => {
   return (
     <div className="combo">
       <div className="sidebar" href="/">
-        <h3 className="logoNav" >
+        <h3 className="logoNav">
           {" "}
           <img
             src="https://usict.acm.org/assets/images/acm-logo.svg"
             alt=""
             width={60}
             height={60}
-            
           />
           ACM ADMIN
         </h3>
@@ -50,42 +49,35 @@ const Sidebar = () => {
           Announcement
         </a>
         <a href="#" className="navLinks">
-          
           <FaBlogger className="icons" />
           Blogs
         </a>
-        <a href="/" className="navLinks">
-          
+        {/* change made */}
+        <a href="/form-table" className="navLinks">
           <FaWpforms className="icons" />
           Forms
         </a>
         <a href="/Links-Table" className="navLinks">
-          
           <FaLink className="icons" />
           Links
         </a>
         <a href="/Certificate-Table" className="navLinks">
-          
           <FaAward className="icons" />
           Certificates
         </a>
         <a href="/Teams-Table" className="navLinks">
-          
           <BsFillPeopleFill className="icons" />
           Team
         </a>
         <a href="#" className="navLinks">
-          
           <FaHandshake className="icons" />
           Join Us
         </a>
         <a href="#" className="navLinks">
-          
           <FaPhoneSquareAlt className="icons" />
           Contact Us
         </a>
         <a href="#" className="navLinkss">
-          
           <b>
             <HiLogout className="icons" />
           </b>
