@@ -39,6 +39,8 @@ const Links = () => {
               <label for="subject" class="form-label">
                 Link Subject
               </label>
+              <z> *</z>
+              <br></br>
               <input
                 type="text"
                 class="form-control"
@@ -51,6 +53,8 @@ const Links = () => {
               <label for="OGlink" class="form-label">
                 Original Link
               </label>
+              <z> *</z>
+              <br></br>
               <input
                 class="form-control"
                 placeholder="Enter the original link"
@@ -60,6 +64,8 @@ const Links = () => {
               <label for="StartDate" class="form-label">
                 Add Link
               </label>
+              <z> *</z>
+              <br></br>
               <div className="custom d-flex flex-row align-items-center border">
                 <p className=" para fw-bold m-0">https://usict.acm.org/</p>
                 <input

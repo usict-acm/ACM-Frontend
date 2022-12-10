@@ -39,6 +39,8 @@ const Announcement = () => {
             <label for="exampleInputEmail1" class="form-label">
               Please fill in the form to add announcement.
             </label>
+            <z> *</z>
+            <br></br>
             <input
               type="email"
               class="form-control"
@@ -48,7 +50,8 @@ const Announcement = () => {
               required
             />
             <br></br>
-            <label class="form-label">Describe the event</label><z> *</z>
+            <label class="form-label">Describe the event</label>
+            <z> *</z>
             <br></br>
             <textarea
               name=""
@@ -61,8 +64,9 @@ const Announcement = () => {
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">
-              Date for commencement of the event 
-            </label><z> *</z>
+              Date for commencement of the event
+            </label>
+            <z> *</z>
             <input
               type="date"
               class="form-control"
@@ -73,7 +77,8 @@ const Announcement = () => {
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">
               Date for end of the event
-            </label><z> *</z>
+            </label>
+            <z> *</z>
             <input
               type="date"
               class="form-control"
@@ -84,55 +89,64 @@ const Announcement = () => {
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">
               Button1 Name
-            </label><z> *</z>
+            </label>
+            <z> *</z>
             <input type="text" class="form-control" required />
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">
               Button1 Link
-            </label><z> *</z>
+            </label>
+            <z> *</z>
             <input type="Link" class="form-control" required />
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">
               Button2 Name
-            </label><z> *</z>
+            </label>
+            <z> *</z>
             <input type="text" class="form-control" required />
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">
               Button2 Link
-            </label><z> *</z>
+            </label>
+            <z> *</z>
             <input type="link" class="form-control" required />
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">
               Participants
-            </label><z> *</z>
+            </label>
+            <z> *</z>
             <input type="number" class="form-control" required />
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">
               Speakers
-            </label><z> *</z>
+            </label>
+            <z> *</z>
             <input type="text" class="form-control" required />
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">
               Year
-            </label><z> *</z>
+            </label>
+            <z> *</z>
             <input type="year" class="form-control" required />
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">
               Timing
-            </label><z> *</z>
+            </label>
+            <z> *</z>
             <input type="time" class="form-control" required />
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">
               Upload the poster{" "}
-            </label><z> *</z>
+            </label>
+            <z> *</z>
             <input type="file" name="" id="" class="form-control" required />
           </div>
 

@@ -75,6 +75,8 @@ const Certificate = function () {
               <label for="exampleInputEmail1" class="form-label">
                 Name of certificate Holder
               </label>
+              <z> *</z>
+              <br></br>
               <input
                 placeholder="Enter the name of certificate holder.."
                 type="text"
@@ -90,6 +92,8 @@ const Certificate = function () {
               <label for="exampleInputEmail1" class="form-label">
                 Name of Institution
               </label>
+              <z> *</z>
+              <br></br>
               <input
                 placeholder="Enter the name of institution.."
                 type="email"
@@ -105,6 +109,8 @@ const Certificate = function () {
               <label for="exampleInputPassword1" class="form-label">
                 Starting Date for Program
               </label>
+              <z> *</z>
+              <br></br>
               <input type="date" name="" id="" class="form-control" />
             </div>
             <div class="mb-3">
@@ -117,6 +123,8 @@ const Certificate = function () {
               <label for="exampleInputEmail1" class="form-label">
                 Event
               </label>
+              <z> *</z>
+              <br></br>
               <input
                 placeholder="Enter the event's name.."
                 type="email"
@@ -156,6 +164,8 @@ const Certificate = function () {
               <label for="exampleInputEmail1" class="form-label">
                 Student Details
               </label>
+              <z> *</z>
+              <br></br>
               <input
                 placeholder="Enter the enrollment number of certificate holder.."
                 type="text"

@@ -55,7 +55,7 @@ const Sidebar = () => {
         {/* change made */}
         <a href="/form-table" className="navLinks">
           <FaWpforms className="icons" />
-          Forms
+          Forms 
         </a>
         <a href="/Links-Table" className="navLinks">
           <FaLink className="icons" />

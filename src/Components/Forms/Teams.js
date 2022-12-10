@@ -78,6 +78,8 @@ const Team = function () {
               <label for="exampleInputEmail1" class="form-label">
                 First Name
               </label>
+              <z>*</z>
+              <br />
               <input
                 placeholder="Enter the first name .."
                 type="text"
@@ -93,6 +95,8 @@ const Team = function () {
               <label for="exampleInputEmail1" class="form-label">
                 Last Name
               </label>
+              <z>*</z>
+              <br />
               <input
                 placeholder="Enter the last name .."
                 type="text"
@@ -109,6 +113,8 @@ const Team = function () {
               <label for="exampleInputGroup1" class="form-label">
                 Designation
               </label>
+              <z>*</z>
+              <br />
               <input
                 placeholder="Enter the designation.."
                 type="text"
@@ -180,6 +186,8 @@ const Team = function () {
               <label for="exampleInputEmail1" class="form-label">
                 Year
               </label>
+              <z>*</z>
+              <br />
               <input
                 placeholder="Enter current year.."
                 type="number"
@@ -198,6 +206,8 @@ const Team = function () {
               >
                 Category
               </label>
+              <z>*</z>
+              <br />
               <select
                 class="form-select"
                 aria-label="Default select example"
@@ -215,6 +225,7 @@ const Team = function () {
               <label className="imageDisplay" for="exampleFormControlFile1">
                 Select Image
               </label>
+
               <input
                 type="file"
                 class="form-control-file"
@@ -222,7 +233,6 @@ const Team = function () {
                 required
               />
             </div>
-
             <button
               onClick={submitHandler}
               type="submit"
