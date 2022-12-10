@@ -90,12 +90,12 @@ import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 
 //Importing pages
-import Create from "./Components/Create";
+import Create from "./pages/Create";
 import Signup from "./Components/Signup";
 import Forms from "./Components/Forms";
 import Fill from "./Components/Fill";
 import Submissions from "./Components/Submissions";
-import GformsTable from "./Components/Gforms";
+import CreateForms from "./Components/Gforms";
 
 function App() {
   let mainTable = false;
@@ -121,7 +121,7 @@ function App() {
           {/* <Route path="/" element={<Home />} /> */}
 
           {/* change 1 */}
-          <Route path="/form-table" element={<GformsTable />} />
+          <Route path="/form-table" element={<CreateForms />} />
 
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
@@ -131,7 +131,7 @@ function App() {
           <Route path="/submissions/:id" element={<Submissions />} />
           {/* *********************************************************** */}
           {/* change 2 */}
-          <Route path="/Create" element={<Create />} />
+          <Route path="/create" element={<Create />} />
 
           <Route
             path="/Certificate-Table"
