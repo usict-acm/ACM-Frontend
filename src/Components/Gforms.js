@@ -7,6 +7,7 @@ import RenderPlainForm from "./RenderPlainForm";
 import { updateObjState } from "../utils";
 
 import { createForm as saveForm } from "../db";
+import Sidebar from "./Sidebar";
 
 function CreateForms() {
   const [showAddModal, setShowAddModal] = useState(false);
@@ -77,6 +78,7 @@ function CreateForms() {
 
   return (
     <div>
+      <Sidebar />
       <h1 className="heading">Create new form</h1>
 
       <div className="form">

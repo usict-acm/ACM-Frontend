@@ -23,23 +23,7 @@ function Navbar(){
 
 
     return (
-        <div className="navbar container">
-            <a href="/" className="brand">ACM FORMS</a>
-            <nav className="nav">
-                { user ? (
-                    <span>
-                        <Link to="/forms">my forms</Link>
-                        <Link to="/create">create</Link>
-                        <span onClick={logout}>logout</span>
-                    </span>
-                ) : (
-                    <span>
-                        <Link to="/signup">signup</Link>
-                        <Link to="/login">login</Link>
-                    </span>
-                )}
-            </nav>
-        </div>
+        <></>
     )
 }
 

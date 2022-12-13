@@ -92,7 +92,7 @@ import Footer from "./Components/Footer";
 //Importing pages
 import Create from "./pages/Create";
 import Signup from "./Components/Signup";
-import Forms from "./Components/Forms";
+import Forms from "./pages/Forms";
 import Fill from "./Components/Fill";
 import Submissions from "./Components/Submissions";
 import CreateForms from "./Components/Gforms";
