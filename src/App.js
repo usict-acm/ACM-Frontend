@@ -83,6 +83,7 @@ import CertificateMobileTable from "./Components/CertificateMobileTable";
 import TeamMobileTable from "./Components/TeamMobileTable";
 import AnnouncementMobileTable from "./Components/AnnouncementMobileTable";
 import LinksMobileTable from "./Components/LinksMobileTable";
+import FormSection from "./Components/FormSection";
 
 // Gforms files
 
@@ -121,7 +122,7 @@ function App() {
           {/* <Route path="/" element={<Home />} /> */}
 
           {/* change 1 */}
-          <Route path="/form-table" element={<CreateForms />} />
+          <Route path="/form-table" element={<FormSection />} />
 
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />

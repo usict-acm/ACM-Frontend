@@ -78,7 +78,7 @@ function CreateForms() {
 
   return (
     <div>
-      <Sidebar />
+      {/* <Sidebar /> */}
       <h1 className="heading">Create new form</h1>
 
       <div className="form">
