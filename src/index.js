@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./css/index.css";
+=======
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import './css/index.css'
+>>>>>>> 5956edfe35f0fbe5bf27569669371be13aba7ab7
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

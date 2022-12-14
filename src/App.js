@@ -83,6 +83,7 @@ import CertificateMobileTable from "./Components/CertificateMobileTable";
 import TeamMobileTable from "./Components/TeamMobileTable";
 import AnnouncementMobileTable from "./Components/AnnouncementMobileTable";
 import LinksMobileTable from "./Components/LinksMobileTable";
+import FormSection from "./Components/FormSection";
 
 // Gforms files
 
@@ -90,9 +91,13 @@ import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 
 //Importing pages
+<<<<<<< HEAD
 // import Create from "./pages/Create";
+=======
+import Create from "./pages/Create";
+>>>>>>> 5956edfe35f0fbe5bf27569669371be13aba7ab7
 import Signup from "./Components/Signup";
-import Forms from "./Components/Forms";
+import Forms from "./pages/Forms";
 import Fill from "./Components/Fill";
 import Submissions from "./Components/Submissions";
 import CreateForms from "./Components/Gforms";
@@ -121,7 +126,11 @@ function App() {
           {/* <Route path="/" element={<Home />} /> */}
 
           {/* change 1 */}
+<<<<<<< HEAD
           <Route path="/form-table" element={<CreateForms />} />
+=======
+          <Route path="/form-table" element={<FormSection />} />
+>>>>>>> 5956edfe35f0fbe5bf27569669371be13aba7ab7
 
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
@@ -130,6 +139,11 @@ function App() {
           <Route path="/fill/:id" element={<Fill />} />
           <Route path="/submissions/:id" element={<Submissions />} />
           {/* *********************************************************** */}
+<<<<<<< HEAD
+=======
+          {/* change 2 */}
+          <Route path="/create" element={<Create />} />
+>>>>>>> 5956edfe35f0fbe5bf27569669371be13aba7ab7
 
           <Route
             path="/Certificate-Table"
