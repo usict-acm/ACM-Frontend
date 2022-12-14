@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./certificate.css";
+import "../Assests/CSS/certificate.css";
 import BottomNav from "../BottomNav";
 import Sidebar from "../Sidebar";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
@@ -190,7 +190,7 @@ const Team = function () {
               <br />
               <input
                 placeholder="Enter current year.."
-                type="number"
+                type="month"
                 class="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"

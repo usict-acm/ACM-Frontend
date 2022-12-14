@@ -133,7 +133,7 @@ const Announcement = () => {
               Year
             </label>
             <z> *</z>
-            <input type="year" class="form-control" required />
+            <input type="month" class="form-control" required />
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">
