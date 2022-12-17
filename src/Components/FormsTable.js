@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
-import "./Assests/CSS/Table.css";
+import "./Table.css";
 import data from "./mock-data.json";
 import TableDesktop from "./TableDesktop";
 import EditableRows from "./EditableRows";
-import Badge from "react-bootstrap/Badge";
-import Title from "./Title";
-import AnnouncementTableDesktop from "./AnnouncementTableDesktop";
 import ReactPaginate from "react-paginate";
+import FormsTableDesktop from "./FormsTableDesktop";
 
-const AnnouncementTable = function () {
+const FormsTable = function () {
   const [contacts, setContact] = useState(data);
   const [editContactId, setEditContactId] = useState(null);
   const itemsPerPage = 7;
@@ -94,18 +92,14 @@ const AnnouncementTable = function () {
 
   return (
     <React.Fragment>
-      <Title title="Announcements"></Title>
       <form onSubmit={handleEditFormSubmit}>
         <table>
           <thead>
             <tr>
-              <th>S.No</th>
-              <th>NAME</th>
-              {/* <th>PHONE</th>
-              <th>ADDRESS</th>
-              <th>EMAIL</th> */}
-              <th>Action</th>
-              {/* <th></th> */}
+              <th>FormId</th>
+              <th>Title</th>
+
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -114,11 +108,11 @@ const AnnouncementTable = function () {
                 {editContactId === contact.id ? (
                   <EditableRows
                     editFormDatas={editFormData}
-                    handleCancelClicker={handleCancelClick}
                     handleEditFormChange={handleEditFormChange}
+                    handleCancelClicker={handleCancelClick}
                   />
                 ) : (
-                  <AnnouncementTableDesktop
+                  <FormsTableDesktop
                     contact={contact}
                     handleDeleteClicker={handleDelete}
                     handleEditClicker={handleEditClick}
@@ -144,4 +138,4 @@ const AnnouncementTable = function () {
     </React.Fragment>
   );
 };
-export default AnnouncementTable;
+export default FormsTable;

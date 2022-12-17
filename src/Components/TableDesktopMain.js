@@ -100,9 +100,9 @@ const TableDesktopMain = function () {
             <tr>
               <th>S.No</th>
               <th>NAME</th>
-              <th>PHONE</th>
+              {/* <th>PHONE</th>
               <th>ADDRESS</th>
-              <th>EMAIL</th>
+              <th>EMAIL</th> */}
               <th></th>
               <th>Action</th>
               <th></th>

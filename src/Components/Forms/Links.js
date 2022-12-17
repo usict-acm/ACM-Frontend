@@ -67,7 +67,7 @@ const Links = () => {
               <z> *</z>
               <br></br>
               <div className="custom d-flex flex-row align-items-center border">
-                <p className=" para fw-bold m-0">https://usict.acm.org/</p>
+                <p className=" para fw-bold m-0">https://usict.acm.org/link/</p>
                 <input
                   type="link"
                   class="form-control change"

@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./Assests/CSS/Table.css";
 import data from "./mock-data.json";
-import TableDesktop from "./TableDesktop";
 import EditableRows from "./EditableRows";
-import Badge from "react-bootstrap/Badge";
-import Title from "./Title";
 import ReactPaginate from "react-paginate";
+import CertificateTableDesktop from "./CertificateTableDesktop";
 
-const CertificateTable = function () {
+const CertificateTableDesktopMain = function () {
   const [contacts, setContact] = useState(data);
   const [editContactId, setEditContactId] = useState(null);
   const itemsPerPage = 7;
@@ -93,19 +91,16 @@ const CertificateTable = function () {
 
   return (
     <React.Fragment>
-      <Title title="Certificate"></Title>
       <form onSubmit={handleEditFormSubmit}>
         <table>
           <thead>
             <tr>
-              <th>S.No</th>
-              <th>NAME</th>
-              <th>PHONE</th>
-              <th>ADDRESS</th>
-              <th>EMAIL</th>
-              <th></th>
-              <th>Action</th>
-              <th></th>
+              <th>Unique Number</th>
+              <th>Participant Name</th>
+              <th>Email</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -118,7 +113,7 @@ const CertificateTable = function () {
                     handleCancelClicker={handleCancelClick}
                   />
                 ) : (
-                  <TableDesktop
+                  <CertificateTableDesktop
                     contact={contact}
                     handleDeleteClicker={handleDelete}
                     handleEditClicker={handleEditClick}
@@ -144,4 +139,4 @@ const CertificateTable = function () {
     </React.Fragment>
   );
 };
-export default CertificateTable;
+export default CertificateTableDesktopMain;

@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./Assests/CSS/Table.css";
 import data from "./mock-data.json";
-import TableDesktop from "./TableDesktop";
 import EditableRows from "./EditableRows";
-import Badge from "react-bootstrap/Badge";
-import Title from "./Title";
 import ReactPaginate from "react-paginate";
+import TeamTableDesktop from "./TeamTableDesktop";
 
 const TeamTable = function () {
   const [contacts, setContact] = useState(data);
@@ -93,19 +91,17 @@ const TeamTable = function () {
 
   return (
     <React.Fragment>
-      <Title title="Teams"></Title>
       <form onSubmit={handleEditFormSubmit}>
         <table>
           <thead>
             <tr>
-              <th>S.No</th>
-              <th>NAME</th>
-              <th>PHONE</th>
-              <th>ADDRESS</th>
-              <th>EMAIL</th>
-              <th></th>
-              <th>Action</th>
-              <th></th>
+              <th>Name</th>
+              <th>Designation</th>
+              <th>Linkedin</th>
+              <th>Github</th>
+              <th>Instagram</th>
+              <th>Year</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -118,7 +114,7 @@ const TeamTable = function () {
                     handleCancelClicker={handleCancelClick}
                   />
                 ) : (
-                  <TableDesktop
+                  <TeamTableDesktop
                     contact={contact}
                     handleDeleteClicker={handleDelete}
                     handleEditClicker={handleEditClick}

@@ -9,6 +9,7 @@ import { BsFillPeopleFill } from "react-icons/bs";
 import { FaHandshake } from "react-icons/fa";
 import { FaPhoneSquareAlt } from "react-icons/fa";
 import { FaSmileBeam } from "react-icons/fa";
+import { HiLogout } from "react-icons/fa";
 
 const BottomNav = () => {
   return (
@@ -37,6 +38,11 @@ const BottomNav = () => {
         </a>
         <a href="#" className="navLink">
           <FaPhoneSquareAlt className="icons" />
+        </a>
+        <a href="#" className="navLinks">
+          <FaPhoneSquareAlt className="icons" />
+
+          {/* <HiLogout className="icons" /> */}
         </a>
       </div>
       <a href="#">

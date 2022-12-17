@@ -8,16 +8,10 @@
   box-sizing: border-box;
 }
 body{
-<<<<<<< HEAD
   overflow-x: hidden;
   font-family: 'Lato', sans-serif;
   font-size: 1rem;
-=======
-  font-family: 'Lato', sans-serif;
-  font-size: 1rem;
-  margin-left: 100px;
-  
->>>>>>> 5956edfe35f0fbe5bf27569669371be13aba7ab7
+   
 }
 a{
   text-decoration: none;
@@ -173,25 +167,32 @@ label.btn{
 
 .form{
   margin: 2em 0;
-<<<<<<< HEAD
-=======
   margin-left: 15%;
->>>>>>> 5956edfe35f0fbe5bf27569669371be13aba7ab7
 }
-
+/* h1.heading{
+  margin:15px;
+align-items: center;
+} */
+.Gforms{
+  margin-right:80px;
+}
+.Gform-input{
+  padding: 2rem;
+  width:70vw;
+  margin-left:-28px;
+ }
+.Gform-container{
+  max-width: 1500px;
+  margin-left:100px;
+  padding: 1rem;
+  border:none;
+  box-sizing:border-box;
+  box-shadow:0 2px 7px rgb(0 0 0 / 20%);
+}
 
 .grey-container{
   padding: 2em;
   background-color: rgba(0, 0, 0, 0.05);
-<<<<<<< HEAD
-}
-.add-field-container p{
-  font-size: 1.2em;
-  margin-bottom: 1em;
-}
-.add-field-container .btn{
-  margin: 0 0.5em 0.5em 0;
-=======
   /* margin-top: 0.1%; */
 }
 .add-field-container p{
@@ -202,15 +203,14 @@ label.btn{
 }
 .add-field-container .btn{
   margin: 0 5px 0.5em 0;
-  margin-left: 15%;
+  margin-left: 18%;
 
->>>>>>> 5956edfe35f0fbe5bf27569669371be13aba7ab7
 }
 
 
 .input{
   margin-bottom: 1.5em;
-}
+  }
 .input label, .input input, .input textarea{
   display: block;
 }
@@ -423,11 +423,34 @@ input.file{
   .container{
     --container-px: 10vw;
   }
+  .Gform-container{
+    
+    --container-px:6vw;
+    overflow-x: hidden;
+    margin-left: 13px;
+
+    }
 }
 @media(max-width: 767px){
+
   .container{
     --container-px: 6vw;
+    overflow-x: hidden;
   }
+  .Gform-container{
+    
+    --container-px:6vw;
+    overflow-x: hidden;
+    margin-left: 0px;
+     margin-bottom: 50px;
+
+    }
+    .navbar{
+      height:75px;
+     }
+    .icons{
+      width:35px;
+    }
   .section img, .section .content{
     width: 100%;
   }
@@ -438,10 +461,45 @@ input.file{
     grid-template-columns: 1fr 1fr;
   }
 }
+@media(max-width: 360px){
+  .Gform-container{
+    --container-px:3vw; 
+     margin-left:0px;
+     margin-bottom: 10px;
+       overflow-x: hidden;
+  
+    }
+    .Gform-input{
+      padding: 1rem;
+      margin-left:-10px;
+      width:70vw; 
+     }
+     .icons{
+      width:40px;
+     }
+     .navbar{
+      height:75px;
+     }
+}
 @media(max-width: 450px){
+ 
   .container{
     --container-px: 3vw;
+    overflow-x: hidden;
   }
+  .Gform-container{
+ --container-px:3vw; 
+ margin-bottom: 50px;
+ margin-left:0px;
+overflow-x: hidden;
+   }
+   .navbar{
+    height:75px;
+   }
+   .icons{
+    width:62px;
+   }
+
   .footer{
     grid-template-columns: 1fr;
   }

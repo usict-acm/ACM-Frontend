@@ -66,6 +66,7 @@ import {
 } from "react-router-dom";
 import Home from "./Components/Home";
 import Login from "./Components/Login";
+import Blogs from "./Components/Forms/Blogs";
 // import Navb from "./Components/FormNav";
 import Certificate from "./Components/Forms/Certificate";
 // import Navb from "./Components/FormNav";
@@ -91,16 +92,12 @@ import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 
 //Importing pages
-<<<<<<< HEAD
-// import Create from "./pages/Create";
-=======
 import Create from "./pages/Create";
->>>>>>> 5956edfe35f0fbe5bf27569669371be13aba7ab7
 import Signup from "./Components/Signup";
 import Forms from "./pages/Forms";
 import Fill from "./Components/Fill";
 import Submissions from "./Components/Submissions";
-import CreateForms from "./Components/Gforms";
+// import CreateForms from "./Components/Gforms";
 
 function App() {
   let mainTable = false;
@@ -113,38 +110,27 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           {/* <Route path="/" element={<TableDesktopMain />} /> */}
-
           <Route path="/login" element={<Login />} />
 
-          {/* <Route path="/form/announcement" element={<Announcement />} /> */}
-          {/* <Route path="/Nav" element={<Navb />} /> */}
+          {/* <Route path="/form/Announcements" element={<Announcement />} /> */}
+          <Route path="/form/Announcements" element={<Blogs />} />
 
-          <Route path="/form/Announcements" element={<Announcement />} />
           <Route path="/form/Teams" element={<Team />} />
           <Route path="/form/Links" element={<Links />} />
-
           {/* <Route path="/" element={<Home />} /> */}
-
           {/* change 1 */}
-<<<<<<< HEAD
-          <Route path="/form-table" element={<CreateForms />} />
-=======
           <Route path="/form-table" element={<FormSection />} />
->>>>>>> 5956edfe35f0fbe5bf27569669371be13aba7ab7
-
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/form/Blogs" element={<Blogs />} />
           <Route path="/forms" element={<Forms />} />
+          <Route path="/form/Certificate" element={<Certificate />} />
           {/* *********************************************************** */}
           <Route path="/fill/:id" element={<Fill />} />
           <Route path="/submissions/:id" element={<Submissions />} />
           {/* *********************************************************** */}
-<<<<<<< HEAD
-=======
           {/* change 2 */}
           <Route path="/create" element={<Create />} />
->>>>>>> 5956edfe35f0fbe5bf27569669371be13aba7ab7
-
           <Route
             path="/Certificate-Table"
             element={
@@ -193,7 +179,6 @@ function App() {
               </>
             }
           />
-          <Route path="/form/Certificate" element={<Certificate />} />
         </Routes>
       </Router>
       <Footer />

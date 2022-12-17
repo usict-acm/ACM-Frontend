@@ -48,14 +48,14 @@ const Sidebar = () => {
           <BsFillMegaphoneFill className="icons" />
           Announcement
         </a>
-        <a href="#" className="navLinks">
+        <a href="/Blogs" className="navLinks">
           <FaBlogger className="icons" />
           Blogs
         </a>
         {/* change made */}
         <a href="/form-table" className="navLinks">
           <FaWpforms className="icons" />
-          Forms 
+          Forms
         </a>
         <a href="/Links-Table" className="navLinks">
           <FaLink className="icons" />
@@ -77,7 +77,7 @@ const Sidebar = () => {
           <FaPhoneSquareAlt className="icons" />
           Contact Us
         </a>
-        <a href="#" className="navLinkss">
+        <a href="#" className="navLinks">
           <b>
             <HiLogout className="icons" />
           </b>

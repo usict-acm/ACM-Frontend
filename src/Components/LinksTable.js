@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./Assests/CSS/Table.css";
 import data from "./mock-data.json";
-import TableDesktop from "./TableDesktop";
 import EditableRows from "./EditableRows";
-import Badge from "react-bootstrap/Badge";
-import Title from "./Title";
 import ReactPaginate from "react-paginate";
+import LinksTableDesktop from "./LinksTableDesktop";
 
 const LinksTable = function () {
   const [contacts, setContact] = useState(data);
@@ -93,19 +91,15 @@ const LinksTable = function () {
 
   return (
     <React.Fragment>
-      <Title title="Links"></Title>
       <form onSubmit={handleEditFormSubmit}>
         <table>
           <thead>
             <tr>
-              <th>S.No</th>
-              <th>NAME</th>
-              <th>PHONE</th>
-              <th>ADDRESS</th>
-              <th>EMAIL</th>
-              <th></th>
-              <th>Action</th>
-              <th></th>
+              <th>Link for</th>
+              <th>Original link</th>
+              <th>Shortened link</th>
+              <th>Clicks</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -118,7 +112,7 @@ const LinksTable = function () {
                     handleCancelClicker={handleCancelClick}
                   />
                 ) : (
-                  <TableDesktop
+                  <LinksTableDesktop
                     contact={contact}
                     handleDeleteClicker={handleDelete}
                     handleEditClicker={handleEditClick}

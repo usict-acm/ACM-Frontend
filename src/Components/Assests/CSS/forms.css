@@ -3,6 +3,10 @@
   height: 70%;
   width: 100vw;
 }
+.blogs-container{
+  height:50%;
+  margin-left:-5rem;
+}
 z{
   color: red;
 }

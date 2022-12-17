@@ -7,10 +7,7 @@ import RenderPlainForm from "./RenderPlainForm";
 import { updateObjState } from "../utils";
 
 import { createForm as saveForm } from "../db";
-<<<<<<< HEAD
-=======
 import Sidebar from "./Sidebar";
->>>>>>> 5956edfe35f0fbe5bf27569669371be13aba7ab7
 
 function CreateForms() {
   const [showAddModal, setShowAddModal] = useState(false);
@@ -80,16 +77,13 @@ function CreateForms() {
   };
 
   return (
-    <div>
-<<<<<<< HEAD
-=======
+    <div className="Gform-container">
       {/* <Sidebar /> */}
->>>>>>> 5956edfe35f0fbe5bf27569669371be13aba7ab7
       <h1 className="heading">Create new form</h1>
 
-      <div className="form">
-        <div className="input">
-          <label>Title of the from</label>
+      <div className="form Gforms">
+        <div className="input  Gform-input">
+          <label>Title of the form</label>
           <input
             type="text"
             placeholder="Enter title"
@@ -101,7 +95,7 @@ function CreateForms() {
 
         {formModel.fields.length > 0 && <RenderPlainForm model={formModel} />}
 
-        <div className="input">
+        <div className="input  Gform-input">
           <label>End message</label>
           <input
             type="text"
@@ -117,7 +111,7 @@ function CreateForms() {
           />
         </div>
 
-        <div className="input">
+        <div className="input Gform-input">
           <label>Validity(Optonal)</label>
           <input
             type="number"
