@@ -40,23 +40,14 @@ const TableDesktop = function (props) {
         <td data-label="S.No">{props.contact.id}</td>
         <td data-label="NAME">{props.contact.fullName} </td>
 
-        <td data-label="PHONE">{props.contact.phoneNumber}</td>
+        {/* <td data-label="PHONE">{props.contact.phoneNumber}</td>
         <td data-label="ADDRESS">{props.contact.address}</td>
-        <td data-label="EMAIL">{props.contact.email}</td>
+        <td data-label="EMAIL">{props.contact.email}</td> */}
 
         <td data-label="">
           <button className="icons">
             {" "}
-            <VisibilityIcon className="icon"/>{" "}
-          </button>
-        </td>
-        <td data-label="">
-          <button
-            className="icons"
-            onClick={(event) => props.handleEditClicker(event, props.contact)}
-          >
-            {" "}
-            <EditIcon /><br></br>{" "}
+            <VisibilityIcon className="icon" />{" "}
           </button>
         </td>
         <td data-label="">

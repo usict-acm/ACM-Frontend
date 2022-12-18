@@ -67,6 +67,7 @@ import {
 import Home from "./Components/Home";
 import Login from "./Components/Login";
 import Blogs from "./Components/Forms/Blogs";
+import BlogsTable from "./Components/BlogsTable";
 // import Navb from "./Components/FormNav";
 import Certificate from "./Components/Forms/Certificate";
 // import Navb from "./Components/FormNav";
@@ -112,8 +113,8 @@ function App() {
           {/* <Route path="/" element={<TableDesktopMain />} /> */}
           <Route path="/login" element={<Login />} />
 
-          {/* <Route path="/form/Announcements" element={<Announcement />} /> */}
-          <Route path="/form/Announcements" element={<Blogs />} />
+          <Route path="/form/Announcements" element={<Announcement />} />
+          {/* <Route path="/form/Announcements" element={<Blogs />} /> */}
 
           <Route path="/form/Teams" element={<Team />} />
           <Route path="/form/Links" element={<Links />} />
@@ -129,8 +130,7 @@ function App() {
           <Route path="/fill/:id" element={<Fill />} />
           <Route path="/submissions/:id" element={<Submissions />} />
           {/* *********************************************************** */}
-          {/* change 2 */}
-          <Route path="/create" element={<Create />} />
+
           <Route
             path="/Certificate-Table"
             element={
@@ -151,6 +151,19 @@ function App() {
                 {window.innerWidth > 750 ? <Sidebar /> : <BottomNav />}
                 {window.innerWidth > 750 ? (
                   <LinksTable />
+                ) : (
+                  <LinksMobileTable />
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/Blogs-table"
+            element={
+              <>
+                {window.innerWidth > 750 ? <Sidebar /> : <BottomNav />}
+                {window.innerWidth > 750 ? (
+                  <BlogsTable />
                 ) : (
                   <LinksMobileTable />
                 )}

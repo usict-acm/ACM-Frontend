@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Assests/CSS/Table.css";
 import data from "./mock-data.json";
+import Title from "./Title";
 import EditableRows from "./EditableRows";
 import ReactPaginate from "react-paginate";
 import TeamTableDesktop from "./TeamTableDesktop";
@@ -91,6 +92,7 @@ const TeamTable = function () {
 
   return (
     <React.Fragment>
+      <Title title="Team"></Title>
       <form onSubmit={handleEditFormSubmit}>
         <table>
           <thead>

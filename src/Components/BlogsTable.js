@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import "./Table.css";
+import "./Assests/CSS/Table.css";
 import data from "./mock-data.json";
+import Title from "./Title";
+
 import EditableRows from "./EditableRows";
 import ReactPaginate from "react-paginate";
 import BlogsTableDesktop from "./BlogsTableDesktop";
@@ -91,6 +93,7 @@ const BlogsTable = function () {
 
   return (
     <React.Fragment>
+      <Title title="Blog"></Title>
       <form onSubmit={handleEditFormSubmit}>
         <table>
           <thead>

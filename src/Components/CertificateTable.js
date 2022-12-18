@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./Assests/CSS/Table.css";
 import data from "./mock-data.json";
+import Title from "./Title";
+
 import EditableRows from "./EditableRows";
 import ReactPaginate from "react-paginate";
 import CertificateTableDesktop from "./CertificateTableDesktop";
@@ -91,6 +93,7 @@ const CertificateTableDesktopMain = function () {
 
   return (
     <React.Fragment>
+      <Title title="Certificate"></Title>
       <form onSubmit={handleEditFormSubmit}>
         <table>
           <thead>

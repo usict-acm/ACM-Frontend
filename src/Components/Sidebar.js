@@ -48,7 +48,7 @@ const Sidebar = () => {
           <BsFillMegaphoneFill className="icons" />
           Announcement
         </a>
-        <a href="/Blogs" className="navLinks">
+        <a href="/Blogs-table" className="navLinks">
           <FaBlogger className="icons" />
           Blogs
         </a>
