@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./Assests/CSS/Table.css";
-import data from "./mock-data.json";
-import TableDesktop from "./TableDesktop";
-import EditableRows from "./EditableRows";
-import Badge from "react-bootstrap/Badge";
-import Title from "./Title";
-import AnnouncementTableDesktop from "./AnnouncementTableDesktop";
-import ReactPaginate from "react-paginate";
 
-const AnnouncementTable = function () {
+import data from "./mock-data.json";
+import JoinUsTableDesktop from "./JoinUsTableDesktop";
+import EditableRows from "./EditableRows";
+import ReactPaginate from "react-paginate";
+import Title from "./Title";
+
+const JoinUsTable = function () {
   const [contacts, setContact] = useState(data);
   const [editContactId, setEditContactId] = useState(null);
   const itemsPerPage = 7;
@@ -36,32 +35,6 @@ const AnnouncementTable = function () {
     email: "",
   });
 
-  const handleEditClick = function (event, contact) {
-    event.preventDefault();
-    setEditContactId(contact.id);
-    const formValues = {
-      fullName: contact.fullName,
-      address: contact.address,
-      phoneNumber: contact.phoneNumber,
-      email: contact.email,
-    };
-
-    setEditFormData(formValues);
-  };
-
-  const handleEditFormChange = (event) => {
-    event.preventDefault();
-
-    const fieldName = event.target.getAttribute("name");
-    const fieldValue = event.target.value;
-    const newFormData = {
-      ...editFormData,
-    };
-    newFormData[fieldName] = fieldValue;
-
-    setEditFormData(newFormData);
-  };
-
   const handleEditFormSubmit = (event) => {
     event.preventDefault();
 
@@ -81,33 +54,22 @@ const AnnouncementTable = function () {
     setEditContactId(null);
   };
 
-  const handleDelete = (contactId) => {
-    const newContacts = [...contacts];
-    const index = contacts.findIndex((contact) => contact.id === contactId);
-    newContacts.splice(index, 1);
-    setContact(newContacts);
-  };
-
-  const handleCancelClick = () => {
-    setEditContactId(null);
-  };
-
   return (
     <React.Fragment>
-      <Title title="Announcements"></Title>
+      <Title title="JoinUS"></Title>
+
       <form onSubmit={handleEditFormSubmit}>
         <table>
           <thead>
             <tr>
-              <th>S.No</th>
-              <th>Title</th>
-              {/* <th>PHONE</th>
-              <th>ADDRESS</th>
-              <th>EMAIL</th> */}
-              <th>Start Date</th>
-
-              <th>Action</th>
-              {/* <th></th> */}
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Mobile</th>
+              <th>ACM Membership Number</th>
+              <th>Enrollment Number</th>
+              <th>Course</th>
+              <th>Clubs</th>
             </tr>
           </thead>
           <tbody>
@@ -116,15 +78,11 @@ const AnnouncementTable = function () {
                 {editContactId === contact.id ? (
                   <EditableRows
                     editFormDatas={editFormData}
-                    handleCancelClicker={handleCancelClick}
-                    handleEditFormChange={handleEditFormChange}
+                    // handleEditFormChange={handleEditFormChange}
+                    // handleCancelClicker={handleCancelClick}
                   />
                 ) : (
-                  <AnnouncementTableDesktop
-                    contact={contact}
-                    handleDeleteClicker={handleDelete}
-                    handleEditClicker={handleEditClick}
-                  />
+                  <JoinUsTableDesktop contact={contact} />
                 )}
               </>
             ))}
@@ -146,4 +104,4 @@ const AnnouncementTable = function () {
     </React.Fragment>
   );
 };
-export default AnnouncementTable;
+export default JoinUsTable;

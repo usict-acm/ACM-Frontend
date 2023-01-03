@@ -1,4 +1,6 @@
 import React from "react";
+import AnnouncementTable from "./AnnouncementTable";
+import AnnouncementMobileTable from "./AnnouncementMobileTable";
 import BottomNav from "./BottomNav";
 import Sidebar from "./Sidebar";
 import TableDesktopMain from "./TableDesktopMain";
@@ -20,7 +22,7 @@ export default function Home(props) {
     <>
       {window.innerWidth > 750 ? <Sidebar /> : <BottomNav />}
 
-      {isMobileView > 768 ? <TableDesktopMain /> : <TableMobile />}
+      {isMobileView > 768 ? <AnnouncementTable /> : <AnnouncementMobileTable />}
     </>
   );
 }

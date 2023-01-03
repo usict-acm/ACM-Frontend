@@ -67,7 +67,7 @@ const Team = function () {
               : "container formContainer py-4 w-100 px-0 d-flex justify-content-center"
           }
         >
-          <form className={window.innerWidth > 750 ? "w-75 card " : "w-75"}>
+          <form className={window.innerWidth > 750 ? "w-100 card " : "w-75"}>
             {/* <form> */}
             <h1>
               {" "}
@@ -139,7 +139,7 @@ const Team = function () {
                 type="text"
                 class="form-control"
                 id="inlineFormInputGroup"
-                placeholder="Username"
+                placeholder=" Linkedin Username"
                 value={usernameLin}
                 onChange={changeHandlerUsernameLin}
                 required
@@ -158,7 +158,7 @@ const Team = function () {
                 type="text"
                 class="form-control"
                 id="inlineFormInputGroup"
-                placeholder="Username"
+                placeholder="Github Username"
                 value={usernameGit}
                 onChange={changeHandlerGit}
                 required
@@ -175,7 +175,7 @@ const Team = function () {
                 type="text"
                 class="form-control"
                 id="inlineFormInputGroup"
-                placeholder="Username"
+                placeholder="Instagram Username"
                 value={usernameIns}
                 onChange={changeHandlerIns}
                 required

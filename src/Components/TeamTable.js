@@ -97,6 +97,8 @@ const TeamTable = function () {
         <table>
           <thead>
             <tr>
+              <th>S.No</th>
+
               <th>Name</th>
               <th>Designation</th>
               <th>Linkedin</th>

@@ -10,7 +10,7 @@ import { FaHandshake } from "react-icons/fa";
 import { FaPhoneSquareAlt } from "react-icons/fa";
 import { FaSmileBeam } from "react-icons/fa";
 import { HiLogout } from "react-icons/fa";
-
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 const BottomNav = () => {
   return (
     <div className="navbar">
@@ -46,7 +46,7 @@ const BottomNav = () => {
         </a>
       </div>
       <a href="#">
-        <FaSmileBeam className="icons" />
+        <ExitToAppIcon className="icons" />
       </a>
     </div>
   );

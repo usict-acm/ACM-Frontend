@@ -4,7 +4,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import TablePaginationUnstyled from "@mui/base/TablePaginationUnstyled";
 import SweetAlert from "react-bootstrap-sweetalert";
-
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 const LinksTableDesktop = function (props) {
   const [isModal, setModal] = useState(false);
 
@@ -39,19 +39,18 @@ const LinksTableDesktop = function (props) {
 
       <tr>
         <td data-label="S.No">{props.contact.id}</td>
+        <td data-label="Link for">Links</td>
         <td data-label="NAME">{props.contact.fullName} </td>
         <td data-label="NAME">{props.contact.fullName} </td>
         <td data-label="NAME">0 </td>
 
         <td data-label="">
-          <button className="icons" onClick={showModal}>
-            {" "}
-            <DeleteIcon />{" "}
-          </button>
-          <button className="icons">
-            {" "}
-            <VisibilityIcon />{" "}
-          </button>
+          <ContentCopyIcon className="new-icons" />
+          <EditIcon
+            className="new-icons"
+            onClick={(event) => props.handleEditClicker(event, props.contact)}
+          />{" "}
+          <DeleteIcon className="new-icons" onClick={showModal} />{" "}
         </td>
       </tr>
     </>

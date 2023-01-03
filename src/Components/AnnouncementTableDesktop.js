@@ -41,16 +41,12 @@ const AnnouncementTableDesktop = function (props) {
         {/* <td data-label="PHONE">{props.contact.phoneNumber}</td>
         <td data-label="ADDRESS">{props.contact.address}</td>
         <td data-label="EMAIL">{props.contact.email}</td> */}
+        <td data-label="Start Date">{props.contact.id} </td>
 
         <td data-label="">
-          <button className="icons">
-            {" "}
-            <VisibilityIcon className="icon" />{" "}
-          </button>
-          <button className="icons" onClick={showModal}>
-            {" "}
-            <DeleteIcon />{" "}
-          </button>
+          {" "}
+          <VisibilityIcon className="new-icons" />{" "}
+          <DeleteIcon className="new-icons" onClick={showModal} />{" "}
         </td>
         {/* <td data-label="">
           <button

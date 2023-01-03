@@ -12,7 +12,7 @@ z{
 }
 .notTable-form {
   margin-top: auto;
-  margin-left: auto;
+  margin-left: -75px;
   box-sizing: border-box;
   /* border-radius: 30px; */
   border: none;
@@ -52,6 +52,7 @@ svg {
 }
 .w-75 {
   width: 75% !important;
+  margin-bottom: 75px;
 }
 .change:focus {
   border: 0px !important;

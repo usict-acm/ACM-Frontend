@@ -3,11 +3,14 @@
   box-shadow: 0 2px 7px rgb(0, 0, 0, 0.2);
   padding: 25px;
 }
+.w-100 {
+  margin-bottom: 75px;
+}
 .form-label {
   font-weight: 600;
 }
 
-z{
+z {
   color: red;
 }
 h1 {

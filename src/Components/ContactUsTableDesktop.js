@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import DeleteIcon from "@mui/icons-material/Delete";
 import SweetAlert from "react-bootstrap-sweetalert";
 
 const ContactUsTableDesktop = function (props) {
@@ -41,6 +41,10 @@ const ContactUsTableDesktop = function (props) {
         <td data-label="NAME">0 </td>
         <td>20022</td>
         <td>Demo Message</td>
+        <td>
+          {" "}
+          <DeleteIcon className="new-icons" onClick={showModal} />
+        </td>
       </tr>
     </>
   );

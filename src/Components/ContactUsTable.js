@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./Assests/CSS/Table.css";
-import data from "./mock-data.json";
-import TableDesktop from "./TableDesktop";
-import EditableRows from "./EditableRows";
-import Badge from "react-bootstrap/Badge";
-import Title from "./Title";
-import AnnouncementTableDesktop from "./AnnouncementTableDesktop";
-import ReactPaginate from "react-paginate";
 
-const AnnouncementTable = function () {
+import data from "./mock-data.json";
+// import TableDesktop from "./TableDesktop";
+import ContactUsTableDesktop from "./ContactUsTableDesktop";
+import EditableRows from "./EditableRows";
+import ReactPaginate from "react-paginate";
+import Title from "./Title";
+
+const ContactUsTable = function () {
   const [contacts, setContact] = useState(data);
   const [editContactId, setEditContactId] = useState(null);
   const itemsPerPage = 7;
@@ -94,20 +94,17 @@ const AnnouncementTable = function () {
 
   return (
     <React.Fragment>
-      <Title title="Announcements"></Title>
       <form onSubmit={handleEditFormSubmit}>
         <table>
           <thead>
             <tr>
-              <th>S.No</th>
-              <th>Title</th>
-              {/* <th>PHONE</th>
-              <th>ADDRESS</th>
-              <th>EMAIL</th> */}
-              <th>Start Date</th>
-
+              <th>S.No.</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Mobile</th>
+              <th>College Name</th>
+              <th>Message</th>
               <th>Action</th>
-              {/* <th></th> */}
             </tr>
           </thead>
           <tbody>
@@ -116,11 +113,11 @@ const AnnouncementTable = function () {
                 {editContactId === contact.id ? (
                   <EditableRows
                     editFormDatas={editFormData}
-                    handleCancelClicker={handleCancelClick}
                     handleEditFormChange={handleEditFormChange}
+                    handleCancelClicker={handleCancelClick}
                   />
                 ) : (
-                  <AnnouncementTableDesktop
+                  <ContactUsTableDesktop
                     contact={contact}
                     handleDeleteClicker={handleDelete}
                     handleEditClicker={handleEditClick}
@@ -146,4 +143,4 @@ const AnnouncementTable = function () {
     </React.Fragment>
   );
 };
-export default AnnouncementTable;
+export default ContactUsTable;

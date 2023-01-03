@@ -1,6 +1,8 @@
 import React, { useState, useRef } from "react";
 import "../Assests/CSS/forms.css";
-import { Editor } from "@tinymce/tinymce-react";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import MDEBlog from "./MDEBlog";
+import Editor from "./EditorBlogs";
 import CardMembershipIcon from "@mui/icons-material/CardMembership";
 import BottomNav from "../BottomNav";
 import Sidebar from "../Sidebar";
@@ -21,7 +23,7 @@ const Blogs = function () {
               : " container formContainer py-4 w-100 px-0 d-flex justify-content-center"
           }
         >
-          <form className={window.innerWidth > 750 ? "w-75 card" : "w-75"}>
+          <form className={window.innerWidth > 750 ? "w-100 card" : "w-75"}>
             <h1>
               {" "}
               <CardMembershipIcon /> Create New Blog
@@ -56,48 +58,7 @@ const Blogs = function () {
                 required
               />
             </div>
-            <Editor
-              onInit={(evt, editor) => (editorRef.current = editor)}
-              initialValue="<p></p>"
-              init={{
-                height: "48rem",
-                // swidth: "50vw",
-
-                menubar: true,
-                plugins: [
-                  "a11ychecker",
-                  "advlist",
-                  "advcode",
-                  "advtable",
-                  "autolink",
-                  "checklist",
-                  "export",
-                  "lists",
-                  "link",
-                  "image",
-                  "charmap",
-                  "preview",
-                  "anchor",
-                  "searchreplace",
-                  "visualblocks",
-                  "powerpaste",
-                  "fullscreen",
-                  "formatpainter",
-                  "insertdatetime",
-                  "media",
-                  "table",
-                  "help",
-                  "wordcount",
-                ],
-                toolbar:
-                  "undo redo | casechange blocks | bold italic backcolor | " +
-                  "alignleft aligncenter alignright alignjustify | " +
-                  "bullist numlist checklist outdent indent | removeformat | a11ycheck code table help" +
-                  "table tabledelete | tableprops tablerowprops tablecellprops | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol ",
-                content_style:
-                  "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
-              }}
-            />
+            <MDEBlog />
 
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">

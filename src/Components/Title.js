@@ -8,25 +8,65 @@ export default function Title({ title }) {
     return title;
   });
   const add = "ADD NEW " + `${title.toUpperCase()}`;
+  const addBulk = "CREATE IN BULK";
+  if (title == "JoinUS") {
+    title = "Benefit Page Form";
+    // add = "Download Response";
+  }
   return (
     <>
       <div className="container">
         <div className="head">
           <h1 className="head-2">
             <Badge bg="light" text="dark">
-              {title}
+              {title == "Member" ? "Teams" : title}
+
+              {/* {title == "Blog" ? "Blogs" : title} */}
             </Badge>{" "}
           </h1>
         </div>
-        <div className="button">
-          <Button
-            className="float-end innerbutton"
-            variant="info"
-            href={"/form/" + `${currentForm}`}
-          >
-            {add}
-          </Button>
-        </div>
+        {
+          <>
+            {title == "Certificate" ? (
+              <div className="button">
+                <Button
+                  className="float-end innerbutton"
+                  variant="info"
+                  href={"/form/" + `${currentForm}`}
+                >
+                  {add}
+                </Button>
+                <Button
+                  className="float-end innerbutton"
+                  variant="info"
+                  href={"/form/CertificateBulk"}
+                >
+                  {addBulk}
+                </Button>
+              </div>
+            ) : title == "Benefit Page Form" ? (
+              <div className="button">
+                <Button
+                  className="float-end innerbutton"
+                  variant="info"
+                  href={"/form/" + `${currentForm}`}
+                >
+                  Download Response Sheet
+                </Button>
+              </div>
+            ) : (
+              <div className="button">
+                <Button
+                  className="float-end innerbutton"
+                  variant="info"
+                  href={"/form/" + `${currentForm}`}
+                >
+                  {add}
+                </Button>
+              </div>
+            )}
+          </>
+        }
       </div>
     </>
   );

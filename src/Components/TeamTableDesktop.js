@@ -38,6 +38,8 @@ const TableDesktop = function (props) {
 
       <tr>
         <td data-label="S.No">{props.contact.id}</td>
+
+        <td data-label="S.No">Name</td>
         <td data-label="NAME">{props.contact.fullName} </td>
         <td data-label="NAME">{props.contact.fullName} </td>
         <td data-label="NAME">0 </td>
@@ -45,14 +47,9 @@ const TableDesktop = function (props) {
         <td>20022</td>
 
         <td data-label="">
-          <button className="icons" onClick={showModal}>
-            {" "}
-            <DeleteIcon />{" "}
-          </button>
-          <button className="icons">
-            {" "}
-            <VisibilityIcon />{" "}
-          </button>
+          {" "}
+          <EditIcon className="new-icons" />{" "}
+          <DeleteIcon className="new-icons" onClick={showModal} />{" "}
         </td>
       </tr>
     </>

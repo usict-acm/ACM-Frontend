@@ -116,7 +116,7 @@ const Announcement = () => {
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">
-              Participants
+              Partner
             </label>
             <z> *</z>
             <input type="number" class="form-control" required />
@@ -137,18 +137,12 @@ const Announcement = () => {
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">
-              Start-time
+              Start-time - End time
             </label>
             <z> *</z>
-            <input type="time" class="form-control" required />
+            <input type="year" class="form-control" required />
           </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">
-              End-time
-            </label>
-            <z> *</z>
-            <input type="time" class="form-control" required />
-          </div>
+
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">
               Upload the poster{" "}

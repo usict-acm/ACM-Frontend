@@ -44,7 +44,6 @@ const Sidebar = () => {
         </h3>
         {/* <hr {width: 60%;margin-left: auto;margin-right: auto;}> */}
         <a href="/Announcement-Table" className="navLinks">
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <BsFillMegaphoneFill className="icons" />
           Announcement
         </a>
@@ -69,11 +68,11 @@ const Sidebar = () => {
           <BsFillPeopleFill className="icons" />
           Team
         </a>
-        <a href="#" className="navLinks">
+        <a href="/JoinUs-Table" className="navLinks">
           <FaHandshake className="icons" />
           Join Us
         </a>
-        <a href="#" className="navLinks">
+        <a href="/ContactUs-Table" className="navLinks">
           <FaPhoneSquareAlt className="icons" />
           Contact Us
         </a>

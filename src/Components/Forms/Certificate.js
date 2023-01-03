@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../Assests/CSS/forms.css";
+import "../Assests/CSS/certificate.css";
 import Sidebar from "../Sidebar";
 import BottomNav from "../BottomNav";
 import CardMembershipIcon from "@mui/icons-material/CardMembership";
@@ -65,7 +66,7 @@ const Certificate = function () {
               : "container formContainer py-4 w-100 px-0 d-flex justify-content-center"
           }
         >
-          <form className={window.innerWidth > 750 ? "w-75 card" : "w-75"}>
+          <form className={window.innerWidth > 750 ? "w-100 card" : "w-75"}>
             <h1>
               {" "}
               <CardMembershipIcon /> Create Certificate

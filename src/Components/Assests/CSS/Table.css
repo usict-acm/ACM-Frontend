@@ -30,6 +30,24 @@ table {
   width: 50vw;
 }
 
+.new-icons {
+  color: #0f0f0f;
+  cursor: pointer;
+  box-shadow: 0 0 0 5px #c0c0c0;
+  background-color: #c0c0c0;
+  border-radius: 100%;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+.new-icons:hover {
+  color: #424141;
+  cursor: pointer;
+  box-shadow: 0 0 0 10px #c0c0c0;
+  background-color: #c0c0c0;
+  transition: all ease-in 0.2s;
+}
+
 .icons:hover {
   color: #424141;
   cursor: pointer;
@@ -103,7 +121,7 @@ td {
   padding: 10px;
 }
 th {
-  width: 10px!important;
+  width: 10px !important;
 }
 
 @media (max-width: 768px) {
@@ -189,4 +207,10 @@ th {
 
 .previousBttn {
   text-decoration: none;
+}
+
+.two-buttons {
+  border: none;
+  padding: 10px;
+  margin-right: 5px;
 }

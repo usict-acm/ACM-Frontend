@@ -98,6 +98,8 @@ const LinksTable = function () {
         <table>
           <thead>
             <tr>
+              <th>S.No</th>
+
               <th>Link for</th>
               <th>Original link</th>
               <th>Shortened link</th>

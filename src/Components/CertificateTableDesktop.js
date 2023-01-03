@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import VisibilityIcon from "@mui/icons-material/Visibility";
+import EmailIcon from "@mui/icons-material/Email";
+import DownloadIcon from "@mui/icons-material/Download";
 import TablePaginationUnstyled from "@mui/base/TablePaginationUnstyled";
 import SweetAlert from "react-bootstrap-sweetalert";
 
@@ -45,14 +46,12 @@ const CertificateTableDesktop = function (props) {
         <td>20022</td>
 
         <td data-label="">
-          <button className="icons" onClick={showModal}>
-            {" "}
-            <DeleteIcon />{" "}
-          </button>
-          <button className="icons">
-            {" "}
-            <VisibilityIcon />{" "}
-          </button>
+          {" "}
+          <DeleteIcon className="new-icons" onClick={showModal} />
+          <br />
+          <EmailIcon className="new-icons" />
+          <EditIcon className="new-icons" />
+          <DownloadIcon className="new-icons" />
         </td>
       </tr>
     </>

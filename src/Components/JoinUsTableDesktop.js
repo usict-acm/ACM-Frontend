@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import TablePaginationUnstyled from "@mui/base/TablePaginationUnstyled";
 import SweetAlert from "react-bootstrap-sweetalert";
-const BlogsTableDesktop = function (props) {
+
+const JoinUsTableDesktop = function (props) {
   const [isModal, setModal] = useState(false);
 
   const hideModal = () => {
@@ -40,17 +38,13 @@ const BlogsTableDesktop = function (props) {
         <td data-label="S.No">{props.contact.id}</td>
         <td data-label="NAME">{props.contact.fullName} </td>
         <td data-label="NAME">{props.contact.fullName} </td>
-        <td>
-          <button className="two-buttons">Approve</button>{" "}
-          <button className="two-buttons">Reject</button>{" "}
-        </td>
-
-        <td data-label="">
-          <VisibilityIcon className="new-icons" />{" "}
-          <DeleteIcon onClick={showModal} className="new-icons" />{" "}
-        </td>
+        <td data-label="NAME">0 </td>
+        <td>20022</td>
+        <td>Demo Message</td>
+        <td>Demo Message</td>
+        <td>Demo Message</td>
       </tr>
     </>
   );
 };
-export default BlogsTableDesktop;
+export default JoinUsTableDesktop;
