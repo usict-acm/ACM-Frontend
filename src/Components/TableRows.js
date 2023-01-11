@@ -31,7 +31,7 @@ const TableRows = function (props) {
           confirmBtnBsStyle="danger"
           title="Are you sure?"
           onConfirm={() => {
-            props.handleDeleteClick(props.contact.id);
+            props.handleDeleteClick(props.contact.sno);
             setModal(false);
           }}
           cancelBtnBsStyle="default"
@@ -42,41 +42,8 @@ const TableRows = function (props) {
         </SweetAlert>
       )}
       <tr>
-        <td data-label="S.No">{props.contact.id}</td>
-        <td data-label="NAME">{props.contact.fullName} </td>
-
-        {showMobile && (
-          <React.Fragment>
-            <td data-label="PHONE">{props.contact.phoneNumber}</td>
-            <td data-label="ADDRESS">{props.contact.address}</td>
-            <td data-label="EMAIL">{props.contact.email}</td>
-            <div className="icons-div">
-              <td data-label="">
-                <button className="icons" onClick={showModal}>
-                  {" "}
-                  <DeleteIcon />{" "}
-                </button>
-              </td>
-              <td data-label="">
-                <button
-                  className="icons"
-                  onClick={(event) =>
-                    props.handleEditClick(event, props.contact)
-                  }
-                >
-                  {" "}
-                  <EditIcon />{" "}
-                </button>
-              </td>
-              <td data-label="">
-                <button className="icons">
-                  {" "}
-                  <VisibilityIcon />{" "}
-                </button>
-              </td>
-            </div>
-          </React.Fragment>
-        )}
+        <td data-label="S.No">{props.contact.sno}</td>
+        <td data-label="NAME">{props.contact.name} </td>
         <td data-label="">
           <button className="icons-add" onClick={showMobileHandler}>
             {" "}

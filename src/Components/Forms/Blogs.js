@@ -4,8 +4,6 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import MDEBlog from "./MDEBlog";
 import Editor from "./EditorBlogs";
 import CardMembershipIcon from "@mui/icons-material/CardMembership";
-import BottomNav from "../BottomNav";
-import Sidebar from "../Sidebar";
 const Blogs = function () {
   const editorRef = useRef(null);
   return (
@@ -15,7 +13,6 @@ const Blogs = function () {
           window.innerWidth > 750 ? "d-flex flex-row  " : "d-flex flex-column"
         }
       >
-        <div>{window.innerWidth > 750 ? <Sidebar /> : <BottomNav />}</div>
         <div
           className={
             window.innerWidth > 750

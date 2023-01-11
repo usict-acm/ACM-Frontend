@@ -57,7 +57,6 @@ const Certificate = function () {
           window.innerWidth > 750 ? "d-flex flex-row" : "d-flex flex-column"
         }
       >
-        <div>{window.innerWidth > 750 ? <Sidebar /> : <BottomNav />}</div>
 
         <div
           className={

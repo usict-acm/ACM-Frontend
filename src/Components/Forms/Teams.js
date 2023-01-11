@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import "../Assests/CSS/certificate.css";
-import BottomNav from "../BottomNav";
-import Sidebar from "../Sidebar";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -59,7 +57,6 @@ const Team = function () {
           window.innerWidth > 750 ? "d-flex flex-row" : "d-flex flex-column"
         }
       >
-        <div>{window.innerWidth > 750 ? <Sidebar /> : <BottomNav />}</div>
         <div
           className={
             window.innerWidth > 750

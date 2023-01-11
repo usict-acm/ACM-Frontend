@@ -2,7 +2,7 @@ import React from "react";
 import "./Assests/CSS/EditableRows.css";
 const EditableRows = function (props) {
   return (
-    <tr>
+    <tr key = {props.key}>
       <td></td>
       <td>
         <input

@@ -44,11 +44,9 @@ import Submissions from "./Components/Submissions";
 import JoinUsTable from "./Components/JoinUsTable";
 import JoinUsMobileTable from "./Components/JoinUsTableMobile";
 function App() {
-  let mainTable = false;
-  let isMobileView = window.innerWidth;
-
   return (
     <div className="App">
+      <div>{window.innerWidth > 750 ? <Sidebar /> : <BottomNav />}</div>
       <Router>
         <Navbar />
         <Routes>
@@ -78,7 +76,6 @@ function App() {
             path="/Certificate-Table"
             element={
               <>
-                {window.innerWidth > 750 ? <Sidebar /> : <BottomNav />}
                 {window.innerWidth > 750 ? (
                   <CertificateTable />
                 ) : (
@@ -91,7 +88,6 @@ function App() {
             path="/Links-Table"
             element={
               <>
-                {window.innerWidth > 750 ? <Sidebar /> : <BottomNav />}
                 {window.innerWidth > 750 ? (
                   <LinksTable />
                 ) : (
@@ -104,7 +100,6 @@ function App() {
             path="/Blogs-table"
             element={
               <>
-                {window.innerWidth > 750 ? <Sidebar /> : <BottomNav />}
                 {window.innerWidth > 750 ? (
                   <BlogsTable />
                 ) : (
@@ -117,7 +112,6 @@ function App() {
             path="/Teams-Table"
             element={
               <>
-                {window.innerWidth > 750 ? <Sidebar /> : <BottomNav />}
                 {window.innerWidth > 750 ? <TeamTable /> : <TeamMobileTable />}
               </>
             }
@@ -126,7 +120,6 @@ function App() {
             path="/Announcement-Table"
             element={
               <>
-                {window.innerWidth > 750 ? <Sidebar /> : <BottomNav />}
                 {window.innerWidth > 750 ? (
                   <AnnouncementTable />
                 ) : (
@@ -139,7 +132,6 @@ function App() {
             path="/ContactUs-Table"
             element={
               <>
-                {window.innerWidth > 750 ? <Sidebar /> : <BottomNav />}
                 {window.innerWidth > 750 ? (
                   <ContactUsTable />
                 ) : (
@@ -152,7 +144,6 @@ function App() {
             path="/JoinUs-Table"
             element={
               <>
-                {window.innerWidth > 750 ? <Sidebar /> : <BottomNav />}
                 {window.innerWidth > 750 ? (
                   <JoinUsTable />
                 ) : (

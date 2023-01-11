@@ -1,6 +1,4 @@
 import React from "react";
-import BottomNav from "../BottomNav";
-import Sidebar from "../Sidebar";
 import "../Assests/CSS/forms.css";
 
 const Links = () => {
@@ -11,7 +9,6 @@ const Links = () => {
           window.innerWidth > 750 ? "d-flex flex-row" : "d-flex flex-column"
         }
       >
-        <div>{window.innerWidth > 750 ? <Sidebar /> : <BottomNav />}</div>
         <div
           className={
             window.innerWidth > 750

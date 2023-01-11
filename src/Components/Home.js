@@ -1,10 +1,7 @@
-import React from "react";
+import React, { Suspense } from "react";
 import AnnouncementTable from "./AnnouncementTable";
 import AnnouncementMobileTable from "./AnnouncementMobileTable";
-import BottomNav from "./BottomNav";
-import Sidebar from "./Sidebar";
-import TableDesktopMain from "./TableDesktopMain";
-import TableMobile from "./TableMobile";
+import { Spinner } from "react-bootstrap";
 
 // export default function Home() {
 //   let isMobileView = window.innerWidth;
@@ -17,12 +14,18 @@ import TableMobile from "./TableMobile";
 //   );
 // }
 export default function Home(props) {
-  let isMobileView = window.innerWidth;
-  return (
-    <>
-      {window.innerWidth > 750 ? <Sidebar /> : <BottomNav />}
-
-      {isMobileView > 768 ? <AnnouncementTable /> : <AnnouncementMobileTable />}
-    </>
-  );
+    let isMobileView = window.innerWidth;
+    return (
+        <>
+        <Suspense fallback={
+            <Spinner animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+            }>
+            {isMobileView > 768 ?
+                <AnnouncementTable /> :
+                <AnnouncementMobileTable />}
+        </Suspense>
+        </>
+    );
 }

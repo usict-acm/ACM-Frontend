@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import "./Assests/CSS/Table.css";
-import data from "./mock-data.json";
 import TableRows from "./TableRows";
 import EditableRows from "./EditableRows";
 import Title from "./Title";
+import { fetchData } from "../api/fetchData";
+
 
 const AnnouncementMobileTable = function () {
-  const [contacts, setContact] = useState(data);
+  const resource = fetchData("/displayAnnouncement");
+  const [contacts, setContact] = useState(resource);
   const [editContactId, setEditContactId] = useState(null);
   const [editFormData, setEditFormData] = useState({
     fullName: "",
@@ -91,8 +93,8 @@ const AnnouncementMobileTable = function () {
           </thead>
           <tbody>
             {contacts.map((contact) => (
-              <>
-                {editContactId === contact.id ? (
+              <React.Fragment key = { contact.sno}>
+                {editContactId === contact.sno ? (
                   <EditableRows
                     editFormDatas={editFormData}
                     handleEditFormChange={handleEditFormChange}
@@ -105,7 +107,7 @@ const AnnouncementMobileTable = function () {
                     handleEditClick={handleEditClick}
                   />
                 )}
-              </>
+              </React.Fragment>
             ))}
           </tbody>
         </table>
