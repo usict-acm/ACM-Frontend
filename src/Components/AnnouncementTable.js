@@ -7,9 +7,9 @@ import ReactPaginate from "react-paginate";
 import { fetchData } from "../api/fetchData";
 
 
-const AnnouncementTable = function() {
-    const someData = fetchData("/displayAnnouncement");
-    const [contacts, setContact] = useState(someData.event);
+const AnnouncementTable = function(props) {
+    const data = props.data.read();
+    const [contacts, setContact] = useState(data.event);
     const [editContactId, setEditContactId] = useState(null);
     const itemsPerPage = 7;
     const [currentItems, setCurrentItems] = useState(null);

@@ -3,12 +3,11 @@ import "./Assests/CSS/Table.css";
 import TableRows from "./TableRows";
 import EditableRows from "./EditableRows";
 import Title from "./Title";
-import { fetchData } from "../api/fetchData";
 
 
-const AnnouncementMobileTable = function () {
-  const resource = fetchData("/displayAnnouncement");
-  const [contacts, setContact] = useState(resource);
+const AnnouncementMobileTable = function (props) {
+  const data = props.data.read();
+  const [contacts, setContact] = useState(data.event);
   const [editContactId, setEditContactId] = useState(null);
   const [editFormData, setEditFormData] = useState({
     fullName: "",

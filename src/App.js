@@ -119,13 +119,7 @@ function App() {
           <Route
             path="/Announcement-Table"
             element={
-              <>
-                {window.innerWidth > 750 ? (
-                  <AnnouncementTable />
-                ) : (
-                  <AnnouncementMobileTable />
-                )}
-              </>
+                <Home />
             }
           />
           <Route

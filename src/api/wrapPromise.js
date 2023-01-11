@@ -1,23 +1,26 @@
 function wrapPromise(promise) {
-    if (promise.status === 'fulfilled') {
-        return promise.value;
-    } else if (promise.status === 'rejected') {
-        throw promise.reason;
-    } else if (promise.status === 'pending') {
-        throw promise;
-    } else {
-        promise.status = 'pending';
-        promise.then(
-            result => {
-                promise.status = 'fulfilled';
-                promise.value = result;
-            },
-            reason => {
-                promise.status = 'rejected';
-                promise.reason = reason;
-            },
-        );
-        throw promise;
+  let status = "pending";
+  let result;
+  let suspender = promise.then(
+    r => {
+      status = "success";
+      result = r;
+    },
+    e => {
+      status = "error";
+      result = e;
     }
+  );
+  return {
+    read() {
+      if (status === "pending") {
+        throw suspender;
+      } else if (status === "error") {
+        throw result;
+      } else if (status === "success") {
+        return result;
+      }
+    }
+  };
 }
 export default wrapPromise;
