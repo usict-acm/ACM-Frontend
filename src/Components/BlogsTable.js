@@ -5,15 +5,29 @@ import Title from "./Title";
 
 import EditableRows from "./EditableRows";
 import ReactPaginate from "react-paginate";
+import SweetAlert from "react-bootstrap-sweetalert";
+import { doFetch } from "../api/fetchData";
+import wrapPromise from "../api/wrapPromise";
 import BlogsTableDesktop from "./BlogsTableDesktop";
 
-const BlogsTable = function () {
+const handle_Delete = async (id, events, setEvents) => {
+  const newContacts = [...events];
+  const index = events.findIndex((contact) => contact.sno === id);
+  await doFetch(`/blogs/${events[index].sno}`,  "DELETE");
+  newContacts.splice(index, 1);
+  setEvents(newContacts);
+};
+
+const BlogsTable = function (props) {
+  const [events, setEvents] = useState(data.event);
   const [contacts, setContact] = useState(data);
   const [editContactId, setEditContactId] = useState(null);
   const itemsPerPage = 7;
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);
-
+  const [showModal, setModal] = useState(false);
+  const [deleteId, setDeleteId] = useState(null);
+  const [postReq, setPostReq] = useState({ read() { return null } });
   const [itemOffset, setItemOffset] = useState(0);
   const endOffset = itemOffset + itemsPerPage;
 
@@ -93,6 +107,24 @@ const BlogsTable = function () {
 
   return (
     <React.Fragment>
+      {showModal && (
+                < SweetAlert
+                    warning
+                    showCancel
+                    confirmBtnText="Yes, delete it!"
+                    confirmBtnBsStyle="danger"
+                    title="Are you sure?"
+                    onConfirm={() => {
+                        setModal(false);
+                        setPostReq(wrapPromise(handleDelete(deleteId, events, setEvents)));
+                    }}
+                    cancelBtnBsStyle="default"
+                    onCancel={() => setModal(false)}
+                    focusCancelBtn
+                >
+                    This row would be deleted!
+                </SweetAlert>
+            )}
       <Title title="Blog"></Title>
       <form onSubmit={handleEditFormSubmit}>
         <table>

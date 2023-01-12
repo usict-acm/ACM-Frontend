@@ -1,20 +1,11 @@
 import React, { Suspense } from "react";
-import AnnouncementTable from "./AnnouncementTable";
+import BlogsTable from "./BlogsTable";
 import { Spinner } from "react-bootstrap";
 import { ErrorBoundary } from "react-error-boundary";
 import { fetchData } from "../api/fetchData";
-// export default function Home() {
-//   let isMobileView = window.innerWidth;
-//   return (
-//     <>
-//       {window.innerWidth > 750 ? <Sidebar /> : <BottomNav />}
 
-//       {isMobileView > 768 ? <TableDesktopMain /> : <TableMobile />}
-//     </>
-//   );
-// }
 let intialResource = fetchData("/announcement", "GET");
-export default function Home() {
+export default function Home2() {
     return (
         <ErrorBoundary fallback={<p> error in fetching data!</p>}>
             <Suspense fallback={
@@ -22,10 +13,8 @@ export default function Home() {
                     <span className="visually-hidden">Loading...</span>
                 </Spinner>
             }>
-                <AnnouncementTable data={intialResource} />
+                <BlogsTable data={intialResource} />
             </Suspense>
         </ErrorBoundary>
     );
 }
-
-
