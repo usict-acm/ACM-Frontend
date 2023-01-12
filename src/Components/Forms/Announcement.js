@@ -1,6 +1,4 @@
 import React from "react";
-import BottomNav from "../BottomNav";
-import Sidebar from "../Sidebar";
 import "../Assests/CSS/forms.css";
 
 async function onSubmit() {

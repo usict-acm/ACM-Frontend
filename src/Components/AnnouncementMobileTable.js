@@ -16,19 +16,6 @@ const AnnouncementMobileTable = function (props) {
     email: "",
   });
 
-  const handleEditClick = function (event, contact) {
-    event.preventDefault();
-    setEditContactId(contact.id);
-    const formValues = {
-      fullName: contact.fullName,
-      address: contact.address,
-      phoneNumber: contact.phoneNumber,
-      email: contact.email,
-    };
-
-    setEditFormData(formValues);
-  };
-
   const handleEditFormChange = (event) => {
     event.preventDefault();
 
@@ -103,7 +90,6 @@ const AnnouncementMobileTable = function (props) {
                   <TableRows
                     contact={contact}
                     handleDeleteClick={handleDelete}
-                    handleEditClick={handleEditClick}
                   />
                 )}
               </React.Fragment>

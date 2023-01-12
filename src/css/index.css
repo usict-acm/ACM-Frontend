@@ -1,6 +1,8 @@
 :root {
   --primary-color: #1f96f8;
   --clr-red: #ee0014;
+  --transition-speed: 150ms;
+    --bg-secondary: grey;
 }
 * {
   margin: 0;
@@ -14,6 +16,21 @@ body {
 }
 a {
   text-decoration: none;
+}
+
+main {
+  margin-left: 5rem;
+  padding: 1rem;
+  display : flex;
+  flex-direction : column;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 760px) {
+    main{
+        margin: 0;
+        margin-bottom : 5rem;
+    }
 }
 
 .btn {
@@ -102,34 +119,6 @@ label.btn {
   padding: 3vw var(--container-px);
 }
 
-.navbar {
-  background-color: var(--primary-color);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 60px;
-  box-shadow: 0 2px 5px #b8b8b8;
-}
-.navbar .brand {
-  color: #fff;
-  font-weight: bold;
-  font-size: 1.2em;
-}
-.navbar .nav span a,
-.navbar .nav span span {
-  color: #fff;
-  margin: 0 2vw;
-  opacity: 0.9;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 0.8em;
-  cursor: pointer;
-}
-.navbar .nav a:hover,
-.navbar .nav span:hover {
-  opacity: 1;
-}
-
 .section {
   display: flex;
   flex-wrap: wrap;
@@ -161,10 +150,6 @@ label.btn {
   font-size: 0.8em;
 }
 
-.form {
-  margin: 2em 0;
-  margin-left: 15%;
-}
 /* h1.heading{
   margin:15px;
 align-items: center;
@@ -433,9 +418,6 @@ input.file {
     margin-left: 0px;
     margin-bottom: 50px;
   }
-  .navbar {
-    height: 75px;
-  }
   .icons {
     width: 35px;
   }
@@ -469,9 +451,6 @@ input.file {
   .icons {
     width: 40px;
   }
-  .navbar {
-    height: 75px;
-  }
   .btn {
     padding: 1em 0em;
     font-size: 10px;
@@ -490,9 +469,6 @@ input.file {
     margin-bottom: 50px;
     margin-left: 0px;
     overflow-x: hidden;
-  }
-  .navbar {
-    height: 110px;
   }
   .icons {
     width: 62px;

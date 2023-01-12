@@ -19,8 +19,6 @@
 }
 .container {
   display: flex;
-  /* justify-content: space-between; */
-  margin-left: 15rem;
 }
 .head-2 {
   /* padding: 20px; */

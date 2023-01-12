@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import "../Assests/CSS/forms.css";
 import "../Assests/CSS/certificate.css";
-import Sidebar from "../Sidebar";
-import BottomNav from "../BottomNav";
 import CardMembershipIcon from "@mui/icons-material/CardMembership";
 const Certificate = function () {
   const [hName, setHname] = useState("");
