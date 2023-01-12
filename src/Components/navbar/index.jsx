@@ -32,7 +32,7 @@ export default function NavBar() {
                 </li>
 
                 <li className="nav-item">
-                    <Link to="/form-table" className="nav-link">
+                    <Link to="/Links-Table" className="nav-link">
                         <FaLink className="icons" />
                         <span className="link-text">Links</span>
                     </Link>
