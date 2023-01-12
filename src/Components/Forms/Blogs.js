@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "../Assests/CSS/forms.css";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import MDEBlog from "./MDEBlog";
@@ -6,50 +6,54 @@ import Editor from "./EditorBlogs";
 import CardMembershipIcon from "@mui/icons-material/CardMembership";
 const Blogs = function () {
   const editorRef = useRef(null);
+  const [matches, setMatches] = useState(window.matchMedia("(min-width: 760px)").matches)
+  useEffect(() => {
+       window
+        .matchMedia("(min-width: 760px)")
+        .addEventListener('change' , e => setMatches(e.matches));
+    }, []);
   return (
     <>
       <div
         className={
-          window.innerWidth > 750 ? "d-flex flex-row  " : "d-flex flex-column"
+          matches ? "d-flex flex-row" : "d-flex flex-column"
         }
       >
         <div
           className={
-            window.innerWidth > 750
+            matches
               ? "container formContainer p-5 d-flex justify-content-center "
               : " container formContainer py-4 w-100 px-0 d-flex justify-content-center"
           }
         >
-          <form className={window.innerWidth > 750 ? "w-100 card" : "w-75"}>
+          <form className={matches ? "w-100 notTable-form" : "w-100"}>
             <h1>
               {" "}
               <CardMembershipIcon /> Create New Blog
             </h1>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">
+            <div className="mb-3">
+              <label htmlFor="exampleInputEmail1" className="form-label">
                 Enter title of blog
               </label>
-              <z> *</z>
               <br></br>
               <input
                 placeholder="Enter the title.."
                 type="text"
-                class="form-control"
+                className="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 required
               />
             </div>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">
+            <div className="mb-3">
+              <label htmlFor="exampleInputEmail1" className="form-label">
                 Who wrote the blog?
               </label>
-              <z> *</z>
               <br></br>
               <input
                 placeholder="Enter the name of writer.."
                 type="text"
-                class="form-control"
+                className="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 required
@@ -57,46 +61,44 @@ const Blogs = function () {
             </div>
             <MDEBlog />
 
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">
+            <div className="mb-3">
+              <label htmlFor="exampleInputEmail1" className="form-label">
                 Enter category of blog
               </label>
-              <z> *</z>
               <br></br>
               <input
                 placeholder="Enter the category.."
                 type="text"
-                class="form-control"
+                className="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 required
               />
             </div>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">
+            <div className="mb-3">
+              <label htmlFor="exampleInputEmail1" className="form-label">
                 Enter event name, if there's any
               </label>
-              <z> *</z>
               <br></br>
               <input
                 placeholder="Enter event's name.."
                 type="text"
-                class="form-control"
+                className="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 required
               />
             </div>
-            <div class="form-group">
-              {/* <label for="exampleFormControlFile1">Example file input</label> */}
+            <div className="form-group">
+              {/* <label htmlFor="exampleFormControlFile1">Example file input</label> */}
               <input
                 type="file"
-                class="form-control-file"
+                className="form-control-file"
                 id="exampleFormControlFile1"
                 required
               />
             </div>
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" className="btn btn-primary">
               Submit
             </button>
           </form>

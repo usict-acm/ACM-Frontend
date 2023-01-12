@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../Assests/CSS/forms.css";
 
 async function onSubmit() {
@@ -6,21 +6,27 @@ async function onSubmit() {
 }
 
 const Announcement = () => {
+  const [matches, setMatches] = useState(window.matchMedia("(min-width: 760px)").matches)
+  useEffect(() => {
+       window
+        .matchMedia("(min-width: 760px)")
+        .addEventListener('change' , e => setMatches(e.matches));
+    }, []);
   return (
     <div
       className={
-        window.innerWidth > 750 ? "d-flex flex-row" : "d-flex flex-column"
+        matches  ? "d-flex flex-row" : "d-flex flex-column"
       }
     >
       <div
         className={
-          window.innerWidth > 750
+          matches
             ? "container formContainer p-5 d-flex justify-content-center"
             : "container formContainer py-4 w-100 px-0 d-flex justify-content-center"
         }
       >
         <form
-          className={window.innerWidth > 750 ? "w-100 notTable-form " : "w-100"}
+          className={matches ? "w-100 notTable-form " : "w-100"}
           onSubmit = { async (e) => { e.preventDefault(); console.log(e);}}
         >
           <h3>
@@ -38,7 +44,7 @@ const Announcement = () => {
           </h3>
           <hr></hr>
           <div className="mb-3">
-            <label for="title" className="form-label">
+            <label htmlFor="title" className="form-label">
               Please fill in the form to add announcement.
             </label>
             <br></br>
@@ -51,7 +57,7 @@ const Announcement = () => {
               required
             />
             <br></br>
-            <label for="description" className="form-label">Describe the event</label>
+            <label htmlFor="description" className="form-label">Describe the event</label>
             <br></br>
             <textarea
               name=""
@@ -63,7 +69,7 @@ const Announcement = () => {
             ></textarea>
           </div>
           <div className="mb-3">
-            <label for="exampleInputPassword1" className="form-label">
+            <label htmlFor="exampleInputPassword1" className="form-label">
               Date for commencement of the event
             </label>
             <input
@@ -74,7 +80,7 @@ const Announcement = () => {
             />
           </div>
           <div className="mb-3">
-            <label for="exampleInputPassword1" className="form-label">
+            <label htmlFor="exampleInputPassword1" className="form-label">
               Date for end of the event
             </label>
             <input
@@ -85,54 +91,54 @@ const Announcement = () => {
             />
           </div>
           <div className="mb-3">
-            <label for="exampleInputPassword1" className="form-label">
+            <label htmlFor="exampleInputPassword1" className="form-label">
               Button1 Name
             </label>
             <input type="text" className="form-control" required />
           </div>
           <div className="mb-3">
-            <label for="exampleInputPassword1" className="form-label">
+            <label htmlFor="exampleInputPassword1" className="form-label">
               Button1 Link
             </label>
             <input type="Link" className="form-control" required />
           </div>
           <div className="mb-3">
-            <label for="exampleInputPassword1" className="form-label">
+            <label htmlFor="exampleInputPassword1" className="form-label">
               Button2 Name
             </label>
             
             <input type="text" className="form-control" required />
           </div>
           <div className="mb-3">
-            <label for="exampleInputPassword1" className="form-label">
+            <label htmlFor="exampleInputPassword1" className="form-label">
               Button2 Link
             </label>
             
             <input type="link" className="form-control" required />
           </div>
           <div className="mb-3">
-            <label for="exampleInputPassword1" className="form-label">
+            <label htmlFor="exampleInputPassword1" className="form-label">
               Partner
             </label>
             
             <input type="number" className="form-control" required />
           </div>
           <div className="mb-3">
-            <label for="exampleInputPassword1" className="form-label">
+            <label htmlFor="exampleInputPassword1" className="form-label">
               Speakers
             </label>
             
             <input type="text" className="form-control" required />
           </div>
           <div className="mb-3">
-            <label for="exampleInputPassword1" className="form-label">
+            <label htmlFor="exampleInputPassword1" className="form-label">
               Year
             </label>
             
             <input type="year" className="form-control" required />
           </div>
           <div className="mb-3">
-            <label for="exampleInputPassword1" className="form-label">
+            <label htmlFor="exampleInputPassword1" className="form-label">
               Start-time - End time
             </label>
             
@@ -140,7 +146,7 @@ const Announcement = () => {
           </div>
 
           <div className="mb-3">
-            <label for="exampleInputPassword1" className="form-label">
+            <label htmlFor="exampleInputPassword1" className="form-label">
               Upload the poster{" "}
             </label>
             

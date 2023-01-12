@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../Assests/CSS/forms.css";
 import "../Assests/CSS/certificate.css";
 import CardMembershipIcon from "@mui/icons-material/CardMembership";
 const Certificate = function () {
+  const [matches, setMatches] = useState(window.matchMedia("(min-width: 760px)").matches)
+  useEffect(() => {
+       window
+        .matchMedia("(min-width: 760px)")
+        .addEventListener('change' , e => setMatches(e.matches));
+    }, []);
   const [hName, setHname] = useState("");
   const [iName, setIname] = useState("");
   const [eName, setEname] = useState("");
@@ -52,33 +58,32 @@ const Certificate = function () {
     <>
       <div
         className={
-          window.innerWidth > 750 ? "d-flex flex-row" : "d-flex flex-column"
+          matches ? "d-flex flex-row" : "d-flex flex-column"
         }
       >
 
         <div
           className={
-            window.innerWidth > 750
+            matches
               ? "container formContainer p-5 d-flex justify-content-center"
               : "container formContainer py-4 w-100 px-0 d-flex justify-content-center"
           }
         >
-          <form className={window.innerWidth > 750 ? "w-100 card" : "w-75"}>
+          <form className={matches ? "w-100 notTable-form" : "w-100"}>
             <h1>
               {" "}
               <CardMembershipIcon /> Create Certificate
             </h1>
 
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">
+            <div className="mb-3">
+              <label htmlFor="exampleInputEmail1" className="form-label">
                 Name of certificate Holder
               </label>
-              <z> *</z>
               <br></br>
               <input
                 placeholder="Enter the name of certificate holder.."
                 type="text"
-                class="form-control"
+                className="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 value={hName}
@@ -86,16 +91,15 @@ const Certificate = function () {
                 required
               />
             </div>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">
+            <div className="mb-3">
+              <label htmlFor="exampleInputEmail1" className="form-label">
                 Name of Institution
               </label>
-              <z> *</z>
               <br></br>
               <input
                 placeholder="Enter the name of institution.."
                 type="email"
-                class="form-control"
+                className="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 value={iName}
@@ -103,30 +107,28 @@ const Certificate = function () {
                 required
               />
             </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">
+            <div className="mb-3">
+              <label htmlFor="exampleInputPassword1" className="form-label">
                 Starting Date for Program
               </label>
-              <z> *</z>
               <br></br>
-              <input type="date" name="" id="" class="form-control" />
+              <input type="date" name="" id="" className="form-control" />
             </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">
+            <div className="mb-3">
+              <label htmlFor="exampleInputPassword1" className="form-label">
                 Ending Date for Program
               </label>
-              <input type="date" name="" id="" class="form-control" />
+              <input type="date" name="" id="" className="form-control" />
             </div>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">
+            <div className="mb-3">
+              <label htmlFor="exampleInputEmail1" className="form-label">
                 Event
               </label>
-              <z> *</z>
               <br></br>
               <input
                 placeholder="Enter the event's name.."
                 type="email"
-                class="form-control"
+                className="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 value={eName}
@@ -134,11 +136,11 @@ const Certificate = function () {
                 required
               />
             </div>
-            <div class="mb-3">
+            <div className="mb-3">
               <input
                 placeholder="Enter the email address of certificate holder.."
                 type="text"
-                class="form-control"
+                className="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 value={mailName}
@@ -146,11 +148,11 @@ const Certificate = function () {
                 required
               />
             </div>
-            <div class="mb-3">
+            <div className="mb-3">
               <input
                 placeholder="Enter the rank of certificate holder.."
                 type="text"
-                class="form-control"
+                className="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 value={rName}
@@ -158,16 +160,15 @@ const Certificate = function () {
                 required
               />
             </div>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">
+            <div className="mb-3">
+              <label htmlFor="exampleInputEmail1" className="form-label">
                 Student Details
               </label>
-              <z> *</z>
               <br></br>
               <input
                 placeholder="Enter the enrollment number of certificate holder.."
                 type="text"
-                class="form-control"
+                className="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 value={enrollmentNum}
@@ -175,11 +176,11 @@ const Certificate = function () {
                 required
               />
             </div>
-            <div class="mb-3">
+            <div className="mb-3">
               <input
                 placeholder="Enter the course of certificate holder.."
                 type="text"
-                class="form-control"
+                className="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 value={courseName}
@@ -191,7 +192,7 @@ const Certificate = function () {
             <button
               onClick={submitHandler}
               type="submit"
-              class="btn btn-primary"
+              className="btn btn-primary"
             >
               Submit
             </button>

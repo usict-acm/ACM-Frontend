@@ -60,6 +60,7 @@ function App() {
           <Route path="/form/Blog" element={<Blogs />} />
           <Route path="/forms" element={<Forms />} />
           <Route path="/form/Certificate" element={<Certificate />} />
+          <Route path="/form/Team" element={<Team />} />
           {/* *********************************************************** */}
           <Route path="/fill/:id" element={<Fill />} />
           <Route path="/submissions/:id" element={<Submissions />} />

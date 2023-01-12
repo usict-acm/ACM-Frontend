@@ -7,6 +7,12 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import Title from "../Title";
 const Team = function () {
+  const [matches, setMatches] = useState(window.matchMedia("(min-width: 760px)").matches)
+  useEffect(() => {
+       window
+        .matchMedia("(min-width: 760px)")
+        .addEventListener('change' , e => setMatches(e.matches));
+    }, []);
   const [fName, setFname] = useState("");
   const [lName, setLname] = useState("");
   const [designation, setDesignation] = useState("");
@@ -57,45 +63,45 @@ const Team = function () {
     <>
       <div
         className={
-          window.innerWidth > 750 ? "d-flex flex-row" : "d-flex flex-column"
+          matches ? "d-flex flex-row" : "d-flex flex-column"
         }
       >
         <div
           className={
-            window.innerWidth > 750
+            matches
               ? "container formContainer p-5 d-flex justify-content-center"
               : "container formContainer py-4 w-100 px-0 d-flex justify-content-center"
           }
         >
-          <form className={window.innerWidth > 750 ? "w-100 card " : "w-75"}>
+          <form className={matches ? "w-100 card " : "w-75"}>
             {/* <form> */}
             <h1>
               {" "}
               <PeopleAltIcon /> Add a new Member
             </h1>
 
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">
+            <div className="mb-3">
+              <label htmlFor="exampleInputEmail1" className="form-label">
                 First Name
               </label>
               <input
                 placeholder="Enter the first name .."
                 type="text"
-                class="form-control"
+                className="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 value={fName}
                 onChange={changeHandlerFName}
               />
             </div>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">
+            <div className="mb-3">
+              <label htmlFor="exampleInputEmail1" className="form-label">
                 Last Name
               </label>
               <input
                 placeholder="Enter the last name .."
                 type="text"
-                class="form-control"
+                className="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 value={lName}
@@ -103,66 +109,66 @@ const Team = function () {
               />
             </div>
 
-            <div class="mb-3">
-              <label for="exampleInputGroup1" class="form-label">
+            <div className="mb-3">
+              <label htmlFor="exampleInputGroup1" className="form-label">
                 Designation
               </label>
               <input
                 placeholder="Enter the designation.."
                 type="text"
-                class="form-control"
+                className="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 value={designation}
                 onChange={changeHandlerDes}
               />
             </div>
-            <label class="sr-only" for="inlineFormInputGroup">
+            <label className="sr-only" htmlFor="inlineFormInputGroup">
               LinkedIn
             </label>
-            <div class="input-group mb-2">
-              <div class="input-group-prepend">
-                <div class="input-group-text">
+            <div className="input-group mb-2">
+              <div className="input-group-prepend">
+                <div className="input-group-text">
                   <LinkedInIcon />
                 </div>
               </div>
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 id="inlineFormInputGroup"
                 placeholder="Username"
                 value={usernameLin}
                 onChange={changeHandlerUsernameLin}
               />
             </div>
-            <label class="sr-only" for="inlineFormInputGroup">
+            <label className="sr-only" htmlFor="inlineFormInputGroup">
               Github
             </label>
-            <div class="input-group mb-2">
-              <div class="input-group-prepend">
-                <div class="input-group-text">
+            <div className="input-group mb-2">
+              <div className="input-group-prepend">
+                <div className="input-group-text">
                   <GitHubIcon />
                 </div>
               </div>
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 id="inlineFormInputGroup"
                 placeholder="Username"
                 value={usernameGit}
                 onChange={changeHandlerGit}
               />
             </div>
-            <label class="sr-only" for="inlineFormInputGroup">
+            <label className="sr-only" htmlFor="inlineFormInputGroup">
               Instagram
             </label>
-            <div class="input-group mb-2">
-              <div class="input-group-prepend">
-                <div class="input-group-text">@</div>
+            <div className="input-group mb-2">
+              <div className="input-group-prepend">
+                <div className="input-group-text">@</div>
               </div>
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 id="inlineFormInputGroup"
                 placeholder="Username"
                 value={usernameIns}
@@ -170,28 +176,28 @@ const Team = function () {
               />
             </div>
 
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">
+            <div className="mb-3">
+              <label htmlFor="exampleInputEmail1" className="form-label">
                 Year
               </label>
               <input
                 placeholder="Enter current year.."
                 type="number"
-                class="form-control"
+                className="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 value={year}
                 onChange={changeHandlerYear}
               />
             </div>
-            <div class="col-auto mb-3">
+            <div className="col-auto mb-3">
               <label
-                class="my-1 mr-2 form-label "
-                for="inlineFormCustomSelectPref"
+                className="my-1 mr-2 form-label "
+                htmlFor="inlineFormCustomSelectPref"
               >
                 Category
               </label>
-              <select class="form-select" aria-label="Default select example">
+              <select className="form-select" aria-label="Default select example">
                 <option selected>Faculty</option>
                 <option value="1">Office Bearer</option>
                 <option value="2">Executive Member</option>
@@ -199,13 +205,13 @@ const Team = function () {
                 <option value="4">Web Team</option>
               </select>
             </div>
-            <div class="form-group ">
-              <label className="imageDisplay" for="exampleFormControlFile1">
+            <div className="form-group ">
+              <label className="imageDisplay" htmlFor="exampleFormControlFile1">
                 Select Image
               </label>
               <input
                 type="file"
-                class="form-control-file"
+                className="form-control-file"
                 id="exampleFormControlFile1"
               />
             </div>
@@ -213,7 +219,7 @@ const Team = function () {
             <button
               onClick={submitHandler}
               type="submit"
-              class="btn btn-primary"
+              className="btn btn-primary"
             >
               Submit
             </button>

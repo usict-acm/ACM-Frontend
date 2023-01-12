@@ -1,18 +1,15 @@
 .formContainer {
-  margin-left: 25rem;
   height: 70%;
   width: 100vw;
 }
 .blogs-container{
   height:50%;
-  margin-left:-5rem;
 }
 z{
   color: red;
 }
 .notTable-form {
   margin-top: auto;
-  margin-left: -75px;
   box-sizing: border-box;
   /* border-radius: 30px; */
   border: none;

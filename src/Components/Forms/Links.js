@@ -25,40 +25,40 @@ const Links = () => {
                 width="30"
                 height="30"
                 fill="currentColor"
-                class="bi bi-link-45deg"
+                className="bi bi-link-45deg"
                 viewBox="0 0 16 16"
               >
                 <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                 <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
               </svg>
             </h1>
-            <div class="mb-3">
-              <label for="subject" class="form-label">
+            <div className="mb-3">
+              <label htmlFor="subject" className="form-label">
                 Link Subject
               </label>
               <z> *</z>
               <br></br>
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 placeholder="Subject"
                 id="exampleSub"
                 required
               />
             </div>
-            <div class="mb-3">
-              <label for="OGlink" class="form-label">
+            <div className="mb-3">
+              <label htmlFor="OGlink" className="form-label">
                 Original Link
               </label>
               <z> *</z>
               <br></br>
               <input
-                class="form-control"
+                className="form-control"
                 placeholder="Enter the original link"
               />
             </div>
-            <div class="mb-3">
-              <label for="StartDate" class="form-label">
+            <div className="mb-3">
+              <label htmlFor="StartDate" className="form-label">
                 Add Link
               </label>
               <z> *</z>
@@ -67,26 +67,26 @@ const Links = () => {
                 <p className=" para fw-bold m-0">https://usict.acm.org/link/</p>
                 <input
                   type="link"
-                  class="form-control change"
+                  className="form-control change"
                   placeholder="Custom Link"
                   id="exampleDate"
                   required
                 />
               </div>
             </div>
-            <div class="row">
-              <div class="col-4">
-                <button type="submit" class="btn btn-primary">
+            <div className="row">
+              <div className="col-4">
+                <button type="submit" className="btn btn-primary">
                   Get Preview
                 </button>
               </div>
-              <div class="col-4">
-                <button type="submit" class="btn btn-primary">
+              <div className="col-4">
+                <button type="submit" className="btn btn-primary">
                   Generate Link
                 </button>
               </div>
-              <div class="col-4">
-                <button type="submit" class="btn btn-primary">
+              <div className="col-4">
+                <button type="submit" className="btn btn-primary">
                   Check & Confirm
                 </button>
               </div>

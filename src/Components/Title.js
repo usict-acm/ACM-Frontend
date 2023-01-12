@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import Badge from "react-bootstrap/Badge";
 import "./Assests/CSS/title.css";
 import Button from "react-bootstrap/Button";
+import { useNavigate } from "react-router";
 export default function Title({ title }) {
-  const [currentForm, setForm] = useState(() => {
-    return title;
-  });
+  const navigate = useNavigate();
+  const currentForm = title;
   const add = "ADD NEW " + `${title.toUpperCase()}`;
   const addBulk = "CREATE IN BULK";
   if (title == "JoinUS") {
@@ -31,14 +31,14 @@ export default function Title({ title }) {
                 <Button
                   className="float-end innerbutton"
                   variant="info"
-                  href={"/form/" + `${currentForm}`}
+                  onClick={() => navigate("/form/" + `${currentForm}`)}
                 >
                   {add}
                 </Button>
                 <Button
                   className="float-end innerbutton"
                   variant="info"
-                  href={"/form/CertificateBulk"}
+                  onClick={() => navigate("/form/CertificateBulk")}
                 >
                   {addBulk}
                 </Button>
@@ -48,7 +48,7 @@ export default function Title({ title }) {
                 <Button
                   className="float-end innerbutton"
                   variant="info"
-                  href={"/form/" + `${currentForm}`}
+                  onClick={() => navigate("/form/" + `${currentForm}`)}
                 >
                   Download Response Sheet
                 </Button>
@@ -58,7 +58,7 @@ export default function Title({ title }) {
                 <Button
                   className="float-end innerbutton"
                   variant="info"
-                  href={"/form/" + `${currentForm}`}
+                  onClick={() => navigate("/form/" + `${currentForm}`)}
                 >
                   {add}
                 </Button>
