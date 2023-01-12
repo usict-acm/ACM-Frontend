@@ -44,16 +44,16 @@ const Announcement = () => {
           </h3>
           <hr></hr>
           <div className="mb-3">
-            <label htmlFor="title" className="form-label">
+            <label htmlFor="name" className="form-label">
               Please fill in the form to add announcement.
             </label>
             <br></br>
             <input
               type = "text"
               className="form-control"
-              id="title"
+              id="name"
               aria-describedby="emailHelp"
-              placeholder="Enter the title of the announcement"
+              placeholder="Enter the name of the announcement"
               required
             />
             <br></br>

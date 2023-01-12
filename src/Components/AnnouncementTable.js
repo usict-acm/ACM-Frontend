@@ -4,10 +4,13 @@ import Title from "./Title";
 import AnnouncementTableDesktop from "./AnnouncementTableDesktop";
 import ReactPaginate from "react-paginate";
 import SweetAlert from "react-bootstrap-sweetalert";
+import { postData } from "../api/fetchData";
+import wrapPromise from "../api/wrapPromise";
 
 const handleDelete = async (contactId, events, setEvents) => {
     const newContacts = [...events];
     const index = events.findIndex((contact) => contact.sno === contactId);
+    await postData("/announcements/delete", { name: events[index].name });
     newContacts.splice(index, 1);
     setEvents(newContacts);
 };
@@ -15,12 +18,13 @@ const handleDelete = async (contactId, events, setEvents) => {
 
 const AnnouncementTable = function(props) {
     const data = props.data.read();
-    const [events, setEvents] = useState(data.event);
     const itemsPerPage = 10;
+    const [events, setEvents] = useState(data.event);
     const [pageCount, setPageCount] = useState(0);
     const [showModal, setModal] = useState(false);
     const [deleteId, setDeleteId] = useState(null);
-
+    const [postReq, setPostReq] = useState({ read() { return null } });
+    postReq.read();
     const [itemOffset, setItemOffset] = useState(0);
     const endOffset = itemOffset + itemsPerPage;
 
@@ -48,7 +52,7 @@ const AnnouncementTable = function(props) {
                     title="Are you sure?"
                     onConfirm={() => {
                         setModal(false);
-                        handleDelete(deleteId, events, setEvents);
+                        setPostReq(wrapPromise(handleDelete(deleteId, events, setEvents)));
                     }}
                     cancelBtnBsStyle="default"
                     onCancel={() => setModal(false)}
