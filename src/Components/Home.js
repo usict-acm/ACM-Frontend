@@ -19,7 +19,7 @@ export default function Home() {
     return (
         <ErrorBoundary fallback={<p> error in fetching data!</p>}>
             <Suspense fallback={
-                <Spinner animation="border" role="status">
+                <Spinner animation="border" role="status" className = "position-absolute top-50 start-50">
                     <span className="visually-hidden">Loading...</span>
                 </Spinner>
             }>

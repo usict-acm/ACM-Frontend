@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Badge from "react-bootstrap/Badge";
 import "./Assests/CSS/title.css";
 import Button from "react-bootstrap/Button";
-import { Typography } from "@mui/material";
 export default function Title({ title }) {
   const [currentForm, setForm] = useState(() => {
     return title;

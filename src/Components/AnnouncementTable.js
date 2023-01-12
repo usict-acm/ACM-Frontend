@@ -3,13 +3,23 @@ import "./Assests/CSS/Table.css";
 import Title from "./Title";
 import AnnouncementTableDesktop from "./AnnouncementTableDesktop";
 import ReactPaginate from "react-paginate";
+import SweetAlert from "react-bootstrap-sweetalert";
+
+const handleDelete = async (contactId, events, setEvents) => {
+    const newContacts = [...events];
+    const index = events.findIndex((contact) => contact.sno === contactId);
+    newContacts.splice(index, 1);
+    setEvents(newContacts);
+};
 
 
 const AnnouncementTable = function(props) {
     const data = props.data.read();
     const [events, setEvents] = useState(data.event);
-    const itemsPerPage = 7;
+    const itemsPerPage = 10;
     const [pageCount, setPageCount] = useState(0);
+    const [showModal, setModal] = useState(false);
+    const [deleteId, setDeleteId] = useState(null);
 
     const [itemOffset, setItemOffset] = useState(0);
     const endOffset = itemOffset + itemsPerPage;
@@ -22,17 +32,31 @@ const AnnouncementTable = function(props) {
         const newOffset = (event.selected * itemsPerPage) % events.length;
         setItemOffset(newOffset);
     };
-
-
-    const handleDelete = async (contactId) => {
-        const newContacts = [...events];
-        const index = events.findIndex((contact) => contact.sno === contactId);
-        newContacts.splice(index, 1);
-        setEvents(newContacts);
-    };
+    const handleDeleteClicker = (id) => {
+        setDeleteId(id);
+        setModal(true);
+    }
 
     return (
         <React.Fragment>
+            {showModal && (
+                < SweetAlert
+                    warning
+                    showCancel
+                    confirmBtnText="Yes, delete it!"
+                    confirmBtnBsStyle="danger"
+                    title="Are you sure?"
+                    onConfirm={() => {
+                        setModal(false);
+                        handleDelete(deleteId, events, setEvents);
+                    }}
+                    cancelBtnBsStyle="default"
+                    onCancel={() => setModal(false)}
+                    focusCancelBtn
+                >
+                    This row would be deleted!
+                </SweetAlert>
+            )}
             <Title title="Announcements"></Title>
             <table>
                 <thead>
@@ -48,7 +72,7 @@ const AnnouncementTable = function(props) {
                         <React.Fragment key={contact.sno}>
                             <AnnouncementTableDesktop
                                 contact={contact}
-                                handleDeleteClicker={handleDelete}
+                                handleDeleteClicker={handleDeleteClicker}
                             />
                         </React.Fragment>
                     ))}
@@ -66,7 +90,7 @@ const AnnouncementTable = function(props) {
                 previousLabel="<"
                 renderOnZeroPageCount={null}
             />
-        </React.Fragment>
+        </React.Fragment >
     );
 };
 export default AnnouncementTable;
