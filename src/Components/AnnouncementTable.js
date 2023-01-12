@@ -4,17 +4,17 @@ import Title from "./Title";
 import AnnouncementTableDesktop from "./AnnouncementTableDesktop";
 import ReactPaginate from "react-paginate";
 import SweetAlert from "react-bootstrap-sweetalert";
-import { postData } from "../api/fetchData";
+import { doFetch } from "../api/fetchData";
 import wrapPromise from "../api/wrapPromise";
 
-const handleDelete = async (contactId, events, setEvents) => {
+
+const handleDelete = async (id, events, setEvents) => {
     const newContacts = [...events];
-    const index = events.findIndex((contact) => contact.sno === contactId);
-    await postData("/announcements/delete", { name: events[index].name });
+    const index = events.findIndex((contact) => contact.sno === id);
+    await doFetch(`/announcement/${events[index].sno}`,  "DELETE");
     newContacts.splice(index, 1);
     setEvents(newContacts);
 };
-
 
 const AnnouncementTable = function(props) {
     const data = props.data.read();

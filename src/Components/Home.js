@@ -3,7 +3,6 @@ import AnnouncementTable from "./AnnouncementTable";
 import { Spinner } from "react-bootstrap";
 import { ErrorBoundary } from "react-error-boundary";
 import { fetchData } from "../api/fetchData";
-
 // export default function Home() {
 //   let isMobileView = window.innerWidth;
 //   return (
@@ -14,16 +13,16 @@ import { fetchData } from "../api/fetchData";
 //     </>
 //   );
 // }
-const data = fetchData("/displayAnnouncement");
+let intialResource = fetchData("/announcement", "GET");
 export default function Home() {
     return (
         <ErrorBoundary fallback={<p> error in fetching data!</p>}>
             <Suspense fallback={
-                <Spinner animation="border" role="status" className = "position-absolute top-50 start-50">
+                <Spinner animation="border" role="status" className="position-absolute top-50 start-50">
                     <span className="visually-hidden">Loading...</span>
                 </Spinner>
             }>
-                <AnnouncementTable data={data} />
+                <AnnouncementTable data={intialResource} />
             </Suspense>
         </ErrorBoundary>
     );
