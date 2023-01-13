@@ -6,20 +6,20 @@ import {
 } from "react-router-dom";
 import { AnnouncementTable } from "./Components/announcement";
 import Login from "./Components/Login";
-import Blog from "./Components/blog";
+import { BlogTable }  from "./Components/blog";
+import Blogs from "./Components/Forms/Blogs";
 // import Navb from "./Components/FormNav";
 import Certificate from "./Components/Forms/Certificate";
 // import Navb from "./Components/FormNav";
 // import Teams from "./Components/Forms/Teams";
 import AnnouncementForm from "./Components/Forms/Announcement";
+import { LinkTable }  from "./Components/link";
 import Links from "./Components/Forms/Links";
 import Team from "./Components/Forms/Teams";
 import CertificateTable from "./Components/CertificateTable";
-import LinksTable from "./Components/LinksTable";
 import TeamTable from "./Components/TeamTable";
 import CertificateMobileTable from "./Components/CertificateMobileTable";
 import TeamMobileTable from "./Components/TeamMobileTable";
-import LinksMobileTable from "./Components/LinksMobileTable";
 import FormSection from "./Components/FormSection";
 import ContactUsTable from "./Components/ContactUsTable";
 import ContactUsMobileTable from "./Components/ContactUsMobileTable";
@@ -50,13 +50,13 @@ function App() {
           {/* <Route path="/form/Announcements" element={<Blogs />} /> */}
 
           <Route path="/form/Teams" element={<Team />} />
-          <Route path="/form/Links" element={<Links />} />
+          <Route path="/form/Link" element={<Links />} />
           {/* <Route path="/" element={<Home />} /> */}
           {/* change 1 */}
           <Route path="/form-table" element={<FormSection />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/form/Blog" element={<Blog />} />
+          <Route path="/form/Blog" element={<Blogs />} />
           <Route path="/forms" element={<Forms />} />
           <Route path="/form/Certificate" element={<Certificate />} />
           <Route path="/form/Team" element={<Team />} />
@@ -79,19 +79,11 @@ function App() {
           />
           <Route
             path="/Links-Table"
-            element={
-              <>
-                {window.innerWidth > 750 ? (
-                  <LinksTable />
-                ) : (
-                  <LinksMobileTable />
-                )}
-              </>
-            }
+            element={<LinkTable />}
           />
           <Route
             path="/Blogs-table"
-            element={ <Blog />}
+            element={ <BlogTable />}
           />
           <Route
             path="/Teams-Table"

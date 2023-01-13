@@ -1,26 +1,21 @@
 import { Suspense } from "react";
-import BlogsTableInner from "./blogTable";
 import { Spinner } from "react-bootstrap";
 import { ErrorBoundary } from "react-error-boundary";
 import { fetchData } from "../../api/fetchData";
+import LinkTableInner from "./linkTable";
 
-export type Blog = {
-    id: number;
-    blogTitle: string;
-    coverImage: Buffer;
-    userEmail: string;
-    userName: string;
-    content: Buffer;
-    created: Date;
-    published: Date;
-    lastUpdated: Date;
-    isDraft: boolean;
-    tags: string | null;
-    approved: boolean;
+export type Link = {
+  id: number;
+  linkFor: string;
+  originalLink: string;
+  code: string;
+  count: number | null;
 }
 
-let intialResource = fetchData<Blog[]>("/blog", "GET");
-export function BlogTable() {
+
+let intialResource = fetchData<Link[]>("/link", "GET");
+// wrapper around link table
+export function LinkTable() {
     return (
         <ErrorBoundary fallback={<p> error in fetching data!</p>}>
             <Suspense fallback={
@@ -28,7 +23,7 @@ export function BlogTable() {
                     <span className="visually-hidden">Loading...</span>
                 </Spinner>
             }>
-                <BlogsTableInner data={intialResource} />
+                <LinkTableInner data = { intialResource }/>
             </Suspense>
         </ErrorBoundary>
     );

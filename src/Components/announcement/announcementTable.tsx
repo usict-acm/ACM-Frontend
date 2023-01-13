@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Dispatch } from "react";
 import "../Assests/CSS/Table.css";
 import Title from "../Title";
 import AnnouncementRow from "./announcementRow";
@@ -6,24 +6,29 @@ import ReactPaginate from "react-paginate";
 import SweetAlert from "react-bootstrap-sweetalert";
 import { doFetch } from "../../api/fetchData";
 import wrapPromise from "../../api/wrapPromise";
+import { Event } from ".";
 
 
-const handleDelete = async (id, events, setEvents) => {
+const handleDelete = async (id: number, events: Event[], setEvents: Dispatch<Event[]>) => {
     const newEvents = [...events];
-    const index = events.findIndex((event) => event.sno === id);
-    await doFetch(`/announcement/${events[index].sno}`,  "DELETE");
+    const index = events.findIndex((event) => event.id === id);
+    await doFetch(`/event/${events[index].id}`, "DELETE");
     newEvents.splice(index, 1);
     setEvents(newEvents);
 };
 
-const AnnouncementTable = function(props) {
+type Props = {
+    data: { read(): Event[] };
+}
+
+const AnnouncementTable = function(props: Props) {
     const data = props.data.read();
     const itemsPerPage = 10;
-    const [events, setEvents] = useState(data.event);
+    const [events, setEvents] = useState(data);
     const [pageCount, setPageCount] = useState(0);
     const [showModal, setModal] = useState(false);
-    const [deleteId, setDeleteId] = useState(null);
-    const [postReq, setPostReq] = useState({ read() { return null } });
+    const [deleteId, setDeleteId] = useState(0);
+    const [postReq, setPostReq] = useState({ read() {} });
     postReq.read();
     const [itemOffset, setItemOffset] = useState(0);
     const endOffset = itemOffset + itemsPerPage;
@@ -32,11 +37,11 @@ const AnnouncementTable = function(props) {
         setPageCount(Math.ceil(events.length / itemsPerPage));
     }, []);
 
-    const handlePageClick = (event) => {
+    const handlePageClick = (event : any) => {
         const newOffset = (event.selected * itemsPerPage) % events.length;
         setItemOffset(newOffset);
     };
-    const handleDeleteClicker = (id) => {
+    const handleDeleteClicker = (id : number) => {
         setDeleteId(id);
         setModal(true);
     }
@@ -44,6 +49,7 @@ const AnnouncementTable = function(props) {
     return (
         <React.Fragment>
             {showModal && (
+                /* ts-ignore */
                 < SweetAlert
                     warning
                     showCancel
@@ -72,10 +78,10 @@ const AnnouncementTable = function(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {events.slice(itemOffset, endOffset).map((contact) => (
-                        <React.Fragment key={contact.id}>
+                    {events.slice(itemOffset, endOffset).map((event) => (
+                        <React.Fragment key={event.id}>
                             <AnnouncementRow
-                                contact={contact}
+                                event={event}
                                 handleDeleteClicker={handleDeleteClicker}
                             />
                         </React.Fragment>
@@ -92,7 +98,6 @@ const AnnouncementTable = function(props) {
                 previousLinkClassName={"previousBttn"}
                 pageCount={pageCount}
                 previousLabel="<"
-                renderOnZeroPageCount={null}
             />
         </React.Fragment >
     );
