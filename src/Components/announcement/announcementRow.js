@@ -1,7 +1,7 @@
 import React from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-const AnnouncementTableDesktop = function(props) {
+const AnnouncementRow = function(props) {
     let startDate = new Date(props.contact.startDate);
     return (
         <tr key={props.contact.sno}>
@@ -17,4 +17,4 @@ const AnnouncementTableDesktop = function(props) {
         </tr>
     );
 };
-export default AnnouncementTableDesktop;
+export default AnnouncementRow;
