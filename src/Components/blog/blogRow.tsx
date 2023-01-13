@@ -1,31 +1,38 @@
-import React, { useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { Blog } from ".";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 
 type props = {
-    blog: {
-        blogId: number;
-        blogTitle: number;
-        userName: string;
-    }
-    handleDeleteClicker: Function;
+    blog: Blog;
+    handleDeleteClick(id: number): void;
+    handleStatusChangeClick(id: number, isApprove: boolean): void;
 };
 function BlogRow(props: props) {
-    const [postReq, setPostReq] = useState({ read() { return null } });
-    postReq.read();
     return (
         <tr>
-            <td data-label="S.No">{props.blog.blogId}</td>
-            <td data-label="NAME">{props.blog.blogTitle} </td>
-            <td data-label="NAME">{props.blog.userName} </td>
-            <td>
-                <button className="two-buttons">Approve</button>{" "}
-                <button className="two-buttons">Reject</button>{" "}
-            </td>
+            <td data-label="id">{props.blog.id}</td>
+            <td data-label="name">{props.blog.blogTitle} </td>
+            <td data-label="author">{props.blog.userName} </td>
+            {props.blog.isDraft ?
+                <td data-label="status">
+                    <button
+                        className="two-buttons"
+                        onClick={() => props.handleStatusChangeClick(props.blog.id, true)}>
+                        Approve
+                    </button>
+                    <button 
+                        className="two-buttons"
+                        onClick={() => props.handleStatusChangeClick(props.blog.id, false)}>
+                        Reject
+                    </button>
+                </td>
+                :
+                <td data-label="status">{ props.blog.approved ? "Approved" : "Rejected"} </td> 
+            }
 
             <td data-label="">
-                <VisibilityIcon className="new-icons" />{" "}
-                <DeleteIcon onClick={() => props.handleDeleteClicker()} className="new-icons" />{" "}
+                <VisibilityIcon className="new-icons" />
+                <DeleteIcon onClick={() => props.handleDeleteClick(props.blog.id)} className="new-icons" />{" "}
             </td>
         </tr>
     );

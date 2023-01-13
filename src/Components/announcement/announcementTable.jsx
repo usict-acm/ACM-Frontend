@@ -73,7 +73,7 @@ const AnnouncementTable = function(props) {
                 </thead>
                 <tbody>
                     {events.slice(itemOffset, endOffset).map((contact) => (
-                        <React.Fragment key={contact.sno}>
+                        <React.Fragment key={contact.id}>
                             <AnnouncementRow
                                 contact={contact}
                                 handleDeleteClicker={handleDeleteClicker}
