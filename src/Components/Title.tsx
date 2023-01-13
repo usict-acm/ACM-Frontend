@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import Badge from "react-bootstrap/Badge";
 import "./Assests/CSS/title.css";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router";
-export default function Title({ title }) {
+export default function Title({ title } : { title : string }) {
   const navigate = useNavigate();
   const currentForm = title;
   const add = "ADD NEW " + `${title.toUpperCase()}`;

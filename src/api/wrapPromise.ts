@@ -1,4 +1,4 @@
-export default function wrapPromise<T>(promise: Promise<T>): { read(): T | undefined } {
+export default function wrapPromise<T>(promise: Promise<T>): { read(): T } {
     let status = "pending";
     let result: T;
     let suspender = promise.then(
@@ -20,6 +20,7 @@ export default function wrapPromise<T>(promise: Promise<T>): { read(): T | undef
             } else if (status === "success") {
                 return result;
             }
+            return result;
         }
     };
 }
