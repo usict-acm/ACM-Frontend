@@ -13,8 +13,7 @@ import Certificate from "./Components/Forms/Certificate";
 // import Navb from "./Components/FormNav";
 // import Teams from "./Components/Forms/Teams";
 import AnnouncementForm from "./Components/Forms/Announcement";
-import { LinkTable }  from "./Components/link";
-import Links from "./Components/Forms/Links";
+import { LinkTable, LinkForm }  from "./Components/link";
 import Team from "./Components/Forms/Teams";
 import CertificateTable from "./Components/CertificateTable";
 import TeamTable from "./Components/TeamTable";
@@ -50,7 +49,7 @@ function App() {
           {/* <Route path="/form/Announcements" element={<Blogs />} /> */}
 
           <Route path="/form/Teams" element={<Team />} />
-          <Route path="/form/Link" element={<Links />} />
+          <Route path="/form/Link" element={<LinkForm />} />
           {/* <Route path="/" element={<Home />} /> */}
           {/* change 1 */}
           <Route path="/form-table" element={<FormSection />} />

@@ -3,13 +3,14 @@ import { Spinner } from "react-bootstrap";
 import { ErrorBoundary } from "react-error-boundary";
 import { fetchData } from "../../api/fetchData";
 import LinkTableInner from "./linkTable";
+import LinkForm from "./linkForm";
 
 export type Link = {
-  id: number;
-  linkFor: string;
-  originalLink: string;
-  code: string;
-  count: number | null;
+    id: number;
+    linkFor: string;
+    originalLink: string;
+    code: string;
+    count: number | null;
 }
 
 
@@ -23,8 +24,10 @@ export function LinkTable() {
                     <span className="visually-hidden">Loading...</span>
                 </Spinner>
             }>
-                <LinkTableInner data = { intialResource }/>
+                <LinkTableInner data={intialResource} />
             </Suspense>
         </ErrorBoundary>
     );
 }
+
+export { LinkForm };
