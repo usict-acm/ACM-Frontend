@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Dispatch } from "react";
 import "../Assests/CSS/Table.css";
 import Title from "../Title";
 import ReactPaginate from "react-paginate";
@@ -7,7 +7,17 @@ import { doFetch } from "../../api/fetchData";
 import wrapPromise from "../../api/wrapPromise";
 import BlogRow from "./blogRow";
 
-const handleDelete = async (id, blogs, setBlogs) => {
+export type Blog = {
+    blogId: number;
+    blogTitle: number;
+    userName: string;
+}
+
+type Props = {
+    data: { read(): Blog[]; };
+}
+
+const handleDelete = async (id: number, blogs: Blog[], setBlogs: Dispatch<Blog[]>) => {
     const newContacts = [...blogs];
     const index = blogs.findIndex((contact) => contact.blogId === id);
     await doFetch(`/blogs/${blogs[index].blogId}`, "DELETE");
@@ -15,11 +25,11 @@ const handleDelete = async (id, blogs, setBlogs) => {
     setBlogs(newContacts);
 };
 
-const BlogsTable = function(props) {
+const BlogsTable = function(props: Props) {
     const [blogs, setBlogs] = useState(props.data.read());
     const itemsPerPage = 7;
     const [pageCount, setPageCount] = useState(0);
-    const [deleteId, setDeleteId] = useState(null);
+    const [deleteId, setDeleteId] = useState(0);
     const [showModal, setModal] = useState(false);
     const [postReq, setPostReq] = useState({ read() { return null } });
     postReq.read();
@@ -29,11 +39,11 @@ const BlogsTable = function(props) {
     useEffect(() => {
         setPageCount(Math.ceil(blogs.length / itemsPerPage));
     }, []);
-    const handlePageClick = (event) => {
+    const handlePageClick = (event : any) => {
         const newOffset = (event.selected * itemsPerPage) % blogs.length;
         setItemOffset(newOffset);
     };
-    const handleDeleteClicker = (id) => {
+    const handleDeleteClicker = (id : number) => {
         setDeleteId(id);
         setModal(true);
     }
@@ -42,7 +52,7 @@ const BlogsTable = function(props) {
     return (
         <React.Fragment>
             {showModal && (
-                < SweetAlert
+                <SweetAlert
                     warning
                     showCancel
                     confirmBtnText="Yes, delete it!"
@@ -91,7 +101,6 @@ const BlogsTable = function(props) {
                 previousLinkClassName={"previousBttn"}
                 pageCount={pageCount}
                 previousLabel="<"
-                renderOnZeroPageCount={null}
             />
         </React.Fragment>
     );

@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-const BlogsRow = function(props) {
+
+type props = {
+    blog: {
+        blogId: number;
+        blogTitle: number;
+        userName: string;
+    }
+    handleDeleteClicker: Function;
+};
+function BlogRow(props: props) {
+    const [postReq, setPostReq] = useState({ read() { return null } });
+    postReq.read();
     return (
         <tr>
             <td data-label="S.No">{props.blog.blogId}</td>
@@ -19,4 +30,7 @@ const BlogsRow = function(props) {
         </tr>
     );
 };
-export default BlogsRow;
+
+
+
+export default BlogRow;
