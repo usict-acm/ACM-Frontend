@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
-import "./Assests/CSS/Table.css";
-import Title from "./Title";
-import AnnouncementTableDesktop from "./AnnouncementTableDesktop";
+import "../Assests/CSS/Table.css";
+import Title from "../Title";
+import AnnouncementRow from "./announcementRow";
 import ReactPaginate from "react-paginate";
 import SweetAlert from "react-bootstrap-sweetalert";
-import { doFetch } from "../api/fetchData";
-import wrapPromise from "../api/wrapPromise";
+import { doFetch } from "../../api/fetchData";
+import wrapPromise from "../../api/wrapPromise";
 
 
 const handleDelete = async (id, events, setEvents) => {
-    const newContacts = [...events];
-    const index = events.findIndex((contact) => contact.sno === id);
+    const newEvents = [...events];
+    const index = events.findIndex((event) => event.sno === id);
     await doFetch(`/announcement/${events[index].sno}`,  "DELETE");
-    newContacts.splice(index, 1);
-    setEvents(newContacts);
+    newEvents.splice(index, 1);
+    setEvents(newEvents);
 };
 
 const AnnouncementTable = function(props) {
@@ -74,7 +74,7 @@ const AnnouncementTable = function(props) {
                 <tbody>
                     {events.slice(itemOffset, endOffset).map((contact) => (
                         <React.Fragment key={contact.sno}>
-                            <AnnouncementTableDesktop
+                            <AnnouncementRow
                                 contact={contact}
                                 handleDeleteClicker={handleDeleteClicker}
                             />

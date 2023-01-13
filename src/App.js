@@ -4,15 +4,14 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import Home from "./Components/Home";
+import { AnnouncementTable } from "./Components/announcement";
 import Login from "./Components/Login";
-import Blogs from "./Components/Forms/Blogs";
-import BlogsTable from "./Components/BlogsTable";
+import Blog from "./Components/blog";
 // import Navb from "./Components/FormNav";
 import Certificate from "./Components/Forms/Certificate";
 // import Navb from "./Components/FormNav";
 // import Teams from "./Components/Forms/Teams";
-import Announcement from "./Components/Forms/Announcement";
+import AnnouncementForm from "./Components/Forms/Announcement";
 import Links from "./Components/Forms/Links";
 import Team from "./Components/Forms/Teams";
 import CertificateTable from "./Components/CertificateTable";
@@ -43,11 +42,11 @@ function App() {
         <NavBar />
         <main>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<AnnouncementTable />} />
           {/* <Route path="/" element={<TableDesktopMain />} /> */}
           <Route path="/login" element={<Login />} />
 
-          <Route path="/form/Announcements" element={<Announcement />} />
+          <Route path="/form/Announcements" element={<AnnouncementForm />} />
           {/* <Route path="/form/Announcements" element={<Blogs />} /> */}
 
           <Route path="/form/Teams" element={<Team />} />
@@ -57,7 +56,7 @@ function App() {
           <Route path="/form-table" element={<FormSection />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/form/Blog" element={<Blogs />} />
+          <Route path="/form/Blog" element={<Blog />} />
           <Route path="/forms" element={<Forms />} />
           <Route path="/form/Certificate" element={<Certificate />} />
           <Route path="/form/Team" element={<Team />} />
@@ -92,15 +91,7 @@ function App() {
           />
           <Route
             path="/Blogs-table"
-            element={
-              <>
-                {window.innerWidth > 750 ? (
-                  <BlogsTable />
-                ) : (
-                  <LinksMobileTable />
-                )}
-              </>
-            }
+            element={ <Blog />}
           />
           <Route
             path="/Teams-Table"
@@ -113,7 +104,7 @@ function App() {
           <Route
             path="/Announcement-Table"
             element={
-                <Home />
+                <AnnouncementTable />
             }
           />
           <Route
