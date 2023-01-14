@@ -1,9 +1,10 @@
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { Spinner } from "react-bootstrap";
-import { ErrorBoundary } from "react-error-boundary";
+import { ErrorBoundary } from "../errorBoundary";
 import { fetchData } from "../../api/fetchData";
 import LinkTableInner from "./linkTable";
-import LinkForm from "./linkForm";
+import LinkFormInner from "./linkForm";
+import { useNavigate } from "react-router";
 
 export type Link = {
     id: number;
@@ -14,20 +15,35 @@ export type Link = {
 }
 
 
-let intialResource = fetchData<Link[]>("/link", "GET");
+
 // wrapper around link table
 export function LinkTable() {
+    const [resource, setResource] = useState(fetchData<Link[]>("/link", "GET"));
     return (
-        <ErrorBoundary fallback={<p> error in fetching data!</p>}>
+        <ErrorBoundary onReset={() => setResource(fetchData<Link[]>("/link", "GET"))}>
             <Suspense fallback={
                 <Spinner animation="border" role="status" className="position-absolute top-50 start-50">
                     <span className="visually-hidden">Loading...</span>
                 </Spinner>
             }>
-                <LinkTableInner data={intialResource} />
+                <LinkTableInner data={resource} />
             </Suspense>
         </ErrorBoundary>
     );
 }
 
-export { LinkForm };
+export function LinkForm() {
+    const navigate = useNavigate();
+    return (
+        <ErrorBoundary onReset={() => { navigate("/form/Link") }}>
+            <Suspense fallback={
+                <Spinner animation="border" role="status" className="position-absolute top-50 start-50">
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner>
+            }>
+                <LinkFormInner />
+            </Suspense>
+        </ErrorBoundary>
+    );
+}
+

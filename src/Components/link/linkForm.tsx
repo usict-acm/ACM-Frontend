@@ -1,8 +1,28 @@
 import "../Assests/CSS/forms.css";
-import { useState, useEffect }from "react";
+import { useState, useEffect, ChangeEvent } from "react";
+import { useNavigate } from "react-router";
+import { fetchData } from "../../api/fetchData";
 
 const LinkForm = () => {
+    const navigate = useNavigate();
     const [matches, setMatches] = useState(window.matchMedia("(min-width: 760px)").matches)
+    const [state, setState] = useState({ originalLink: '', code: '', linkFor: '' });
+    const [req, setReq] = useState<{ read(): any }>({ read() { } })
+    const result = req.read();
+    if (result && result.code) {
+        // got the code!
+        navigate("/Link-Table");
+    } else if(result){
+        // some error has occured
+        throw result;
+    }
+    const onChangeState = (e: ChangeEvent<HTMLInputElement>) => {
+        /* @ts-ignore */
+        setState({
+            ...state,
+            [e.target?.id]: e.target?.value
+        })
+    }
     useEffect(() => {
         window
             .matchMedia("(min-width: 760px)")
@@ -22,10 +42,14 @@ const LinkForm = () => {
                             : "container formContainer py-4 w-100 px-0 d-flex justify-content-center"
                     }
                 >
-                    <form className={matches ? "w-100 notTable-form" : "w-100 "}>
+                    <form
+                        className={matches ? "w-100 notTable-form" : "w-100"}
+                        onSubmit={(e) => {
+                            e.preventDefault();
+                            setReq(fetchData("/link", "POST", state));
+                        }}>
                         <h1>
                             <em>Create Link</em>
-
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="30"
@@ -39,7 +63,7 @@ const LinkForm = () => {
                             </svg>
                         </h1>
                         <div className="mb-3">
-                            <label htmlFor="subject" className="form-label">
+                            <label htmlFor="linkFor" className="form-label">
                                 Link Subject
                             </label>
                             <br></br>
@@ -47,22 +71,28 @@ const LinkForm = () => {
                                 type="text"
                                 className="form-control"
                                 placeholder="Subject"
-                                id="exampleSub"
+                                id="linkFor"
+                                value={state.linkFor}
+                                onChange={(e) => onChangeState(e)}
                                 required
                             />
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="OGlink" className="form-label">
+                            <label htmlFor="originalLink" className="form-label">
                                 Original Link
                             </label>
                             <br></br>
                             <input
                                 className="form-control"
+                                id="originalLink"
+                                value={state.originalLink}
+                                onChange={(e) => onChangeState(e)}
                                 placeholder="Enter the original link"
+                                required
                             />
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="StartDate" className="form-label">
+                            <label htmlFor="code" className="form-label">
                                 Add Link
                             </label>
                             <br></br>
@@ -72,12 +102,14 @@ const LinkForm = () => {
                                     type="link"
                                     className="form-control change"
                                     placeholder="Custom Link"
-                                    id="exampleDate"
+                                    id="code"
+                                    value={state.code}
+                                    onChange={(e) => onChangeState(e)}
                                     required
                                 />
                             </div>
                         </div>
-                        <div className={ matches ? "d-flex flex-row" : "flex-col"}>
+                        <div className={matches ? "d-flex flex-row" : "flex-col"}>
                             <button type="submit" className="btn btn-primary">
                                 Get Preview
                             </button>
