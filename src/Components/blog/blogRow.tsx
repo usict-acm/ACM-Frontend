@@ -20,14 +20,14 @@ function BlogRow(props: props) {
                         onClick={() => props.handleStatusChangeClick(props.blog.id, true)}>
                         Approve
                     </button>
-                    <button 
+                    <button
                         className="two-buttons"
                         onClick={() => props.handleStatusChangeClick(props.blog.id, false)}>
                         Reject
                     </button>
                 </td>
                 :
-                <td data-label="status">{ props.blog.approved ? "Approved" : "Rejected"} </td> 
+                <td data-label="status">{props.blog.approved ? "Approved" : "Rejected"} </td>
             }
 
             <td data-label="">

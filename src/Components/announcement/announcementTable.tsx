@@ -49,7 +49,7 @@ const AnnouncementTable = function(props: Props) {
     return (
         <React.Fragment>
             {showModal && (
-                /* ts-ignore */
+                /* @ts-ignore */
                 < SweetAlert
                     warning
                     showCancel

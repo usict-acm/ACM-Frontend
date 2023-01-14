@@ -1,7 +1,7 @@
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import BlogsTableInner from "./blogTable";
 import { Spinner } from "react-bootstrap";
-import { ErrorBoundary } from "react-error-boundary";
+import { ErrorBoundary } from "../errorBoundary";
 import { fetchData } from "../../api/fetchData";
 
 export type Blog = {
@@ -19,16 +19,16 @@ export type Blog = {
     approved: boolean;
 }
 
-let intialResource = fetchData<Blog[]>("/blog", "GET");
 export function BlogTable() {
+    const [resource, setResource] = useState(fetchData<Blog[]>("/blog", "GET"));
     return (
-        <ErrorBoundary fallback={<p> error in fetching data!</p>}>
+        <ErrorBoundary onReset={() => setResource(fetchData<Blog[]>("/blog", "GET"))}>
             <Suspense fallback={
                 <Spinner animation="border" role="status" className="position-absolute top-50 start-50">
                     <span className="visually-hidden">Loading...</span>
                 </Spinner>
             }>
-                <BlogsTableInner data={intialResource} />
+                <BlogsTableInner data={resource} />
             </Suspense>
         </ErrorBoundary>
     );

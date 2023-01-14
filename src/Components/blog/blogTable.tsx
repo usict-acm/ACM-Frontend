@@ -25,7 +25,7 @@ async function handleStatusChange(id: number, blogs: Blog[], setBlogs: Dispatch<
     const newBlogs = [...blogs];
     const index = blogs.findIndex((blog) => blog.id === id);
     await doFetch(`/blog/${blogs[index].id}/approve/${isApprove}`, "PATCH");
-    newBlogs[index].isDraft = false; 
+    newBlogs[index].isDraft = false;
     newBlogs[index].approved = isApprove;
     setBlogs(newBlogs);
 }
