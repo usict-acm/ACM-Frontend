@@ -82,7 +82,7 @@ const LinkTable = function(props: Props) {
                 <tbody>
                     {links.slice(itemOffset, endOffset).map((link) => (
                         <React.Fragment key={link.id}>
-                            <LinkRow link={link} />
+                            <LinkRow link={link} onDelete = { handleDeleteClick }/>
                         </React.Fragment>
                     ))}
                 </tbody>

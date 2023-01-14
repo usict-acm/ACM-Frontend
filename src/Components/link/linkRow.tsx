@@ -5,6 +5,7 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 
 type Props = {
     link: Link;
+    onDelete: (id: number) => any;
 };
 function LinkRow(props: Props) {
     return (<tr>
@@ -18,7 +19,7 @@ function LinkRow(props: Props) {
             <EditIcon
                 className="new-icons"
             />
-            <DeleteIcon className="new-icons" /> </td>
+            <DeleteIcon className="new-icons" onClick={() => props.onDelete(props.link.id)} /> </td>
     </tr>);
 }
 export default LinkRow;
