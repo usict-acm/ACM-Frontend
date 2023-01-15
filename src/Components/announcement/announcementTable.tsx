@@ -8,8 +8,11 @@ import { doFetch } from "../../api/fetchData";
 import wrapPromise from "../../api/wrapPromise";
 import { Event } from ".";
 
-
-const handleDelete = async (id: number, events: Event[], setEvents: Dispatch<Event[]>) => {
+const handleDelete = async (
+    id: number,
+    events: Event[],
+    setEvents: Dispatch<Event[]>
+) => {
     const newEvents = [...events];
     const index = events.findIndex((event) => event.id === id);
     await doFetch(`/event/${events[index].id}`, "DELETE");
@@ -19,9 +22,9 @@ const handleDelete = async (id: number, events: Event[], setEvents: Dispatch<Eve
 
 type Props = {
     data: { read(): Event[] };
-}
+};
 
-const AnnouncementTable = function(props: Props) {
+const AnnouncementTable = function (props: Props) {
     const data = props.data.read();
     const itemsPerPage = 10;
     const [events, setEvents] = useState(data);
@@ -37,20 +40,20 @@ const AnnouncementTable = function(props: Props) {
         setPageCount(Math.ceil(events.length / itemsPerPage));
     }, []);
 
-    const handlePageClick = (event : any) => {
+    const handlePageClick = (event: any) => {
         const newOffset = (event.selected * itemsPerPage) % events.length;
         setItemOffset(newOffset);
     };
-    const handleDeleteClicker = (id : number) => {
+    const handleDeleteClicker = (id: number) => {
         setDeleteId(id);
         setModal(true);
-    }
+    };
 
     return (
         <React.Fragment>
             {showModal && (
                 /* @ts-ignore */
-                < SweetAlert
+                <SweetAlert
                     warning
                     showCancel
                     confirmBtnText="Yes, delete it!"
@@ -58,7 +61,11 @@ const AnnouncementTable = function(props: Props) {
                     title="Are you sure?"
                     onConfirm={() => {
                         setModal(false);
-                        setPostReq(wrapPromise(handleDelete(deleteId, events, setEvents)));
+                        setPostReq(
+                            wrapPromise(
+                                handleDelete(deleteId, events, setEvents)
+                            )
+                        );
                     }}
                     cancelBtnBsStyle="default"
                     onCancel={() => setModal(false)}
@@ -67,7 +74,7 @@ const AnnouncementTable = function(props: Props) {
                     This row would be deleted!
                 </SweetAlert>
             )}
-            <Title title="Announcements"></Title>
+            <Title title="Announcement"></Title>
             <table>
                 <thead>
                     <tr>
@@ -99,7 +106,7 @@ const AnnouncementTable = function(props: Props) {
                 pageCount={pageCount}
                 previousLabel="<"
             />
-        </React.Fragment >
+        </React.Fragment>
     );
 };
 export default AnnouncementTable;

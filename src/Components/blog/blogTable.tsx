@@ -8,20 +8,28 @@ import wrapPromise from "../../api/wrapPromise";
 import BlogRow from "./blogRow";
 import { Blog } from ".";
 
-
 type Props = {
-    data: { read(): Blog[]; };
-}
+    data: { read(): Blog[] };
+};
 
-async function handleDelete(id: number, blogs: Blog[], setBlogs: Dispatch<Blog[]>) {
+async function handleDelete(
+    id: number,
+    blogs: Blog[],
+    setBlogs: Dispatch<Blog[]>
+) {
     const newBlogs = [...blogs];
     const index = blogs.findIndex((blog) => blog.id === id);
     await doFetch(`/blog/${blogs[index].id}`, "DELETE");
     newBlogs.splice(index, 1);
     setBlogs(newBlogs);
-};
+}
 
-async function handleStatusChange(id: number, blogs: Blog[], setBlogs: Dispatch<Blog[]>, isApprove: boolean) {
+async function handleStatusChange(
+    id: number,
+    blogs: Blog[],
+    setBlogs: Dispatch<Blog[]>,
+    isApprove: boolean
+) {
     const newBlogs = [...blogs];
     const index = blogs.findIndex((blog) => blog.id === id);
     await doFetch(`/blog/${blogs[index].id}/approve/${isApprove}`, "PATCH");
@@ -30,15 +38,15 @@ async function handleStatusChange(id: number, blogs: Blog[], setBlogs: Dispatch<
     setBlogs(newBlogs);
 }
 
-const BlogsTable = function(props: Props) {
+const BlogsTable = function (props: Props) {
     const [blogs, setBlogs] = useState(props.data.read());
     const itemsPerPage = 7;
     const [pageCount, setPageCount] = useState(0);
     const [deleteId, setDeleteId] = useState(0);
     const [showModal, setModal] = useState(false);
-    const [deleteReq, setDeleteReq] = useState({ read() { } });
+    const [deleteReq, setDeleteReq] = useState({ read() {} });
     deleteReq.read();
-    const [postReq, setPostReq] = useState({ read() { } });
+    const [postReq, setPostReq] = useState({ read() {} });
     postReq.read();
     const [itemOffset, setItemOffset] = useState(0);
     const endOffset = itemOffset + itemsPerPage;
@@ -53,10 +61,12 @@ const BlogsTable = function(props: Props) {
     const handleDeleteClick = (id: number) => {
         setDeleteId(id);
         setModal(true);
-    }
+    };
     const handleStatusChangeClick = (id: number, isApprove: boolean) => {
-        setPostReq(wrapPromise(handleStatusChange(id, blogs, setBlogs, isApprove)));
-    }
+        setPostReq(
+            wrapPromise(handleStatusChange(id, blogs, setBlogs, isApprove))
+        );
+    };
 
     return (
         <React.Fragment>
@@ -71,7 +81,9 @@ const BlogsTable = function(props: Props) {
                     title="Are you sure?"
                     onConfirm={() => {
                         setModal(false);
-                        setDeleteReq(wrapPromise(handleDelete(deleteId, blogs, setBlogs)));
+                        setDeleteReq(
+                            wrapPromise(handleDelete(deleteId, blogs, setBlogs))
+                        );
                     }}
                     cancelBtnBsStyle="default"
                     onCancel={() => setModal(false)}
@@ -97,7 +109,9 @@ const BlogsTable = function(props: Props) {
                             <BlogRow
                                 blog={blog}
                                 handleDeleteClick={handleDeleteClick}
-                                handleStatusChangeClick={handleStatusChangeClick}
+                                handleStatusChangeClick={
+                                    handleStatusChangeClick
+                                }
                             />
                         </React.Fragment>
                     ))}

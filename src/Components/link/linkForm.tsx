@@ -5,14 +5,20 @@ import { fetchData } from "../../api/fetchData";
 
 const LinkForm = () => {
     const navigate = useNavigate();
-    const [matches, setMatches] = useState(window.matchMedia("(min-width: 760px)").matches)
-    const [state, setState] = useState({ originalLink: '', code: '', linkFor: '' });
-    const [req, setReq] = useState<{ read(): any }>({ read() { } })
+    const [matches, setMatches] = useState(
+        window.matchMedia("(min-width: 760px)").matches
+    );
+    const [state, setState] = useState({
+        originalLink: "",
+        code: "",
+        linkFor: "",
+    });
+    const [req, setReq] = useState<{ read(): any }>({ read() {} });
     const result = req.read();
     if (result && result.code) {
         // got the code!
         navigate("/Link-Table");
-    } else if(result){
+    } else if (result) {
         // some error has occured
         throw result;
     }
@@ -20,21 +26,17 @@ const LinkForm = () => {
         /* @ts-ignore */
         setState({
             ...state,
-            [e.target?.id]: e.target?.value
-        })
-    }
+            [e.target?.id]: e.target?.value,
+        });
+    };
     useEffect(() => {
         window
             .matchMedia("(min-width: 760px)")
-            .addEventListener('change', e => setMatches(e.matches));
+            .addEventListener("change", (e) => setMatches(e.matches));
     }, []);
     return (
         <>
-            <div
-                className={
-                    matches ? "d-flex flex-row" : "d-flex flex-column"
-                }
-            >
+            <div className={matches ? "d-flex flex-row" : "d-flex flex-column"}>
                 <div
                     className={
                         matches
@@ -47,7 +49,8 @@ const LinkForm = () => {
                         onSubmit={(e) => {
                             e.preventDefault();
                             setReq(fetchData("/link", "POST", state));
-                        }}>
+                        }}
+                    >
                         <h1>
                             <em>Create Link</em>
                             <svg
@@ -78,7 +81,10 @@ const LinkForm = () => {
                             />
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="originalLink" className="form-label">
+                            <label
+                                htmlFor="originalLink"
+                                className="form-label"
+                            >
                                 Original Link
                             </label>
                             <br></br>
@@ -97,7 +103,9 @@ const LinkForm = () => {
                             </label>
                             <br></br>
                             <div className="custom d-flex flex-row align-items-center border">
-                                <p className=" para fw-bold m-0">https://usict.acm.org/link/</p>
+                                <p className=" para fw-bold m-0">
+                                    https://usict.acm.org/link/
+                                </p>
                                 <input
                                     type="link"
                                     className="form-control change"
@@ -109,7 +117,9 @@ const LinkForm = () => {
                                 />
                             </div>
                         </div>
-                        <div className={matches ? "d-flex flex-row" : "flex-col"}>
+                        <div
+                            className={matches ? "d-flex flex-row" : "flex-col"}
+                        >
                             <button type="submit" className="btn btn-primary">
                                 Get Preview
                             </button>

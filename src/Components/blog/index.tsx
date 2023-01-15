@@ -17,17 +17,25 @@ export type Blog = {
     isDraft: boolean;
     tags: string | null;
     approved: boolean;
-}
+};
 
 export function BlogTable() {
     const [resource, setResource] = useState(fetchData<Blog[]>("/blog", "GET"));
     return (
-        <ErrorBoundary onReset={() => setResource(fetchData<Blog[]>("/blog", "GET"))}>
-            <Suspense fallback={
-                <Spinner animation="border" role="status" className="position-absolute top-50 start-50">
-                    <span className="visually-hidden">Loading...</span>
-                </Spinner>
-            }>
+        <ErrorBoundary
+            onReset={() => setResource(fetchData<Blog[]>("/blog", "GET"))}
+        >
+            <Suspense
+                fallback={
+                    <Spinner
+                        animation="border"
+                        role="status"
+                        className="position-absolute top-50 start-50"
+                    >
+                        <span className="visually-hidden">Loading...</span>
+                    </Spinner>
+                }
+            >
                 <BlogsTableInner data={resource} />
             </Suspense>
         </ErrorBoundary>

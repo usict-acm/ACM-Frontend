@@ -1,4 +1,3 @@
-import React from "react";
 import Badge from "react-bootstrap/Badge";
 import "./Assests/CSS/title.css";
 import Button from "react-bootstrap/Button";
@@ -21,7 +20,7 @@ export default function Title({ title } : { title : string }) {
               {title == "Member" ? "Teams" : title}
 
               {/* {title == "Blog" ? "Blogs" : title} */}
-            </Badge>{" "}
+            </Badge>
           </h1>
         </div>
         {

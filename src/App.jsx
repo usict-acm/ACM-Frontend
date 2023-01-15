@@ -4,7 +4,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import { AnnouncementTable } from "./Components/announcement";
+import { AnnouncementTable, AnnouncementForm } from "./Components/announcement";
 import Login from "./Components/Login";
 import { BlogTable }  from "./Components/blog";
 import Blogs from "./Components/Forms/Blogs";
@@ -12,7 +12,6 @@ import Blogs from "./Components/Forms/Blogs";
 import Certificate from "./Components/Forms/Certificate";
 // import Navb from "./Components/FormNav";
 // import Teams from "./Components/Forms/Teams";
-import AnnouncementForm from "./Components/Forms/Announcement";
 import { LinkTable, LinkForm }  from "./Components/link";
 import Team from "./Components/Forms/Teams";
 import CertificateTable from "./Components/CertificateTable";
@@ -45,7 +44,7 @@ function App() {
           {/* <Route path="/" element={<TableDesktopMain />} /> */}
           <Route path="/login" element={<Login />} />
 
-          <Route path="/form/Announcements" element={<AnnouncementForm />} />
+          <Route path="/form/Announcement" element={<AnnouncementForm />} />
           {/* <Route path="/form/Announcements" element={<Blogs />} /> */}
 
           <Route path="/form/Teams" element={<Team />} />

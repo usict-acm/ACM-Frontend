@@ -8,27 +8,29 @@ import wrapPromise from "../../api/wrapPromise";
 import { Link } from ".";
 import LinkRow from "./linkRow";
 
-
 type Props = {
-    data: { read(): Link[]; };
-}
+    data: { read(): Link[] };
+};
 
-async function handleDelete(id: number, links: Link[], setLinks: Dispatch<Link[]>) {
+async function handleDelete(
+    id: number,
+    links: Link[],
+    setLinks: Dispatch<Link[]>
+) {
     const newLinks = [...links];
     const index = links.findIndex((blog) => blog.id === id);
     await doFetch(`/link/${links[index].id}`, "DELETE");
     newLinks.splice(index, 1);
     setLinks(newLinks);
-};
+}
 
-
-const LinkTable = function(props: Props) {
+const LinkTable = function (props: Props) {
     const [links, setLinks] = useState(props.data.read());
     const itemsPerPage = 7;
     const [pageCount, setPageCount] = useState(0);
     const [deleteId, setDeleteId] = useState(0);
     const [showModal, setModal] = useState(false);
-    const [deleteReq, setDeleteReq] = useState({ read() { } });
+    const [deleteReq, setDeleteReq] = useState({ read() {} });
     deleteReq.read();
     const [itemOffset, setItemOffset] = useState(0);
     const endOffset = itemOffset + itemsPerPage;
@@ -43,7 +45,7 @@ const LinkTable = function(props: Props) {
     const handleDeleteClick = (id: number) => {
         setDeleteId(id);
         setModal(true);
-    }
+    };
 
     return (
         <React.Fragment>
@@ -58,7 +60,9 @@ const LinkTable = function(props: Props) {
                     title="Are you sure?"
                     onConfirm={() => {
                         setModal(false);
-                        setDeleteReq(wrapPromise(handleDelete(deleteId, links, setLinks)));
+                        setDeleteReq(
+                            wrapPromise(handleDelete(deleteId, links, setLinks))
+                        );
                     }}
                     cancelBtnBsStyle="default"
                     onCancel={() => setModal(false)}
@@ -82,7 +86,7 @@ const LinkTable = function(props: Props) {
                 <tbody>
                     {links.slice(itemOffset, endOffset).map((link) => (
                         <React.Fragment key={link.id}>
-                            <LinkRow link={link} onDelete = { handleDeleteClick }/>
+                            <LinkRow link={link} onDelete={handleDeleteClick} />
                         </React.Fragment>
                     ))}
                 </tbody>

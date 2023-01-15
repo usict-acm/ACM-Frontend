@@ -13,31 +13,40 @@ function BlogRow(props: props) {
             <td data-label="id">{props.blog.id}</td>
             <td data-label="name">{props.blog.blogTitle} </td>
             <td data-label="author">{props.blog.userName} </td>
-            {props.blog.isDraft ?
+            {props.blog.isDraft ? (
                 <td data-label="status">
                     <button
                         className="two-buttons"
-                        onClick={() => props.handleStatusChangeClick(props.blog.id, true)}>
+                        onClick={() =>
+                            props.handleStatusChangeClick(props.blog.id, true)
+                        }
+                    >
                         Approve
                     </button>
                     <button
                         className="two-buttons"
-                        onClick={() => props.handleStatusChangeClick(props.blog.id, false)}>
+                        onClick={() =>
+                            props.handleStatusChangeClick(props.blog.id, false)
+                        }
+                    >
                         Reject
                     </button>
                 </td>
-                :
-                <td data-label="status">{props.blog.approved ? "Approved" : "Rejected"} </td>
-            }
+            ) : (
+                <td data-label="status">
+                    {props.blog.approved ? "Approved" : "Rejected"}{" "}
+                </td>
+            )}
 
             <td data-label="">
                 <VisibilityIcon className="new-icons" />
-                <DeleteIcon onClick={() => props.handleDeleteClick(props.blog.id)} className="new-icons" />{" "}
+                <DeleteIcon
+                    onClick={() => props.handleDeleteClick(props.blog.id)}
+                    className="new-icons"
+                />{" "}
             </td>
         </tr>
     );
-};
-
-
+}
 
 export default BlogRow;
