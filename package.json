@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@tinymce/tinymce-react": "^4.2.0",
     "bootstrap": "^5.2.2",
+    "buffer": "^6.0.3",
     "firebase": "^9.15.0",
     "global": "^4.4.0",
     "monaco-editor": "^0.34.1",

@@ -3,6 +3,8 @@ import BlogsTableInner from "./blogTable";
 import { Spinner } from "react-bootstrap";
 import { ErrorBoundary } from "../errorBoundary";
 import { fetchData } from "../../api/fetchData";
+import { useNavigate } from "react-router";
+import BlogFormInner from "./blogForm";
 
 export type Blog = {
     id: number;
@@ -37,6 +39,31 @@ export function BlogTable() {
                 }
             >
                 <BlogsTableInner data={resource} />
+            </Suspense>
+        </ErrorBoundary>
+    );
+}
+
+export function BlogForm() {
+    const navigate = useNavigate();
+    return (
+        <ErrorBoundary
+            onReset={() => {
+                navigate("/form/Blog");
+            }}
+        >
+            <Suspense
+                fallback={
+                    <Spinner
+                        animation="border"
+                        role="status"
+                        className="position-absolute top-50 start-50"
+                    >
+                        <span className="visually-hidden">Loading...</span>
+                    </Spinner>
+                }
+            >
+                <BlogFormInner />
             </Suspense>
         </ErrorBoundary>
     );

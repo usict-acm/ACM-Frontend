@@ -2,22 +2,9 @@ import { useState, useEffect, ChangeEvent } from "react";
 import { useNavigate } from "react-router";
 import { fetchData } from "../../api/fetchData";
 import "../Assests/CSS/forms.css";
+import { Event } from ".";
 
-type EventCreate = {
-    name: string;
-    description: string;
-    startDate: Date;
-    endDate: Date;
-    button1Text: string;
-    button1Link: string;
-    button2Text: string;
-    button2Link: string;
-    partners: string;
-    speakers: string;
-    poster: string;
-    year: number;
-    time: string;
-};
+type EventCreate = Omit<Event, "id">;
 
 function AnnouncementForm() {
     const navigate = useNavigate();

@@ -6,8 +6,7 @@ import {
 } from "react-router-dom";
 import { AnnouncementTable, AnnouncementForm } from "./Components/announcement";
 import Login from "./Components/Login";
-import { BlogTable }  from "./Components/blog";
-import Blogs from "./Components/Forms/Blogs";
+import { BlogTable, BlogForm }  from "./Components/blog";
 // import Navb from "./Components/FormNav";
 import Certificate from "./Components/Forms/Certificate";
 // import Navb from "./Components/FormNav";
@@ -54,7 +53,7 @@ function App() {
           <Route path="/form-table" element={<FormSection />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/form/Blog" element={<Blogs />} />
+          <Route path="/form/Blog" element={<BlogForm />} />
           <Route path="/forms" element={<Forms />} />
           <Route path="/form/Certificate" element={<Certificate />} />
           <Route path="/form/Team" element={<Team />} />
