@@ -1,11 +1,8 @@
 import "./index.css";
 import { Link } from "react-router-dom";
-import { BsFillMegaphoneFill } from "react-icons/bs";
-import { FaBlogger } from "react-icons/fa";
-import { FaLink } from "react-icons/fa";
-import { FaAward } from "react-icons/fa";
-import { BsFillPeopleFill } from "react-icons/bs";
-import { FaPhoneSquareAlt } from "react-icons/fa";
+import { BsFillMegaphoneFill, BsFillPeopleFill } from "react-icons/bs";
+import { FaBlogger, FaPhoneSquareAlt, FaLink, FaAward, FaSignOutAlt } from "react-icons/fa";
+
 export default function NavBar() {
     return (
         <nav className="navbar">
@@ -13,24 +10,21 @@ export default function NavBar() {
                 <li className="logo">
                     <Link to="/" className="nav-link">
                         <img src = "https://usict.acm.org/assets/images/acm-logo.svg" width = { 100 } height = { 100 }/>
-                        <span className="link-text logo-text">USICT ACM</span>
+                        <span className="link-text logo-text">USS ACM</span>
                     </Link>
                 </li>
-
                 <li className="nav-item">
                     <Link to="/Announcement-table" className="nav-link">
                         <BsFillMegaphoneFill className="icons" />
-                        <span className="link-text">Announcement</span>
+                        <span className="link-text">Announcements</span>
                     </Link>
                 </li>
-
                 <li className="nav-item">
                     <Link to="/Blogs-table" className="nav-link">
                         <FaBlogger className="icons" />
                         <span className="link-text">Blogs</span>
                     </Link>
                 </li>
-
                 <li className="nav-item">
                     <Link to="/Links-Table" className="nav-link">
                         <FaLink className="icons" />
@@ -55,9 +49,9 @@ export default function NavBar() {
                         <span className="link-text">Contact Us</span>
                     </Link>
                 </li>
-
                 <li className="nav-item">
                     <Link to="#" className="nav-link">
+                        <FaSignOutAlt className="icons" />
                         <span className="link-text">Logout</span>
                     </Link>
                 </li>
