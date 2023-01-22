@@ -20,13 +20,13 @@ function LinkRow(props: Props) {
 
     return (
         <tr>
-            <td data-label="id">{props.link.id}</td>
+            <td data-label="ID">{props.link.id}</td>
             <td data-label="Link For">{props.link.linkFor}</td>
             <td data-label="Original Link">
-                <a href={props.link.originalLink} target="_blank" rel="noopener noreferrer">{props.link.originalLink}</a>
+                <a href={props.link.originalLink} target="_blank" rel="noopener noreferrer">{props.link.originalLink.replace("https://", "")}</a>
             </td>
             <td data-label="Shortened Link">
-                <a href={`https://usict.acm.org/link/${props.link.code}`} target="_blank" rel="noopener noreferrer">{`https://usict.acm.org/link/${props.link.code}`}</a>
+                <a href={`https://usict.acm.org/link/${props.link.code}`} target="_blank" rel="noopener noreferrer">{`usict.acm.org/link/${props.link.code}`}</a>
             </td>
             <td data-label="actions">
                 <ContentCopyIcon className="new-icons" onClick={() => handleCopyClick(props.link.code)}/>
