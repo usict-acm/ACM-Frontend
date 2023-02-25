@@ -79,7 +79,6 @@ const LinkTable = function (props: Props) {
                         <th>Link for</th>
                         <th>Original Link</th>
                         <th>Shortened Link</th>
-                        <th>Clicks</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
