@@ -1,0 +1,140 @@
+.parent {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  font-family: "Poppins";
+  justify-content: space-evenly;
+}
+
+.projects {
+  position: relative;
+  margin: 1rem;
+  width: 50%;
+  /* height: 90vh; */
+  border: none;
+  box-shadow: 0 2px 7px rgb(0 0 0 / 20%);
+}
+.acm-projects {
+  margin: 1rem;
+  padding: 25px;
+  /* height: 50vh; */
+  width: auto;
+  border: none;
+  /* box-shadow: 0 2px 7px rgb(0 0 0 / 20%); */
+}
+.personal-projects {
+  margin: 1rem;
+  padding: 25px;
+  height: 30vh;
+  width: auto;
+  border: none;
+  box-shadow: 0 2px 7px rgb(0 0 0 / 20%);
+}
+.profile {
+  /* position: relative; */
+  /* height: 92%; */
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 2px 7px rgb(0 0 0 / 20%);
+  padding: 25px;
+  justify-content: center;
+  /* margin: 2rem 2rem; */
+  width: 40%;
+  /* margin-left:67rem; */
+  display: flex;
+}
+
+.profile .content .image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.profile .content .image img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid rgb(73, 128, 232);
+}
+.mem-details {
+  /* height: 45vh; */
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 2px 7px rgb(0 0 0 / 20%);
+  width: 30vw;
+  padding: 1rem;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+.mem-details .sub-member-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.social-handles {
+  margin-top: 5px;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  border-top: 3px solid;
+  /* box-shadow: 0 2px 7px rgb(0 0 0 / 20%); */
+  height: 8vh;
+  width: 30vw;
+}
+@media (max-width: 600px) {
+  .parent {
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(3, auto);
+  }
+  .nav,
+  .projects,
+  .acm-projects,
+  .personal-projects,
+  .profile,
+  .mem-details,
+  .social-handles {
+    width: 100%;
+  }
+  .profile {
+    height: auto;
+    margin: 0;
+  }
+  .nav {
+    min-width: 100%;
+    max-width: 100%;
+    width: 100%;
+  }
+}
+@media (max-width: 450px) {
+  .parent {
+    /* grid-template-columns: 100%;
+    grid-template-rows: repeat(3, auto); */
+    display: flex;
+    flex-direction: column;
+  }
+  .nav,
+  .projects,
+  .acm-projects,
+  .personal-projects,
+  .profile,
+  .social-handles {
+    width: 90%;
+    padding: 0.3rem;
+  }
+  .profile {
+    height: auto;
+    margin: 0;
+  }
+
+  /* Additional styles specific to 360px */
+  .nav {
+    font-size: 0.8em;
+  }
+  .profile .content .image img {
+    width: 75px;
+    height: 75px;
+  }
+}
