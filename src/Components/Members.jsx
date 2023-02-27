@@ -23,12 +23,25 @@ const Members = function () {
           <tr className="table-row" key={item.id}>
             <>
               <td data-label="S.No">
-                <Link to="/User">
-                  <img className="image-person" src={item.image} />{" "}
-                </Link>
+                {
+                  people.map(data => {
+                    if (item.name == data.name) {
+                      const res = data.name.replace(/ /g, '')
+                      return ( 
+                        <Link to={`/User/${res}`}>
+                          <img className="image-person" src={item.image} />{" "}
+                        </Link>
+
+                      )
+
+                    }
+
+                  })
+                }
+
               </td>
               <td data-label="Name">{item.name}</td>
-              <td data-label="Membership Number">{item.age}</td>
+              <td data-label="Membership Number">{item.id}</td>
               <td data-label="Batch">{item.batch}</td>
             </>
           </tr>

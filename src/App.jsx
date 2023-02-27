@@ -111,7 +111,7 @@ function App() {
               }
             />
             <Route path="/Members" element={<Members />} />
-            <Route path="/User" element={<UserPage />} />
+            <Route path="/User/:name" element={<UserPage />} />
           </Routes>
         </main>
       </Router>

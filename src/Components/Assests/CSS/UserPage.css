@@ -6,18 +6,24 @@
   font-family: "Poppins";
   justify-content: space-evenly;
 }
+@media only screen and (max-width: 900px) {
+  .parent {
+    flex-direction: column;
+  }
+
+}
 
 .projects {
   position: relative;
-  margin: 1rem;
-  width: 50%;
+
+  width: auto;
   /* height: 90vh; */
   border: none;
   box-shadow: 0 2px 7px rgb(0 0 0 / 20%);
 }
 .acm-projects {
   margin: 1rem;
-  padding: 25px;
+
   /* height: 50vh; */
   width: auto;
   border: none;
@@ -37,10 +43,10 @@
   border-radius: 5px;
   border: none;
   box-shadow: 0 2px 7px rgb(0 0 0 / 20%);
-  padding: 25px;
+  
   justify-content: center;
   /* margin: 2rem 2rem; */
-  width: 40%;
+  width: auto;
   /* margin-left:67rem; */
   display: flex;
 }

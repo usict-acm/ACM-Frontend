@@ -6,46 +6,123 @@ import { useState } from "react";
 import dataMember from "./dataMember";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import { useParams } from "react-router";
 
 const UserPage = function (props) {
+  const params = useParams();
   const [person, setPerson] = useState(dataMember);
 
   console.log(location.state);
   return (
+
+
     <div className="parent">
       <div className="profile">
         <div className="content">
           <div className="image">
-            <img
-              src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=600"
-              alt="gg"
-            />
+            <div>
+              {dataMember.map(data => {
+                const res = data.name.replace(/ /g, '')
+                console.log(params);
+                if (res == params.name) {
+                  return (
+                    <img
+                      src={data.image}
+                      alt="gg"
+                    />
+                  )
+
+                }
+              })}
+            </div>
+
           </div>
           <div className="mem-details">
-            <div className="sub-member-details">
-              <p>Name</p>
-              <p>Sincwe 2002</p>
+            <div>
+              {dataMember.map(data => {
+                const res = data.name.replace(/ /g, '')
+                console.log(params);
+                if (res == params.name) {
+                  return (
+                    <div className="sub-member-details">  <p>Name</p>
+                      <p>{data.name}</p></div>
+                  )
+
+                }
+              })}
             </div>
-            <div className="sub-member-details">
-              <p>DOB</p>
-              <p>Kdsdsdr</p>
+            <div>
+              {dataMember.map(data => {
+                const res = data.name.replace(/ /g, '')
+                console.log(params);
+                if (res == params.name) {
+                  return (
+                    <div className="sub-member-details">  <p>DOB</p>
+                      <p>{data.DOB}</p></div>
+                  )
+                }
+              })}
             </div>
-            <div className="sub-member-details">
-              <p>Mmebership Number</p>
-              <p>Kaasdsdmber</p>
+
+            <div>
+              {dataMember.map(data => {
+                const res = data.name.replace(/ /g, '')
+                console.log(params);
+                if (res == params.name) {
+                  return (
+                    <div className="sub-member-details">  <p>Membership No.</p>
+                      <p>{data.id}</p></div>
+                  )
+                }
+              })}
             </div>
-            <div className="sub-member-details">
-              <p>Part of ACM Since: </p>
-              <p>Kaae sd</p>
+
+
+
+            <div>
+              {dataMember.map(data => {
+                const res = data.name.replace(/ /g, '')
+                console.log(params);
+                if (res == params.name) {
+                  return (
+                    <div className="sub-member-details">  <p>Part of ACM Since:</p>
+                      <p>{data.age}</p></div>
+                  )
+                }
+              })}
             </div>
-            <div className="sub-member-details">
-              <p>Tech Stacks</p>
-              <p>Kaae sd</p>
+            
+            <div>
+              {dataMember.map(data => {
+                const res = data.name.replace(/ /g, '')
+                console.log(params);
+                if (res == params.name) {
+                  return (
+                    <div className="sub-member-details">  <p>Tech Stacks</p>
+                      <p>{data.TechStacks}</p></div>
+                  )
+                }
+              })}
             </div>
-            <div className="sub-member-details">
-              <p>Batcj </p>
-              <p>Kaae sd</p>
+
+            <div>
+              {dataMember.map(data => {
+                const res = data.name.replace(/ /g, '')
+                console.log(params);
+                if (res == params.name) {
+                  return (
+                    <div className="sub-member-details">  <p>Batch</p>
+                      <p>{data.batch}</p></div>
+                  )
+
+                }
+
+
+              })}
+
+
             </div>
+
           </div>
           <div className="social-handles">
             <LinkedInIcon />
@@ -57,8 +134,10 @@ const UserPage = function (props) {
         <div className="acm-projects">current projects in ACM with sliders</div>
       </div>
     </div>
-    // <div>Hello</div>
+
   );
+
+
 };
 
 export default UserPage;
