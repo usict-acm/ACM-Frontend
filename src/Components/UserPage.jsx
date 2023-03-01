@@ -132,12 +132,23 @@ const UserPage = function (props) {
       </div>
       <div className="projects">
         <div className="acm-projects">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit
-          quasi eius quo harum fugiat molestias dolores deleniti voluptatum odio
-          amet sequi vel cum aspernatur, porro, velit aperiam accusamus est
-          aliquam magni, deserunt tempora adipisci? Similique a officia rem
-          facere, vero, magni quos quam delectus explicabo, nobis quod! Totam,
-          nostrum aliquam.
+          <h2>Projects</h2>
+          <div className="flex-container">
+            <div className="ongoing" style={{}}>
+              <h4>Ongoing</h4>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam
+                odio labore temporibus fugiat perferendis saepe ipsa repellendus
+                rem unde ipsum repudiandae exercitationem error, dolores facere!
+              </p>
+            </div>
+            <div className="completed">
+              <h4>Completed</h4>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel
+              voluptate voluptatum quae impedit sapiente, dolorum quam ea iure,
+              id, cum eos rem incidunt dicta! Autem.
+            </div>
+          </div>
         </div>
       </div>
     </div>
