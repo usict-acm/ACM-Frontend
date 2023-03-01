@@ -14,115 +14,115 @@ const UserPage = function (props) {
 
   console.log(location.state);
   return (
-
-
     <div className="parent">
       <div className="profile">
         <div className="content">
           <div className="image">
             <div>
-              {dataMember.map(data => {
-                const res = data.name.replace(/ /g, '')
+              {dataMember.map((data) => {
+                const res = data.name.replace(/ /g, "");
                 console.log(params);
                 if (res == params.name) {
-                  return (
-                    <img
-                      src={data.image}
-                      alt="gg"
-                    />
-                  )
-
+                  return <img src={data.image} alt="gg" />;
                 }
               })}
             </div>
-
           </div>
           <div className="mem-details">
             <div>
-              {dataMember.map(data => {
-                const res = data.name.replace(/ /g, '')
+              {dataMember.map((data) => {
+                const res = data.name.replace(/ /g, "");
                 console.log(params);
                 if (res == params.name) {
                   return (
-                    <div className="sub-member-details">  <p>Name</p>
-                      <p>{data.name}</p></div>
-                  )
-
+                    <div className="sub-member-details">
+                      {" "}
+                      <p>Name</p>
+                      <p>{data.name}</p>
+                    </div>
+                  );
                 }
               })}
             </div>
             <div>
-              {dataMember.map(data => {
-                const res = data.name.replace(/ /g, '')
+              {dataMember.map((data) => {
+                const res = data.name.replace(/ /g, "");
                 console.log(params);
                 if (res == params.name) {
                   return (
-                    <div className="sub-member-details">  <p>DOB</p>
-                      <p>{data.DOB}</p></div>
-                  )
-                }
-              })}
-            </div>
-
-            <div>
-              {dataMember.map(data => {
-                const res = data.name.replace(/ /g, '')
-                console.log(params);
-                if (res == params.name) {
-                  return (
-                    <div className="sub-member-details">  <p>Membership No.</p>
-                      <p>{data.id}</p></div>
-                  )
-                }
-              })}
-            </div>
-
-
-
-            <div>
-              {dataMember.map(data => {
-                const res = data.name.replace(/ /g, '')
-                console.log(params);
-                if (res == params.name) {
-                  return (
-                    <div className="sub-member-details">  <p>Part of ACM Since:</p>
-                      <p>{data.age}</p></div>
-                  )
-                }
-              })}
-            </div>
-            
-            <div>
-              {dataMember.map(data => {
-                const res = data.name.replace(/ /g, '')
-                console.log(params);
-                if (res == params.name) {
-                  return (
-                    <div className="sub-member-details">  <p>Tech Stacks</p>
-                      <p>{data.TechStacks}</p></div>
-                  )
+                    <div className="sub-member-details">
+                      {" "}
+                      <p>DOB</p>
+                      <p>{data.DOB}</p>
+                    </div>
+                  );
                 }
               })}
             </div>
 
             <div>
-              {dataMember.map(data => {
-                const res = data.name.replace(/ /g, '')
+              {dataMember.map((data) => {
+                const res = data.name.replace(/ /g, "");
                 console.log(params);
                 if (res == params.name) {
                   return (
-                    <div className="sub-member-details">  <p>Batch</p>
-                      <p>{data.batch}</p></div>
-                  )
-
+                    <div className="sub-member-details">
+                      {" "}
+                      <p>Membership No.</p>
+                      <p>{data.id}</p>
+                    </div>
+                  );
                 }
-
-
               })}
-
-
             </div>
 
+            <div>
+              {dataMember.map((data) => {
+                const res = data.name.replace(/ /g, "");
+                console.log(params);
+                if (res == params.name) {
+                  return (
+                    <div className="sub-member-details">
+                      {" "}
+                      <p>Part of ACM Since:</p>
+                      <p>{data.age}</p>
+                    </div>
+                  );
+                }
+              })}
+            </div>
+
+            <div>
+              {dataMember.map((data) => {
+                const res = data.name.replace(/ /g, "");
+                console.log(params);
+                if (res == params.name) {
+                  return (
+                    <div className="sub-member-details">
+                      {" "}
+                      <p>Tech Stacks</p>
+                      <p>{data.TechStacks}</p>
+                    </div>
+                  );
+                }
+              })}
+            </div>
+
+            <div>
+              {dataMember.map((data) => {
+                const res = data.name.replace(/ /g, "");
+                console.log(params);
+                if (res == params.name) {
+                  return (
+                    <div className="sub-member-details">
+                      {" "}
+                      <p>Batch</p>
+                      <p>{data.batch}</p>
+                    </div>
+                  );
+                }
+              })}
+            </div>
           </div>
           <div className="social-handles">
             <LinkedInIcon />
@@ -131,13 +131,17 @@ const UserPage = function (props) {
         </div>
       </div>
       <div className="projects">
-        <div className="acm-projects">current projects in ACM with sliders</div>
+        <div className="acm-projects">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit
+          quasi eius quo harum fugiat molestias dolores deleniti voluptatum odio
+          amet sequi vel cum aspernatur, porro, velit aperiam accusamus est
+          aliquam magni, deserunt tempora adipisci? Similique a officia rem
+          facere, vero, magni quos quam delectus explicabo, nobis quod! Totam,
+          nostrum aliquam.
+        </div>
       </div>
     </div>
-
   );
-
-
 };
 
 export default UserPage;

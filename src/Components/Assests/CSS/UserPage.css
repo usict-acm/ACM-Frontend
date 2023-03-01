@@ -10,9 +10,7 @@
   .parent {
     flex-direction: column;
   }
-
 }
-
 .projects {
   position: relative;
 
@@ -20,7 +18,7 @@
   /* height: 90vh; */
   border: none;
   box-shadow: 0 2px 7px rgb(0 0 0 / 20%);
-  background-image: url("https://blog.hubspot.com/hubfs/GettyImages-1177482693.jpg");
+  /* background-image: url("https://blog.hubspot.com/hubfs/GettyImages-1177482693.jpg"); */
   background-size: cover;
 }
 .acm-projects {
