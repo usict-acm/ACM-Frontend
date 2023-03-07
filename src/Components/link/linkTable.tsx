@@ -30,7 +30,7 @@ const LinkTable = function (props: Props) {
     const [pageCount, setPageCount] = useState(0);
     const [deleteId, setDeleteId] = useState(0);
     const [showModal, setModal] = useState(false);
-    const [deleteReq, setDeleteReq] = useState({ read() {} });
+    const [deleteReq, setDeleteReq] = useState({ read() { } });
     deleteReq.read();
     const [itemOffset, setItemOffset] = useState(0);
     const endOffset = itemOffset + itemsPerPage;
