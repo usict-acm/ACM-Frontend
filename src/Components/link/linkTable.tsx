@@ -7,6 +7,7 @@ import { doFetch } from "../../api/fetchData";
 import wrapPromise from "../../api/wrapPromise";
 import { Link } from ".";
 import LinkRow from "./linkRow";
+import { Store } from "react-notifications-component";
 
 type Props = {
     data: { read(): Link[] };
@@ -21,6 +22,16 @@ async function handleDelete(
     const index = links.findIndex((blog) => blog.id === id);
     await doFetch(`/link/${links[index].id}`, "DELETE");
     newLinks.splice(index, 1);
+    Store.addNotification({
+        title: "Link Deleted",
+        message: "The link has been deleted successfully",
+        type: "danger",
+        container: "top-right",
+        dismiss: {
+            duration: 3000,
+            onScreen: true
+        }
+    });
     setLinks(newLinks);
 }
 

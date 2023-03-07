@@ -29,16 +29,7 @@ function LinkRow(props: Props) {
 
     const handleDeleteClick = (id: number) => {
         props.onDelete(id);
-        Store.addNotification({
-            title: "Link Deleted",
-            message: "The link has been deleted successfully",
-            type: "danger",
-            container: "top-right",
-            dismiss: {
-                duration: 3000,
-                onScreen: true
-            }
-        });
+
     };
 
     return (
