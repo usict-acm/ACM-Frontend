@@ -16,6 +16,8 @@ import TeamMobileTable from "./Components/TeamMobileTable";
 import FormSection from "./Components/FormSection";
 import ContactUsTable from "./Components/ContactUsTable";
 import ContactUsMobileTable from "./Components/ContactUsMobileTable";
+import {ReactNotifications} from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
 // Gforms files
 
 //Importing pages
@@ -33,6 +35,7 @@ function App() {
   return (
     <div className="App">
       <Router>
+      <ReactNotifications />
         <NavBar />
         <main>
           <Routes>
