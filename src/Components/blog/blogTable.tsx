@@ -38,15 +38,15 @@ async function handleStatusChange(
     setBlogs(newBlogs);
 }
 
-const BlogsTable = function (props: Props) {
+const BlogsTable = function(props: Props) {
     const [blogs, setBlogs] = useState(props.data.read());
     const itemsPerPage = 7;
     const [pageCount, setPageCount] = useState(0);
     const [deleteId, setDeleteId] = useState(0);
     const [showModal, setModal] = useState(false);
-    const [deleteReq, setDeleteReq] = useState({ read() {} });
+    const [deleteReq, setDeleteReq] = useState({ read() { } });
     deleteReq.read();
-    const [postReq, setPostReq] = useState({ read() {} });
+    const [postReq, setPostReq] = useState({ read() { } });
     postReq.read();
     const [itemOffset, setItemOffset] = useState(0);
     const endOffset = itemOffset + itemsPerPage;
@@ -54,7 +54,7 @@ const BlogsTable = function (props: Props) {
     useEffect(() => {
         setPageCount(Math.ceil(blogs.length / itemsPerPage));
     }, []);
-    const handlePageClick = (event: any) => {
+    const handlePageClick = (event: { selected: number }) => {
         const newOffset = (event.selected * itemsPerPage) % blogs.length;
         setItemOffset(newOffset);
     };
