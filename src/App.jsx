@@ -14,6 +14,8 @@ import TeamMobileTable from "./Components/TeamMobileTable";
 import FormSection from "./Components/FormSection";
 import ContactUsTable from "./Components/ContactUsTable";
 import ContactUsMobileTable from "./Components/ContactUsMobileTable";
+import { ReactNotifications } from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
 // Gforms files
 
 //Importing pages
@@ -31,6 +33,7 @@ function App() {
     return (
         <div className="App">
             <Router>
+                <ReactNotifications />
                 <NavBar />
                 <main>
                     <Routes>
@@ -38,7 +41,10 @@ function App() {
                         {/* <Route path="/" element={<TableDesktopMain />} /> */}
                         <Route path="/login" element={<Login />} />
 
-                        <Route path="/form/Announcement" element={<AnnouncementForm />} />
+                        <Route
+                            path="/form/Announcement"
+                            element={<AnnouncementForm />}
+                        />
                         {/* <Route path="/form/Announcements" element={<Blogs />} /> */}
 
                         <Route path="/form/Teams" element={<Team />} />
@@ -50,11 +56,17 @@ function App() {
                         <Route path="/signup" element={<Signup />} />
                         <Route path="/form/Blog" element={<BlogForm />} />
                         <Route path="/forms" element={<Forms />} />
-                        <Route path="/form/Certificate" element={<CertificateForm />} />
+                        <Route
+                            path="/form/Certificate"
+                            element={<CertificateForm />}
+                        />
                         <Route path="/form/Team" element={<Team />} />
                         {/* *********************************************************** */}
                         <Route path="/fill/:id" element={<Fill />} />
-                        <Route path="/submissions/:id" element={<Submissions />} />
+                        <Route
+                            path="/submissions/:id"
+                            element={<Submissions />}
+                        />
                         {/* *********************************************************** */}
 
                         <Route
@@ -79,7 +91,10 @@ function App() {
                                 </>
                             }
                         />
-                        <Route path="/Announcement-Table" element={<AnnouncementTable />} />
+                        <Route
+                            path="/Announcement-Table"
+                            element={<AnnouncementTable />}
+                        />
                         <Route
                             path="/ContactUs-Table"
                             element={
