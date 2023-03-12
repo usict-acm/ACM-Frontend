@@ -25,8 +25,8 @@ const Members = function () {
               <td data-label="S.No">
                 {
                   people.map(data => {
-                    if (item.name == data.name) {
-                      const res = data.name.replace(/ /g, '')
+                    if (item.id == data.id) {
+                      const res = data.name.replace(/ /g, '').concat(data.id)
                       return ( 
                         <Link to={`/User/${res}`}>
                           <img className="image-person" src={item.image} />{" "}

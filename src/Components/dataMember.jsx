@@ -24,7 +24,7 @@ export default [
   {
     id: 31234567,
     DOB: "3/1/2004",
-    name: "Baljeet Singh",
+    name: "Tushar Sharma",
     mem_from: "1 year",
     state: "left",
     TechStacks: "Kotlin",

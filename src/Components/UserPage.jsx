@@ -21,7 +21,7 @@ const UserPage = function (props) {
           <div className="image">
             <div>
               {dataMember.map((data) => {
-                const res = data.name.replace(/ /g, "");
+                const res = data.name.replace(/ /g, "").concat(data.id);
                 console.log(params);
                 if (res == params.name) {
                   return <img src={data.image} alt="gg" />;
@@ -32,7 +32,7 @@ const UserPage = function (props) {
           <div className="mem-details">
             <div>
               {dataMember.map((data) => {
-                const res = data.name.replace(/ /g, "");
+                const res = data.name.replace(/ /g, "").concat(data.id);
                 console.log(params);
                 if (res == params.name) {
                   return (
@@ -47,7 +47,7 @@ const UserPage = function (props) {
             </div>
             <div>
               {dataMember.map((data) => {
-                const res = data.name.replace(/ /g, "");
+                const res = data.name.replace(/ /g, "").concat(data.id);
                 console.log(params);
                 if (res == params.name) {
                   return (
@@ -63,7 +63,7 @@ const UserPage = function (props) {
 
             <div>
               {dataMember.map((data) => {
-                const res = data.name.replace(/ /g, "");
+                const res = data.name.replace(/ /g, "").concat(data.id);
                 console.log(params);
                 if (res == params.name) {
                   return (
@@ -79,7 +79,7 @@ const UserPage = function (props) {
 
             <div>
               {dataMember.map((data) => {
-                const res = data.name.replace(/ /g, "");
+                const res = data.name.replace(/ /g, "").concat(data.id);
                 console.log(params);
                 if (res == params.name) {
                   return (
@@ -94,7 +94,7 @@ const UserPage = function (props) {
             </div>
             <div>
               {dataMember.map((data) => {
-                const res = data.name.replace(/ /g, "");
+                const res = data.name.replace(/ /g, "").concat(data.id);
                 console.log(params);
                 if (res == params.name) {
                   return (
@@ -110,7 +110,7 @@ const UserPage = function (props) {
 
             <div>
               {dataMember.map((data) => {
-                const res = data.name.replace(/ /g, "");
+                const res = data.name.replace(/ /g, "").concat(data.id);
                 console.log(params);
                 if (res == params.name) {
                   return (
@@ -126,7 +126,7 @@ const UserPage = function (props) {
 
             <div>
               {dataMember.map((data) => {
-                const res = data.name.replace(/ /g, "");
+                const res = data.name.replace(/ /g, "").concat(data.id);
                 console.log(params);
                 if (res == params.name) {
                   return (
@@ -155,6 +155,7 @@ const UserPage = function (props) {
               <div className="title">
                 <h4>Ongoing</h4>
                 <button className="project-btn">Add Project</button>
+                
               </div>
               <p>
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam
