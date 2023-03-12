@@ -7,10 +7,8 @@ import { BlogTable, BlogForm } from "./Components/blog";
 // import Navb from "./Components/FormNav";
 // import Teams from "./Components/Forms/Teams";
 import { LinkTable, LinkForm } from "./Components/link";
-import Team from "./Components/Forms/Teams";
 import { CertificateTable, CertificateForm } from "./Components/certificate";
-import TeamTable from "./Components/TeamTable";
-import TeamMobileTable from "./Components/TeamMobileTable";
+import { TeamTable, TeamForm } from "./Components/team";
 import FormSection from "./Components/FormSection";
 import ContactUsTable from "./Components/ContactUsTable";
 import ContactUsMobileTable from "./Components/ContactUsMobileTable";
@@ -47,7 +45,6 @@ function App() {
                         />
                         {/* <Route path="/form/Announcements" element={<Blogs />} /> */}
 
-                        <Route path="/form/Teams" element={<Team />} />
                         <Route path="/form/Link" element={<LinkForm />} />
                         {/* <Route path="/" element={<Home />} /> */}
                         {/* change 1 */}
@@ -60,7 +57,7 @@ function App() {
                             path="/form/Certificate"
                             element={<CertificateForm />}
                         />
-                        <Route path="/form/Team" element={<Team />} />
+                        <Route path="/form/Team" element={<TeamForm />} />
                         {/* *********************************************************** */}
                         <Route path="/fill/:id" element={<Fill />} />
                         <Route
@@ -82,13 +79,7 @@ function App() {
                         <Route
                             path="/Teams-Table"
                             element={
-                                <>
-                                    {window.innerWidth > 750 ? (
-                                        <TeamTable />
-                                    ) : (
-                                        <TeamMobileTable />
-                                    )}
-                                </>
+                                <TeamTable />
                             }
                         />
                         <Route

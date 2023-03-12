@@ -55,7 +55,6 @@ export default function Form() {
                     <form
                         className={matches ? "w-100 notTable-form" : "w-100"}
                         onSubmit={(e) => {
-                            console.log("this is running");
                             e.preventDefault();
                             setReq(fetchData("/certificate", "POST", state));
                         }}
