@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "../../Assests/CSS/certificate.css";
+import "../Assests/CSS/certificate.css";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
