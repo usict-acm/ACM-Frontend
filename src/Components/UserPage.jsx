@@ -155,7 +155,6 @@ const UserPage = function (props) {
               <div className="title">
                 <h4>Ongoing</h4>
                 <button className="project-btn">Add Project</button>
-                
               </div>
               <p>
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam
@@ -164,10 +163,15 @@ const UserPage = function (props) {
               </p>
             </div>
             <div className="completed-container">
-              <h4>Completed</h4>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel
-              voluptate voluptatum quae impedit sapiente, dolorum quam ea iure,
-              id, cum eos rem incidunt dicta! Autem.
+              <div className="title">
+                <h4>Completed</h4>
+                <button className="delete">Delete Project</button>
+              </div>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel
+                voluptate voluptatum quae impedit sapiente, dolorum quam ea
+                iure, id, cum eos rem incidunt dicta! Autem.
+              </p>
             </div>
           </div>
         </div>
