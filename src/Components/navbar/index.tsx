@@ -4,6 +4,7 @@ import { BsFillMegaphoneFill } from "react-icons/bs";
 import { FaBlogger } from "react-icons/fa";
 import { FaLink } from "react-icons/fa";
 import { FaAward } from "react-icons/fa";
+import { FaHandsHelping } from "react-icons/fa";
 import { BsFillPeopleFill } from "react-icons/bs";
 import { FaPhoneSquareAlt } from "react-icons/fa";
 export default function NavBar() {
@@ -54,7 +55,13 @@ export default function NavBar() {
           </Link>
         </li>
         <li className="nav-item">
-          <Link to="/Teams-Table" className="nav-link">
+          <Link to="/Join-Us" className="nav-link">
+            <FaHandsHelping className="icons" />
+            <span className="link-text">Join Us</span>
+          </Link>
+        </li>        
+        <li className="nav-item">
+          <Link to="/Contact-Us" className="nav-link">
             <FaPhoneSquareAlt className="icons" />
             <span className="link-text">Contact Us</span>
           </Link>
