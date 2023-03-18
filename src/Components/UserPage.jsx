@@ -2,25 +2,41 @@ import React from "react";
 import { useLocation } from "react-router";
 import "./Assests/CSS/UserPage.css";
 import Members from "./Members";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import dataMember from "./dataMember";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { useParams } from "react-router";
 import { GitHub } from "@mui/icons-material";
+import axios from "axios";
 
 const UserPage = function (props) {
   const params = useParams();
   const [person, setPerson] = useState(dataMember);
+  const [dataa, setData] = useState([]);
+  const [edit, seteditData] = useState(false);
+  const url = "http://localhost:8000/name";
+  const fetchInfo = () => {
+    return axios.get(url).then((res) => setData(res.data));
+
+  };
+
+
+  useEffect(() => {
+    fetchInfo();
+  }, []);
 
   console.log(location.state);
   return (
     <div className="parent">
       <div className="profile">
         <div className="content">
+          <button type="button" onClick={() => seteditData(true)}
+            id="edit" name="edit">Edit</button>
           <div className="image">
             <div>
-              {dataMember.map((data) => {
+              {dataa.map((data) => {
+
                 const res = data.name.replace(/ /g, "").concat(data.id);
                 console.log(params);
                 if (res == params.name) {
@@ -29,9 +45,11 @@ const UserPage = function (props) {
               })}
             </div>
           </div>
+          
           <div className="mem-details">
-            <div>
-              {dataMember.map((data) => {
+          <div>
+          
+              {dataa.map((data) => {
                 const res = data.name.replace(/ /g, "").concat(data.id);
                 console.log(params);
                 if (res == params.name) {
@@ -40,13 +58,18 @@ const UserPage = function (props) {
                       {" "}
                       <p>Name</p>
                       <p>{data.name}</p>
+                  
+                     
+                      
                     </div>
+               
+             
                   );
                 }
               })}
             </div>
             <div>
-              {dataMember.map((data) => {
+              {dataa.map((data) => {
                 const res = data.name.replace(/ /g, "").concat(data.id);
                 console.log(params);
                 if (res == params.name) {
@@ -62,7 +85,7 @@ const UserPage = function (props) {
             </div>
 
             <div>
-              {dataMember.map((data) => {
+              {dataa.map((data) => {
                 const res = data.name.replace(/ /g, "").concat(data.id);
                 console.log(params);
                 if (res == params.name) {
@@ -78,22 +101,24 @@ const UserPage = function (props) {
             </div>
 
             <div>
-              {dataMember.map((data) => {
+              {dataa.map((data) => {
                 const res = data.name.replace(/ /g, "").concat(data.id);
                 console.log(params);
+
                 if (res == params.name) {
+
                   return (
                     <div className="sub-member-details">
                       {" "}
                       <p>Member from:</p>
-                      <p>{data.mem_from}</p>
+                      <p>{data.added_on}</p>
                     </div>
                   );
                 }
               })}
             </div>
             <div>
-              {dataMember.map((data) => {
+              {dataa.map((data) => {
                 const res = data.name.replace(/ /g, "").concat(data.id);
                 console.log(params);
                 if (res == params.name) {
@@ -109,7 +134,7 @@ const UserPage = function (props) {
             </div>
 
             <div>
-              {dataMember.map((data) => {
+              {dataa.map((data) => {
                 const res = data.name.replace(/ /g, "").concat(data.id);
                 console.log(params);
                 if (res == params.name) {
@@ -125,7 +150,7 @@ const UserPage = function (props) {
             </div>
 
             <div>
-              {dataMember.map((data) => {
+              {dataa.map((data) => {
                 const res = data.name.replace(/ /g, "").concat(data.id);
                 console.log(params);
                 if (res == params.name) {
@@ -133,7 +158,7 @@ const UserPage = function (props) {
                     <div className="sub-member-details">
                       {" "}
                       <p>Batch:</p>
-                      <p>{data.batch}</p>
+                      <p>{data.year}</p>
                     </div>
                   );
                 }
@@ -155,7 +180,7 @@ const UserPage = function (props) {
               <div className="title">
                 <h4>Ongoing</h4>
                 <button className="project-btn">Add Project</button>
-                
+                <button className="delete">Delete Project</button>
               </div>
               <p>
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam
@@ -164,10 +189,15 @@ const UserPage = function (props) {
               </p>
             </div>
             <div className="completed-container">
-              <h4>Completed</h4>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel
-              voluptate voluptatum quae impedit sapiente, dolorum quam ea iure,
-              id, cum eos rem incidunt dicta! Autem.
+              <div className="title">
+                <h4>Completed</h4>
+
+              </div>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel
+                voluptate voluptatum quae impedit sapiente, dolorum quam ea
+                iure, id, cum eos rem incidunt dicta! Autem.
+              </p>
             </div>
           </div>
         </div>
