@@ -91,7 +91,36 @@
   height: 8vh;
   width: 30vw;
 }
+
+#edit{
+  position:inherit;
+  padding:0.3rem;
+  font-size:18px;
+  font-weight:bold;
+  margin: 1rem;
+  width:20%;
+  border: none;
+  background-color: white;
+  /* box-shadow:3px 5px rgb(145, 160, 255)  ; */
+  box-shadow: 4px 6px 2px 0px rgba(0, 82, 180, 0.32);
+cursor: pointer;
+outline: none;
+transition: 0.3s all;
+}
+input{
+  margin:0.5rem;
+  box-shadow:6px 2px  rgba(178, 186, 196, 0.8);
+  border:none;
+  outline:navajowhite;
+}
+#edit:active{
+  transform:scale(0.90);
+}
+
 @media (max-width: 600px) {
+  #edit{
+    width:30%;
+  }
   .parent {
     grid-template-columns: 100%;
     grid-template-rows: repeat(3, auto);
@@ -182,3 +211,7 @@ h4{
  padding: 0.3rem;
 }
 
+
+
+
+      

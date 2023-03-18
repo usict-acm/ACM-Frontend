@@ -8,6 +8,8 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { useParams } from "react-router";
 import { GitHub } from "@mui/icons-material";
+import EditIcon from "@mui/icons-material/EditOutlined";
+
 import axios from "axios";
 
 const UserPage = function (props) {
@@ -18,10 +20,7 @@ const UserPage = function (props) {
   const url = "http://localhost:8000/name";
   const fetchInfo = () => {
     return axios.get(url).then((res) => setData(res.data));
-
   };
-
-
   useEffect(() => {
     fetchInfo();
   }, []);
@@ -31,12 +30,18 @@ const UserPage = function (props) {
     <div className="parent">
       <div className="profile">
         <div className="content">
-          <button type="button" onClick={() => seteditData(true)}
-            id="edit" name="edit">Edit</button>
+          <button
+            type="button"
+            onClick={() => seteditData(true)}
+            id="edit"
+            name="edit"
+          >
+            Edit
+            <EditIcon />
+          </button>
           <div className="image">
             <div>
               {dataa.map((data) => {
-
                 const res = data.name.replace(/ /g, "").concat(data.id);
                 console.log(params);
                 if (res == params.name) {
@@ -45,28 +50,35 @@ const UserPage = function (props) {
               })}
             </div>
           </div>
-          
+
           <div className="mem-details">
-          <div>
-          
-              {dataa.map((data) => {
-                const res = data.name.replace(/ /g, "").concat(data.id);
-                console.log(params);
-                if (res == params.name) {
-                  return (
-                    <div className="sub-member-details">
-                      {" "}
-                      <p>Name</p>
-                      <p>{data.name}</p>
-                  
-                     
-                      
-                    </div>
-               
-             
-                  );
-                }
-              })}
+            <div>
+              {edit ? (
+                <div className="sub-member-details">
+                  <p>Name</p>
+                  <input
+                    type="text"
+                    value={person.name}
+                    onChange={(e) =>
+                      setPerson({ ...person, name: e.target.value })
+                    }
+                  />
+                </div>
+              ) : (
+                dataa.map((data) => {
+                  const res = data.name.replace(/ /g, "").concat(data.id);
+                  console.log(params);
+                  if (res == params.name) {
+                    return (
+                      <div className="sub-member-details">
+                        {" "}
+                        <p>Name</p>
+                        <p>{data.name}</p>
+                      </div>
+                    );
+                  }
+                })
+              )}
             </div>
             <div>
               {dataa.map((data) => {
@@ -106,7 +118,6 @@ const UserPage = function (props) {
                 console.log(params);
 
                 if (res == params.name) {
-
                   return (
                     <div className="sub-member-details">
                       {" "}
@@ -118,35 +129,64 @@ const UserPage = function (props) {
               })}
             </div>
             <div>
-              {dataa.map((data) => {
-                const res = data.name.replace(/ /g, "").concat(data.id);
-                console.log(params);
-                if (res == params.name) {
-                  return (
-                    <div className="sub-member-details">
-                      {" "}
-                      <p>Currently:</p>
-                      <p>{data.state}</p>
-                    </div>
-                  );
-                }
-              })}
+              {edit ? (
+                <div className="sub-member-details">
+                  <p>Currently:</p>
+                  <input
+                    type="text"
+                    value={person.state}
+                    onChange={(e) =>
+                      setPerson({
+                        ...person,
+                        state: e.target.value,
+                      })
+                    }
+                  />
+                </div>
+              ) : (
+                dataa.map((data) => {
+                  const res = data.name.replace(/ /g, "").concat(data.id);
+                  console.log(params);
+                  if (res == params.name) {
+                    return (
+                      <div className="sub-member-details">
+                        {" "}
+                        <p>Currently:</p>
+                        <p>{data.state}</p>
+                      </div>
+                    );
+                  }
+                })
+              )}
             </div>
 
             <div>
-              {dataa.map((data) => {
-                const res = data.name.replace(/ /g, "").concat(data.id);
-                console.log(params);
-                if (res == params.name) {
-                  return (
-                    <div className="sub-member-details">
-                      {" "}
-                      <p>Tech Stacks:</p>
-                      <p>{data.TechStacks}</p>
-                    </div>
-                  );
-                }
-              })}
+              {edit ? (
+                <div className="sub-member-details">
+                  <p>Tech Stacks</p>
+                  <input
+                    type="text"
+                    value={person.TechStacks}
+                    onChange={(e) =>
+                      setPerson({ ...person, TechStacks: e.target.value })
+                    }
+                  />
+                </div>
+              ) : (
+                dataa.map((data) => {
+                  const res = data.name.replace(/ /g, "").concat(data.id);
+                  console.log(params);
+                  if (res == params.name) {
+                    return (
+                      <div className="sub-member-details">
+                        {" "}
+                        <p>Tech Stacks:</p>
+                        <p>{data.TechStacks}</p>
+                      </div>
+                    );
+                  }
+                })
+              )}
             </div>
 
             <div>
@@ -180,7 +220,6 @@ const UserPage = function (props) {
               <div className="title">
                 <h4>Ongoing</h4>
                 <button className="project-btn">Add Project</button>
-                <button className="delete">Delete Project</button>
               </div>
               <p>
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam
@@ -191,7 +230,7 @@ const UserPage = function (props) {
             <div className="completed-container">
               <div className="title">
                 <h4>Completed</h4>
-
+                <button className=" project-btn delete">Delete Project</button>
               </div>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel
