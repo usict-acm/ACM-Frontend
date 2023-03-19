@@ -61,7 +61,7 @@ export default function NavBar() {
           </Link>
         </li>        
         <li className="nav-item">
-          <Link to="/Contact-Us" className="nav-link">
+          <Link to="/ContactUs-Table" className="nav-link">
             <FaPhoneSquareAlt className="icons" />
             <span className="link-text">Contact Us</span>
           </Link>

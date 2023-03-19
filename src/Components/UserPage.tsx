@@ -17,7 +17,7 @@ export default function UserPage() {
     const params = useParams();
     const id = params.id;
     const [resource, setResource] = useState(
-        fetchData<Team>(`/event/${id}`, "GET")
+        fetchData<Team>(`/ewent/${id}`, "GET")
     );
     return (
         <ErrorBoundary

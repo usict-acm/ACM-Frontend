@@ -7,11 +7,10 @@ import { BlogTable, BlogForm } from "./Components/blog";
 // import Navb from "./Components/FormNav";
 // import Teams from "./Components/Forms/Teams";
 import { LinkTable, LinkForm } from "./Components/link";
+import { ContactUsTable } from "./Components/contactUs";
 import { CertificateTable, CertificateForm } from "./Components/certificate";
 import { TeamTable, TeamForm } from "./Components/team";
 import FormSection from "./Components/FormSection";
-import ContactUsTable from "./Components/ContactUsTable";
-import ContactUsMobileTable from "./Components/ContactUsMobileTable";
 import { ReactNotifications } from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 // Gforms files
@@ -89,13 +88,7 @@ function App() {
                         <Route
                             path="/ContactUs-Table"
                             element={
-                                <>
-                                    {window.innerWidth > 750 ? (
-                                        <ContactUsTable />
-                                    ) : (
-                                        <ContactUsMobileTable />
-                                    )}
-                                </>
+                                <ContactUsTable />
                             }
                         />
                         <Route
