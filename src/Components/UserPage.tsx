@@ -13,7 +13,7 @@ import { ErrorBoundary } from "./errorBoundary";
 import { Spinner } from "react-bootstrap";
 import { fetchData } from "../api/fetchData";
 
-function UserPageWrapper() {
+export default function UserPage() {
     const params = useParams();
     const id = params.id;
     const [resource, setResource] = useState(
@@ -34,12 +34,13 @@ function UserPageWrapper() {
                     </Spinner>
                 }
             ></Suspense>
-            <UserPage data = {resource}/>
+            <UserPageInner data = {resource}/>
         </ErrorBoundary>
     );
 }
 
-const UserPage = function (props: { data: { read(): Team } }) {
+const UserPageInner = function (props: { data: { read(): Team } }) {
+    const data = props.data.read();
     const [person, setPerson] = useState(dataMember);
     const [dataa, setData] = useState([]);
     const [edit, seteditData] = useState(false);
@@ -290,5 +291,3 @@ const UserPage = function (props: { data: { read(): Team } }) {
         </div>
     );
 };
-
-export default UserPage;
