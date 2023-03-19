@@ -55,7 +55,7 @@ export default function NavBar() {
           </Link>
         </li>
         <li className="nav-item">
-          <Link to="/Join-Us" className="nav-link">
+          <Link to="/JoinUs-Table" className="nav-link">
             <FaHandsHelping className="icons" />
             <span className="link-text">Join Us</span>
           </Link>
