@@ -9,23 +9,45 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { useParams } from "react-router";
 import { GitHub } from "@mui/icons-material";
 import EditIcon from "@mui/icons-material/EditOutlined";
-
 import axios from "axios";
+import { doFetch } from "../api/fetchData";
+
+async function updateData(id, changedData) {
+  return await doFetch(`/team/${id}`, "PATCH", changedData);
+}
 
 const UserPage = function (props) {
   const params = useParams();
   const [person, setPerson] = useState(dataMember);
   const [dataa, setData] = useState([]);
   const [edit, seteditData] = useState(false);
+  const [data, newData] = useState({
+    name: "",
+    status: "",
+    TechStacks: "",
+  });
   const url = "http://localhost:8000/name";
   const fetchInfo = () => {
-    return axios.get(url).then((res) => setData(res.data));
+    return axios.get(url).then((res) => {
+      setData(res.data);
+      const dataObj = res.data.find((data) => {
+        const res = data.name.replace(/ /g, "").concat(data.id);
+        return res === params.name;
+      });
+      newData(dataObj);
+      setPerson(dataObj);
+    });
   };
   useEffect(() => {
     fetchInfo();
   }, []);
 
-  console.log(location.state);
+  const handleSave = () => {
+    setPerson(data);
+    setEdit(false);
+    updateData(person.id, data);
+  };
+
   return (
     <div className="parent">
       <div className="profile">
@@ -59,9 +81,7 @@ const UserPage = function (props) {
                   <input
                     type="text"
                     value={person.name}
-                    onChange={(e) =>
-                      setPerson({ ...person, name: e.target.value })
-                    }
+                    onChange={(e) => setData({ ...data, name: e.target.value })}
                   />
                 </div>
               ) : (
@@ -136,8 +156,8 @@ const UserPage = function (props) {
                     type="text"
                     value={person.state}
                     onChange={(e) =>
-                      setPerson({
-                        ...person,
+                      setData({
+                        ...data,
                         state: e.target.value,
                       })
                     }
@@ -168,7 +188,7 @@ const UserPage = function (props) {
                     type="text"
                     value={person.TechStacks}
                     onChange={(e) =>
-                      setPerson({ ...person, TechStacks: e.target.value })
+                      setData({ ...data, TechStacks: e.target.value })
                     }
                   />
                 </div>
@@ -203,6 +223,9 @@ const UserPage = function (props) {
                   );
                 }
               })}
+              <button type="button" onClick={handleSave}>
+                Save
+              </button>
             </div>
           </div>
           <div className="social-handles">
