@@ -1,0 +1,82 @@
+import { useState, Suspense } from "react";
+import "./Assests/CSS/Members.css";
+import { Link } from "react-router-dom";
+import { fetchData } from "../api/fetchData";
+import { ErrorBoundary } from "./errorBoundary";
+import { Spinner } from "react-bootstrap";
+
+export type Team = {
+    id: number;
+    image: string;
+    name: string;
+    designation: string;
+    linkedin: string | null;
+    github: string | null;
+    instagram: string | null;
+    year: number;
+    category: string;
+    added_on: Date;
+    active: boolean;
+};
+
+function MemberTable(props: { data: { read(): Team[] } }) {
+    const data = props.data.read();
+    return (
+        <table className="table-container">
+            <thead className="heading-table">
+                <tr>
+                    <th>SNo</th>
+                    <th>Name</th>
+                    <th>Membership Number</th>
+                    <th>Batch</th>
+                </tr>
+            </thead>
+            <tbody className="body-table">
+                {data.map((item) => {
+                    return <MemberRow item={item} key={item.id} />;
+                })}
+            </tbody>
+        </table>
+    );
+}
+
+function MemberRow(props: { item: Team }) {
+    const res = props.item.name.replace(/ /g, '').concat(String(props.item.id));
+    return (
+        <tr className="table-row" key={props.item.id}>
+            <>
+                <td data-label="S.No">
+                    <Link to={`/User/${res}`}>
+                        <img className="image-person" src="https://staticg.sportskeeda.com/editor/2022/11/a402f-16694231050443-1920.jpg" />{" "}
+                    </Link>
+                </td>
+                <td data-label="Name">{props.item.name}</td>
+                <td data-label="Membership Number">{props.item.id}</td>
+                <td data-label="Batch">{props.item.year}</td>
+            </>
+        </tr>
+    );
+}
+
+export default function Members() {
+    const [resource, setResource] = useState(fetchData<Team[]>("/team", "GET"));
+    return (
+        <ErrorBoundary
+            onReset={() => setResource(fetchData<Team[]>("/team", "GET"))}
+        >
+            <Suspense
+                fallback={
+                    <Spinner
+                        animation="border"
+                        role="status"
+                        className="position-absolute top-50 start-50"
+                    >
+                        <span className="visually-hidden">Loading...</span>
+                    </Spinner>
+                }
+            >
+                <MemberTable data={resource} />
+            </Suspense>
+        </ErrorBoundary>
+    );
+}
