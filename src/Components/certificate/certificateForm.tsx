@@ -1,4 +1,5 @@
 import CardMembershipIcon from "@mui/icons-material/CardMembership";
+import { formatDateForInput } from "../../utils"
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { Certificate } from ".";
@@ -113,7 +114,7 @@ export default function Form() {
                                 type="date"
                                 id="startDate"
                                 className="form-control"
-                                value={state.startDate.toString()}
+                                value={formatDateForInput(state.startDate)}
                                 onChange={(e) => {
                                     onChangeState({
                                         startDate: new Date(e.target?.value),
@@ -129,7 +130,7 @@ export default function Form() {
                             <input
                                 type="date"
                                 id="endDate"
-                                value={state.endDate.toString()}
+                                value={formatDateForInput(state.endDate)}
                                 onChange={(e) => {
                                     onChangeState({
                                         endDate: new Date(e.target?.value),
