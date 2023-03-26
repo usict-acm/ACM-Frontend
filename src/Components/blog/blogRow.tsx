@@ -7,6 +7,11 @@ type props = {
     handleDeleteClick(id: number): void;
     handleStatusChangeClick(id: number, isApprove: boolean): void;
 };
+
+function onEyeButtonClick(id: number) {
+    const url = `https://usict.acm.org/test_acm/singleBlog.php?Id=${id}`;
+    window.open(url, '_blank')!.focus();
+}
 function BlogRow(props: props) {
     return (
         <tr>
@@ -39,7 +44,7 @@ function BlogRow(props: props) {
             )}
 
             <td data-label="">
-                <VisibilityIcon className="new-icons" />
+                <VisibilityIcon className="new-icons" onClick={() => onEyeButtonClick(props.blog.id)} />
                 <DeleteIcon
                     onClick={() => props.handleDeleteClick(props.blog.id)}
                     className="new-icons"

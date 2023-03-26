@@ -7,11 +7,11 @@ import { BlogTable, BlogForm } from "./Components/blog";
 // import Navb from "./Components/FormNav";
 // import Teams from "./Components/Forms/Teams";
 import { LinkTable, LinkForm } from "./Components/link";
+import { ContactUsTable } from "./Components/contactUs";
+import { JoinUsTable } from "./Components/joinUs";
 import { CertificateTable, CertificateForm } from "./Components/certificate";
 import { TeamTable, TeamForm } from "./Components/team";
 import FormSection from "./Components/FormSection";
-import ContactUsTable from "./Components/ContactUsTable";
-import ContactUsMobileTable from "./Components/ContactUsMobileTable";
 import { ReactNotifications } from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 // Gforms files
@@ -22,8 +22,6 @@ import Forms from "./pages/Forms";
 import Fill from "./Components/Fill";
 import Submissions from "./Components/Submissions";
 // import CreateForms from "./Components/Gforms";
-import JoinUsTable from "./Components/JoinUsTable";
-import JoinUsMobileTable from "./Components/JoinUsTableMobile";
 import NavBar from "./Components/navbar";
 import UserPage from "./Components/UserPage";
 import Members from "./Components/Members";
@@ -76,40 +74,16 @@ function App() {
                         />
                         <Route path="/Links-Table" element={<LinkTable />} />
                         <Route path="/Blogs-table" element={<BlogTable />} />
-                        <Route
-                            path="/Teams-Table"
-                            element={
-                                <TeamTable />
-                            }
-                        />
+                        <Route path="/Teams-Table" element={<TeamTable />} />
                         <Route
                             path="/Announcement-Table"
                             element={<AnnouncementTable />}
                         />
                         <Route
                             path="/ContactUs-Table"
-                            element={
-                                <>
-                                    {window.innerWidth > 750 ? (
-                                        <ContactUsTable />
-                                    ) : (
-                                        <ContactUsMobileTable />
-                                    )}
-                                </>
-                            }
+                            element={<ContactUsTable />}
                         />
-                        <Route
-                            path="/JoinUs-Table"
-                            element={
-                                <>
-                                    {window.innerWidth > 750 ? (
-                                        <JoinUsTable />
-                                    ) : (
-                                        <JoinUsMobileTable />
-                                    )}
-                                </>
-                            }
-                        />
+                        <Route path="/JoinUs-Table" element={<JoinUsTable />} />
                         <Route path="/Members" element={<Members />} />
                         <Route path="/User/:name" element={<UserPage />} />
                     </Routes>

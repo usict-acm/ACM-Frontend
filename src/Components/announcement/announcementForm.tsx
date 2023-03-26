@@ -2,6 +2,7 @@ import { useState, useEffect, ChangeEvent } from "react";
 import { useNavigate } from "react-router";
 import { fetchData } from "../../api/fetchData";
 import "../Assests/CSS/forms.css";
+import { formatDateForInput } from "../../utils"
 import { Event } from ".";
 
 type EventCreate = Omit<Event, "id">;
@@ -119,7 +120,7 @@ function AnnouncementForm() {
                             type="date"
                             className="form-control"
                             id="startDate"
-                            value={state.startDate.toString()}
+                            value={formatDateForInput(state.startDate)}
                             onChange={(e) =>
                                 onChangeState({
                                     startDate: new Date(e.target?.value),
@@ -136,7 +137,7 @@ function AnnouncementForm() {
                             type="date"
                             className="form-control"
                             id="endDate"
-                            value={state.endDate.toString()}
+                            value={formatDateForInput(state.endDate)}
                             onChange={(e) =>
                                 onChangeState({
                                     endDate: new Date(e.target?.value),
