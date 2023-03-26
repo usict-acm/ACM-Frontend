@@ -1,7 +1,7 @@
 import React from "react";
-import { useLocation } from "react-router";
+// import { useLocation } from "react-router";
 import "./Assests/CSS/UserPage.css";
-import Members from "./Members";
+// import Members from "./Members";
 import { useState, useEffect } from "react";
 import dataMember from "./dataMember";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -21,31 +21,34 @@ const UserPage = function (props) {
   const [person, setPerson] = useState(dataMember);
   const [dataa, setData] = useState([]);
   const [edit, seteditData] = useState(false);
-  const [data, newData] = useState({
-    name: "",
-    status: "",
-    TechStacks: "",
-  });
+  const [data, newData] = useState(person);
+  //   name: "",
+  //   status: "",
+  //   TechStacks: "",
+  // });
   const url = "http://localhost:8000/name";
   const fetchInfo = () => {
-    return axios.get(url).then((res) => {
-      setData(res.data);
-      const dataObj = res.data.find((data) => {
-        const res = data.name.replace(/ /g, "").concat(data.id);
-        return res === params.name;
+    if (!Array.isArray(dataa)) return null;
+    else {
+      return axios.get(url).then((res) => {
+        setData(res.data);
+        const dataObj = res.data.find((data) => {
+          const res = data.name.replace(/ /g, "").concat(data.id);
+          return res === params.name;
+        });
+        newData(dataObj);
+        setPerson(dataObj);
       });
-      newData(dataObj);
-      setPerson(dataObj);
-    });
+    }
   };
   useEffect(() => {
     fetchInfo();
   }, []);
 
   const handleSave = () => {
-    setPerson(data);
-    setEdit(false);
     updateData(person.id, data);
+    setPerson(data);
+    seteditData(false);
   };
 
   return (
@@ -63,13 +66,14 @@ const UserPage = function (props) {
           </button>
           <div className="image">
             <div>
-              {dataa.map((data) => {
-                const res = data.name.replace(/ /g, "").concat(data.id);
-                console.log(params);
-                if (res == params.name) {
-                  return <img src={data.image} alt="gg" />;
-                }
-              })}
+              {dataa &&
+                dataa.map((data) => {
+                  const res = data.name.replace(/ /g, "").concat(data.id);
+                  console.log(params);
+                  if (res == params.name) {
+                    return <img src={data.image} alt="gg" />;
+                  }
+                })}
             </div>
           </div>
 
@@ -80,7 +84,7 @@ const UserPage = function (props) {
                   <p>Name</p>
                   <input
                     type="text"
-                    value={person.name}
+                    value={data.name}
                     onChange={(e) => setData({ ...data, name: e.target.value })}
                   />
                 </div>
@@ -154,7 +158,7 @@ const UserPage = function (props) {
                   <p>Currently:</p>
                   <input
                     type="text"
-                    value={person.state}
+                    value={data.state}
                     onChange={(e) =>
                       setData({
                         ...data,
@@ -186,7 +190,7 @@ const UserPage = function (props) {
                   <p>Tech Stacks</p>
                   <input
                     type="text"
-                    value={person.TechStacks}
+                    value={data.TechStacks}
                     onChange={(e) =>
                       setData({ ...data, TechStacks: e.target.value })
                     }
@@ -223,9 +227,13 @@ const UserPage = function (props) {
                   );
                 }
               })}
-              <button type="button" onClick={handleSave}>
-                Save
-              </button>
+              {edit ? (
+                <button id="edit" type="button" onClick={handleSave}>
+                  Save
+                </button>
+              ) : (
+                ""
+              )}
             </div>
           </div>
           <div className="social-handles">
