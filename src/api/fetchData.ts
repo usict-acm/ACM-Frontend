@@ -1,5 +1,8 @@
+import { Navigate } from "react-router";
 import wrapPromise from "../api/wrapPromise";
+import { EncodeResult } from "../Components/Login";
 const backendUrl = "http://localhost:3000"
+let session : EncodeResult | null = null;
 
 function reviveDate(key : any, value : any) {
     // Matches strings like "2022-08-25T09:39:19.288Z"
@@ -10,12 +13,25 @@ function reviveDate(key : any, value : any) {
 }
 
 export async function doFetch(url: string, method: string, body?: any) {
+    if(!session) {
+        const str = localStorage.getItem("session");
+        if(!str) {
+            Navigate({ to : "/login"});
+            return;
+        }
+        session = JSON.parse(str);
+        if(typeof(session?.token) === "string") {
+            Navigate({ to : "/login"});
+            return;
+        }
+    }
     let data = await fetch(`${backendUrl}${url}`,
         {
             method: method,
             body: JSON.stringify(body),
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "X-JWT-TOKEN" : session!.token,
             }
         });
     return JSON.parse(await data.text(), reviveDate);
