@@ -4,6 +4,8 @@ import {
     Routes,
     Route,
     Navigate,
+    useNavigate,
+    useLocation
 } from "react-router-dom";
 import { AnnouncementTable, AnnouncementForm } from "./Components/announcement";
 import Login from "./Components/Login";
@@ -32,13 +34,73 @@ import UserPage from "./Components/UserPage";
 import Members from "./Components/Members";
 import { getSession } from "./api/fetchData";
 import { useEffect } from "react";
-function App() {
+function RenderRoutes() {
+
+    return <>
+        <Route path="/" element={<AnnouncementTable />} />
+        <Route path="/login" element={<Login />} />
+
+        <Route
+            path="/form/Announcement"
+            element={<AnnouncementForm />}
+        />
+
+        <Route path="/form/Link" element={<LinkForm />} />
+        {/* <Route path="/" element={<Home />} /> */}
+        {/* change 1 */}
+        <Route path="/form-table" element={<FormSection />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/form/Blog" element={<BlogForm />} />
+        <Route path="/forms" element={<Forms />} />
+        <Route
+            path="/form/Certificate"
+            element={<CertificateForm />}
+        />
+        <Route path="/form/Team" element={<TeamForm />} />
+        {/* *********************************************************** */}
+        <Route path="/fill/:id" element={<Fill />} />
+        <Route
+            path="/submissions/:id"
+            element={<Submissions />}
+        />
+        {/* *********************************************************** */}
+
+        <Route
+            path="/Certificate-Table"
+            element={
+                <>
+                    <CertificateTable />
+                </>
+            }
+        />
+        <Route path="/Links-Table" element={<LinkTable />} />
+        <Route path="/Blogs-table" element={<BlogTable />} />
+        <Route path="/Teams-Table" element={<TeamTable />} />
+        <Route
+            path="/Announcement-Table"
+            element={<AnnouncementTable />}
+        />
+        <Route
+            path="/ContactUs-Table"
+            element={<ContactUsTable />}
+        />
+        <Route path="/JoinUs-Table" element={<JoinUsTable />} />
+        <Route path="/Members" element={<Members />} />
+        <Route path="/User/:name" element={<UserPage />} />
+    </>
+}
+
+function CheckLogin() {
     const session = getSession();
-    useEffect(() => {
-        if(!session && window.location.pathname != "/login") {
-            window.location.href = "/login";
-        }
-    }, []);
+    const location = useLocation();
+    if (location.pathname == "/login") {
+        return;
+    }
+    return (!session && <Navigate to="/login" />)
+}
+
+function App() {
     return (
         <div className="App">
             <Router>
@@ -46,60 +108,9 @@ function App() {
                 <NavBar />
                 <main>
                     <Routes>
-                        <Route path="/" element={<AnnouncementTable />} />
-                        {/* <Route path="/" element={<TableDesktopMain />} /> */}
-                        <Route path="/login" element={<Login />} />
-
-                        <Route
-                            path="/form/Announcement"
-                            element={<AnnouncementForm />}
-                        />
-                        {/* <Route path="/form/Announcements" element={<Blogs />} /> */}
-
-                        <Route path="/form/Link" element={<LinkForm />} />
-                        {/* <Route path="/" element={<Home />} /> */}
-                        {/* change 1 */}
-                        <Route path="/form-table" element={<FormSection />} />
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/signup" element={<Signup />} />
-                        <Route path="/form/Blog" element={<BlogForm />} />
-                        <Route path="/forms" element={<Forms />} />
-                        <Route
-                            path="/form/Certificate"
-                            element={<CertificateForm />}
-                        />
-                        <Route path="/form/Team" element={<TeamForm />} />
-                        {/* *********************************************************** */}
-                        <Route path="/fill/:id" element={<Fill />} />
-                        <Route
-                            path="/submissions/:id"
-                            element={<Submissions />}
-                        />
-                        {/* *********************************************************** */}
-
-                        <Route
-                            path="/Certificate-Table"
-                            element={
-                                <>
-                                    <CertificateTable />
-                                </>
-                            }
-                        />
-                        <Route path="/Links-Table" element={<LinkTable />} />
-                        <Route path="/Blogs-table" element={<BlogTable />} />
-                        <Route path="/Teams-Table" element={<TeamTable />} />
-                        <Route
-                            path="/Announcement-Table"
-                            element={<AnnouncementTable />}
-                        />
-                        <Route
-                            path="/ContactUs-Table"
-                            element={<ContactUsTable />}
-                        />
-                        <Route path="/JoinUs-Table" element={<JoinUsTable />} />
-                        <Route path="/Members" element={<Members />} />
-                        <Route path="/User/:name" element={<UserPage />} />
+                        {RenderRoutes()}
                     </Routes>
+                    <CheckLogin />
                 </main>
             </Router>
             {/* {window.innerWidth > 750 ? <Sidebar /> : <BottomNav />} */}
