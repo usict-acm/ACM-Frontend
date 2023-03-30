@@ -117,6 +117,7 @@ input{
   transform:scale(0.90);
 }
 
+
 @media (max-width: 600px) {
   #edit{
     width:30%;
@@ -200,15 +201,29 @@ h4{
 
 }
 .project-btn{
-  margin-left:35vw;
+  margin-left:33vw;
   display: inline;  
  flex-direction: column;
  width: auto;
- border:1px solid black;
+ border:none;
  font-weight: bold;
- background-color: rgba(1, 94, 255, 0.831);
+ background-color: rgba(61, 119, 236, 0.831);
  text-align: center;
- padding: 0.3rem;
+ padding: 0.6rem;
+ cursor: pointer;
+ outline: none;
+ transition: 0.2s all;
+}
+.delete{
+ /* width:25%; */
+ padding: 0.7rem !important;
+ margin-left:30vw;
+}
+
+.project-btn:active{
+transform: scale(0.94);
+border:2px solid black;
+transition:all;
 }
 
 
