@@ -1,5 +1,10 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    Navigate,
+} from "react-router-dom";
 import { AnnouncementTable, AnnouncementForm } from "./Components/announcement";
 import Login from "./Components/Login";
 import { BlogTable, BlogForm } from "./Components/blog";
@@ -25,7 +30,15 @@ import Submissions from "./Components/Submissions";
 import NavBar from "./Components/navbar";
 import UserPage from "./Components/UserPage";
 import Members from "./Components/Members";
+import { getSession } from "./api/fetchData";
+import { useEffect } from "react";
 function App() {
+    const session = getSession();
+    useEffect(() => {
+        if(!session && window.location.pathname != "/login") {
+            window.location.href = "/login";
+        }
+    }, []);
     return (
         <div className="App">
             <Router>

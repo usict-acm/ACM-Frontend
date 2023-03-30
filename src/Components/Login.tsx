@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { NavigateFunction, useNavigate } from "react-router";
-import { doFetch } from "../api/fetchData";
+import { useNavigate } from "react-router";
+import { doFetch, setSession } from "../api/fetchData";
 import "./Assests/CSS/login.css";
 
 export interface EncodeResult {
@@ -10,17 +10,14 @@ export interface EncodeResult {
 }
 
 async function onLogin(
-    creds: { email: string; password: string },
-    navigate: NavigateFunction
+    creds: { email: string; password: string, rememberMe: boolean },
 ) {
-    try {
-        let res: EncodeResult = await doFetch("/login", "POST", creds);
+    let res: EncodeResult = await doFetch("/login", "POST", creds);
+    setSession(res);
+    if (creds.rememberMe) {
         localStorage.setItem("session", JSON.stringify(res));
-        console.log(res);
-    } catch (e: any) {
-        console.log("error on login!");
-        navigate("/login");
     }
+    console.log(res);
 }
 
 function Login() {
@@ -46,7 +43,12 @@ function Login() {
                 <form
                     onSubmit={async (e) => {
                         e.preventDefault();
-                        await onLogin(state, navigate);
+                        try {
+                            await onLogin(state);
+                            navigate("/");
+                        } catch (e: any) {
+                            console.log(e);
+                        }
                     }}
                 >
                     <h2>Login...</h2>
