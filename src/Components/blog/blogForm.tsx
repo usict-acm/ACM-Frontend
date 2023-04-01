@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import "../Assests/CSS/forms.css";
-import MDEBlog from "../Forms/MDEBlog";
-import "react-mde/lib/styles/css/react-mde-all.css";
 import CardMembershipIcon from "@mui/icons-material/CardMembership";
 import { Blog } from ".";
 import { Buffer } from "buffer";
@@ -88,7 +86,6 @@ function BlogForm() {
                                 required
                             />
                         </div>
-                        <MDEBlog />
 
                         <div className="mb-3">
                             <label

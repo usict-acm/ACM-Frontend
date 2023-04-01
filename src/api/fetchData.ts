@@ -1,6 +1,6 @@
 import wrapPromise from "../api/wrapPromise";
 import { EncodeResult } from "../Components/Login";
-const backendUrl = "http://localhost:3000"
+const backendUrl = import.meta.env.VITE_BACKEND_URL
 
 let x = localStorage.getItem('session');
 let session: EncodeResult | null = x && x != "undefined" ? JSON.parse(x!) : null;

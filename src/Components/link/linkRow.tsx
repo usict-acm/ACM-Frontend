@@ -1,10 +1,9 @@
-import React from "react";
 import { Store } from 'react-notifications-component';
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import 'react-notifications-component/dist/theme.css'
-import { useState } from "react";
+import { Link } from ".";
 
 type Props = {
     link: Link;
