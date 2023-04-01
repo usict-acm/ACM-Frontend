@@ -87,7 +87,7 @@ function RenderRoutes() {
         />
         <Route path="/JoinUs-Table" element={<JoinUsTable />} />
         <Route path="/Members" element={<Members />} />
-        <Route path="/User/:name" element={<UserPage />} />
+        <Route path="/User/:id" element={<UserPage />} />
     </>
 }
 
@@ -97,7 +97,7 @@ function CheckLogin() {
     if (location.pathname == "/login") {
         return;
     }
-    return (!session && <Navigate to="/login" />)
+    return ((!session || session.expires < +new Date()) && <Navigate to="/login" />)
 }
 
 function App() {

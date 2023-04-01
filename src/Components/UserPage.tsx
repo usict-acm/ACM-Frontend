@@ -1,9 +1,7 @@
-import React, { Suspense } from "react";
-import { useLocation } from "react-router";
+import { Suspense } from "react";
 import "./Assests/CSS/UserPage.css";
 import { Team } from "./Members";
-import { useState, useEffect } from "react";
-import dataMember from "./dataMember";
+import { useState } from "react";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { useParams } from "react-router";
@@ -12,16 +10,17 @@ import EditIcon from "@mui/icons-material/EditOutlined";
 import { ErrorBoundary } from "./errorBoundary";
 import { Spinner } from "react-bootstrap";
 import { fetchData } from "../api/fetchData";
+import { formatDateForInput } from "../utils";
 
 export default function UserPage() {
     const params = useParams();
     const id = params.id;
     const [resource, setResource] = useState(
-        fetchData<Team>(`/ewent/${id}`, "GET")
+        fetchData<Team>(`/team/${id}`, "GET")
     );
     return (
         <ErrorBoundary
-            onReset={() => setResource(fetchData<Team>(`/event/${id}`, "GET"))}
+            onReset={() => setResource(fetchData<Team>(`/team/${id}`, "GET"))}
         >
             <Suspense
                 fallback={
@@ -33,17 +32,21 @@ export default function UserPage() {
                         <span className="visually-hidden">Loading...</span>
                     </Spinner>
                 }
-            ></Suspense>
-            <UserPageInner data = {resource}/>
+            >
+                <UserPageInner data={resource} />
+            </Suspense>
         </ErrorBoundary>
     );
 }
 
-const UserPageInner = function (props: { data: { read(): Team } }) {
-    const data = props.data.read();
-    const [person, setPerson] = useState(dataMember);
-    const [dataa, setData] = useState([]);
+const UserPageInner = function(props: { data: { read(): Team } }) {
+    const [data, setData] = useState(props.data.read());
     const [edit, seteditData] = useState(false);
+    const [saveReq, setSaveReq] = useState<{ read(): any }>({ read() { } })
+    saveReq.read();
+    const handleSave = () => {
+        setSaveReq(fetchData(`/team/${data.id}`, "PATCH", data));
+    };
     return (
         <div className="parent">
             <div className="profile">
@@ -59,15 +62,7 @@ const UserPageInner = function (props: { data: { read(): Team } }) {
                     </button>
                     <div className="image">
                         <div>
-                            {dataa.map((data) => {
-                                const res = data.name
-                                    .replace(/ /g, "")
-                                    .concat(data.id);
-                                console.log(params);
-                                if (res == params.name) {
-                                    return <img src={data.image} alt="gg" />;
-                                }
-                            })}
+                            <img src={data.image} alt="gg" />
                         </div>
                     </div>
 
@@ -78,118 +73,91 @@ const UserPageInner = function (props: { data: { read(): Team } }) {
                                     <p>Name</p>
                                     <input
                                         type="text"
-                                        value={person.name}
+                                        value={data.name}
                                         onChange={(e) =>
-                                            setPerson({
-                                                ...person,
+                                            setData({
+                                                ...data,
                                                 name: e.target.value,
                                             })
                                         }
                                     />
                                 </div>
                             ) : (
-                                dataa.map((data) => {
-                                    const res = data.name
-                                        .replace(/ /g, "")
-                                        .concat(data.id);
-                                    console.log(params);
-                                    if (res == params.name) {
-                                        return (
-                                            <div className="sub-member-details">
-                                                {" "}
-                                                <p>Name</p>
-                                                <p>{data.name}</p>
-                                            </div>
-                                        );
-                                    }
-                                })
+                                <div className="sub-member-details">
+                                    {" "}
+                                    <p>Name</p>
+                                    <p>{data.name}</p>
+                                </div>
                             )}
-                        </div>
-                        <div>
-                            {dataa.map((data) => {
-                                const res = data.name
-                                    .replace(/ /g, "")
-                                    .concat(data.id);
-                                console.log(params);
-                                if (res == params.name) {
-                                    return (
-                                        <div className="sub-member-details">
-                                            {" "}
-                                            <p>DOB</p>
-                                            <p>{data.DOB}</p>
-                                        </div>
-                                    );
-                                }
-                            })}
-                        </div>
-
-                        <div>
-                            {dataa.map((data) => {
-                                const res = data.name
-                                    .replace(/ /g, "")
-                                    .concat(data.id);
-                                console.log(params);
-                                if (res == params.name) {
-                                    return (
-                                        <div className="sub-member-details">
-                                            {" "}
-                                            <p>Membership No.</p>
-                                            <p>{data.id}</p>
-                                        </div>
-                                    );
-                                }
-                            })}
-                        </div>
-
-                        <div>
-                            {dataa.map((data) => {
-                                const res = data.name
-                                    .replace(/ /g, "")
-                                    .concat(data.id);
-                                console.log(params);
-
-                                if (res == params.name) {
-                                    return (
-                                        <div className="sub-member-details">
-                                            {" "}
-                                            <p>Member from:</p>
-                                            <p>{data.added_on}</p>
-                                        </div>
-                                    );
-                                }
-                            })}
                         </div>
                         <div>
                             {edit ? (
                                 <div className="sub-member-details">
-                                    <p>Currently:</p>
+                                    <p>DOB</p>
                                     <input
-                                        type="text"
-                                        value={person.state}
+                                        type="date"
+                                        value={formatDateForInput(
+                                            data.dob ? data.dob : new Date()
+                                        )}
                                         onChange={(e) =>
-                                            setPerson({
-                                                ...person,
-                                                state: e.target.value,
+                                            setData({
+                                                ...data,
+                                                dob: new Date(e.target!.value),
                                             })
                                         }
                                     />
                                 </div>
                             ) : (
-                                dataa.map((data) => {
-                                    const res = data.name
-                                        .replace(/ /g, "")
-                                        .concat(data.id);
-                                    console.log(params);
-                                    if (res == params.name) {
-                                        return (
-                                            <div className="sub-member-details">
-                                                {" "}
-                                                <p>Currently:</p>
-                                                <p>{data.state}</p>
-                                            </div>
-                                        );
-                                    }
-                                })
+                                <div className="sub-member-details">
+                                    {" "}
+                                    <p>DOB</p>
+                                    <p>
+                                        {data.dob
+                                            ? data.dob!.toString()
+                                            : "null"}
+                                    </p>
+                                </div>
+                            )}
+                        </div>
+
+                        <div>
+                            <div className="sub-member-details">
+                                {" "}
+                                <p>Membership No.</p>
+                                <p>{data.id}</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div className="sub-member-details">
+                                {" "}
+                                <p>Member from:</p>
+                                <p>{data.added_on.toString()}</p>
+                            </div>
+                        </div>
+                        <div>
+                            {edit ? (
+                                <div className="sub-member-details">
+                                    <p>Currently:</p>
+                                    <select
+                                        value={data.active.toString()}
+                                        onChange={(e) =>
+                                            setData({
+                                                ...data,
+                                                active: Boolean(e.target.value),
+                                            })
+                                        }
+                                    >
+                                        <option value="true">True</option>
+                                        <option value="false">False</option>
+                                    </select>
+                                </div>
+                            ) : (
+                                <div className="sub-member-details">
+                                    {" "}
+                                    <p>Currently:</p>
+                                    <p>{data.active.toString()}</p>
+                                </div>
                             )}
                         </div>
 
@@ -199,56 +167,63 @@ const UserPageInner = function (props: { data: { read(): Team } }) {
                                     <p>Tech Stacks</p>
                                     <input
                                         type="text"
-                                        value={person.TechStacks}
+                                        value={
+                                            data.techStack
+                                                ? data.techStack!
+                                                : ""
+                                        }
                                         onChange={(e) =>
-                                            setPerson({
-                                                ...person,
-                                                TechStacks: e.target.value,
+                                            setData({
+                                                ...data,
+                                                techStack: e.target.value,
                                             })
                                         }
                                     />
                                 </div>
                             ) : (
-                                dataa.map((data) => {
-                                    const res = data.name
-                                        .replace(/ /g, "")
-                                        .concat(data.id);
-                                    console.log(params);
-                                    if (res == params.name) {
-                                        return (
-                                            <div className="sub-member-details">
-                                                {" "}
-                                                <p>Tech Stacks:</p>
-                                                <p>{data.TechStacks}</p>
-                                            </div>
-                                        );
-                                    }
-                                })
+                                <div className="sub-member-details">
+                                    {" "}
+                                    <p>Tech Stacks:</p>
+                                    <p>{data.techStack}</p>
+                                </div>
                             )}
                         </div>
 
                         <div>
-                            {dataa.map((data) => {
-                                const res = data.name
-                                    .replace(/ /g, "")
-                                    .concat(data.id);
-                                console.log(params);
-                                if (res == params.name) {
-                                    return (
-                                        <div className="sub-member-details">
-                                            {" "}
-                                            <p>Batch:</p>
-                                            <p>{data.year}</p>
-                                        </div>
-                                    );
-                                }
-                            })}
+                            <div className="sub-member-details">
+                                {" "}
+                                <p>Batch:</p>
+                                <p>{data.year}</p>
+                            </div>
+                            {edit ? (
+                                <button
+                                    id="edit"
+                                    type="button"
+                                    onClick={handleSave}
+                                >
+                                    Save
+                                </button>
+                            ) : (
+                                ""
+                            )}
                         </div>
                     </div>
                     <div className="social-handles">
-                        <LinkedInIcon />
-                        <InstagramIcon />
-                        <GitHub />
+                        {data.linkedin && (
+                            <a href={data.linkedin}>
+                                <LinkedInIcon />
+                            </a>
+                        )}
+                        {data.instagram && (
+                            <a href={data.instagram}>
+                                <InstagramIcon />
+                            </a>
+                        )}
+                        {data.github && (
+                            <a href={data.github}>
+                                <GitHub />
+                            </a>
+                        )}
                     </div>
                 </div>
             </div>
