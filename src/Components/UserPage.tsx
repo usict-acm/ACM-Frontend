@@ -62,7 +62,7 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                     </button>
                     <div className="image">
                         <div>
-                            <img src= {`../${data.image}`} alt="gg" />
+                            <img className="img-body" src= {`../${data.image}`}   alt="gg" />
                         </div>
                     </div>
 
@@ -256,7 +256,7 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                                     Add Project
                                 </button>
                             </div>
-                            <p>
+                            <p className="desc">
                                 Lorem ipsum, dolor sit amet consectetur
                                 adipisicing elit. Magnam odio labore temporibus
                                 fugiat perferendis saepe ipsa repellendus rem
@@ -272,7 +272,7 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                                     Delete Project
                                 </button>
                             </div>
-                            <p>
+                            <p className="desc">
                                 Lorem ipsum dolor sit amet consectetur
                                 adipisicing elit. Vel voluptate voluptatum quae
                                 impedit sapiente, dolorum quam ea iure, id, cum
