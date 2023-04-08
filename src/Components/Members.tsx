@@ -19,6 +19,7 @@ export type Team = {
   techStack: string | null
   dob: Date | null
   active: boolean
+  membershipNo:string
 }
 
 function MemberTable(props: { data: { read(): Team[] } }) {
@@ -53,7 +54,7 @@ function MemberRow(props: { item: Team }) {
                     </Link>
                 </td>
                 <td data-label="Name">{props.item.name}</td>
-                <td data-label="Membership Number">{props.item.id}</td>
+                <td data-label="Membership Number">{props.item.membershipNo}</td>
                 <td data-label="Batch">{props.item.year}</td>
             </>
         </tr>

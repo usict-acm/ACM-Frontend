@@ -14,6 +14,21 @@
   /* border-bottom:0.5px solid rgb(14, 168, 224,0.85); */
 /* box-shadow:1px 0px 10px 1px rgb(14, 168, 224,0.85); */
 }
+::-webkit-scrollbar{
+  width:0.6em;
+  
+}
+::-webkit-scrollbar-track{
+  background:hsl(0, 4%, 81%);
+  margin-block:0.2em ;
+  border-radius:0.5em;
+}
+::-webkit-scrollbar-thumb{
+  background:hsl(202, 63%, 48%);
+  border-radius:0.5em;
+
+
+}
 
 .headings{
   font-weight: bold;
