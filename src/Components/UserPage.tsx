@@ -62,7 +62,7 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                     </button>
                     <div className="image">
                         <div>
-                            <img src={data.image} alt="gg" />
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY0_sy5dSQ_44g7lnT3Cp2lS34AEEM-m5oKw&usqp=CAU" alt="gg" />
                         </div>
                     </div>
 
@@ -70,7 +70,7 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                         <div>
                             {edit ? (
                                 <div className="sub-member-details">
-                                    <p>Name</p>
+                                    <p className="headings">Name</p>
                                     <input
                                         type="text"
                                         value={data.name}
@@ -85,7 +85,7 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                             ) : (
                                 <div className="sub-member-details">
                                     {" "}
-                                    <p>Name</p>
+                                    <p className="headings" >Name</p>
                                     <p>{data.name}</p>
                                 </div>
                             )}
@@ -93,7 +93,7 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                         <div>
                             {edit ? (
                                 <div className="sub-member-details">
-                                    <p>DOB</p>
+                                    <p className="headings">DOB</p>
                                     <input
                                         type="date"
                                         value={formatDateForInput(
@@ -110,7 +110,7 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                             ) : (
                                 <div className="sub-member-details">
                                     {" "}
-                                    <p>DOB</p>
+                                    <p className="headings">DOB</p>
                                     <p>
                                         {data.dob
                                             ? data.dob!.toString()
@@ -123,7 +123,7 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                         <div>
                             <div className="sub-member-details">
                                 {" "}
-                                <p>Membership No.</p>
+                                <p className="headings">Membership No.</p>
                                 <p>{data.id}</p>
                             </div>
                         </div>
@@ -131,14 +131,14 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                         <div>
                             <div className="sub-member-details">
                                 {" "}
-                                <p>Member from:</p>
+                                <p className="headings">Member from</p>
                                 <p>{data.added_on.toString()}</p>
                             </div>
                         </div>
                         <div>
                             {edit ? (
                                 <div className="sub-member-details">
-                                    <p>Currently:</p>
+                                    <p className="headings">Currently</p>
                                     <select
                                         value={data.active.toString()}
                                         onChange={(e) =>
@@ -155,7 +155,7 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                             ) : (
                                 <div className="sub-member-details">
                                     {" "}
-                                    <p>Currently:</p>
+                                    <p className="headings">Currently</p>
                                     <p>{data.active.toString()}</p>
                                 </div>
                             )}
@@ -164,7 +164,7 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                         <div>
                             {edit ? (
                                 <div className="sub-member-details">
-                                    <p>Tech Stacks</p>
+                                    <p className="headings">Tech Stacks</p>
                                     <input
                                         type="text"
                                         value={
@@ -183,7 +183,7 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                             ) : (
                                 <div className="sub-member-details">
                                     {" "}
-                                    <p>Tech Stacks:</p>
+                                    <p className="headings">Tech Stacks</p>
                                     <p>{data.techStack}</p>
                                 </div>
                             )}
@@ -192,7 +192,7 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                         <div>
                             <div className="sub-member-details">
                                 {" "}
-                                <p>Batch:</p>
+                                <p className="headings">Batch:</p>
                                 <p>{data.year}</p>
                             </div>
                             {edit ? (
@@ -245,6 +245,7 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                                 unde ipsum repudiandae exercitationem error,
                                 dolores facere!
                             </p>
+                            <img className="ong-img" style={{height:"50%",width:"45%",backgroundSize:"cover",marginLeft:"10vw"}} src="https://5.imimg.com/data5/ZZ/BH/OL/SELLER-4335989/e-commerce-website-design-1000x1000.jpg" alt="" />
                         </div>
                         <div className="completed-container">
                             <div className="title">
@@ -259,7 +260,11 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                                 impedit sapiente, dolorum quam ea iure, id, cum
                                 eos rem incidunt dicta! Autem.
                             </p>
+                            <img className="ong-img" style=
+                            {{height:"50%",width:"45%",backgroundSize:"cover",marginLeft:"10vw"}} src="https://www.theinsaneapp.com/wp-content/uploads/2022/01/maxresdefault-_47_-1.webp" alt="" />
                         </div>
+                        
+                         
                     </div>
                 </div>
             </div>

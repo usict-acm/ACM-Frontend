@@ -1,34 +1,52 @@
 .parent {
+  
   height: 100%;
   width: 100%;
   display: flex;
   flex-direction: row;
-  font-family: "Poppins";
+  font-family: "poppins";
   justify-content: space-evenly;
 }
+.content{
+  border-radius: 5px;
+  /* border-right:6px solid #1b58a8; */
+  border-right:6px solid rgb(14, 168, 224,0.85);
+  /* border-bottom:0.5px solid rgb(14, 168, 224,0.85); */
+/* box-shadow:1px 0px 10px 1px rgb(14, 168, 224,0.85); */
+}
+
+.headings{
+  font-weight: bold;
+}
+
 @media only screen and (max-width: 900px) {
   .parent {
     flex-direction: column;
   }
 }
+
 .projects {
   position: relative;
-
+  box-shadow:2px 1px 10px 2px rgb(214, 211, 211,0.85) !important;
   width: auto;
-  height: 90vh;
+  /* height:max-content; */
+  height: 110vh;
   border: none;
   box-shadow: 0 2px 7px rgb(0 0 0 / 20%);
-  /* background-image: url("https://blog.hubspot.com/hubfs/GettyImages-1177482693.jpg"); */
+  /* background: url("https://blog.hubspot.com/hubfs/GettyImages-1177482693.jpg"); */
   background-size: cover;
 }
+
+
 .acm-projects {
   margin: 1rem;
   height: 50vh;
   width: 50vw;
   border: none;
-  font-weight:bolder; 
+  font-weight: bolder; 
   /* box-shadow: 0 2px 7px rgb(0 0 0 / 20%); */
 }
+
 .personal-projects {
   margin: 1rem;
   padding: 25px;
@@ -69,7 +87,8 @@
   /* height: 45vh; */
   border-radius: 5px;
   border: none;
-  box-shadow: 0 2px 7px rgb(0 0 0 / 20%);
+  border-top: 1px solid black;
+  /* box-shadow: 0px 1px 10px 1px rgb(0 0 0 / 20%); */
   width: 30vw;
   padding: 1rem;
   margin-top: 2rem;
@@ -86,36 +105,57 @@
   padding: 1rem;
   display: flex;
   justify-content: center;
-  border-top: 3px solid;
+  border-top: 2px solid rgb(0, 0, 0,0.8);
   /* box-shadow: 0 2px 7px rgb(0 0 0 / 20%); */
   height: 8vh;
   width: 30vw;
 }
 
+
 #edit{
   position:inherit;
   padding:0.3rem;
   font-size:18px;
-  font-weight:bold;
+  font-weight:500;
   margin: 1rem;
   width:20%;
   border: none;
-  background-color: white;
-  /* box-shadow:3px 5px rgb(145, 160, 255)  ; */
-  box-shadow: 4px 6px 2px 0px rgba(0, 82, 180, 0.32);
+  color: white;
+  background-color:#0e6cd8cf;
+  /* border: 2px solid ; */
+  border-radius: 5px;
+  opacity:0.8;
 cursor: pointer;
 outline: none;
 transition: 0.3s all;
 }
+#edit:hover{
+  opacity:1;
+}
+  #edit:active{
+    transform:scale(0.90);
+  }
+
 input{
   margin:0.5rem;
-  box-shadow:6px 2px  rgba(178, 186, 196, 0.8);
+  /* box-shadow:6px 2px  rgba(178, 186, 196, 0.8); */
   border:none;
-  outline:navajowhite;
+  border-bottom: 2px solid rgba(11, 9, 9, 0.5);
+  outline:none;
+padding:0.5rem;
+
 }
-#edit:active{
-  transform:scale(0.90);
+input[type=text]:focus {
+  opacity:1;
+  border:2px solid rgb(106, 152, 227);
+box-shadow:1px 0px 4px 1px rgb(106, 152, 227); 
+  /* border-left:3px solid rgb(41, 95, 182); */
 }
+/* input:active{
+  border:none;
+  border-bottom:2px solid black !important;
+} */
+
 
 
 @media (max-width: 600px) {
@@ -181,50 +221,61 @@ input{
   flex-direction: column;
 }
 .ongoing-container{
-  height:40vh;
+  height:50vh;
 }
-/* .completed-container{
-  height:40vh;
-} */
+.completed-container{
+  height:50vh;
+}
 h2{
   text-align: center;
   margin-bottom:5vh;
 }
-h4{
-  text-decoration: underline;
-}
+
 
 .title{
+  font-weight: bolder;
   display: flex;
   flex-direction: row;
   margin-bottom:3vh;
 
 }
-.project-btn{
-  margin-left:33vw;
-  display: inline;  
- flex-direction: column;
- width: auto;
- border:none;
- font-weight: bold;
- background-color: rgba(61, 119, 236, 0.831);
- text-align: center;
- padding: 0.6rem;
- cursor: pointer;
- outline: none;
- transition: 0.2s all;
+
+.project-btn {
+  margin-left: 33vw;
+  border-style:inset;
+  border:2px solid black;
+  display: inline-flex;
+  flex-direction: column;
+  width: auto;
+  border: none;
+  font-weight: bold;
+  background-color: rgba(98, 149, 250, 0.831);
+  text-align: center;
+  padding: 0.6rem;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  transform:translateY(0px);
+}
+.project-btn:hover{
+  border:2px solid black;
+
+}
+.project-btn:focus {
+  transform: translateY(-5px);
+  transform: scale(0.94);
+
 }
 .delete{
  /* width:25%; */
  padding: 0.7rem !important;
  margin-left:30vw;
 }
-
-.project-btn:active{
-transform: scale(0.94);
-border:2px solid black;
-transition:all;
+.delete:focus{
+  transform: scale(0.94);
 }
+
+
 
 
 
