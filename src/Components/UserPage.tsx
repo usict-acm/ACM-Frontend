@@ -113,7 +113,7 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                                     <p className="headings">DOB</p>
                                     <p>
                                         {data.dob
-                                            ? data.dob!.toString()
+                                            ? data.dob!.toDateString()
                                             : "null"}
                                     </p>
                                 </div>
@@ -121,12 +121,30 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                         </div>
 
                         <div>
-                            <div className="sub-member-details">
+                            <div>
+                            {edit?(
+                               <div className="sub-member-details">
+                               <p className="headings">Membership No</p>
+                               <input
+                                   type="text"
+                                   value={data.membershipNo}
+                                   onChange={(e) =>
+                                       setData({
+                                           ...data,
+                                           membershipNo: e.target.value,
+                                       })
+                                   }
+                               />
+                           </div> 
+                            ):(<div className="sub-member-details">
                                 {" "}
                                 <p className="headings">Membership No.</p>
-                                <p>{data.id}</p>
-                            </div>
+                                <p>{data.membershipNo}</p>
+                            </div>)}
+                            
                         </div>
+                            </div>
+                      
 
                         <div>
                             <div className="sub-member-details">
