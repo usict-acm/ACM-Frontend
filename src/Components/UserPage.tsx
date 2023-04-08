@@ -62,7 +62,7 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                     </button>
                     <div className="image">
                         <div>
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY0_sy5dSQ_44g7lnT3Cp2lS34AEEM-m5oKw&usqp=CAU" alt="gg" />
+                            <img src= {`../${data.image}`} alt="gg" />
                         </div>
                     </div>
 

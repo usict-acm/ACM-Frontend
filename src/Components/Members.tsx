@@ -50,7 +50,7 @@ function MemberRow(props: { item: Team }) {
             <>
                 <td data-label="S.No">
                     <Link to={`/User/${props.item.id}`}>
-                        <img className="image-person" src="https://t3.ftcdn.net/jpg/02/90/89/76/360_F_290897614_7RdAsk2GmumcGWZ2qklmV74hKlNmznSx.jpg" alt="profile-photo" />
+                        <img className="image-person" src={`../${props.item.image}`} alt="profile-photo" />
                     </Link>
                 </td>
                 <td data-label="Name">{props.item.name}</td>
