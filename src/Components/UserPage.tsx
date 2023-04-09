@@ -46,6 +46,7 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
     saveReq.read();
     const handleSave = () => {
         setSaveReq(fetchData(`/team/${data.id}`, "PATCH", data));
+        seteditData(false);
     };
     return (
         <div className="parent">
@@ -124,8 +125,9 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                             <div>
                             {edit?(
                                <div className="sub-member-details">
-                               <p className="headings">Membership No</p>
+                               <p className="headings ">Membership No</p>
                                <input
+                               className="mem-input"
                                    type="text"
                                    value={data.membershipNo}
                                    onChange={(e) =>
