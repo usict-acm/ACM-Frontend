@@ -1,7 +1,9 @@
-import { useState, Suspense } from "react";
+import React, { useState, Suspense } from "react";
 import "./Assests/CSS/Members.css";
 import { Link } from "react-router-dom";
 import { fetchData } from "../api/fetchData";
+import { useEffect } from "react";
+import ReactPaginate from "react-paginate";
 import { ErrorBoundary } from "./errorBoundary";
 import { Spinner } from "react-bootstrap";
 
@@ -20,12 +22,28 @@ export type Team = {
   dob: Date | null
   active: boolean
   membershipNo:string
-}
+ 
+
+  }
+
 
 function MemberTable(props: { data: { read(): Team[] } }) {
-    const data = props.data.read();
-    console.log(data);
+    // const data = props.data.read();
+    const [data,setData]=useState(props.data.read());
+const itemsPerPage = 10;
+const [pageCount, setPageCount] = useState(0);
+const [itemOffset, setItemOffset] = useState(0);
+    const handlePageClick = (event: any) => {
+        const newOffset = (event.selected * itemsPerPage) % data.length;
+        setItemOffset(newOffset);
+    };
+    useEffect(() => {
+        setPageCount(Math.ceil(data.length / itemsPerPage));
+    }, []);
+    
     return (
+        <React.Fragment>
+
         <table className="table-container">
             <thead className="heading-table">
                 <tr>
@@ -37,33 +55,55 @@ function MemberTable(props: { data: { read(): Team[] } }) {
             </thead>
             <tbody className="body-table">
                 {data.map((item) => {
-                    return <MemberRow item={item} key={item.id} />;
+                    // return <MemberRow item={item} key={item.id} />;
+                    if (item.year==new Date().getFullYear()) {
+                        return <MemberRow item={item} key={item.id} />;
+                    }
                 })}
             </tbody>
         </table>
+        <ReactPaginate
+        breakLabel="..."
+        nextLabel=">"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={5}
+        containerClassName={"paginationBttns"}
+        nextLinkClassName={"nextBttn"}
+        previousLinkClassName={"previousBttn"}
+        pageCount={pageCount}
+        previousLabel="<"
+    />
+        </React.Fragment>
     );
 }
 
 function MemberRow(props: { item: Team }) {
     return (
+        
+
         <tr className="table-row" key={props.item.id}>
             <>
                 <td data-label="S.No">
                     <Link to={`/User/${props.item.id}`}>
-                        <img className="image-person" src={`../${props.item.image}`} alt="profile-photo" />
+                        <img className="image-person" src= "../upload/teams/default.png" alt="profile-photo" />
                     </Link>
+                    {/* {`../${props.item.image}`} */}
                 </td>
                 <td data-label="Name">{props.item.name}</td>
                 <td data-label="Membership Number">{props.item.membershipNo}</td>
                 <td data-label="Batch">{props.item.year}</td>
             </>
         </tr>
+        
+
     );
 }
 
 export default function Members() {
+    
     const [resource, setResource] = useState(fetchData<Team[]>("/team", "GET"));
     return (
+
         <ErrorBoundary
             onReset={() => setResource(fetchData<Team[]>("/team", "GET"))}
         >
@@ -81,5 +121,9 @@ export default function Members() {
                 <MemberTable data={resource} />
             </Suspense>
         </ErrorBoundary>
+        
+        
     );
+    
+
 }

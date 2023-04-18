@@ -4,6 +4,8 @@ import { Team } from "./Members";
 import { useState } from "react";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import BeenhereIcon from '@mui/icons-material/Beenhere';
+import PendingIcon from '@mui/icons-material/Pending';
 import { useParams } from "react-router";
 import { GitHub } from "@mui/icons-material";
 import EditIcon from "@mui/icons-material/EditOutlined";
@@ -247,16 +249,16 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                     </div>
                 </div>
             </div>
-            <div className="projects">
-                <div className="acm-projects">
+            <div className="projects ">
+                <div className="acm-projects ">
                     <h2>Projects</h2>
+                   
                     <div className="flex-container">
-                        <div className="ongoing-container">
+                   
+                        <div className="pr1-container">
                             <div className="title">
-                                <h4>Ongoing</h4>
-                                <button className="project-btn">
-                                    Add Project
-                                </button>
+                               <h4>Project-1 <BeenhereIcon/></h4>
+                               
                             </div>
                             <p className="desc">
                                 Lorem ipsum, dolor sit amet consectetur
@@ -265,14 +267,12 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                                 unde ipsum repudiandae exercitationem error,
                                 dolores facere!
                             </p>
-                            <img className="ong-img" style={{height:"50%",width:"45%",backgroundSize:"cover",marginLeft:"10vw"}} src="https://5.imimg.com/data5/ZZ/BH/OL/SELLER-4335989/e-commerce-website-design-1000x1000.jpg" alt="" />
+                            {/* <img className="ong-img" style={{height:"50%",width:"45%",backgroundSize:"cover",marginLeft:"10vw"}} src="https://5.imimg.com/data5/ZZ/BH/OL/SELLER-4335989/e-commerce-website-design-1000x1000.jpg" alt="" /> */}
                         </div>
-                        <div className="completed-container">
+                        <div className="pr2-container">
                             <div className="title">
-                                <h4>Completed</h4>
-                                <button className=" project-btn delete">
-                                    Delete Project
-                                </button>
+                                <h4>Project-2 <PendingIcon/></h4>
+                                
                             </div>
                             <p className="desc">
                                 Lorem ipsum dolor sit amet consectetur
@@ -280,12 +280,30 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                                 impedit sapiente, dolorum quam ea iure, id, cum
                                 eos rem incidunt dicta! Autem.
                             </p>
-                            <img className="ong-img" style=
-                            {{height:"50%",width:"45%",backgroundSize:"cover",marginLeft:"10vw"}} src="https://www.theinsaneapp.com/wp-content/uploads/2022/01/maxresdefault-_47_-1.webp" alt="" />
+                           
                         </div>
-                        
+                        {/* <div className="pr3-container">
+                            <div className="title">
+                                <h4>Project-3 <BeenhereIcon/></h4>
+                                
+                            </div>
+                            <p className="desc">
+                                Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Vel voluptate voluptatum quae
+                                impedit sapiente, dolorum quam ea iure, id, cum
+                                eos rem incidunt dicta! Autem.
+                            </p>
+                         </div> */}
                          
                     </div>
+                </div>
+                <div className=" flex-container">
+                <button className="add project-btn">
+                                    Add Project
+                                </button> 
+                               <button className="delete project-btn">
+                                   Delete Project
+                                </button>
                 </div>
             </div>
         </div>
