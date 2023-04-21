@@ -10,7 +10,7 @@ export interface EncodeResult {
 }
 
 async function onLogin(
-    creds: { email: string; password: string, rememberMe: boolean },
+    creds: { username: string; password: string, rememberMe: boolean },
 ) {
     let res: EncodeResult = await doFetch("/login", "POST", creds);
     setSession(res);
@@ -23,7 +23,7 @@ async function onLogin(
 function Login() {
     const navigate = useNavigate();
     const [state, setState] = useState({
-        email: "",
+        username: "",
         password: "",
         rememberMe: false,
     });
@@ -56,10 +56,10 @@ function Login() {
                         <input
                             className="inputField"
                             type="text"
-                            placeholder="Enter Email..."
-                            value={state.email}
+                            placeholder="Enter Username..."
+                            value={state.username}
                             onChange={(e) =>
-                                onChangeState({ email: e.target!.value })
+                                onChangeState({ username: e.target!.value })
                             }
                         />
                         <i className="fa-solid fa-user"></i>
