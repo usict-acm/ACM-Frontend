@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import React from "react";
 import "./Assests/CSS/UserPage.css";
 import { Team } from "./Members";
 import { useState } from "react";
@@ -13,6 +14,8 @@ import { ErrorBoundary } from "./errorBoundary";
 import { Spinner } from "react-bootstrap";
 import { fetchData } from "../api/fetchData";
 import { formatDateForInput } from "../utils";
+import {Dialog,DialogTitle,DialogContent,DialogActions,TextField,Button} from "@mui/material";
+
 
 export default function UserPage() {
     const params = useParams();
@@ -44,12 +47,62 @@ export default function UserPage() {
 const UserPageInner = function(props: { data: { read(): Team } }) {
     const [data, setData] = useState(props.data.read());
     const [edit, seteditData] = useState(false);
+    const[open,setOpen]=useState(false);
+    const[prName,setprName]=useState("");
+    const[prDesc,setprDesc]=useState("");
+    const [projects, setProjects] = useState([
+        { id: 1, name: "Project 1", description: "Description of project 1" },
+        { id: 2, name: "Project 2", description: "Description of project 2" },
+        { id: 3, name: "Project 3", description: "Description of project 3" }
+      ]);
+      
     const [saveReq, setSaveReq] = useState<{ read(): any }>({ read() { } })
     saveReq.read();
     const handleSave = () => {
         setSaveReq(fetchData(`/team/${data.id}`, "PATCH", data));
         seteditData(false);
     };
+const handleOpen=()=>{
+    setOpen(true);
+}
+const handleClose=()=>{
+    setOpen(false);
+}
+
+const handleSaveProject = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    const updatedProjects = [...projects];
+    const newProject = {  id: projects.length + 1,name: prName, description: prDesc };
+  
+    // If there are already 3 projects, remove the last one
+    if (updatedProjects.length === 3) {
+      updatedProjects.pop();
+    }
+  
+    // Insert the new project at the beginning of the array
+    updatedProjects.unshift(newProject);
+  
+    // Save the updated projects list
+    await setSaveReq(fetchData(`/team/${data.id}`, "PATCH", {projects:updatedProjects}));
+  
+    // Close the dialog
+    setOpen(false);
+    event.preventDefault();
+  }
+  
+ const handleDelete = () => {
+    // Check if projects is empty or has less than 3 projects
+    if (projects.length === 0) {
+      return alert("You don't have any project.Please Add project");
+    }
+  
+    // Delete the third project in the list (index 2)
+    const updatedProjects = [...projects];
+    updatedProjects.splice(2, 1);
+    setProjects(updatedProjects);
+  
+    // Save the updated projects list
+    setSaveReq(fetchData(`/team/${data.id}`, "PATCH", data));
+  };
     return (
         <div className="parent">
             <div className="profile">
@@ -267,45 +320,67 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                                 unde ipsum repudiandae exercitationem error,
                                 dolores facere!
                             </p>
-                            {/* <img className="ong-img" style={{height:"50%",width:"45%",backgroundSize:"cover",marginLeft:"10vw"}} src="https://5.imimg.com/data5/ZZ/BH/OL/SELLER-4335989/e-commerce-website-design-1000x1000.jpg" alt="" /> */}
-                        </div>
+                           </div>
                         <div className="pr2-container">
                             <div className="title">
-                                <h4>Project-2 <PendingIcon/></h4>
+                                <h4>{data.project2Name}<PendingIcon/></h4>
                                 
                             </div>
                             <p className="desc">
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Vel voluptate voluptatum quae
-                                impedit sapiente, dolorum quam ea iure, id, cum
-                                eos rem incidunt dicta! Autem.
+                                {data.project2Desc}
                             </p>
                            
                         </div>
-                        {/* <div className="pr3-container">
+                        <div className="pr3-container">
                             <div className="title">
-                                <h4>Project-3 <BeenhereIcon/></h4>
+                                <h4>{data.project3Name}<BeenhereIcon/></h4>
                                 
                             </div>
                             <p className="desc">
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Vel voluptate voluptatum quae
-                                impedit sapiente, dolorum quam ea iure, id, cum
-                                eos rem incidunt dicta! Autem.
+                                {data.project3Desc}
                             </p>
-                         </div> */}
+                         </div>
                          
                     </div>
                 </div>
                 <div className=" flex-container">
-                <button className="add project-btn">
+                <button className="add project-btn" onClick={handleOpen}>
                                     Add Project
                                 </button> 
-                               <button className="delete project-btn">
+                               <button className="delete project-btn"onClick={handleDelete}>
                                    Delete Project
                                 </button>
                 </div>
             </div>
+            <Dialog open={open} onClose={handleClose}>
+                <DialogTitle>Add Project</DialogTitle>
+                <DialogContent>
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="projectName"
+                        label="Project Name"
+                        fullWidth
+                        multiline
+                        value={prName}
+                        onChange={(event) => setprName(event.target.value)}
+                    />
+                    <TextField
+                        margin="dense"
+                        id="projectDesc"
+                        label="Project Description"
+                        fullWidth
+                        multiline
+                        rows={6}
+                        value={prDesc}
+                        onChange={(event) => setprDesc(event.target.value)}
+                    />
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose}>Cancel</Button>                
+                    <Button onClick={handleSaveProject}>Save</Button>
+                </DialogActions>
+            </Dialog>
         </div>
     );
 };

@@ -22,8 +22,13 @@ export type Team = {
   dob: Date | null
   active: boolean
   membershipNo:string
- 
-
+  project1Desc:string | null 
+  project1Name:string | null 
+  project2Desc:string | null 
+  project2Name:string | null 
+  project3Desc:string | null 
+  project3Name:string | null 
+  
   }
 
 
@@ -33,7 +38,9 @@ function MemberTable(props: { data: { read(): Team[] } }) {
 const itemsPerPage = 10;
 const [pageCount, setPageCount] = useState(0);
 const [itemOffset, setItemOffset] = useState(0);
-    const handlePageClick = (event: any) => {
+const endOffset = itemOffset + itemsPerPage;
+    
+const handlePageClick = (event: any) => {
         const newOffset = (event.selected * itemsPerPage) % data.length;
         setItemOffset(newOffset);
     };
@@ -41,6 +48,8 @@ const [itemOffset, setItemOffset] = useState(0);
         setPageCount(Math.ceil(data.length / itemsPerPage));
     }, []);
     
+    const currYear=new Date().getFullYear()-1;
+    console.log(data[0].id);
     return (
         <React.Fragment>
 
@@ -53,15 +62,28 @@ const [itemOffset, setItemOffset] = useState(0);
                     <th>Batch</th>
                 </tr>
             </thead>
+            
             <tbody className="body-table">
-                {data.map((item) => {
+                {/* {data.map((item) => {
                     // return <MemberRow item={item} key={item.id} />;
                     if (item.year==new Date().getFullYear()) {
                         return <MemberRow item={item} key={item.id} />;
                     }
-                })}
+                })} */}
+                {data.slice(itemOffset, endOffset).map((event) => (
+                        <React.Fragment>
+                        {
+                            currYear===event.year&&
+                        <MemberRow item={event} key={event.id} />
+                }
+                
+                        {/* <MemberRow item={event.year===new Date().getFullYear()?event} key={event.id} /> */}
+                        </React.Fragment>
+                    
+                    ))}
             </tbody>
         </table>
+        
         <ReactPaginate
         breakLabel="..."
         nextLabel=">"
