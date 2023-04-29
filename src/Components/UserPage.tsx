@@ -50,11 +50,13 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
     const[open,setOpen]=useState(false);
     const[prName,setprName]=useState("");
     const[prDesc,setprDesc]=useState("");
-    const [projects, setProjects] = useState([
-        { id: 1, name: "Project 1", description: "Description of project 1" },
-        { id: 2, name: "Project 2", description: "Description of project 2" },
-        { id: 3, name: "Project 3", description: "Description of project 3" }
-      ]);
+    interface Project {
+        id: number;
+        name: string;
+        description: string;
+      }
+
+    const [projects, setProjects] =useState<Project[]>([]);
       
     const [saveReq, setSaveReq] = useState<{ read(): any }>({ read() { } })
     saveReq.read();
@@ -69,39 +71,38 @@ const handleClose=()=>{
     setOpen(false);
 }
 
-const handleSaveProject = async (event: React.MouseEvent<HTMLButtonElement>) => {
-    const updatedProjects = [...projects];
-    const newProject = {  id: projects.length + 1,name: prName, description: prDesc };
+const handleSaveProject = () => {
+    // const updatedProjects = [...projects];
+    if (projects.length==3) {
+        return alert("You can only add a max of 3 projects.");
+    }
+    const newProject = {id:data.id,name: prName, description: prDesc};
   
     // If there are already 3 projects, remove the last one
-    if (updatedProjects.length === 3) {
-      updatedProjects.pop();
-    }
-  
-    // Insert the new project at the beginning of the array
-    updatedProjects.unshift(newProject);
-  
+      setProjects([...projects, newProject]);
     // Save the updated projects list
-    await setSaveReq(fetchData(`/team/${data.id}`, "PATCH", {projects:updatedProjects}));
+    setSaveReq(fetchData(`/team/${data.id}`, "PATCH",{...data,projects:[...projects,newProject],}));
   
     // Close the dialog
     setOpen(false);
-    event.preventDefault();
+    console.log(newProject);
   }
   
- const handleDelete = () => {
-    // Check if projects is empty or has less than 3 projects
-    if (projects.length === 0) {
-      return alert("You don't have any project.Please Add project");
-    }
+ const handleDelete = (prId:number) => {
+    // // Check if projects is empty or has less than 3 projects
+    // if (projects.length === 0) {
+    //   return alert("You don't have any project.Please Add project");
+    // }
   
     // Delete the third project in the list (index 2)
-    const updatedProjects = [...projects];
-    updatedProjects.splice(2, 1);
-    setProjects(updatedProjects);
-  
+    // const updatedProjects = [...projects];
+    projects.splice(prId, 1);
+    setProjects(projects);
+  console.log(projects);
+  console.log(projects.length);
     // Save the updated projects list
-    setSaveReq(fetchData(`/team/${data.id}`, "PATCH", data));
+    setSaveReq(fetchData(`/team/${data.id}`, "DELETE"));
+    setSaveReq(fetchData(`/team/${data.id}`, "GET"));
   };
     return (
         <div className="parent">
@@ -320,6 +321,9 @@ const handleSaveProject = async (event: React.MouseEvent<HTMLButtonElement>) => 
                                 unde ipsum repudiandae exercitationem error,
                                 dolores facere!
                             </p>
+                            <button className="delete project-btn" onClick={()=>handleDelete(data.id)}>
+                                   Delete Project
+                                </button>
                            </div>
                         <div className="pr2-container">
                             <div className="title">
@@ -329,7 +333,9 @@ const handleSaveProject = async (event: React.MouseEvent<HTMLButtonElement>) => 
                             <p className="desc">
                                 {data.project2Desc}
                             </p>
-                           
+                            <button className="delete project-btn" onClick={()=>handleDelete(data.id)}>
+                                   Delete Project
+                                </button>
                         </div>
                         <div className="pr3-container">
                             <div className="title">
@@ -339,6 +345,9 @@ const handleSaveProject = async (event: React.MouseEvent<HTMLButtonElement>) => 
                             <p className="desc">
                                 {data.project3Desc}
                             </p>
+                            <button className="delete project-btn" onClick={()=>handleDelete(data.id)}>
+                                   Delete Project
+                                </button>
                          </div>
                          
                     </div>
@@ -347,9 +356,9 @@ const handleSaveProject = async (event: React.MouseEvent<HTMLButtonElement>) => 
                 <button className="add project-btn" onClick={handleOpen}>
                                     Add Project
                                 </button> 
-                               <button className="delete project-btn"onClick={handleDelete}>
+                               {/* <button className="delete project-btn" onClick={()=>handleDelete(data.id)}>
                                    Delete Project
-                                </button>
+                                </button> */}
                 </div>
             </div>
             <Dialog open={open} onClose={handleClose}>
@@ -384,3 +393,4 @@ const handleSaveProject = async (event: React.MouseEvent<HTMLButtonElement>) => 
         </div>
     );
 };
+// event: React.MouseEvent<HTMLButtonElement>
