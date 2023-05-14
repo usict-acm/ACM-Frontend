@@ -6,6 +6,7 @@ import { useState } from "react";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import BeenhereIcon from '@mui/icons-material/Beenhere';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import PendingIcon from '@mui/icons-material/Pending';
 import { useParams } from "react-router";
 import { GitHub } from "@mui/icons-material";
@@ -70,49 +71,83 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
     const handleClose = () => {
         setOpen(false);
     }
-
     const handleSaveProject = () => {
-        // const updatedProjects = [...projects];
-        let updatedData;
         if (projects.length >= 3) {
-            return alert("You can only add a max of 3 projects.");
+          return alert("You can only add a max of 3 projects.");
         }
-        if (projects.length === 0) {
-            setData({ ...data, project1Name: prName, project1Desc: prDesc });
-            updatedData = { project1Name: prName, project1Desc: prDesc };
-        } else if (projects.length === 1) {
-            setData({ ...data, project2Name: prName, project2Desc: prDesc });
-            updatedData = { project2Name: prName, project2Desc: prDesc };
-        } else if (projects.length === 2) {
-            setData({ ...data, project3Name: prName, project3Desc: prDesc });
-            updatedData = { project3Name: prName, project3Desc: prDesc };
-        }
-        const newProject = { id: data.id, name: prName, description: prDesc };
-
-        // If there are already 3 projects, remove the last one
-        setProjects([...projects, newProject]);
-        // Save the updated projects list
+      
+        const newProject = {
+          id: projects.length + 1,
+          name: prName,
+          description: prDesc
+        };
+      
+        const updatedProjects = [...projects, newProject];
+      
+        setData((prevData) => ({
+          ...prevData,
+          [`project${projects.length + 1}Name`]: prName,
+          [`project${projects.length + 1}Desc`]: prDesc
+        }));
+      
+        setProjects(updatedProjects);
+      
+        const updatedData = {
+          ...data,
+          projects: updatedProjects
+        };
+      
         setSaveReq(fetchData(`/team/${data.id}`, "PATCH", updatedData));
+      
+        setTimeout(() => {
+          setOpen(false);
+        }, 1000);
+      
+        console.log(updatedData);
+        console.log(updatedProjects);
+      };
+      
+    // const handleSaveProject = () => {
+    //     // const updatedProjects = [...projects];
+    //     let updatedData;
+    //     if (projects.length >= 3) {
+    //         return alert("You can only add a max of 3 projects.");
+    //     }
+    //     if (projects.length === 0) {
+    //         setData({ ...data, project1Name: prName, project1Desc: prDesc });
+    //         updatedData = { project1Name: prName, project1Desc: prDesc };
+    //     } else if (projects.length === 1) {
+    //         setData({ ...data, project2Name: prName, project2Desc: prDesc });
+    //         updatedData = { project2Name: prName, project2Desc: prDesc };
+    //     } else if (projects.length === 2) {
+    //         setData({ ...data, project3Name: prName, project3Desc: prDesc });
+    //         updatedData = { project3Name: prName, project3Desc: prDesc };
+    //     }
+    //     // const newProject = { id: data.id, name: prName, description: prDesc };
 
-        // Close the dialog
-        setOpen(false);
-        console.log(newProject);
-    }
+    //     // // If there are already 3 projects, remove the last one
+    //     setProjects(updatedData);
+    //     // Save the updated projects list
+    //     setSaveReq(fetchData(`/team/${data.id}`, "PATCH", updatedData));
+
+    //     // Close the dialog
+    //     setTimeout(() => {
+    //         setOpen(false);
+    //       }, 1000);
+    //     console.log(updatedData);
+    //     console.log(projects.length);
+    // }
 
     const handleDelete = (prId: number) => {
-        // // Check if projects is empty or has less than 3 projects
-        // if (projects.length === 0) {
-        //   return alert("You don't have any project.Please Add project");
-        // }
-
-        // Delete the third project in the list (index 2)
-        // const updatedProjects = [...projects];
-        projects.splice(prId, 1);
+        
+        const result = window.confirm("Are you sure you want to delete the project?");
+        if(result)
+       { 
         setProjects(projects);
         console.log(projects);
         console.log(projects.length);
         setSaveReq(fetchData(`/team/${data.id}`, "PATCH", { project1Name: null, project1Desc: null }));
-        // Save the updated projects list
+       }
     };
     return (
         <div className="parent">
@@ -314,58 +349,69 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                 </div>
             </div>
             <div className="projects ">
+            
                 <div className="acm-projects ">
-                    <h2>Projects</h2>
-
+                    <div className="headings">
+                        <h2>Projects</h2>
+                        <button className="add project-btn" onClick={handleOpen}>
+                        Add Project
+                        </button>
+                    </div>
+                    
                     <div className="flex-container">
 
                         <div className="pr1-container">
                             <div className="title">
-                                <h4>{data.project1Name} <BeenhereIcon /></h4>
+                                <h4>{data.project1Name}</h4>
+                                <React.Fragment>
+                                {data.project1Name ? (
+                                <DeleteOutlineIcon style={{ marginLeft: '24em' }} onClick={() => handleDelete(data.id)}/>
+                                    ) : null}
+                                  </React.Fragment>
 
                             </div>
                             <p className="desc">
                                 {data.project1Desc}
                             </p>
-                            <button className="delete project-btn" onClick={() => handleDelete(data.id)}>
-                                Delete Project
-                            </button>
+                            
                         </div>
                         <div className="pr2-container">
                             <div className="title">
-                                <h4>{data.project2Name}<PendingIcon /></h4>
+                                <h4>{data.project2Name}</h4>
+                                <React.Fragment>
+                                {data.project2Name ? (
+                                <DeleteOutlineIcon style={{ marginLeft: '24em' }} onClick={() => handleDelete(data.id)}/>
+                                    ) : null}
+                                  </React.Fragment>
 
                             </div>
                             <p className="desc">
                                 {data.project2Desc}
                             </p>
-                            <button className="delete project-btn" onClick={() => handleDelete(data.id)}>
-                                Delete Project
-                            </button>
+                            
                         </div>
                         <div className="pr3-container">
                             <div className="title">
-                                <h4>{data.project3Name}<BeenhereIcon /></h4>
+                                <h4>{data.project3Name}</h4>
+                                <React.Fragment>
+                                {data.project3Name ? (
+                                <DeleteOutlineIcon style={{ marginLeft: '24em' }}  onClick={() => handleDelete(data.id)} />
+                                    ) : null}
+                                  </React.Fragment>
+
 
                             </div>
                             <p className="desc">
                                 {data.project3Desc}
                             </p>
-                            <button className="delete project-btn" onClick={() => handleDelete(data.id)}>
+                            {/* <button className="delete project-btn">
                                 Delete Project
-                            </button>
+                            </button> */}
                         </div>
 
                     </div>
                 </div>
-                <div className=" flex-container">
-                    <button className="add project-btn" onClick={handleOpen}>
-                        Add Project
-                    </button>
-                    {/* <button className="delete project-btn" onClick={()=>handleDelete(data.id)}>
-                                   Delete Project
-                                </button> */}
-                </div>
+                
             </div>
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Add Project</DialogTitle>

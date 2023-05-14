@@ -331,6 +331,13 @@ width: 100%;
     height: auto;
     margin: 0;
   }
+  .acm-projects{
+    display: flex;
+    flex-direction:row;
+    /* align-items: center; */
+
+  }
+
 
   /* Additional styles specific to 360px */
   .nav {
@@ -444,9 +451,19 @@ height:25vh;
   height:25vh;
   }
   
+/* project section css */
 
+.flex-container{
+  margin-left: 2em;
+}
 
-
+h4{
+  font-weight: 700;
+}
+.desc{
+  font-size:16px;
+  font-weight:500;
+}
 
 
       
