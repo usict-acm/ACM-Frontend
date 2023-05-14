@@ -111,9 +111,8 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
         setProjects(projects);
         console.log(projects);
         console.log(projects.length);
+        setSaveReq(fetchData(`/team/${data.id}`, "PATCH", { project1Name: null, project1Desc: null }));
         // Save the updated projects list
-        setSaveReq(fetchData(`/team/${data.id}`, "DELETE"));
-        setSaveReq(fetchData(`/team/${data.id}`, "GET"));
     };
     return (
         <div className="parent">
@@ -322,15 +321,11 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
 
                         <div className="pr1-container">
                             <div className="title">
-                                <h4>Project-1 <BeenhereIcon /></h4>
+                                <h4>{data.project1Name} <BeenhereIcon /></h4>
 
                             </div>
                             <p className="desc">
-                                Lorem ipsum, dolor sit amet consectetur
-                                adipisicing elit. Magnam odio labore temporibus
-                                fugiat perferendis saepe ipsa repellendus rem
-                                unde ipsum repudiandae exercitationem error,
-                                dolores facere!
+                                {data.project1Desc}
                             </p>
                             <button className="delete project-btn" onClick={() => handleDelete(data.id)}>
                                 Delete Project
