@@ -14,7 +14,7 @@ import { ErrorBoundary } from "./errorBoundary";
 import { Spinner } from "react-bootstrap";
 import { fetchData } from "../api/fetchData";
 import { formatDateForInput } from "../utils";
-import {Dialog,DialogTitle,DialogContent,DialogActions,TextField,Button} from "@mui/material";
+import { Dialog, DialogTitle, DialogContent, DialogActions, TextField, Button } from "@mui/material";
 
 
 export default function UserPage() {
@@ -47,63 +47,74 @@ export default function UserPage() {
 const UserPageInner = function(props: { data: { read(): Team } }) {
     const [data, setData] = useState(props.data.read());
     const [edit, seteditData] = useState(false);
-    const[open,setOpen]=useState(false);
-    const[prName,setprName]=useState("");
-    const[prDesc,setprDesc]=useState("");
+    const [open, setOpen] = useState(false);
+    const [prName, setprName] = useState("");
+    const [prDesc, setprDesc] = useState("");
     interface Project {
         id: number;
         name: string;
         description: string;
-      }
+    }
 
-    const [projects, setProjects] =useState<Project[]>([]);
-      
+    const [projects, setProjects] = useState<Project[]>([]);
+
     const [saveReq, setSaveReq] = useState<{ read(): any }>({ read() { } })
     saveReq.read();
     const handleSave = () => {
         setSaveReq(fetchData(`/team/${data.id}`, "PATCH", data));
         seteditData(false);
     };
-const handleOpen=()=>{
-    setOpen(true);
-}
-const handleClose=()=>{
-    setOpen(false);
-}
-
-const handleSaveProject = () => {
-    // const updatedProjects = [...projects];
-    if (projects.length==3) {
-        return alert("You can only add a max of 3 projects.");
+    const handleOpen = () => {
+        setOpen(true);
     }
-    const newProject = {id:data.id,name: prName, description: prDesc};
-  
-    // If there are already 3 projects, remove the last one
-      setProjects([...projects, newProject]);
-    // Save the updated projects list
-    setSaveReq(fetchData(`/team/${data.id}`, "PATCH",{...data,projects:[...projects,newProject],}));
-  
-    // Close the dialog
-    setOpen(false);
-    console.log(newProject);
-  }
-  
- const handleDelete = (prId:number) => {
-    // // Check if projects is empty or has less than 3 projects
-    // if (projects.length === 0) {
-    //   return alert("You don't have any project.Please Add project");
-    // }
-  
-    // Delete the third project in the list (index 2)
-    // const updatedProjects = [...projects];
-    projects.splice(prId, 1);
-    setProjects(projects);
-  console.log(projects);
-  console.log(projects.length);
-    // Save the updated projects list
-    setSaveReq(fetchData(`/team/${data.id}`, "DELETE"));
-    setSaveReq(fetchData(`/team/${data.id}`, "GET"));
-  };
+    const handleClose = () => {
+        setOpen(false);
+    }
+
+    const handleSaveProject = () => {
+        // const updatedProjects = [...projects];
+        let updatedData;
+        if (projects.length >= 3) {
+            return alert("You can only add a max of 3 projects.");
+        }
+        if (projects.length === 0) {
+            setData({ ...data, project1Name: prName, project1Desc: prDesc });
+            updatedData = { project1Name: prName, project1Desc: prDesc };
+        } else if (projects.length === 1) {
+            setData({ ...data, project2Name: prName, project2Desc: prDesc });
+            updatedData = { project2Name: prName, project2Desc: prDesc };
+        } else if (projects.length === 2) {
+            setData({ ...data, project3Name: prName, project3Desc: prDesc });
+            updatedData = { project3Name: prName, project3Desc: prDesc };
+        }
+        const newProject = { id: data.id, name: prName, description: prDesc };
+
+        // If there are already 3 projects, remove the last one
+        setProjects([...projects, newProject]);
+        // Save the updated projects list
+        setSaveReq(fetchData(`/team/${data.id}`, "PATCH", updatedData));
+
+        // Close the dialog
+        setOpen(false);
+        console.log(newProject);
+    }
+
+    const handleDelete = (prId: number) => {
+        // // Check if projects is empty or has less than 3 projects
+        // if (projects.length === 0) {
+        //   return alert("You don't have any project.Please Add project");
+        // }
+
+        // Delete the third project in the list (index 2)
+        // const updatedProjects = [...projects];
+        projects.splice(prId, 1);
+        setProjects(projects);
+        console.log(projects);
+        console.log(projects.length);
+        // Save the updated projects list
+        setSaveReq(fetchData(`/team/${data.id}`, "DELETE"));
+        setSaveReq(fetchData(`/team/${data.id}`, "GET"));
+    };
     return (
         <div className="parent">
             <div className="profile">
@@ -119,7 +130,7 @@ const handleSaveProject = () => {
                     </button>
                     <div className="image">
                         <div>
-                            <img className="img-body" src= {`../${data.image}`}   alt="gg" />
+                            <img className="img-body" src={`../${data.image}`} alt="gg" />
                         </div>
                     </div>
 
@@ -179,30 +190,30 @@ const handleSaveProject = () => {
 
                         <div>
                             <div>
-                            {edit?(
-                               <div className="sub-member-details">
-                               <p className="headings ">Membership No</p>
-                               <input
-                               className="mem-input"
-                                   type="text"
-                                   value={data.membershipNo}
-                                   onChange={(e) =>
-                                       setData({
-                                           ...data,
-                                           membershipNo: e.target.value,
-                                       })
-                                   }
-                               />
-                           </div> 
-                            ):(<div className="sub-member-details">
-                                {" "}
-                                <p className="headings">Membership No.</p>
-                                <p>{data.membershipNo}</p>
-                            </div>)}
-                            
-                        </div>
+                                {edit ? (
+                                    <div className="sub-member-details">
+                                        <p className="headings ">Membership No</p>
+                                        <input
+                                            className="mem-input"
+                                            type="text"
+                                            value={data.membershipNo}
+                                            onChange={(e) =>
+                                                setData({
+                                                    ...data,
+                                                    membershipNo: e.target.value,
+                                                })
+                                            }
+                                        />
+                                    </div>
+                                ) : (<div className="sub-member-details">
+                                    {" "}
+                                    <p className="headings">Membership No.</p>
+                                    <p>{data.membershipNo}</p>
+                                </div>)}
+
                             </div>
-                      
+                        </div>
+
 
                         <div>
                             <div className="sub-member-details">
@@ -306,13 +317,13 @@ const handleSaveProject = () => {
             <div className="projects ">
                 <div className="acm-projects ">
                     <h2>Projects</h2>
-                   
+
                     <div className="flex-container">
-                   
+
                         <div className="pr1-container">
                             <div className="title">
-                               <h4>Project-1 <BeenhereIcon/></h4>
-                               
+                                <h4>Project-1 <BeenhereIcon /></h4>
+
                             </div>
                             <p className="desc">
                                 Lorem ipsum, dolor sit amet consectetur
@@ -321,42 +332,42 @@ const handleSaveProject = () => {
                                 unde ipsum repudiandae exercitationem error,
                                 dolores facere!
                             </p>
-                            <button className="delete project-btn" onClick={()=>handleDelete(data.id)}>
-                                   Delete Project
-                                </button>
-                           </div>
+                            <button className="delete project-btn" onClick={() => handleDelete(data.id)}>
+                                Delete Project
+                            </button>
+                        </div>
                         <div className="pr2-container">
                             <div className="title">
-                                <h4>{data.project2Name}<PendingIcon/></h4>
-                                
+                                <h4>{data.project2Name}<PendingIcon /></h4>
+
                             </div>
                             <p className="desc">
                                 {data.project2Desc}
                             </p>
-                            <button className="delete project-btn" onClick={()=>handleDelete(data.id)}>
-                                   Delete Project
-                                </button>
+                            <button className="delete project-btn" onClick={() => handleDelete(data.id)}>
+                                Delete Project
+                            </button>
                         </div>
                         <div className="pr3-container">
                             <div className="title">
-                                <h4>{data.project3Name}<BeenhereIcon/></h4>
-                                
+                                <h4>{data.project3Name}<BeenhereIcon /></h4>
+
                             </div>
                             <p className="desc">
                                 {data.project3Desc}
                             </p>
-                            <button className="delete project-btn" onClick={()=>handleDelete(data.id)}>
-                                   Delete Project
-                                </button>
-                         </div>
-                         
+                            <button className="delete project-btn" onClick={() => handleDelete(data.id)}>
+                                Delete Project
+                            </button>
+                        </div>
+
                     </div>
                 </div>
                 <div className=" flex-container">
-                <button className="add project-btn" onClick={handleOpen}>
-                                    Add Project
-                                </button> 
-                               {/* <button className="delete project-btn" onClick={()=>handleDelete(data.id)}>
+                    <button className="add project-btn" onClick={handleOpen}>
+                        Add Project
+                    </button>
+                    {/* <button className="delete project-btn" onClick={()=>handleDelete(data.id)}>
                                    Delete Project
                                 </button> */}
                 </div>
@@ -386,7 +397,7 @@ const handleSaveProject = () => {
                     />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose}>Cancel</Button>                
+                    <Button onClick={handleClose}>Cancel</Button>
                     <Button onClick={handleSaveProject}>Save</Button>
                 </DialogActions>
             </Dialog>
