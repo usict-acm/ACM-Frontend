@@ -1,4 +1,4 @@
-import {  Suspense, useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import React from "react";
 import "./Assests/CSS/UserPage.css";
 import { Team } from "./Members";
@@ -45,20 +45,21 @@ export default function UserPage() {
     );
 }
 
+interface Project {
+    id: number;
+    name: string;
+    description: string;
+    image: string;
+}
+
 const UserPageInner = function(props: { data: { read(): Team } }) {
     const [data, setData] = useState(props.data.read());
     const [edit, seteditData] = useState(false);
     const [open, setOpen] = useState(false);
     const [prName, setprName] = useState("");
     const [prDesc, setprDesc] = useState("");
-    const [image, setImage] = useState<File |undefined>(undefined);
-    interface Project {
-        id: number;
-        name: string;
-        description: string;
-    }
+    const [image, setImage] = useState<File | undefined>(undefined);
 
-    const [projects, setProjects] = useState<Project[]>([]);
     // const[projects,setProjects]=useState([]);
     const [refreshFlag, setRefreshFlag] = useState(false);
     const [saveReq, setSaveReq] = useState<{ read(): any }>({ read() { } })
@@ -67,106 +68,88 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
         setSaveReq(fetchData(`/team/${data.id}`, "PATCH", data));
         seteditData(false);
     };
-    
+    const numberOfProjects = data.project3Name ? 3 : (data.project2Name ? 2 : (data.project1Name ? 1 : 0));
+
     const handleOpen = () => {
-        if (projects.length >= 3) {
+        if (numberOfProjects === 3) {
             return alert("You can only add a max of 3 projects.");
         }
         else
-        setOpen(true);
+            setOpen(true);
     }
     const handleClose = () => {
         setOpen(false);
     }
-      
-    // const fetchExistingProjects = () => {
-    //     // Fetch existing project data from the database
-    //     const existingProjects = fetchData(`/team/${data.id}/projects`, "GET");
-      
-    //     // Update the projects state with the fetched project data
-    //     setProjects( ()=> existingProjects);
-    //   };
-      
-      // Call the fetchExistingProjects function when the component mounts
-    //   useEffect(() => {
-    //     fetchExistingProjects();
-    //   }, []);
 
-        const handleSaveProject = () => {
-       
-            
-            // to store the new project
-        
-            let updatedData={...data};
-        let projIndex=projects.length+1;
-        if(projIndex<=3){
+    const handleSaveProject = () => {
+        // to store the new project
 
-            const colName=`project${projIndex}Name`;
-            const colDesc=`project${projIndex}Desc`;
+        let updatedData = { ...data };
+        let projIndex = numberOfProjects + 1;
+        if (projIndex <= 3) {
 
-            updatedData={
+            const colName = `project${projIndex}Name`;
+            const colDesc = `project${projIndex}Desc`;
+
+            updatedData = {
                 ...data,
-                [colName]:prName,
-                [colDesc]:prDesc
+                [colName]: prName,
+                [colDesc]: prDesc
             };
         }
         setData(updatedData);
-      projects.length++;
         setSaveReq(fetchData(`/team/${data.id}`, "PATCH", updatedData));
 
         // Close the dialog
         setTimeout(() => {
             setOpen(false);
-          }, 1000);
+        }, 1000);
 
-          console.log(updatedData);
-          console.log(projects.length);
-          console.log(data.id);
-         // Clear the input fields for the next project
-         setprDesc('');
-         setprName('');
+        console.log(updatedData);
+        console.log(data.id);
+        // Clear the input fields for the next project
+        setprDesc('');
+        setprName('');
     }
-    
-      
-      
-      const handleDelete = (index:number) => {
-        
+
+
+
+    const handleDelete = (index: number) => {
+
         const result = window.confirm("Are you sure you want to delete the project?");
-        if(result)
-       { 
-      
-        const colName = `project${index + 1}Name`;
-    const colDesc = `project${index + 1}Desc`;
+        if (result) {
 
-    // Create an updated data object with the project columns set to null
-    const updatedData = {
-      ...data,
-      [colName]: null,
-      [colDesc]: null
+            const colName = `project${index + 1}Name`;
+            const colDesc = `project${index + 1}Desc`;
+
+            // Create an updated data object with the project columns set to null
+            const updatedData = {
+                ...data,
+                [colName]: null,
+                [colDesc]: null
+            };
+            // to  slide the projects upon delete
+            for (let i = index + 1; i <= 3; i++) {
+                const currentColName = `project${i}Name`;
+                const currentColDesc = `project${i}Desc`;
+                const nextColName = `project${i + 1}Name`;
+                const nextColDesc = `project${i + 1}Desc`;
+
+                updatedData[currentColName] = data[nextColName];
+                updatedData[currentColDesc] = data[nextColDesc];
+            }
+
+            // Update the data state with the modified data object
+            setData(updatedData);
+
+            // Update the corresponding data in the database
+            setSaveReq(fetchData(`/team/${data.id}`, "PATCH", updatedData));
+
+            // Set refresh flag if necessary
+            setRefreshFlag(true);
+        }
     };
-    // to  slide the projects upon delete
-    for (let i = index + 1; i <= 3; i++) {
-        const currentColName = `project${i}Name`;
-        const currentColDesc = `project${i}Desc`;
-        const nextColName = `project${i + 1}Name`;
-        const nextColDesc = `project${i + 1}Desc`;
-  
-        updatedData[currentColName] = data[nextColName];
-        updatedData[currentColDesc] = data[nextColDesc];
-    }
 
-    // Update the data state with the modified data object
-    setData(updatedData);
-
-    // Update the corresponding data in the database
-    setSaveReq(fetchData(`/team/${data.id}`, "PATCH", updatedData));
-
-    // Set refresh flag if necessary
-    console.log(projects.length);
-    setRefreshFlag(true);
-       }
-};
-   
     return (
         <div className="parent">
             <div className="profile">
@@ -367,73 +350,73 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                 </div>
             </div>
             <div className="projects ">
-            
+
                 <div className="acm-projects ">
                     <div className="headings">
                         <h2>Projects</h2>
                         <button className="add project-btn" onClick={handleOpen}>
-                        Add Project
+                            Add Project
                         </button>
                     </div>
-                     <div className="flex-container">
+                    <div className="flex-container">
 
-<div className="pr-container">
-    <div className="title">
-        <h4>{data.project1Name}</h4>
-        <React.Fragment>
-        {data.project1Name ? (
-        <DeleteOutlineIcon style={{marginLeft: '24em' }} onClick={() => handleDelete(0)}/>
-            ) : null}
-          </React.Fragment>
+                        <div className="pr-container">
+                            <div className="title">
+                                <h4>{data.project1Name}</h4>
+                                <React.Fragment>
+                                    {data.project1Name ? (
+                                        <DeleteOutlineIcon style={{ marginLeft: '24em' }} onClick={() => handleDelete(0)} />
+                                    ) : null}
+                                </React.Fragment>
 
-    </div>
-    <p className="desc">
-        {data.project1Desc}
-    </p>
-    
-</div>
-<div className="pr-container">
-    <div className="title">
-        <h4>{data.project2Name}</h4>
-        <React.Fragment>
-        {data.project2Name ? (
-        <DeleteOutlineIcon style={{ marginLeft: '24em', position: 'absolute' }} onClick={() => handleDelete(1)}/>
-            ) : null}
-          </React.Fragment>
+                            </div>
+                            <p className="desc">
+                                {data.project1Desc}
+                            </p>
 
-    </div>
-    <p className="desc">
-        {data.project2Desc}
-    </p>
-    
-</div>
-<div className="pr-container">
-    <div className="title">
-        <h4>{data.project3Name}</h4>
-        <React.Fragment>
-        {data.project3Name ? (
-        <DeleteOutlineIcon style={{ marginLeft: '24em' }}  onClick={() => handleDelete(2)} />
-            ) : null}
-          </React.Fragment>
+                        </div>
+                        <div className="pr-container">
+                            <div className="title">
+                                <h4>{data.project2Name}</h4>
+                                <React.Fragment>
+                                    {data.project2Name ? (
+                                        <DeleteOutlineIcon style={{ marginLeft: '24em', position: 'absolute' }} onClick={() => handleDelete(1)} />
+                                    ) : null}
+                                </React.Fragment>
+
+                            </div>
+                            <p className="desc">
+                                {data.project2Desc}
+                            </p>
+
+                        </div>
+                        <div className="pr-container">
+                            <div className="title">
+                                <h4>{data.project3Name}</h4>
+                                <React.Fragment>
+                                    {data.project3Name ? (
+                                        <DeleteOutlineIcon style={{ marginLeft: '24em' }} onClick={() => handleDelete(2)} />
+                                    ) : null}
+                                </React.Fragment>
 
 
-    </div>
-    <p className="desc">
-        {data.project3Desc}
-    </p>
-    {/* <button className="delete project-btn">
+                            </div>
+                            <p className="desc">
+                                {data.project3Desc}
+                            </p>
+                            {/* <button className="delete project-btn">
         Delete Project
     </button> */}
-</div>
+                        </div>
 
-</div>
+                    </div>
 
- 
-                
+
+
                 </div>
-                
+
             </div>
-       
+
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Add Project</DialogTitle>
                 <DialogContent>
@@ -447,7 +430,7 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                         value={prName}
                         onChange={(event) => setprName(event.target.value)}
                         required
-                       
+
                     />
 
                     <TextField
@@ -461,12 +444,12 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                         onChange={(event) => setprDesc(event.target.value)}
                         required
                     />
-                    <span className="required"style={{color:'red'}}>*</span>
+                    <span className="required" style={{ color: 'red' }}>*</span>
 
-                    <input type="file" accept="image/*" onChange={(event)=>{
+                    <input type="file" accept="image/*" onChange={(event) => {
                         setImage(event.target.files?.[0]);
-                    }} 
-                    required
+                    }}
+                        required
                     />
                 </DialogContent>
                 <DialogActions>

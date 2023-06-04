@@ -24,10 +24,13 @@ export type Team = {
   membershipNo:string
   project1Desc:string | null 
   project1Name:string | null 
+  project1Image:string | null 
   project2Desc:string | null 
   project2Name:string | null 
+  project2Image:string | null 
   project3Desc:string | null 
   project3Name:string | null 
+  project3Image:string | null 
   
   }
 
