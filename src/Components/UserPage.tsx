@@ -58,7 +58,7 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
     const [open, setOpen] = useState(false);
     const [prName, setprName] = useState("");
     const [prDesc, setprDesc] = useState("");
-    const [image, setImage] = useState<File | undefined>(undefined);
+    const [prImage, setImage] = useState<File | undefined>(undefined);
 
     // const[projects,setProjects]=useState([]);
     const [refreshFlag, setRefreshFlag] = useState(false);
@@ -91,11 +91,14 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
 
             const colName = `project${projIndex}Name`;
             const colDesc = `project${projIndex}Desc`;
+            const colImage = `project${projIndex}Image`;
+
 
             updatedData = {
                 ...data,
                 [colName]: prName,
-                [colDesc]: prDesc
+                [colDesc]: prDesc,
+                [colImage]:prImage
             };
         }
         setData(updatedData);
@@ -130,6 +133,9 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                     updatedData.project2Name = updatedData.project3Name;
                     updatedData.project2Desc = updatedData.project3Name;
                     updatedData.project2Image = updatedData.project3Image;
+                    updatedData.project3Name = null;
+                    updatedData.project3Desc = null;
+                    updatedData.project3Image = null;
                     break;
                 }
                 case 2: {
@@ -363,62 +369,85 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
             <div className="projects ">
 
                 <div className="acm-projects ">
-                    <div className="headings">
+                    {/* <div className="headings ">
+                        <h2>Projects</h2>
+                        <button className="add project-btn" onClick={handleOpen}>
+                            Add Project
+                        </button>
+                    </div> */}
+                    <div className="flex-container">
+                      {(!data.project1Name)?(
+                        <>
+                         <div className="empty">
+                         No Projects Yet
+                        
+                       </div>
+                        <button className="add project-btn" onClick={handleOpen}>
+                        Add Project
+                    </button>
+                        </>
+                        
+                      ):(<>
+                      <div className="headings ">
                         <h2>Projects</h2>
                         <button className="add project-btn" onClick={handleOpen}>
                             Add Project
                         </button>
                     </div>
-                    <div className="flex-container">
+                      <div className="pr-container">
+                      <div className="title">
+                          <h4>{data.project1Name}</h4>
+                          <React.Fragment>
+                              {data.project1Name ? (
+                                  <DeleteOutlineIcon style={{marginLeft:'20em'}} onClick={() => handleDelete(1)} />
+                              ) : null}
+                          </React.Fragment>
 
-                        <div className="pr-container">
-                            <div className="title">
-                                <h4>{data.project1Name}</h4>
-                                <React.Fragment>
-                                    {data.project1Name ? (
-                                        <DeleteOutlineIcon style={{ marginLeft: '24em' }} onClick={() => handleDelete(1)} />
-                                    ) : null}
-                                </React.Fragment>
+                      </div>
+                      <p className="desc">
+                          {data.project1Desc}
+                      </p>
+                      {/* <div><img className="img-section" src={data.project1Image?data.project1Image:''} alt="" /></div> */}
 
-                            </div>
-                            <p className="desc">
-                                {data.project1Desc}
-                            </p>
+                  </div>
+                  <div className="pr-container">
+                      <div className="title">
+                          <h4>{data.project2Name}</h4>
+                          <React.Fragment>
+                              {data.project2Name ? (
+                                  <DeleteOutlineIcon style={{ marginLeft: '26em', position: 'absolute' }} onClick={() => handleDelete(2)} />
+                              ) : null}
+                          </React.Fragment>
 
-                        </div>
-                        <div className="pr-container">
-                            <div className="title">
-                                <h4>{data.project2Name}</h4>
-                                <React.Fragment>
-                                    {data.project2Name ? (
-                                        <DeleteOutlineIcon style={{ marginLeft: '24em', position: 'absolute' }} onClick={() => handleDelete(2)} />
-                                    ) : null}
-                                </React.Fragment>
-
-                            </div>
-                            <p className="desc">
-                                {data.project2Desc}
-                            </p>
-
-                        </div>
-                        <div className="pr-container">
-                            <div className="title">
-                                <h4>{data.project3Name}</h4>
-                                <React.Fragment>
-                                    {data.project3Name ? (
-                                        <DeleteOutlineIcon style={{ marginLeft: '24em' }} onClick={() => handleDelete(3)} />
-                                    ) : null}
-                                </React.Fragment>
+                      </div>
+                      <p className="desc">
+                          {data.project2Desc}
+                      </p>
+                      {/* <div><img className="img-section" src={data.project2Image?data.project2Image:''} alt="" /></div> */}
 
 
-                            </div>
-                            <p className="desc">
-                                {data.project3Desc}
-                            </p>
-                            {/* <button className="delete project-btn">
-        Delete Project
-    </button> */}
-                        </div>
+                  </div>
+                  <div className="pr-container">
+                      <div className="title">
+                          <h4>{data.project3Name}</h4>
+                          <React.Fragment>
+                              {data.project3Name ? (
+                                  <DeleteOutlineIcon style={{ marginLeft: '24em' }} onClick={() => handleDelete(3)} />
+                              ) : null}
+                          </React.Fragment>
+
+
+                      </div>
+                      <p className="desc">
+                          {data.project3Desc}
+                      </p>
+                      {/* <div><img className="img-section" src={data.project3Image?data.project3Image:''} alt="" /></div> */}
+
+                      {/* <button className="delete project-btn">
+  Delete Project
+</button> */}
+                  </div></>)}
+                        
 
                     </div>
 
