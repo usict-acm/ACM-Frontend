@@ -69,6 +69,7 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
         seteditData(false);
     };
     const numberOfProjects = data.project3Name ? 3 : (data.project2Name ? 2 : (data.project1Name ? 1 : 0));
+    console.log(numberOfProjects);
 
     const handleOpen = () => {
         if (numberOfProjects === 3) {
@@ -118,26 +119,36 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
 
         const result = window.confirm("Are you sure you want to delete the project?");
         if (result) {
-
-            const colName = `project${index + 1}Name`;
-            const colDesc = `project${index + 1}Desc`;
-
-            // Create an updated data object with the project columns set to null
             const updatedData = {
                 ...data,
-                [colName]: null,
-                [colDesc]: null
             };
-            // to  slide the projects upon delete
-            for (let i = index + 1; i <= 3; i++) {
-                const currentColName = `project${i}Name`;
-                const currentColDesc = `project${i}Desc`;
-                const nextColName = `project${i + 1}Name`;
-                const nextColDesc = `project${i + 1}Desc`;
-
-                updatedData[currentColName] = data[nextColName];
-                updatedData[currentColDesc] = data[nextColDesc];
+            switch (index) {
+                case 1: {
+                    updatedData.project1Name = updatedData.project2Name;
+                    updatedData.project1Desc = updatedData.project2Desc;
+                    updatedData.project1Image = updatedData.project2Image;
+                    updatedData.project2Name = updatedData.project3Name;
+                    updatedData.project2Desc = updatedData.project3Name;
+                    updatedData.project2Image = updatedData.project3Image;
+                    break;
+                }
+                case 2: {
+                    updatedData.project2Name = updatedData.project3Name;
+                    updatedData.project2Desc = updatedData.project3Name;
+                    updatedData.project2Image = updatedData.project3Image;
+                    updatedData.project3Name = null;
+                    updatedData.project3Desc = null;
+                    updatedData.project3Image = null;
+                    break;
+                }
+                case 3: {
+                    updatedData.project3Name = null;
+                    updatedData.project3Desc = null;
+                    updatedData.project3Image = null;
+                }
             }
+            // Create an updated data object with the project columns set to null
+            console.log(updatedData);
 
             // Update the data state with the modified data object
             setData(updatedData);
@@ -365,7 +376,7 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                                 <h4>{data.project1Name}</h4>
                                 <React.Fragment>
                                     {data.project1Name ? (
-                                        <DeleteOutlineIcon style={{ marginLeft: '24em' }} onClick={() => handleDelete(0)} />
+                                        <DeleteOutlineIcon style={{ marginLeft: '24em' }} onClick={() => handleDelete(1)} />
                                     ) : null}
                                 </React.Fragment>
 
@@ -380,7 +391,7 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                                 <h4>{data.project2Name}</h4>
                                 <React.Fragment>
                                     {data.project2Name ? (
-                                        <DeleteOutlineIcon style={{ marginLeft: '24em', position: 'absolute' }} onClick={() => handleDelete(1)} />
+                                        <DeleteOutlineIcon style={{ marginLeft: '24em', position: 'absolute' }} onClick={() => handleDelete(2)} />
                                     ) : null}
                                 </React.Fragment>
 
@@ -395,7 +406,7 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                                 <h4>{data.project3Name}</h4>
                                 <React.Fragment>
                                     {data.project3Name ? (
-                                        <DeleteOutlineIcon style={{ marginLeft: '24em' }} onClick={() => handleDelete(2)} />
+                                        <DeleteOutlineIcon style={{ marginLeft: '24em' }} onClick={() => handleDelete(3)} />
                                     ) : null}
                                 </React.Fragment>
 
