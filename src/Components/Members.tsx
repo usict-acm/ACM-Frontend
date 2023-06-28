@@ -17,11 +17,10 @@ export type Team = {
   instagram: string | null
   year: number
   category: string
-  added_on: Date
   techStack: string | null
   dob: Date | null
-  active: boolean
-  membershipNo:string
+  membershipNo: string
+  email: string | null
   project1Desc:string | null 
   project1Name:string | null 
   project1Image:string | null 
@@ -67,12 +66,12 @@ const handlePageClick = (event: any) => {
             </thead>
             
             <tbody className="body-table">
-                {/* {data.map((item) => {
+                {data.map((item) => {
                     // return <MemberRow item={item} key={item.id} />;
                     if (item.year==new Date().getFullYear()) {
                         return <MemberRow item={item} key={item.id} />;
                     }
-                })} */}
+                })}
                 {data.slice(itemOffset, endOffset).map((event) => (
                         <React.Fragment>
                         {

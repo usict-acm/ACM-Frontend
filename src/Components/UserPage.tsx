@@ -52,7 +52,7 @@ interface Project {
     image: string;
 }
 
-const UserPageInner = function(props: { data: { read(): Team } }) {
+const UserPageInner = function (props: { data: { read(): Team } }) {
     const [data, setData] = useState(props.data.read());
     const [edit, seteditData] = useState(false);
     const [open, setOpen] = useState(false);
@@ -98,7 +98,7 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                 ...data,
                 [colName]: prName,
                 [colDesc]: prDesc,
-                [colImage]:prImage
+                [colImage]: prImage
             };
         }
         setData(updatedData);
@@ -169,8 +169,8 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
 
     return (
         <div className="parent">
-            <div className="profile">
-                <div className="content">
+            <div className="profile"style={{height:"100%"}}>
+                <div className="content" style={{ overflowY: edit ? 'scroll' : 'hidden' }} >
                     <button
                         type="button"
                         onClick={() => seteditData(true)}
@@ -180,24 +180,27 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                         Edit
                         <EditIcon />
                     </button>
-                    <div className="image">
+                    <div className="image flex-container">
                         <div>
                             <img className="img-body" src={`../${data.image}`} alt="gg" />
                         </div>
+                        <div className="name"><p>{data.name}</p></div>
+
                     </div>
 
-                    <div className="mem-details">
+                    <div className="mem-details" style={{ fontSize: "18px" }}>
                         <div>
+                            {/* change the name to position */}
                             {edit ? (
                                 <div className="sub-member-details">
-                                    <p className="headings">Name</p>
+                                    <p className="headings">Position</p>
                                     <input
                                         type="text"
-                                        value={data.name}
+                                        value={data.designation}
                                         onChange={(e) =>
                                             setData({
                                                 ...data,
-                                                name: e.target.value,
+                                                designation: e.target.value,
                                             })
                                         }
                                     />
@@ -205,8 +208,8 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                             ) : (
                                 <div className="sub-member-details">
                                     {" "}
-                                    <p className="headings" >Name</p>
-                                    <p>{data.name}</p>
+                                    <p className="headings">Position</p>
+                                    <p>{data.designation}</p>
                                 </div>
                             )}
                         </div>
@@ -242,39 +245,40 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
 
                         <div>
                             <div>
+                                {/* change this to email */}
                                 {edit ? (
                                     <div className="sub-member-details">
-                                        <p className="headings ">Membership No</p>
+                                        <p className="headings">Email</p>
                                         <input
                                             className="mem-input"
-                                            type="text"
-                                            value={data.membershipNo}
+                                            type="email"
+                                            value={data.email ?? ''}
                                             onChange={(e) =>
                                                 setData({
                                                     ...data,
-                                                    membershipNo: e.target.value,
+                                                    email: e.target.value,
                                                 })
                                             }
                                         />
                                     </div>
                                 ) : (<div className="sub-member-details">
                                     {" "}
-                                    <p className="headings">Membership No.</p>
-                                    <p>{data.membershipNo}</p>
+                                    <p className="headings">Email</p>
+                                    <p>{data.email}</p>
                                 </div>)}
 
                             </div>
                         </div>
 
 
-                        <div>
+                        {/* <div>
                             <div className="sub-member-details">
                                 {" "}
                                 <p className="headings">Member from</p>
                                 <p>{data.added_on.toString()}</p>
                             </div>
-                        </div>
-                        <div>
+                        </div> */}
+                        {/* <div>
                             {edit ? (
                                 <div className="sub-member-details">
                                     <p className="headings">Currently</p>
@@ -298,12 +302,12 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                                     <p>{data.active.toString()}</p>
                                 </div>
                             )}
-                        </div>
-
+                        </div> */}
+                        {/* TechStacks->Skills */}
                         <div>
                             {edit ? (
                                 <div className="sub-member-details">
-                                    <p className="headings">Tech Stacks</p>
+                                    <p className="headings">Skills</p>
                                     <input
                                         type="text"
                                         value={
@@ -322,10 +326,91 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                             ) : (
                                 <div className="sub-member-details">
                                     {" "}
-                                    <p className="headings">Tech Stacks</p>
+                                    <p className="headings">Skills</p>
                                     <p>{data.techStack}</p>
                                 </div>
                             )}
+                        </div>
+
+                        <div>
+                            {edit ? (
+                                <div className="sub-member-details">
+                                    {data.linkedin && (
+                                        <>
+                                            <p className="headings">{data.linkedin ? "LinkedIn" : ''}</p>
+                                            <input
+                                                type="text"
+                                                value={
+                                                    data.linkedin
+                                                        ? data.linkedin!
+                                                        : ""
+                                                }
+                                                onChange={(e) =>
+                                                    setData({
+                                                        ...data,
+                                                        linkedin: e.target.value,
+                                                    })
+                                                }
+                                            />
+                                        </>
+                                    )}
+
+                                </div>
+                            ) : ''}
+                        </div>
+
+                        <div>
+                            {edit ? (
+                                <div className="sub-member-details">
+                                    {data.instagram && (
+                                        <>
+                                            <p className="headings">{data.instagram ? "Instagram" : ''}</p>
+                                            <input
+                                                type="text"
+                                                value={
+                                                    data.instagram
+                                                        ? data.instagram!
+                                                        : ""
+                                                }
+                                                onChange={(e) =>
+                                                    setData({
+                                                        ...data,
+                                                        instagram: e.target.value,
+                                                    })
+                                                }
+                                            />
+                                        </>
+                                    )}
+
+                                </div>
+                            ) : ''}
+                        </div>
+
+                        <div>
+                            {edit ? (
+                                <div className="sub-member-details">
+                                    {data.github && (
+                                        <>
+                                            <p className="headings">Github</p>
+                                            <input
+                                                type="text"
+                                                value={
+                                                    data.github
+                                                        ? data.github!
+                                                        : ""
+                                                }
+                                                onChange={(e) =>
+                                                    setData({
+                                                        ...data,
+                                                        github: e.target.value,
+                                                    })
+                                                }
+                                            />
+                                        </>
+                                    )
+                                    }
+                                </div>
+                            ) : null}
                         </div>
 
                         <div>
@@ -346,8 +431,11 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                                 ""
                             )}
                         </div>
+
+
+
                     </div>
-                    <div className="social-handles">
+                    {edit ? '' : (<div className="social-handles">
                         {data.linkedin && (
                             <a href={data.linkedin}>
                                 <LinkedInIcon />
@@ -363,94 +451,102 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                                 <GitHub />
                             </a>
                         )}
-                    </div>
+                    </div>)}
+
                 </div>
             </div>
-            <div className="projects ">
+            <div className="projects">
 
-                <div className="acm-projects ">
-                    {/* <div className="headings ">
-                        <h2>Projects</h2>
-                        <button className="add project-btn" onClick={handleOpen}>
-                            Add Project
-                        </button>
-                    </div> */}
-                    <div className="flex-container">
-                      {(!data.project1Name)?(
-                        <>
-                         <div className="empty">
-                         No Projects Yet
-                        
-                       </div>
-                        <button className="add project-btn" onClick={handleOpen}>
-                        Add Project
-                    </button>
-                        </>
-                        
-                      ):(<>
-                      <div className="headings ">
-                        <h2>Projects</h2>
-                        <button className="add project-btn" onClick={handleOpen}>
-                            Add Project
-                        </button>
+                <div className="acm-projects">
+                <button className="add project-btn" onClick={handleOpen} >
+                                    Add Project
+                                </button>
+                    <div className="flex-container" >
+                        {(!data.project1Name) ? (
+                            <>
+                                <div className="empty">
+                                {/* <button className="add project-btn" onClick={handleOpen} >
+                                    Add Project
+                                </button> */}
+                                    No Projects Yet
+                                   
+                                   
+                                </div>
+                               
+                            </>
+
+                        ) : (<>
+                            <div className="headings">
+                                <h2><i style={{fontSize:"30px"}}>Your Projects</i></h2>
+                                
+                            </div>
+                           
+                            <div className="pr-container ">
+                                <div className="pr-content">
+                                <div className="pr-title">
+                                    <h4>{data.project1Name}</h4>
+                                    <>
+                                        {data.project1Name ? (
+                                            <DeleteOutlineIcon  onClick={() => handleDelete(1)} />
+                                        ) : null}
+                                    </>
+                               </div>
+                                <p className="desc">
+                                    {data.project1Desc}
+                               </p>
+                                </div>
+                                
+                                <div className="pr-image"><img className="img-section" src="../assets/banner.svg" alt="" /></div>
+
+                            </div>
+                            <div className="pr-container">
+                                <div className="pr-content">
+                                <div className="pr-title">
+                                    <h4>{data.project2Name}</h4>
+                                    <>
+                                        {data.project2Name ? (
+                                            <DeleteOutlineIcon onClick={() => handleDelete(2)} />
+                                        ) : null}
+                                    </>
+
+
+                                </div>
+                                <p className="desc">
+                                    {data.project2Desc}
+                                </p>
+                                </div>
+                                
+                                <div><img className="img-section" src={data.project2Image?data.project2Image:''} alt="" /></div>
+
+                            </div>
+                            <div className="pr-container">
+                                <div className="pr-content">
+                                <div className="pr-title">
+                                    <h4>{data.project3Name}</h4>
+                                    <>
+                                        {data.project3Name ? (
+                                            <DeleteOutlineIcon  onClick={() => handleDelete(3)} />
+                                        ) : null}
+                                    </>
+
+
+
+                                </div>
+                                <p className="desc">
+                                    {data.project3Desc}
+                                </p>
+                                </div>
+                               {data.project3Name && 
+<div><img className="img-section" src={data.project3Image?data.project3Image:''} alt="" /></div> 
+                               
+                               }
+                                
+
+                            </div></>)}
+
+
                     </div>
-                      <div className="pr-container">
-                      <div className="title">
-                          <h4>{data.project1Name}</h4>
-                          <React.Fragment>
-                              {data.project1Name ? (
-                                  <DeleteOutlineIcon style={{marginLeft:'20em'}} onClick={() => handleDelete(1)} />
-                              ) : null}
-                          </React.Fragment>
-
-                      </div>
-                      <p className="desc">
-                          {data.project1Desc}
-                      </p>
-                      {/* <div><img className="img-section" src={data.project1Image?data.project1Image:''} alt="" /></div> */}
-
-                  </div>
-                  <div className="pr-container">
-                      <div className="title">
-                          <h4>{data.project2Name}</h4>
-                          <React.Fragment>
-                              {data.project2Name ? (
-                                  <DeleteOutlineIcon style={{ marginLeft: '26em', position: 'absolute' }} onClick={() => handleDelete(2)} />
-                              ) : null}
-                          </React.Fragment>
-
-                      </div>
-                      <p className="desc">
-                          {data.project2Desc}
-                      </p>
-                      {/* <div><img className="img-section" src={data.project2Image?data.project2Image:''} alt="" /></div> */}
-
-
-                  </div>
-                  <div className="pr-container">
-                      <div className="title">
-                          <h4>{data.project3Name}</h4>
-                          <React.Fragment>
-                              {data.project3Name ? (
-                                  <DeleteOutlineIcon style={{ marginLeft: '24em' }} onClick={() => handleDelete(3)} />
-                              ) : null}
-                          </React.Fragment>
-
-
-                      </div>
-                      <p className="desc">
-                          {data.project3Desc}
-                      </p>
-                      {/* <div><img className="img-section" src={data.project3Image?data.project3Image:''} alt="" /></div> */}
-
-                      {/* <button className="delete project-btn">
-  Delete Project
-</button> */}
-                  </div></>)}
-                        
-
-                    </div>
-
+                    
 
 
                 </div>
@@ -501,17 +597,17 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
     );
 };
 // if (projects.length === 0) {
-        //     setData({ ...data, project1Name: prName, project1Desc: prDesc });
-        //     updatedData = { project1Name: prName, project1Desc: prDesc };
-        // } else if (projects.length === 1) {
-        //     setData({ ...data, project2Name: prName, project2Desc: prDesc });
-        //     updatedData = { project2Name: prName, project2Desc: prDesc };
-        // } else if (projects.length === 2) {
-        //     setData({ ...data, project3Name: prName, project3Desc: prDesc });
-        //     updatedData = { project3Name: prName, project3Desc: prDesc };
-        // }
-        // const newProject = { id: data.id, name: prName, description: prDesc };
+//     setData({ ...data, project1Name: prName, project1Desc: prDesc });
+//     updatedData = { project1Name: prName, project1Desc: prDesc };
+// } else if (projects.length === 1) {
+//     setData({ ...data, project2Name: prName, project2Desc: prDesc });
+//     updatedData = { project2Name: prName, project2Desc: prDesc };
+// } else if (projects.length === 2) {
+//     setData({ ...data, project3Name: prName, project3Desc: prDesc });
+//     updatedData = { project3Name: prName, project3Desc: prDesc };
+// }
+// const newProject = { id: data.id, name: prName, description: prDesc };
 
-        // // If there are already 3 projects, remove the last one
-        // setProjects({...data,updatedData});
-        // Save the updated projects list
+// // If there are already 3 projects, remove the last one
+// setProjects({...data,updatedData});
+// Save the updated projects list
