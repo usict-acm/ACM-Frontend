@@ -1,4 +1,4 @@
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect,ChangeEvent } from "react";
 import React from "react";
 import "./Assests/CSS/UserPage.css";
 import { Team } from "./Members";
@@ -58,7 +58,18 @@ const UserPageInner = function (props: { data: { read(): Team } }) {
     const [open, setOpen] = useState(false);
     const [prName, setprName] = useState("");
     const [prDesc, setprDesc] = useState("");
-    const [prImage, setImage] = useState<File | undefined>(undefined);
+    const [currPr, setCurrPr] = useState<number>(0);
+    const [imageProject1, setImageProject1] = useState<File | null>(null);
+  const [imageProject2, setImageProject2] = useState<File | null>(null);
+  const [imageProject3, setImageProject3] = useState<File | null>(null);
+  const [selectedImage, setSelectedImage] = useState<File | null>(null);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleImageClick = (image: File) => {
+    setSelectedImage(image);
+    setShowModal(true);
+  };
+    
 
     // const[projects,setProjects]=useState([]);
     const [refreshFlag, setRefreshFlag] = useState(false);
@@ -98,7 +109,7 @@ const UserPageInner = function (props: { data: { read(): Team } }) {
                 ...data,
                 [colName]: prName,
                 [colDesc]: prDesc,
-                [colImage]: prImage
+                [colImage]: `imageProject${projIndex}`
             };
         }
         setData(updatedData);
@@ -114,6 +125,7 @@ const UserPageInner = function (props: { data: { read(): Team } }) {
         // Clear the input fields for the next project
         setprDesc('');
         setprName('');
+        setCurrPr(currPr+1);
     }
 
 
@@ -164,8 +176,24 @@ const UserPageInner = function (props: { data: { read(): Team } }) {
 
             // Set refresh flag if necessary
             setRefreshFlag(true);
+            setCurrPr(currPr-1);
         }
     };
+    const handleImageProject = (event: ChangeEvent<HTMLInputElement>) =>{
+        
+        const file=event.target.files?.[0]?? null;
+        if(currPr==0){
+            setImageProject1(file);
+        }
+        
+        else if(currPr==1){
+            setImageProject2(file);
+        }
+        
+        else if(currPr==2){
+            setImageProject3(file);
+        }
+    }
 
     return (
         <div className="parent">
@@ -496,7 +524,15 @@ const UserPageInner = function (props: { data: { read(): Team } }) {
                                </p>
                                 </div>
                                 
-                                <div className="pr-image"><img className="img-section" src="../assets/banner.svg" alt="" /></div>
+                                {data.project1Name && imageProject1 && (
+            <div onClick={() => handleImageClick(imageProject1)}>
+              <img
+                className="img-section"
+                src={imageProject1 ? URL.createObjectURL(imageProject1) : ''}
+                alt=""
+              />
+            </div>
+          )}
 
                             </div>
                             <div className="pr-container">
@@ -516,7 +552,15 @@ const UserPageInner = function (props: { data: { read(): Team } }) {
                                 </p>
                                 </div>
                                 
-                                <div><img className="img-section" src={data.project2Image?data.project2Image:''} alt="" /></div>
+                                {data.project2Name &&imageProject2&& (
+            <div onClick={() => handleImageClick(imageProject2)}>
+              <img
+                className="img-section"
+                src={imageProject2 ? URL.createObjectURL(imageProject2) : ''}
+                alt=""
+              />
+            </div>
+          )}
 
                             </div>
                             <div className="pr-container">
@@ -536,12 +580,15 @@ const UserPageInner = function (props: { data: { read(): Team } }) {
                                     {data.project3Desc}
                                 </p>
                                 </div>
-                               {data.project3Name && 
-<div><img className="img-section" src={data.project3Image?data.project3Image:''} alt="" /></div> 
-                               
-                               }
-                                
-
+                                {data.project3Name && imageProject3 && (
+            <div onClick={() => handleImageClick(imageProject3)}>
+              <img
+                className="img-section"
+                src={imageProject3 ? URL.createObjectURL(imageProject3) : ''}
+                alt=""
+              />
+            </div>
+          )}
                             </div></>)}
 
 
@@ -550,6 +597,15 @@ const UserPageInner = function (props: { data: { read(): Team } }) {
 
 
                 </div>
+                {showModal && selectedImage && (
+  <div>
+    <div className="modal-overlay" onClick={() => setShowModal(false)} />
+      <div className="modal-content" style={{maxWidth: "100vw",opacity:"0.8",overflowY:"hidden",
+    maxHeight: "40vw",padding:"0",borderRadius:"16px",marginLeft:"-15em"}}>
+        <img src={URL.createObjectURL(selectedImage)} alt="Selected Project Image" />
+      </div>
+  </div>
+)}
 
             </div>
 
@@ -582,9 +638,7 @@ const UserPageInner = function (props: { data: { read(): Team } }) {
                     />
                     <span className="required" style={{ color: 'red' }}>*</span>
 
-                    <input type="file" accept="image/*" onChange={(event) => {
-                        setImage(event.target.files?.[0]);
-                    }}
+                    <input type="file" accept="image/*" onChange={handleImageProject}
                         required
                     />
                 </DialogContent>
