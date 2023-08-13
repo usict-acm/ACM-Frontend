@@ -1,4 +1,4 @@
-import { Suspense, useEffect,ChangeEvent } from "react";
+import { Suspense, ChangeEvent } from "react";
 import React from "react";
 import "./Assests/CSS/UserPage.css";
 import { Team } from "./Members";
@@ -52,24 +52,20 @@ interface Project {
     image: string;
 }
 
-const UserPageInner = function (props: { data: { read(): Team } }) {
+const UserPageInner = function(props: { data: { read(): Team } }) {
     const [data, setData] = useState(props.data.read());
     const [edit, seteditData] = useState(false);
     const [open, setOpen] = useState(false);
     const [prName, setprName] = useState("");
     const [prDesc, setprDesc] = useState("");
     const [currPr, setCurrPr] = useState<number>(0);
-    const [imageProject1, setImageProject1] = useState<File | null>(null);
-  const [imageProject2, setImageProject2] = useState<File | null>(null);
-  const [imageProject3, setImageProject3] = useState<File | null>(null);
-  const [selectedImage, setSelectedImage] = useState<File | null>(null);
-  const [showModal, setShowModal] = useState(false);
+    const [showModal, setShowModal] = useState(false);
 
-  const handleImageClick = (image: File) => {
-    setSelectedImage(image);
-    setShowModal(true);
-  };
-    
+    const handleImageClick = (image: File) => {
+        //setSelectedImage(image);
+        setShowModal(true);
+    };
+
 
     // const[projects,setProjects]=useState([]);
     const [refreshFlag, setRefreshFlag] = useState(false);
@@ -102,14 +98,12 @@ const UserPageInner = function (props: { data: { read(): Team } }) {
 
             const colName = `project${projIndex}Name`;
             const colDesc = `project${projIndex}Desc`;
-            const colImage = `project${projIndex}Image`;
 
 
             updatedData = {
                 ...data,
                 [colName]: prName,
                 [colDesc]: prDesc,
-                [colImage]: `imageProject${projIndex}`
             };
         }
         setData(updatedData);
@@ -125,7 +119,7 @@ const UserPageInner = function (props: { data: { read(): Team } }) {
         // Clear the input fields for the next project
         setprDesc('');
         setprName('');
-        setCurrPr(currPr+1);
+        setCurrPr(currPr + 1);
     }
 
 
@@ -176,28 +170,34 @@ const UserPageInner = function (props: { data: { read(): Team } }) {
 
             // Set refresh flag if necessary
             setRefreshFlag(true);
-            setCurrPr(currPr-1);
+            setCurrPr(currPr - 1);
         }
     };
-    const handleImageProject = (event: ChangeEvent<HTMLInputElement>) =>{
-        
-        const file=event.target.files?.[0]?? null;
-        if(currPr==0){
-            setImageProject1(file);
-        }
-        
-        else if(currPr==1){
-            setImageProject2(file);
-        }
-        
-        else if(currPr==2){
-            setImageProject3(file);
-        }
+    const handleImageProject = (event: ChangeEvent<HTMLInputElement>) => {
+        console.log(event);
+        if (!event.target.files || !event.target.files[0]) return;
+        const reader = new FileReader();
+        console.log("we are here!");
+        reader.addEventListener("load", (event) => {
+            if (currPr == 0) {
+                setData({ ...data, project1Image: event.target?.result!.toString()! });
+            }
+
+            else if (currPr == 1) {
+                setData({ ...data, project2Image: event.target?.result!.toString()! });
+            }
+
+            else if (currPr == 2) {
+                setData({ ...data, project3Image: event.target?.result!.toString()! });
+            }
+        })
+        const fileName = event.target.files[0];
+        reader.readAsDataURL(fileName);
     }
 
     return (
         <div className="parent">
-            <div className="profile"style={{height:"100%"}}>
+            <div className="profile" style={{ height: "100%" }}>
                 <div className="content" style={{ overflowY: edit ? 'scroll' : 'hidden' }} >
                     <button
                         type="button"
@@ -486,126 +486,128 @@ const UserPageInner = function (props: { data: { read(): Team } }) {
             <div className="projects">
 
                 <div className="acm-projects">
-                <button className="add project-btn" onClick={handleOpen} >
-                                    Add Project
-                                </button>
+                    <button className="add project-btn" onClick={handleOpen} >
+                        Add Project
+                    </button>
                     <div className="flex-container" >
                         {(!data.project1Name) ? (
                             <>
                                 <div className="empty">
-                                {/* <button className="add project-btn" onClick={handleOpen} >
+                                    {/* <button className="add project-btn" onClick={handleOpen} >
                                     Add Project
                                 </button> */}
                                     No Projects Yet
-                                   
-                                   
+
+
                                 </div>
-                               
+
                             </>
 
                         ) : (<>
                             <div className="headings">
-                                <h2><i style={{fontSize:"30px"}}>Your Projects</i></h2>
-                                
+                                <h2><i style={{ fontSize: "30px" }}>Your Projects</i></h2>
+
                             </div>
-                           
+
                             <div className="pr-container ">
                                 <div className="pr-content">
-                                <div className="pr-title">
-                                    <h4>{data.project1Name}</h4>
-                                    <>
-                                        {data.project1Name ? (
-                                            <DeleteOutlineIcon  onClick={() => handleDelete(1)} />
-                                        ) : null}
-                                    </>
-                               </div>
-                                <p className="desc">
-                                    {data.project1Desc}
-                               </p>
+                                    <div className="pr-title">
+                                        <h4>{data.project1Name}</h4>
+                                        <>
+                                            {data.project1Name ? (
+                                                <DeleteOutlineIcon onClick={() => handleDelete(1)} />
+                                            ) : null}
+                                        </>
+                                    </div>
+                                    <p className="desc">
+                                        {data.project1Desc}
+                                    </p>
                                 </div>
-                                
-                                {data.project1Name && imageProject1 && (
-            <div onClick={() => handleImageClick(imageProject1)}>
-              <img
-                className="img-section"
-                src={imageProject1 ? URL.createObjectURL(imageProject1) : ''}
-                alt=""
-              />
-            </div>
-          )}
+
+                                {data.project1Name && data.project1Image && (
+                                    <div>
+                                        <img
+                                            className="img-section"
+                                            src={data.project1Image}
+                                            alt=""
+                                        />
+                                    </div>
+                                )}
 
                             </div>
                             <div className="pr-container">
                                 <div className="pr-content">
-                                <div className="pr-title">
-                                    <h4>{data.project2Name}</h4>
-                                    <>
-                                        {data.project2Name ? (
-                                            <DeleteOutlineIcon onClick={() => handleDelete(2)} />
-                                        ) : null}
-                                    </>
+                                    <div className="pr-title">
+                                        <h4>{data.project2Name}</h4>
+                                        <>
+                                            {data.project2Name ? (
+                                                <DeleteOutlineIcon onClick={() => handleDelete(2)} />
+                                            ) : null}
+                                        </>
 
 
+                                    </div>
+                                    <p className="desc">
+                                        {data.project2Desc}
+                                    </p>
                                 </div>
-                                <p className="desc">
-                                    {data.project2Desc}
-                                </p>
-                                </div>
-                                
-                                {data.project2Name &&imageProject2&& (
-            <div onClick={() => handleImageClick(imageProject2)}>
-              <img
-                className="img-section"
-                src={imageProject2 ? URL.createObjectURL(imageProject2) : ''}
-                alt=""
-              />
-            </div>
-          )}
+
+                                {data.project2Name && imageProject2 && (
+                                    <div onClick={() => handleImageClick(imageProject2)}>
+                                        <img
+                                            className="img-section"
+                                            src={imageProject2 ? URL.createObjectURL(imageProject2) : ''}
+                                            alt=""
+                                        />
+                                    </div>
+                                )}
 
                             </div>
                             <div className="pr-container">
                                 <div className="pr-content">
-                                <div className="pr-title">
-                                    <h4>{data.project3Name}</h4>
-                                    <>
-                                        {data.project3Name ? (
-                                            <DeleteOutlineIcon  onClick={() => handleDelete(3)} />
-                                        ) : null}
-                                    </>
+                                    <div className="pr-title">
+                                        <h4>{data.project3Name}</h4>
+                                        <>
+                                            {data.project3Name ? (
+                                                <DeleteOutlineIcon onClick={() => handleDelete(3)} />
+                                            ) : null}
+                                        </>
 
 
 
-                                </div>
-                                <p className="desc">
-                                    {data.project3Desc}
-                                </p>
+                                    </div>
+                                    <p className="desc">
+                                        {data.project3Desc}
+                                    </p>
                                 </div>
                                 {data.project3Name && imageProject3 && (
-            <div onClick={() => handleImageClick(imageProject3)}>
-              <img
-                className="img-section"
-                src={imageProject3 ? URL.createObjectURL(imageProject3) : ''}
-                alt=""
-              />
-            </div>
-          )}
+                                    <div onClick={() => handleImageClick(imageProject3)}>
+                                        <img
+                                            className="img-section"
+                                            src={imageProject3 ? URL.createObjectURL(imageProject3) : ''}
+                                            alt=""
+                                        />
+                                    </div>
+                                )}
                             </div></>)}
 
 
                     </div>
-                    
+
 
 
                 </div>
                 {showModal && selectedImage && (
-  <div>
-    <div className="modal-overlay" onClick={() => setShowModal(false)} />
-      <div className="modal-content" style={{maxWidth: "100vw",opacity:"0.8",overflowY:"hidden",
-    maxHeight: "40vw",padding:"0",borderRadius:"16px",marginLeft:"-15em"}}>
-        <img src={URL.createObjectURL(selectedImage)} alt="Selected Project Image" />
-      </div>
-  </div>
-)}
+                    <div>
+                        <div className="modal-overlay" onClick={() => setShowModal(false)} />
+                        <div className="modal-content" style={{
+                            maxWidth: "100vw", opacity: "0.8", overflowY: "hidden",
+                            maxHeight: "40vw", padding: "0", borderRadius: "16px", marginLeft: "-15em"
+                        }}>
+                            <img src={URL.createObjectURL(selectedImage)} alt="Selected Project Image" />
+                        </div>
+                    </div>
+                )}
 
             </div>
 
