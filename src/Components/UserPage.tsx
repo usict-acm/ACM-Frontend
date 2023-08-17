@@ -83,13 +83,15 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
     console.log(numberOfProjects);
 
     const handleOpen = () => {
-        setEditIndex(0);
 
         if (numberOfProjects === 3) {
             return alert("You can only add a max of 3 projects.");
         }
         else
             setOpen(true);
+
+            // setEditIndex(0);
+
     }
     const handleClose = () => {
         setOpen(false);
@@ -126,6 +128,7 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
         // Clear the input fields for the next project
         setprDesc('');
         setprName('');
+        if(currPr<3)
         setCurrPr(currPr + 1);
         setEditIndex(0);
     }
@@ -165,6 +168,7 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                     updatedData.project3Name = null;
                     updatedData.project3Desc = null;
                     updatedData.project3Image = null;
+                    break;
                 }
             }
             // Create an updated data object with the project columns set to null
@@ -178,7 +182,10 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
 
             // Set refresh flag if necessary
             setRefreshFlag(true);
-            setCurrPr(currPr - 1);
+            if(currPr>=1)
+            setCurrPr(currPr - 1);   
+            setEditIndex(0);
+
         }
     };
     const handleImageProject = (event: ChangeEvent<HTMLInputElement>) => {
@@ -189,7 +196,9 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
         reader.addEventListener("load", (event) => {
             if (currPr == 0) {
                 setData({ ...data, project1Image: event.target?.result!.toString()! });
+            console.log("img-1 added");
             }
+
 
             else if (currPr == 1) {
                 setData({ ...data, project2Image: event.target?.result!.toString()! });
@@ -202,6 +211,10 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
         const fileName = event.target.files[0];
         reader.readAsDataURL(fileName);
     }
+
+
+    
+
    const handleEditProject =(index:number)=>{
           setEditIndex(index);
           setOpen(true);
@@ -512,7 +525,7 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                                             className="img-section"
                                             src={data.project1Image}
 
-                                            alt=""
+                                            alt="1st pr"
                                         />
                                     </div>
                                 )}
@@ -548,7 +561,7 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                                             className="img-section"
                                             src={data.project2Image}
 
-                                            alt=""
+                                            alt="2nd pr"
                                         />
                                     </div>
                                 )}
@@ -582,7 +595,7 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                                         <img
                                             className="img-section"
                                             src={data.project3Image}
-                                            alt=""
+                                            alt="3rd pr"
                                         />
                                     </div>
                                 )}
@@ -629,10 +642,13 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
             // onChange={(event) => setprName(event.target.value)}
             onChange={(event) => {
                 if (editIndex !== 0) {
-                    setData({
+                    const newdata={
                         ...data,
                         [`project${editIndex}Name`]: event.target.value,
-                    });
+                    };
+                    setData(newdata);
+        setSaveReq(fetchData(`/team/${data.id}`, "PATCH",newdata));
+      
                 } else {
                     setprName(event.target.value);
                 }
@@ -655,10 +671,12 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
             // onChange={(event) => setprDesc(event.target.value)}
             onChange={(event) => {
                 if (editIndex !== 0) {
-                    setData({
+                    const newData={
                         ...data,
                         [`project${editIndex}Desc`]: event.target.value,
-                    });
+                    };
+                    setData(newData);
+                    setSaveReq(fetchData(`/team/${data.id}`, "PATCH",newData));
                 } else {
                     setprDesc(event.target.value);
                 }
@@ -671,8 +689,22 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
         <input
             type="file"
             accept="image/*"
-            onChange={handleImageProject}
-                
+            // onChange={handleImageProject}
+            onChange={(event) => {
+                const img=event.target.files && event.target.files[0];
+                if (editIndex !== 0) {
+                    setData({
+                        ...data,
+                        [`project${editIndex}Image`]: img,
+                    });
+                    setSaveReq(fetchData(`/team/${data.id}`, "PATCH",{
+                        ...data,
+                        [`project${editIndex}Image`]: event.target.value,
+                    }));
+                } else {
+                    {handleImageProject(event)}
+                }
+            }}
             
             required
         />
