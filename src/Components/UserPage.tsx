@@ -691,16 +691,20 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
             accept="image/*"
             // onChange={handleImageProject}
             onChange={(event) => {
-                const img=event.target.files && event.target.files[0];
+
                 if (editIndex !== 0) {
-                    setData({
-                        ...data,
-                        [`project${editIndex}Image`]: img,
-                    });
-                    setSaveReq(fetchData(`/team/${data.id}`, "PATCH",{
-                        ...data,
-                        [`project${editIndex}Image`]: event.target.value,
-                    }));
+                    let img = event.target.files && event.target.files[0];
+                    if (img) {
+                        let imageUrl = URL.createObjectURL(img);
+                        setData({
+                            ...data,
+                            [`project${editIndex}Image`]: imageUrl,
+                        });
+                        setSaveReq(fetchData(`/team/${data.id}`, "PATCH", {
+                            ...data,
+                            [`project${editIndex}Image`]: imageUrl,
+                        }));
+                    }
                 } else {
                     {handleImageProject(event)}
                 }
