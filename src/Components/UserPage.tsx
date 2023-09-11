@@ -1,5 +1,4 @@
-import { Suspense, ChangeEvent } from "react";
-import React from "react";
+import { Suspense, ChangeEvent, useEffect } from "react";
 import "./Assests/CSS/UserPage.css";
 import { Team } from "./Members";
 import { useState } from "react";
@@ -64,6 +63,16 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
     const [showModal, setShowModal] = useState(false);
     const [selectedImage, setSelectedImage] = useState<string |null>(null);
     const [editIndex, setEditIndex] = useState<number>(0);
+
+// Add a state to track when the update button is clicked
+const [updateClicked, setUpdateClicked] = useState(false);
+
+// Use useEffect to reload the page when updateClicked is true
+useEffect(() => {
+  if (updateClicked) {
+    window.location.reload();
+  }
+}, [updateClicked]);
 
 
     const handleImageClick = (image:string |null) => {
@@ -494,7 +503,7 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
 
                         ) : (<>
                             <div className="headings">
-                                <h2><i style={{ fontSize: "30px" }}>Your Projects</i></h2>
+                                <h2><i>Your Projects</i></h2>
 
                             </div>
 
@@ -505,7 +514,9 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                                         <>
                                             {data.project1Name ? (
                                                 <>
-                                                <EditOutlined style={{"marginLeft":"25rem"}} onClick={()=>handleEditProject (1)}/>
+                                                <EditOutlined  style={{
+        marginLeft: window.innerWidth <= 720 ? '5px' : '57%',
+      }} onClick={()=>handleEditProject (1)}/>
                                                 <DeleteOutlineIcon style={{"margin":"0"} }
                                                 onClick={() => handleDelete(1)} />
 
@@ -538,7 +549,9 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                                         <>
                                             {data.project2Name ? (
                                                 <>
-                                                <EditOutlined style={{"marginLeft":"25rem"}} onClick={ ()=>handleEditProject (2)}/>
+                                                <EditOutlined  style={{
+        marginLeft: window.innerWidth <= 720 ? '5px' : '57%',
+      }} onClick={ ()=>handleEditProject (2)}/>
                                                 <DeleteOutlineIcon style={{"margin":"0"}}
                                                 onClick={() => handleDelete(2)} />
                                             
@@ -574,7 +587,9 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                                         <>
                                             {data.project3Name ? (
                                                <>
-                                               <EditOutlined style={{"marginLeft":"25rem"}} onClick={()=>handleEditProject (3)}/>
+                                               <EditOutlined style={{
+        marginLeft: window.innerWidth <= 720 ? '5px' : '57%',
+      }} onClick={()=>handleEditProject (3)}/>
                                                <DeleteOutlineIcon style={{"margin":"0"}}
                                                onClick={() => handleDelete(3)} />
                                            
@@ -677,6 +692,7 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                     };
                     setData(newData);
                     setSaveReq(fetchData(`/team/${data.id}`, "PATCH",newData));
+
                 } else {
                     setprDesc(event.target.value);
                 }
@@ -704,6 +720,8 @@ const UserPageInner = function(props: { data: { read(): Team } }) {
                             ...data,
                             [`project${editIndex}Image`]: imageUrl,
                         }));
+        setUpdateClicked(true);
+
                     }
                 } else {
                     {handleImageProject(event)}
