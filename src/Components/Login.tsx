@@ -51,7 +51,7 @@ function Login() {
                         }
                     }}
                 >
-                    <h2>Login...</h2>
+                    <h2 className="header">Login...</h2>
                     <div className="inputs">
                         <input
                             className="inputField"
@@ -89,7 +89,7 @@ function Login() {
                             />
                             <label>Remember me</label>
                         </div>
-                        <a href="#">Forgot Password?</a>
+                        <a className="forgot-password"href="#">Forgot Password?</a>
                     </div>
                     <button className="loginBtn">Login</button>
                 </form>

@@ -218,7 +218,10 @@ box-shadow:1px 0px 4px 1px rgb(106, 152, 227);
 }
 @media (max-width: 360px) {
   
- 
+  .pr-title{
+    gap:-4rem;
+  }
+
   .mem-details{
     padding:3rem;
   }

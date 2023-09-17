@@ -97,5 +97,37 @@ h2{
     border: none;
     
   }
+  .navbar{
+display: none;
+  }
+  @media(max-width:720px){
+    
+    .forgot-password{
+      display :none ;
+    }
+    .ussAcm{
+      height:100px;
+      width: 50px;
+    }
+    .header{
+      display: flex;
+      margin-right:-50% ;
+      flex-direction: row;
+      justify-content: space-between;
+      background:url("https://usict.acm.org/assets/images/acm-logo.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 250px 150px;
+      
+    }
+    .login{
+     
+      /* min-height:120%; */
+      margin-top:25vh;
+    }
+    .divider{
+      opacity: 0;
+    }
+  }
   
   
