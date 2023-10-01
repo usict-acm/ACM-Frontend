@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { doFetch, setSession } from "../api/fetchData";
+
 import "./Assests/CSS/login.css";
 
 export interface EncodeResult {
@@ -51,7 +52,8 @@ function Login() {
                         }
                     }}
                 >
-                    <h2 className="header">Login...</h2>
+                    <h2 className="header">Login</h2>
+                    <img className="logo-img"src="https://usict.acm.org/assets/images/acm-logo.svg" alt="logo" height="200px" width="250px"/>
                     <div className="inputs">
                         <input
                             className="inputField"
