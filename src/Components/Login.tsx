@@ -80,7 +80,7 @@ function Login() {
                         <i className="fa-solid fa-lock"></i>
                     </div>
                     <div className="checkbox">
-                        <div>
+                        <div  className="input-div remember-me">
                             <input
                                 type="checkbox"
                                 onChange={(_e) => {
@@ -91,7 +91,9 @@ function Login() {
                             />
                             <label>Remember me</label>
                         </div>
+                        <div className="input-div">
                         <a className="forgot-password"href="#">Forgot Password?</a>
+                        </div>
                     </div>
                     <button className="loginBtn">Login</button>
                 </form>
