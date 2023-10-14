@@ -1,10 +1,19 @@
+
+
 h2{
   color: #000000;
   font-weight: 700;
   font-size: x-large;
 }
+
+
 .login {
-    display: flex;
+  margin:-1rem;
+  padding: 0;
+  width: 100vw;
+  height:100vh;
+  overflow:hidden;
+  display: flex;
     justify-content: center;
     align-items: center;
     background: linear-gradient(
@@ -12,22 +21,25 @@ h2{
       rgb(53, 151, 184) 0%,
       rgb(36, 107, 239) 100%
     );
-    width: 100%;
-    height: 100%;
+  
   }
   .innerBox {
     display: flex;
     flex-direction: row;
+    flex:1;
     justify-content: center;
     align-items: center;
     background-color: white;
-    max-width: 550px;
+    max-width:600px;
     width: 100%;
     min-width: 180px;
-    padding: 30px 0px;
+    padding: 2rem 1rem;
     margin: 10px;
     border-radius: 10px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  }
+  .header{
+    font-size: 2.2em;
   }
   .divider{
     height: 300px;
@@ -40,17 +52,23 @@ h2{
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #000;
+    margin-bottom:1rem;
   }
   
   .logo {
+    width:40% !important;
     display: flex;
-    justify-items: center;
+    justify-content: center;
     align-items: center;
   }
   .logo > .ussAcm{
     width: 13vw;
     height: 35vh;
-    min-width: none;
+    /* justify-content: center; */
+    /* min-width: none; */
+  }
+  .logo-img{
+    display: none;
   }
   .inputs > .fa-solid{
     display: flex;
@@ -67,13 +85,21 @@ h2{
     border: none;
   }
   .checkbox{
-    padding: 20px 15px 15px 0px;
+    padding: 20px 15px 0px 0px;
     display: flex;
+    flex:1;
+    flex-direction: row;
     justify-content: space-between;
     width: 100%;
   }
   .checkbox > div{
-    margin-right: 20px;
+    /* margin-right: 20px; */
+  }
+  .input-div{
+    display:flex;
+    flex-direction: row;
+    /* margin-top: 5%; */
+    width: 100%;
   }
   .loginBtn {
     color: #fff;
@@ -96,6 +122,63 @@ h2{
     margin-right: auto;
     border: none;
     
+  }
+  /* .navbar{
+   display:none;
+   width:0 !important;
+   height: 0 !important;
+  } */
+  @media(max-width:720px){
+    
+    .login{
+      width: 100vw;
+  height:100vh;
+    }
+.innerBox{
+  max-width:350px;
+  padding: 0.5rem 0.5rem;
+  
+}
+.inputs{
+  gap:10px;
+}
+
+    .forgot-password{
+      display :none ;
+      width:0;
+    }
+    .ussAcm{
+      height:100px;
+      width: 50px;
+    }
+    .header{
+      display: flex;
+      /* background:url("https://usict.acm.org/assets/images/acm-logo.svg"); */
+      /* background-position: center;
+      background-repeat: no-repeat;
+      background-size: 250px 150px; */
+      padding-top:1rem;
+      justify-content:center;
+      font-size:2em;
+    }
+    .logo-img{
+      padding:0;
+      margin:0;
+      display:inherit;
+    }
+    .remember-me{
+      width: 250%;
+      margin-left:40px;
+    }
+    .login{
+      /* min-height:120%; */
+      /* margin-top:40%; */
+      margin-bottom:-30%;
+      overflow: hidden;
+    }
+    .divider{
+      opacity: 0;
+    }
   }
   
   

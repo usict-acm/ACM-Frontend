@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { doFetch, setSession } from "../api/fetchData";
+
 import "./Assests/CSS/login.css";
 
 export interface EncodeResult {
@@ -10,7 +11,7 @@ export interface EncodeResult {
 }
 
 async function onLogin(
-    creds: { email: string; password: string, rememberMe: boolean },
+    creds: { username: string; password: string, rememberMe: boolean },
 ) {
     let res: EncodeResult = await doFetch("/login", "POST", creds);
     setSession(res);
@@ -23,7 +24,7 @@ async function onLogin(
 function Login() {
     const navigate = useNavigate();
     const [state, setState] = useState({
-        email: "",
+        username: "",
         password: "",
         rememberMe: false,
     });
@@ -51,15 +52,16 @@ function Login() {
                         }
                     }}
                 >
-                    <h2>Login...</h2>
+                    <h2 className="header">Login</h2>
+                    <img className="logo-img"src="https://usict.acm.org/assets/images/acm-logo.svg" alt="logo" height="200px" width="250px"/>
                     <div className="inputs">
                         <input
                             className="inputField"
                             type="text"
-                            placeholder="Enter Email..."
-                            value={state.email}
+                            placeholder="Enter Username..."
+                            value={state.username}
                             onChange={(e) =>
-                                onChangeState({ email: e.target!.value })
+                                onChangeState({ username: e.target!.value })
                             }
                         />
                         <i className="fa-solid fa-user"></i>
@@ -78,7 +80,7 @@ function Login() {
                         <i className="fa-solid fa-lock"></i>
                     </div>
                     <div className="checkbox">
-                        <div>
+                        <div  className="input-div remember-me">
                             <input
                                 type="checkbox"
                                 onChange={(_e) => {
@@ -89,7 +91,9 @@ function Login() {
                             />
                             <label>Remember me</label>
                         </div>
-                        <a href="#">Forgot Password?</a>
+                        <div className="input-div">
+                        <a className="forgot-password"href="#">Forgot Password?</a>
+                        </div>
                     </div>
                     <button className="loginBtn">Login</button>
                 </form>
